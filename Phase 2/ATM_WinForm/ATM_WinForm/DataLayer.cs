@@ -7,6 +7,7 @@ using NHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using ATM_WinForm.Mapiranja;
+using System.Windows.Forms;
 
 namespace ATM_WinForm
 {
@@ -36,7 +37,7 @@ namespace ATM_WinForm
             {
                 var cfg = OracleManagedDataClientConfiguration.Oracle10
                 .ConnectionString(c =>
-                    c.Is("DATA SOURCE=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;PERSIST SECURITY INFO=True;USER ID=18724;Password=nekasifra123"));
+                    c.Is("DATA SOURCE=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;PERSIST SECURITY INFO=True;USER ID=S18724;Password=nekasifra123"));
 
                 return Fluently.Configure()
                     .Database(cfg)
@@ -51,5 +52,7 @@ namespace ATM_WinForm
             }
 
         }
+
+
     }
 }

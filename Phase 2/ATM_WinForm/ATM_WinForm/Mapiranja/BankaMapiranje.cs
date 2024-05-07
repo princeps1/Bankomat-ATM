@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
+using ATM_WinForm.Entiteti;
 
 namespace ATM_WinForm.Mapiranja
 {
@@ -19,7 +20,11 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Email, "EMAIL");
             Map(x => x.Web_adresa, "WEB_ADRESA");
             Map(x => x.Adresa_centrale, "ADRESA_CENTRALE");
-            
+
+            //mapiranje veze 1:N Prodavnica-Odeljenje
+            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad();
+            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All();
+            HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

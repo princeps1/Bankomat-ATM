@@ -28,74 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmdReadBank = new System.Windows.Forms.Button();
-            this.cmdCreateBank = new System.Windows.Forms.Button();
-            this.cmdReadBankName = new System.Windows.Forms.Button();
-            this.cmdReadFilijaleList = new System.Windows.Forms.Button();
+            this.SectionBankeBtn = new System.Windows.Forms.Button();
+            this.welcomeMsg = new System.Windows.Forms.TextBox();
+            this.descOfWlcmMsg = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // cmdReadBank
+            // SectionBankeBtn
             // 
-            this.cmdReadBank.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cmdReadBank.Location = new System.Drawing.Point(30, 37);
-            this.cmdReadBank.Name = "cmdReadBank";
-            this.cmdReadBank.Size = new System.Drawing.Size(188, 78);
-            this.cmdReadBank.TabIndex = 0;
-            this.cmdReadBank.Text = "Ucitavanje podataka o Banci";
-            this.cmdReadBank.UseVisualStyleBackColor = false;
-            this.cmdReadBank.Click += new System.EventHandler(this.cmdReadBank_Click);
+            this.SectionBankeBtn.Location = new System.Drawing.Point(61, 121);
+            this.SectionBankeBtn.Name = "SectionBankeBtn";
+            this.SectionBankeBtn.Size = new System.Drawing.Size(453, 38);
+            this.SectionBankeBtn.TabIndex = 4;
+            this.SectionBankeBtn.Text = "Banke";
+            this.SectionBankeBtn.UseVisualStyleBackColor = true;
+            this.SectionBankeBtn.Click += new System.EventHandler(this.sectionBanka_Click);
             // 
-            // cmdCreateBank
+            // welcomeMsg
             // 
-            this.cmdCreateBank.Location = new System.Drawing.Point(30, 144);
-            this.cmdCreateBank.Name = "cmdCreateBank";
-            this.cmdCreateBank.Size = new System.Drawing.Size(188, 65);
-            this.cmdCreateBank.TabIndex = 1;
-            this.cmdCreateBank.Text = "Dodaj banku";
-            this.cmdCreateBank.UseVisualStyleBackColor = true;
-            this.cmdCreateBank.Click += new System.EventHandler(this.cmdCreateBank_Click);
+            this.welcomeMsg.BackColor = System.Drawing.Color.White;
+            this.welcomeMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeMsg.Location = new System.Drawing.Point(12, 44);
+            this.welcomeMsg.Name = "welcomeMsg";
+            this.welcomeMsg.Size = new System.Drawing.Size(557, 19);
+            this.welcomeMsg.TabIndex = 5;
+            this.welcomeMsg.Text = "Dobrodosli na ATM koristan softver";
+            this.welcomeMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // cmdReadBankName
+            // descOfWlcmMsg
             // 
-            this.cmdReadBankName.Location = new System.Drawing.Point(416, 44);
-            this.cmdReadBankName.Name = "cmdReadBankName";
-            this.cmdReadBankName.Size = new System.Drawing.Size(278, 70);
-            this.cmdReadBankName.TabIndex = 2;
-            this.cmdReadBankName.Text = "IME BANKE";
-            this.cmdReadBankName.UseVisualStyleBackColor = true;
-            this.cmdReadBankName.Click += new System.EventHandler(this.cmdReadBankName_Click);
+            this.descOfWlcmMsg.BackColor = System.Drawing.Color.White;
+            this.descOfWlcmMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.descOfWlcmMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descOfWlcmMsg.Location = new System.Drawing.Point(12, 69);
+            this.descOfWlcmMsg.Name = "descOfWlcmMsg";
+            this.descOfWlcmMsg.Size = new System.Drawing.Size(557, 15);
+            this.descOfWlcmMsg.TabIndex = 6;
+            this.descOfWlcmMsg.Text = "Tamo gde masta postaje stvarnost!!!";
+            this.descOfWlcmMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // cmdReadFilijaleList
+            // textBox1
             // 
-            this.cmdReadFilijaleList.Location = new System.Drawing.Point(416, 142);
-            this.cmdReadFilijaleList.Name = "cmdReadFilijaleList";
-            this.cmdReadFilijaleList.Size = new System.Drawing.Size(277, 49);
-            this.cmdReadFilijaleList.TabIndex = 3;
-            this.cmdReadFilijaleList.Text = "Lista Filijala";
-            this.cmdReadFilijaleList.UseVisualStyleBackColor = true;
-            this.cmdReadFilijaleList.Click += new System.EventHandler(this.cmdReadFilijaleList_Click);
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(12, 388);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(557, 31);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.Text = "MMF Korporacija ®";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cmdReadFilijaleList);
-            this.Controls.Add(this.cmdReadBankName);
-            this.Controls.Add(this.cmdCreateBank);
-            this.Controls.Add(this.cmdReadBank);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(580, 431);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.descOfWlcmMsg);
+            this.Controls.Add(this.welcomeMsg);
+            this.Controls.Add(this.SectionBankeBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ATM - Glavna";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button cmdReadBank;
-        private System.Windows.Forms.Button cmdCreateBank;
-        private System.Windows.Forms.Button cmdReadBankName;
-        private System.Windows.Forms.Button cmdReadFilijaleList;
+        private System.Windows.Forms.Button SectionBankeBtn;
+        private System.Windows.Forms.TextBox welcomeMsg;
+        private System.Windows.Forms.TextBox descOfWlcmMsg;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

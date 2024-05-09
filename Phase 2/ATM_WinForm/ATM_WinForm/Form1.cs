@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
 using ATM_WinForm.Entiteti;
@@ -107,5 +100,13 @@ namespace ATM_WinForm
                 MessageBox.Show(ec.Message);
             }
         }
+
+        private void sectionBanka_Click(object sender, EventArgs e)
+        {
+            var BankaMainForm = new Form_Banka_Main();
+            BankaMainForm.ShowDialog();
+        }
+
+ 
     }
 }

@@ -61,6 +61,7 @@
             this.DodajFilijaluBtn.TabIndex = 6;
             this.DodajFilijaluBtn.Text = "Dodaj Filijalu";
             this.DodajFilijaluBtn.UseVisualStyleBackColor = true;
+            this.DodajFilijaluBtn.Click += new System.EventHandler(this.DodajFilijaluBtn_Click);
             // 
             // IzmeniFilijaluBtn
             // 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATM_WinForm.Forme.Filijala;
 using NHibernate;
 
 namespace ATM_WinForm
@@ -42,6 +43,12 @@ namespace ATM_WinForm
             FilijalaGrid.AllowUserToAddRows = false;
 
             s.Close();
+        }
+
+        private void DodajFilijaluBtn_Click(object sender, EventArgs e)
+        {
+            var dodajIzmeniFilijaluForm = new Form_Filijala_AddUpdate("add", null);
+            dodajIzmeniFilijaluForm.ShowDialog();
         }
     }
 }

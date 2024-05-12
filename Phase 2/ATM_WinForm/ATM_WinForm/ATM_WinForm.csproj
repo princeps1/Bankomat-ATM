@@ -151,6 +151,9 @@
     <EmbeddedResource Include="Forme\Banka\Form_Banka_Main.resx">
       <DependentUpon>Form_Banka_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Filijala\Form_Filijala_AddUpdate.resx">
+      <DependentUpon>Form_Filijala_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Filijala\Form_Filijala_Main.resx">
       <DependentUpon>Form_Filijala_Main.cs</DependentUpon>
     </EmbeddedResource>

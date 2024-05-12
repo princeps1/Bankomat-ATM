@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\filip\\OneDrive\\Radna povr\u0161ina\\Bankomat-ATM\\Phase 2\\ATM_WinForm\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CAC925D1-F235-4FCF-8003-C267ACF2BB1D}|ATM_WinForm\\ATM_WinForm.csproj|c:\\users\\filip\\onedrive\\radna povr\u0161ina\\bankomat-atm\\phase 2\\atm_winform\\atm_winform\\forme\\filijala\\form_filijala_addupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAC925D1-F235-4FCF-8003-C267ACF2BB1D}|ATM_WinForm\\ATM_WinForm.csproj|solutionrelative:atm_winform\\forme\\filijala\\form_filijala_addupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAC925D1-F235-4FCF-8003-C267ACF2BB1D}|ATM_WinForm\\ATM_WinForm.csproj|c:\\users\\filip\\onedrive\\radna povr\u0161ina\\bankomat-atm\\phase 2\\atm_winform\\atm_winform\\forme\\filijala\\form_filijala_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAC925D1-F235-4FCF-8003-C267ACF2BB1D}|ATM_WinForm\\ATM_WinForm.csproj|solutionrelative:atm_winform\\forme\\filijala\\form_filijala_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form_Filijala_Main.cs",
+              "DocumentMoniker": "C:\\Users\\filip\\OneDrive\\Radna povr\u0161ina\\Bankomat-ATM\\Phase 2\\ATM_WinForm\\ATM_WinForm\\Forme\\Filijala\\Form_Filijala_Main.cs",
+              "RelativeDocumentMoniker": "ATM_WinForm\\Forme\\Filijala\\Form_Filijala_Main.cs",
+              "ToolTip": "C:\\Users\\filip\\OneDrive\\Radna povr\u0161ina\\Bankomat-ATM\\Phase 2\\ATM_WinForm\\ATM_WinForm\\Forme\\Filijala\\Form_Filijala_Main.cs",
+              "RelativeToolTip": "ATM_WinForm\\Forme\\Filijala\\Form_Filijala_Main.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAwwD4AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T17:28:10.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form_Filijala_AddUpdate.cs",
+              "DocumentMoniker": "C:\\Users\\filip\\OneDrive\\Radna povr\u0161ina\\Bankomat-ATM\\Phase 2\\ATM_WinForm\\ATM_WinForm\\Forme\\Filijala\\Form_Filijala_AddUpdate.cs",
+              "RelativeDocumentMoniker": "ATM_WinForm\\Forme\\Filijala\\Form_Filijala_AddUpdate.cs",
+              "ToolTip": "C:\\Users\\filip\\OneDrive\\Radna povr\u0161ina\\Bankomat-ATM\\Phase 2\\ATM_WinForm\\ATM_WinForm\\Forme\\Filijala\\Form_Filijala_AddUpdate.cs",
+              "RelativeToolTip": "ATM_WinForm\\Forme\\Filijala\\Form_Filijala_AddUpdate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAG8AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T17:13:26.609Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

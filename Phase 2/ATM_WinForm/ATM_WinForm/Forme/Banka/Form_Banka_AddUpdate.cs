@@ -8,8 +8,8 @@ namespace ATM_WinForm
 {
     public partial class Form_Banka_AddUpdate : Form
     {
-        private string type = "";
-        private ATM_WinForm.Entiteti.Banka banka = null;
+        private readonly string type = "";
+        private readonly ATM_WinForm.Entiteti.Banka banka = null;
         static public event EventHandler<BankaEventArgs> BankaEventi;
 
         public Form_Banka_AddUpdate(string type, ATM_WinForm.Entiteti.Banka banka)

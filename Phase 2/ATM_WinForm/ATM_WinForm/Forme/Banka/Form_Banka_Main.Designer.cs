@@ -39,7 +39,7 @@
             // DodajBankuBtn
             // 
             this.DodajBankuBtn.Location = new System.Drawing.Point(16, 402);
-            this.DodajBankuBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DodajBankuBtn.Margin = new System.Windows.Forms.Padding(4);
             this.DodajBankuBtn.Name = "DodajBankuBtn";
             this.DodajBankuBtn.Size = new System.Drawing.Size(267, 41);
             this.DodajBankuBtn.TabIndex = 1;
@@ -51,7 +51,7 @@
             // 
             this.IzmeniBankuBtn.Enabled = false;
             this.IzmeniBankuBtn.Location = new System.Drawing.Point(16, 450);
-            this.IzmeniBankuBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IzmeniBankuBtn.Margin = new System.Windows.Forms.Padding(4);
             this.IzmeniBankuBtn.Name = "IzmeniBankuBtn";
             this.IzmeniBankuBtn.Size = new System.Drawing.Size(267, 41);
             this.IzmeniBankuBtn.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             this.IzbrisiBankuBtn.Enabled = false;
             this.IzbrisiBankuBtn.Location = new System.Drawing.Point(16, 498);
-            this.IzbrisiBankuBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IzbrisiBankuBtn.Margin = new System.Windows.Forms.Padding(4);
             this.IzbrisiBankuBtn.Name = "IzbrisiBankuBtn";
             this.IzbrisiBankuBtn.Size = new System.Drawing.Size(267, 41);
             this.IzbrisiBankuBtn.TabIndex = 3;
@@ -79,7 +79,7 @@
             this.BankaGrid.ColumnHeadersHeight = 29;
             this.BankaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BankaGrid.Location = new System.Drawing.Point(16, 15);
-            this.BankaGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BankaGrid.Margin = new System.Windows.Forms.Padding(4);
             this.BankaGrid.MultiSelect = false;
             this.BankaGrid.Name = "BankaGrid";
             this.BankaGrid.ReadOnly = true;
@@ -97,6 +97,7 @@
             this.BtnPregledFilijala.TabIndex = 5;
             this.BtnPregledFilijala.Text = "Pregled filijala";
             this.BtnPregledFilijala.UseVisualStyleBackColor = true;
+            this.BtnPregledFilijala.Click += new System.EventHandler(this.BtnPregledFilijala_Click);
             // 
             // Form_Banka_Main
             // 
@@ -109,7 +110,7 @@
             this.Controls.Add(this.IzmeniBankuBtn);
             this.Controls.Add(this.DodajBankuBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form_Banka_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

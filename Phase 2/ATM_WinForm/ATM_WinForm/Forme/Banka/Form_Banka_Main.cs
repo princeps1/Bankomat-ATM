@@ -45,10 +45,12 @@ namespace ATM_WinForm
             {
                 IzbrisiBankuBtn.Enabled = true;
                 IzmeniBankuBtn.Enabled = true;
+                BtnPregledFilijala.Enabled = true;
             } else
             {
                 IzbrisiBankuBtn.Enabled = false;
                 IzmeniBankuBtn.Enabled = false;
+                BtnPregledFilijala.Enabled= false;
             }
         }
 
@@ -100,6 +102,20 @@ namespace ATM_WinForm
                     var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
                     var dodajIzmeniBankuForm = new Form_Banka_AddUpdate("update", banka);
                     dodajIzmeniBankuForm.ShowDialog();
+                }
+            }
+        }
+
+        private void BtnPregledFilijala_Click(object sender, EventArgs e)
+        {
+            if (BankaGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
+                    var FilijalaForm = new Form_Filijala_Main(banka.Id);
+                    FilijalaForm.ShowDialog();
                 }
             }
         }

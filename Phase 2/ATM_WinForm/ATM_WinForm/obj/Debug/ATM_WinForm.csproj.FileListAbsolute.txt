@@ -142,3 +142,5 @@ C:\Users\filip\OneDrive\Radna površina\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_Win
 C:\Users\filip\OneDrive\Radna površina\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.pdb
 C:\Users\filip\OneDrive\Radna površina\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Form_Banka_Main.resources
 C:\Users\filip\OneDrive\Radna površina\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Form_Banka_AddUpdate.resources
+C:\FAKULTET\6_SEMESTAR\SISTEMI BAZE PODATAKA\Bankomati_projekat\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Form_Banka_AddUpdate.resources
+C:\FAKULTET\6_SEMESTAR\SISTEMI BAZE PODATAKA\Bankomati_projekat\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Form_Banka_Main.resources

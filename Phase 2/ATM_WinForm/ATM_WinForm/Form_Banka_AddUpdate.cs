@@ -70,7 +70,7 @@ namespace ATM_WinForm
                     return;
                 }
 
-                if (this.banka == null || this.banka.Email != EmailTxtBx.Text)
+                if (this.type == "add" || this.banka.Email != EmailTxtBx.Text)
                 {
                     var isEmailExist = s.Query<ATM_WinForm.Entiteti.Banka>().Where(banka => banka.Email == EmailTxtBx.Text).ToList();
 
@@ -81,7 +81,7 @@ namespace ATM_WinForm
                     }
                 }
 
-                if (this.banka == null || this.banka.Web_adresa != WebAdresaTxtBx.Text)
+                if (this.type == "add" || this.banka.Web_adresa != WebAdresaTxtBx.Text)
                 {
                     var isWebAdresaExist = s.Query<ATM_WinForm.Entiteti.Banka>().Where(banka => banka.Web_adresa == WebAdresaTxtBx.Text).ToList();
 

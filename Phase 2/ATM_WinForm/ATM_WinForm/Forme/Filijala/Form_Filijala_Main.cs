@@ -64,5 +64,53 @@ namespace ATM_WinForm
 
             bindingSource.ResetBindings(false);
         }
+
+        private void FilijalaGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (FilijalaGrid.SelectedRows.Count > 0)
+            {
+                IzbrisiFilijaluBtn.Enabled = true;
+                IzmeniFilijaluBtn.Enabled = true;
+            }
+            else
+            {
+                IzbrisiFilijaluBtn.Enabled = false;
+                IzmeniFilijaluBtn.Enabled = false;
+            }
+        }
+
+        private void IzbrisiFilijaluBtn_Click(object sender, EventArgs e)
+        {
+            if (FilijalaGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = FilijalaGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    ISession s = DataLayer.GetSession();
+
+                    var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Filijala;
+
+                    s.Delete(filijala);
+                    s.Flush();
+                    s.Close();
+
+                    FilijalaGrid.Rows.RemoveAt(rowIndex);
+                }
+            }
+        }
+
+        private void IzmeniFilijaluBtn_Click(object sender, EventArgs e)
+        {
+            if (FilijalaGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = FilijalaGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Filijala;
+                    var dodajIzmeniFilijaluForm = new Form_Filijala_AddUpdate("update", filijala, this.bankaId);
+                    dodajIzmeniFilijaluForm.ShowDialog();
+                }
+            }
+        }
     }
 }

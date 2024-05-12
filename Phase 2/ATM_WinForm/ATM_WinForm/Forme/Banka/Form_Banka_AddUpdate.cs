@@ -108,6 +108,7 @@ namespace ATM_WinForm
 
                             MessageBox.Show("Uspesno ste dodali banku!");
 
+
                             BankaEventi?.Invoke(this, new BankaEventArgs("add", banka));
 
                             ImeTxtBx.Text = "";
@@ -115,6 +116,7 @@ namespace ATM_WinForm
                             WebAdresaTxtBx.Text = "";
                             AdresaCentraleTxtBx.Text = "";
 
+                            this.Close();
                             break;
                         }
                     case "update":
@@ -129,7 +131,8 @@ namespace ATM_WinForm
                             BankaEventi?.Invoke(this, new BankaEventArgs("update", banka));
 
                             MessageBox.Show("Uspesno ste izmenili banku!");
-                            
+                            this.Close();
+
                             break;
                         }
                     default: break;

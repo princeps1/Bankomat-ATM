@@ -5,7 +5,7 @@ namespace ATM_WinForm.Entiteti
 {
     public class Filijala
     {
-        [DisplayName("ID")]
+        [DisplayName("Redni broj")]
         public virtual int Rbr_filijale { get; protected set; }
 
         [DisplayName("Adresa")]
@@ -19,5 +19,13 @@ namespace ATM_WinForm.Entiteti
 
         [Browsable(false)]
         public virtual Banka PripadaBanci{ get; set; }
+
+        [Browsable(false)]
+        public virtual IList<Bankomat> Bankomati { get; set; }
+
+        public Filijala()
+        {
+            Bankomati = new List<Bankomat>();
+        }
     }
 }

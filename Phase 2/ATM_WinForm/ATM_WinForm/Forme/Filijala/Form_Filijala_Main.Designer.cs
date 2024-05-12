@@ -51,6 +51,7 @@
             this.FilijalaGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.FilijalaGrid.Size = new System.Drawing.Size(1187, 380);
             this.FilijalaGrid.TabIndex = 5;
+            this.FilijalaGrid.SelectionChanged += new System.EventHandler(this.FilijalaGrid_SelectionChanged);
             // 
             // DodajFilijaluBtn
             // 
@@ -73,6 +74,7 @@
             this.IzmeniFilijaluBtn.TabIndex = 7;
             this.IzmeniFilijaluBtn.Text = "Izmeni Filijalu";
             this.IzmeniFilijaluBtn.UseVisualStyleBackColor = true;
+            this.IzmeniFilijaluBtn.Click += new System.EventHandler(this.IzmeniFilijaluBtn_Click);
             // 
             // IzbrisiFilijaluBtn
             // 
@@ -84,6 +86,7 @@
             this.IzbrisiFilijaluBtn.TabIndex = 8;
             this.IzbrisiFilijaluBtn.Text = "Izbrisi Filijalu";
             this.IzbrisiFilijaluBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiFilijaluBtn.Click += new System.EventHandler(this.IzbrisiFilijaluBtn_Click);
             // 
             // Form_Filijala_Main
             // 

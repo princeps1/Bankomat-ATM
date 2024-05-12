@@ -106,6 +106,7 @@
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
     <Compile Include="Entiteti\Banka.cs" />
+    <Compile Include="Entiteti\Bankomat.cs" />
     <Compile Include="Entiteti\Filijala.cs" />
     <Compile Include="Eventi\BankaEventi.cs" />
     <Compile Include="Eventi\FilijalaEventi.cs" />
@@ -141,6 +142,7 @@
     </Compile>
     <Compile Include="Klase\ComboItem.cs" />
     <Compile Include="Mapiranja\BankaMapiranje.cs" />
+    <Compile Include="Mapiranja\BankomatMapiranje.cs" />
     <Compile Include="Mapiranja\FilijalaMapiranje.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

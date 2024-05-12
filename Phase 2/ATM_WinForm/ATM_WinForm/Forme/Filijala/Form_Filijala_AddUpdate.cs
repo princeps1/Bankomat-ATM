@@ -112,8 +112,9 @@ namespace ATM_WinForm.Forme.Filijala
                             };
 
                             s.Save(filijala);
+                            s.Flush();
 
-                            MessageBox.Show("Uspesno ste dodali banku!");
+                            MessageBox.Show("Uspesno ste dodali filijalu!");
 
                             FilijalaEventi?.Invoke(this, new FilijalaEventArgs("add", filijala));
 
@@ -121,24 +122,25 @@ namespace ATM_WinForm.Forme.Filijala
                             BrTelefonaTxtBx.Text = "";
                             RadnoVremeTxtBx.Text = "";
 
+                            this.Close();
                             break;
                         }
                     case "update":
                         {
-                            /*
-                             
-                            this.banka.Ime = ImeTxtBx.Text;
-                            this.banka.Email = EmailTxtBx.Text;
-                            this.banka.Web_adresa = WebAdresaTxtBx.Text;
-                            this.banka.Adresa_centrale = AdresaCentraleTxtBx.Text;
-                            s.Update(this.banka);
 
-                            BankaEventi?.Invoke(this, new BankaEventArgs("update", banka));
 
-                            MessageBox.Show("Uspesno ste izmenili banku!");
-                            
-                            */
-                            
+                            this.filijala.Adresa = AdresaTxtBx.Text;
+                            this.filijala.Radno_vreme = RadnoVremeTxtBx.Text;
+                            this.filijala.Br_telefona = BrTelefonaTxtBx.Text;
+                            s.Update(this.filijala);
+
+                            FilijalaEventi?.Invoke(this, new FilijalaEventArgs("update", filijala));
+
+                            MessageBox.Show("Uspesno ste izmenili filijalu!");
+                            this.Close();
+
+
+
                             break;
                         }
                     default: break;

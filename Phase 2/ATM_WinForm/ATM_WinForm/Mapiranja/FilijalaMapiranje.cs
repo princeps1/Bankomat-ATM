@@ -25,6 +25,11 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE 1:N  --> BANKA-FILIJALA
             References(x => x.PripadaBanci).Column("ID_BANKE").LazyLoad();
+
+            //mapiranje veze 1:N Prodavnica-Odeljenje
+            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad();
+            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All();
+            HasMany(x => x.Bankomati).KeyColumn("RBR_FILIJALE").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

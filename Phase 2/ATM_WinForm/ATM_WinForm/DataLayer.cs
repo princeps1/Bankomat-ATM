@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using ATM_WinForm.Mapiranja;
-using System.Windows.Forms;
 
 namespace ATM_WinForm
 {
@@ -47,12 +42,10 @@ namespace ATM_WinForm
             }
             catch (Exception ec)
             {
-                System.Windows.Forms.MessageBox.Show(ec.Message);
+                System.Windows.Forms.MessageBox.Show(ec.ToString());
+                //System.Windows.Forms.MessageBox.Show(ec.Message);
                 return null;
             }
-
         }
-
-
     }
 }

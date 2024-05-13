@@ -101,12 +101,16 @@ namespace ATM_WinForm
             }
         }
 
-        private void sectionBanka_Click(object sender, EventArgs e)
+        private void SectionBanka_Click(object sender, EventArgs e)
         {
             var BankaMainForm = new Form_Banka_Main();
             BankaMainForm.ShowDialog();
         }
 
- 
+        private void SectionFilijaleBtn_Click(object sender, EventArgs e)
+        {
+            var FilijalaMainForm = new Form_Filijala_Main();
+            FilijalaMainForm.ShowDialog();
+        }
     }
 }

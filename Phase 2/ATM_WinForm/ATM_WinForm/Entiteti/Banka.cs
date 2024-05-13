@@ -21,11 +21,15 @@ namespace ATM_WinForm.Entiteti
         public virtual string Adresa_centrale { get; set; }
 
         [Browsable(false)]
-        public virtual IList<Filijala> Filijala{ get; set; }
+        public virtual IList<Filijala> Filijala { get; set; }
+
+        [Browsable(false)]
+        public virtual IList<BankaBrTelefona> BrojeviTelefona { get; set; }
 
         public Banka()
         {
             Filijala = new List<Filijala>();
+            BrojeviTelefona = new List<BankaBrTelefona>();
         }
     }
 }

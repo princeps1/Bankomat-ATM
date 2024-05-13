@@ -25,6 +25,7 @@ namespace ATM_WinForm.Mapiranja
             //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad();
             //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All();
             HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.BrojeviTelefona).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

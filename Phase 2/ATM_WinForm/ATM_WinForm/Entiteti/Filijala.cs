@@ -18,7 +18,7 @@ namespace ATM_WinForm.Entiteti
         public virtual string Radno_vreme { get; set; }
 
         [Browsable(false)]
-        public virtual Banka PripadaBanci{ get; set; }
+        public virtual Banka PripadaBanci { get; set; }
 
         [Browsable(false)]
         public virtual IList<Bankomat> Bankomati { get; set; }

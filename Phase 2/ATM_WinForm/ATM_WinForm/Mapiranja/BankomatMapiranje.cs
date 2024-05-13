@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
-using ATM_WinForm.Entiteti;
+﻿using FluentNHibernate.Mapping;
 
 namespace ATM_WinForm.Mapiranja
 {

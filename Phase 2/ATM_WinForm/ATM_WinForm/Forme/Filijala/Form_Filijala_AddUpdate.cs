@@ -77,6 +77,16 @@ namespace ATM_WinForm.Forme.Filijala
 
             BankaComboBox.DataSource = lista;
 
+            int index = -1;
+            if (this.bankaId == -1)
+            {
+                if (this.type == "update")
+                {
+                    index = lista.FindIndex(p => p.ID == filijala.PripadaBanci.Id);
+                }
+            }
+            BankaComboBox.SelectedIndex = index != -1 ? index : 0;
+
             s.Close();
         }
 
@@ -112,7 +122,6 @@ namespace ATM_WinForm.Forme.Filijala
                             };
 
                             s.Save(filijala);
-                            s.Flush();
 
                             MessageBox.Show("Uspesno ste dodali filijalu!");
 
@@ -123,23 +132,23 @@ namespace ATM_WinForm.Forme.Filijala
                             RadnoVremeTxtBx.Text = "";
 
                             this.Close();
+
                             break;
                         }
                     case "update":
                         {
-
+                            var pripadaBanci = s.Load<ATM_WinForm.Entiteti.Banka>((int)BankaComboBox.SelectedValue);
 
                             this.filijala.Adresa = AdresaTxtBx.Text;
                             this.filijala.Radno_vreme = RadnoVremeTxtBx.Text;
                             this.filijala.Br_telefona = BrTelefonaTxtBx.Text;
+                            this.filijala.PripadaBanci = pripadaBanci;
                             s.Update(this.filijala);
 
                             FilijalaEventi?.Invoke(this, new FilijalaEventArgs("update", filijala));
 
                             MessageBox.Show("Uspesno ste izmenili filijalu!");
                             this.Close();
-
-
 
                             break;
                         }

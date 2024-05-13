@@ -152,3 +152,4 @@ C:\Users\Princeps\Desktop\Sistem baza podataka\BANKOMAT\Bankomat-ATM\Phase 2\ATM
 C:\Users\filip\OneDrive\Radna površina\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Forme.Filijala.Form_Filijala_AddUpdate.resources
 C:\Users\filip\OneDrive\Radna površina\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Form_Filijala_Main.resources
 C:\FAKULTET\6_SEMESTAR\SISTEMI BAZE PODATAKA\Bankomati_projekat\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Forme.Filijala.Form_Filijala_AddUpdate.resources
+C:\Users\filip\OneDrive\Radna površina\Bankomat-ATM\Phase 2\ATM_WinForm\ATM_WinForm\obj\Debug\ATM_WinForm.Forme.Banka.Form_Banka_SpisakBrojeva_Main.resources

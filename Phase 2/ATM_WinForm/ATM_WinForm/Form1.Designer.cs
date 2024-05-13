@@ -32,6 +32,7 @@
             this.welcomeMsg = new System.Windows.Forms.TextBox();
             this.descOfWlcmMsg = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SectionFilijaleBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SectionBankeBtn
@@ -42,7 +43,7 @@
             this.SectionBankeBtn.TabIndex = 4;
             this.SectionBankeBtn.Text = "Banke";
             this.SectionBankeBtn.UseVisualStyleBackColor = true;
-            this.SectionBankeBtn.Click += new System.EventHandler(this.sectionBanka_Click);
+            this.SectionBankeBtn.Click += new System.EventHandler(this.SectionBanka_Click);
             // 
             // welcomeMsg
             // 
@@ -80,6 +81,16 @@
             this.textBox1.Text = "MMF Korporacija ®";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // SectionFilijaleBtn
+            // 
+            this.SectionFilijaleBtn.Location = new System.Drawing.Point(61, 165);
+            this.SectionFilijaleBtn.Name = "SectionFilijaleBtn";
+            this.SectionFilijaleBtn.Size = new System.Drawing.Size(453, 38);
+            this.SectionFilijaleBtn.TabIndex = 8;
+            this.SectionFilijaleBtn.Text = "Filijale";
+            this.SectionFilijaleBtn.UseVisualStyleBackColor = true;
+            this.SectionFilijaleBtn.Click += new System.EventHandler(this.SectionFilijaleBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -87,6 +98,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(580, 431);
+            this.Controls.Add(this.SectionFilijaleBtn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.descOfWlcmMsg);
             this.Controls.Add(this.welcomeMsg);
@@ -107,6 +119,7 @@
         private System.Windows.Forms.TextBox welcomeMsg;
         private System.Windows.Forms.TextBox descOfWlcmMsg;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button SectionFilijaleBtn;
     }
 }
 

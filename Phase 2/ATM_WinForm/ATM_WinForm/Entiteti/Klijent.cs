@@ -21,5 +21,14 @@ namespace ATM_WinForm.Entiteti
         [DisplayName("Adresa")]
         public virtual string Adresa { get; set; }
 
+        //MAIRANJE KLIJENT-RACUN
+        [Browsable(false)]
+        public virtual IList<Racun> Racuni { get; set; }
+
+        public Klijent()
+        {
+            //MAPIRANJE KLIJENT-RACUN
+            Racuni = new List<Racun>();
+        }
     }
 }

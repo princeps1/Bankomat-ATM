@@ -18,6 +18,9 @@ namespace ATM_WinForm
             this.bankaId = bankaId;
 
             Form_Filijala_AddUpdate.FilijalaEventi += this.FilijalaDodanaIliIzmenjana;
+
+            FilijalaGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         private void Form_Filijala_Main_Load(object sender, EventArgs e)

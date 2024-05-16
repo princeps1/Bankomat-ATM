@@ -17,6 +17,8 @@ namespace ATM_WinForm
         {
             InitializeComponent();
             Form_Banka_AddUpdate.BankaEventi += this.BankaDodanaIliIzmenjana;
+
+            BankaGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void Form_Banka_Main_Load(object sender, EventArgs e)

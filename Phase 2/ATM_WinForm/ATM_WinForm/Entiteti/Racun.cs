@@ -26,6 +26,10 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual Banka JePovezan { get; set; }
 
+        //MAPIRANJE RACUN-KLIJENT
+        [Browsable(false)]
+        public virtual Klijent Koristi { get; set; }
+
     }
 
     public class DevizniRacun : Racun 

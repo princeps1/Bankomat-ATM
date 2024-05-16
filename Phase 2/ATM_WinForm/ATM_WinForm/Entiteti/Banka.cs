@@ -30,7 +30,7 @@ namespace ATM_WinForm.Entiteti
         public virtual IList<BankaBrTelefona> BrojeviTelefona { get; set; }
 
 
-        //MAIRANJE BANKA
+        //MAIRANJE BANKA-RACUN
         [Browsable(false)]
         public virtual IList<Racun> Racuni { get; set; }
 

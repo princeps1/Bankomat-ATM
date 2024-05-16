@@ -21,10 +21,10 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Email, "EMAIL");
 
-            //mapiranje veze 1:N Prodavnica-Odeljenje
-            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad();
-            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All();
+            
 
+            //MAPIRANJE veze 1:N --> KLIJENT-RACUNI
+            HasMany(x => x.Racuni).KeyColumn("ID_KLIJENTA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

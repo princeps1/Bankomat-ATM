@@ -25,6 +25,8 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE RACUN-BANKA
             References(x => x.JePovezan).Column("ID_BANKE").LazyLoad();
+            //MAPIRANJE RACUN-KLIJENT
+            References(x => x.Koristi).Column("ID_KLIJENTA").LazyLoad();
 
         }
     }

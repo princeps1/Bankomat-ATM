@@ -16,10 +16,14 @@ namespace ATM_WinForm.Entiteti
         public virtual string Tekuci_saldo { get; set; }
 
 
-        [DisplayName("Tip")]
+        [Browsable(false)]
         public virtual string Tip {  get; set; }
 
+        [DisplayName("Valuta")]
+        public virtual string Valuta { get; set; }
+
         //MAPIRANJE RACUN-BANKA
+        [Browsable(false)]
         public virtual Banka JePovezan { get; set; }
 
     }
@@ -27,7 +31,11 @@ namespace ATM_WinForm.Entiteti
     public class DevizniRacun : Racun 
     {
         [DisplayName("Valuta")]
-        public virtual string Valuta { get; set; }
+        public override string Valuta { get; set; }
     }
-    public class DinarskiRacun:Racun { }
+    public class DinarskiRacun : Racun {
+       
+    }
+
+
 }

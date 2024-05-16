@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using NHibernate;
 using ATM_WinForm.Entiteti;
+using ATM_WinForm.Forme.Racun;
 
 namespace ATM_WinForm
 {
@@ -111,6 +112,12 @@ namespace ATM_WinForm
         {
             var FilijalaMainForm = new Form_Filijala_Main();
             FilijalaMainForm.ShowDialog();
+        }
+
+        private void SectionRacuniBtn_Click(object sender, EventArgs e)
+        {
+            var RacuniMainForm = new Form_Racun_Main();
+            RacuniMainForm.ShowDialog();
         }
     }
 }

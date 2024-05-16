@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ATM_WinForm.Forme.Banka;
+using ATM_WinForm.Forme.Racun;
 using NHibernate;
 
 namespace ATM_WinForm
@@ -46,12 +47,14 @@ namespace ATM_WinForm
                 IzmeniBankuBtn.Enabled = true;
                 BtnPregledFilijala.Enabled = true;
                 SpisakBrojevaTelefonaBtn.Enabled = true;
+                SpisakSvihRacunaBtn.Enabled = true;
             } else
             {
                 IzbrisiBankuBtn.Enabled = false;
                 IzmeniBankuBtn.Enabled = false;
                 BtnPregledFilijala.Enabled= false;
                 SpisakBrojevaTelefonaBtn.Enabled= false;
+                SpisakSvihRacunaBtn.Enabled = false;
             }
         }
 
@@ -131,6 +134,20 @@ namespace ATM_WinForm
                     var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
                     var SpisakBrojevaTelefonaForm = new Form_Banka_SpisakBrojeva_Main(banka.Id);
                     SpisakBrojevaTelefonaForm.ShowDialog();
+                }
+            }
+        }
+
+        private void SpisakSvihRacunaBtn_Click(object sender, EventArgs e)
+        {
+            if (BankaGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
+                    var SpisakSvihRacunaForm  = new Form_Racun_Main(banka.Id);
+                    SpisakSvihRacunaForm.ShowDialog();
                 }
             }
         }

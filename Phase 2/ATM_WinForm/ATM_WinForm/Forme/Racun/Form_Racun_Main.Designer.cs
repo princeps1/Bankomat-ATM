@@ -51,6 +51,7 @@
             this.RacunGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.RacunGrid.Size = new System.Drawing.Size(1191, 380);
             this.RacunGrid.TabIndex = 6;
+            this.RacunGrid.SelectionChanged += new System.EventHandler(this.RacunGrid_SelectionChanged);
             // 
             // DodajRacunBtn
             // 

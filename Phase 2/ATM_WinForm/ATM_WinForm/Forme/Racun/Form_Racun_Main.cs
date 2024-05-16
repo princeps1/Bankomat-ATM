@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATM_WinForm.Forme.Racun;
 using NHibernate;
 
 namespace ATM_WinForm.Forme.Racun
@@ -42,6 +38,20 @@ namespace ATM_WinForm.Forme.Racun
             RacunGrid.AllowUserToAddRows = false;
 
             s.Close();
+        }
+
+        private void RacunGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (RacunGrid.SelectedRows.Count > 0)
+            {
+                IzbrisiRacunBtn.Enabled = true;
+                IzmeniRacunBtn.Enabled = true;
+            }
+            else
+            {
+                IzbrisiRacunBtn.Enabled = false;
+                IzmeniRacunBtn.Enabled = false;
+            }
         }
     }
 }

@@ -10,6 +10,8 @@ namespace ATM_WinForm.Entiteti
         [DisplayName("Broj telefona")]
         public virtual string BrTelefona { get; set; }
 
+
+        //MAPIRANJE BANKA_BR_TEL-BANKA
         [Browsable(false)]
         public virtual Banka PripadaBanci { get; set; }
     }

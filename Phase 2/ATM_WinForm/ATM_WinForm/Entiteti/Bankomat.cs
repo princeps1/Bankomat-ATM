@@ -25,6 +25,8 @@ namespace ATM_WinForm.Entiteti
         [DisplayName("Datum poslednjeg servisa")]
         public virtual string Datum_Poslednjeg_Servisa { get; set; }
 
+
+        //MAPIRANJE BANKOMAT-FILIJALA
         [Browsable(false)]
         public virtual Filijala InstaliranUFilijali { get; set; }
     }

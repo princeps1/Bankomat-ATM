@@ -21,12 +21,14 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Web_adresa, "WEB_ADRESA");
             Map(x => x.Adresa_centrale, "ADRESA_CENTRALE");
 
-            //mapiranje veze 1:N Prodavnica-Odeljenje
-            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad();
-            //HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All();
+            //MAPIRANJE veze 1:N --> BANKA-FILIJALA
             HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
+
+            //MAPIRANJE veze 1:N --> BANKA-BR TEL BANKE
             HasMany(x => x.BrojeviTelefona).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
-            
+
+            //MAPIRANJE veze 1:N --> BANKA-BR TEL BANKE
+            HasMany(x => x.Racuni).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

@@ -112,6 +112,7 @@
     <Compile Include="Entiteti\FizickoLice.cs" />
     <Compile Include="Entiteti\Klijent.cs" />
     <Compile Include="Entiteti\PravnoLice.cs" />
+    <Compile Include="Entiteti\Racun.cs" />
     <Compile Include="Eventi\BankaEventi.cs" />
     <Compile Include="Eventi\FilijalaEventi.cs" />
     <Compile Include="Form1.cs">
@@ -158,6 +159,7 @@
     <Compile Include="Mapiranja\FizickoLiceMapiranje.cs" />
     <Compile Include="Mapiranja\KlijentMapiranje.cs" />
     <Compile Include="Mapiranja\PravnoLiceMapiranje.cs" />
+    <Compile Include="Mapiranja\RacunMapiranje.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

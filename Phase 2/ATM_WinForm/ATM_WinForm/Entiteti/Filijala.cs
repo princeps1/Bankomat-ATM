@@ -17,14 +17,19 @@ namespace ATM_WinForm.Entiteti
         [DisplayName("Radno vreme")]
         public virtual string Radno_vreme { get; set; }
 
-        [Browsable(false)]
-        public virtual Banka PripadaBanci { get; set; }
-
+        //MAPIRANJE FILIJALA-BANKOMAT
         [Browsable(false)]
         public virtual IList<Bankomat> Bankomati { get; set; }
 
+
+        //MAPIRANJE FILIJALA-BANKA
+        [Browsable(false)]
+        public virtual Banka PripadaBanci { get; set; }
+
+
         public Filijala()
         {
+            //MAPIRANJE FILIJALA-BANKA
             Bankomati = new List<Bankomat>();
         }
     }

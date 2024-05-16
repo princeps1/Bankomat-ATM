@@ -20,16 +20,30 @@ namespace ATM_WinForm.Entiteti
         [DisplayName("Adresa Centrale")]
         public virtual string Adresa_centrale { get; set; }
 
+        //MAPIRANJE BANKA-FILIJA
         [Browsable(false)]
         public virtual IList<Filijala> Filijala { get; set; }
 
+
+        //MAPIRANJE BANKA-BANKA_BR_TEL
         [Browsable(false)]
         public virtual IList<BankaBrTelefona> BrojeviTelefona { get; set; }
 
+
+        //MAIRANJE BANKA
+        [Browsable(false)]
+        public virtual IList<Racun> Racuni { get; set; }
+
         public Banka()
         {
+            //MAPIRANJE BANKA-FILIJALA
             Filijala = new List<Filijala>();
+
+            //MAPIRANJE BANKA-BANKA_BR_TEL
             BrojeviTelefona = new List<BankaBrTelefona>();
+
+            //MAPIRANJE BANKA-RACUN
+            Racuni = new List<Racun>();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Proizvodjac, "PROIZVODJAC");
             Map(x => x.Datum_Poslednjeg_Servisa, "DATUM_POSLEDNJEG_SERVISA");
 
-            //MAPIRANJE 1:N  --> FILIJALA-BANKOMAT
+            //MAPIRANJE veze 1:N  --> BANKOMAT-FILIJALA
             References(x => x.InstaliranUFilijali).Column("RBR_FILIJALE").LazyLoad();
         }
     }

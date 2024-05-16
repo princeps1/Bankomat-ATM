@@ -13,6 +13,7 @@ namespace ATM_WinForm.Mapiranja
 
             Map(x => x.BrTelefona, "BROJ_TELEFONA");
 
+            //MAPIRANJE BANKA_BR_TEL-BANKA
             References(x => x.PripadaBanci).Column("ID_BANKE").LazyLoad();
         }
     }

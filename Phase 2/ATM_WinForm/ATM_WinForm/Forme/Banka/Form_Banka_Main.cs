@@ -11,34 +11,38 @@ namespace ATM_WinForm
     public partial class Form_Banka_Main : Form
     {
         private readonly BindingSource bindingSource = new BindingSource();
-        List<ATM_WinForm.Entiteti.Banka> banke = null;
+        List<ATM_WinForm.DTOs.BankaBasic> banke = null;
 
         public Form_Banka_Main()
         {
             InitializeComponent();
-            Form_Banka_AddUpdate.BankaEventi += this.BankaDodanaIliIzmenjana;
 
             BankaGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void Form_Banka_Main_Load(object sender, EventArgs e)
         {
-            ISession s = DataLayer.GetSession();
-
-            banke = s.Query<ATM_WinForm.Entiteti.Banka>().ToList();
+            banke = DTOManager.VratiSveBanke();
 
             bindingSource.DataSource = banke;
             BankaGrid.DataSource = bindingSource;
 
             BankaGrid.AllowUserToAddRows = false;
+        }
 
-            s.Close();
+        private void PopuniPodacima()
+        {
+            banke.Clear();
+            banke = DTOManager.VratiSveBanke();
+            bindingSource.DataSource = banke;
+            BankaGrid.DataSource = bindingSource;
         }
 
         private void DodajBankuBtn_Click(object sender, EventArgs e)
         {
             var dodajIzmeniBankuForm = new Form_Banka_AddUpdate("add", null);
             dodajIzmeniBankuForm.ShowDialog();
+            this.PopuniPodacima();
         }
 
         private void BankaGrid_SelectionChanged(object sender, EventArgs e)
@@ -68,34 +72,15 @@ namespace ATM_WinForm
                 int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
                 if (rowIndex != -1)
                 {
-                    ISession s = DataLayer.GetSession();
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
 
-                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
+                    DTOManager.IzbrisiBanku(banka.Id);
 
-                    s.Delete(banka);
-                    s.Flush();
-                    s.Close();
-
+                    MessageBox.Show("Uspesno ste izbrisali banku!");
+                    
                     BankaGrid.Rows.RemoveAt(rowIndex);
                 }
             }
-        }
-
-        private void BankaDodanaIliIzmenjana(object sender, BankaEventArgs e)
-        {
-            switch (e.TipAkcije)
-            {
-                case "add":
-                    {
-                        banke.Add(e.NovaBanka);
-
-                        break;
-                    }
-                case "update": break;
-                default: break;
-            }
-
-            bindingSource.ResetBindings(false);
         }
 
         private void IzmeniBankuBtn_Click(object sender, EventArgs e)
@@ -105,9 +90,10 @@ namespace ATM_WinForm
                 int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
                 if (rowIndex != -1)
                 {
-                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
                     var dodajIzmeniBankuForm = new Form_Banka_AddUpdate("update", banka);
                     dodajIzmeniBankuForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
                 }
             }
         }
@@ -119,7 +105,7 @@ namespace ATM_WinForm
                 int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
                 if (rowIndex != -1)
                 {
-                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
                     var FilijalaForm = new Form_Filijala_Main(banka.Id);
                     FilijalaForm.ShowDialog();
                 }
@@ -133,7 +119,7 @@ namespace ATM_WinForm
                 int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
                 if (rowIndex != -1)
                 {
-                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
                     var SpisakBrojevaTelefonaForm = new Form_Banka_SpisakBrojeva_Main(banka.Id);
                     SpisakBrojevaTelefonaForm.ShowDialog();
                 }
@@ -147,7 +133,7 @@ namespace ATM_WinForm
                 int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
                 if (rowIndex != -1)
                 {
-                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Banka;
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
                     var SpisakSvihRacunaForm  = new Form_Racun_Main(banka.Id);
                     SpisakSvihRacunaForm.ShowDialog();
                 }

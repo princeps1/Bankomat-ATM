@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using ATM_WinForm.Forme.Filijala;
-using NHibernate;
 
 namespace ATM_WinForm
 {
@@ -11,61 +9,53 @@ namespace ATM_WinForm
     {
         private readonly int bankaId = -1;
         private readonly BindingSource bindingSource = new BindingSource();
-        List<ATM_WinForm.Entiteti.Filijala> filijale = null;
+        List<ATM_WinForm.DTOs.FilijalaBasic> filijale = null;
         public Form_Filijala_Main(int bankaId = -1)
         {
             InitializeComponent();
             this.bankaId = bankaId;
 
-            Form_Filijala_AddUpdate.FilijalaEventi += this.FilijalaDodanaIliIzmenjana;
-
             FilijalaGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
         }
 
         private void Form_Filijala_Main_Load(object sender, EventArgs e)
         {
-            ISession s = DataLayer.GetSession();
-
             if(this.bankaId == -1)
             {
-                filijale = s.Query<ATM_WinForm.Entiteti.Filijala>().ToList();
+                filijale = DTOManager.VratiSveFilijale();
             }
             else
             {
-                var banka = s.Get<ATM_WinForm.Entiteti.Banka>(this.bankaId);
-                filijale = banka.Filijala.ToList();
+                filijale = DTOManager.VratiSveFilijaleOdBanke(this.bankaId);
             }
 
             bindingSource.DataSource = filijale;
             FilijalaGrid.DataSource = bindingSource;
 
             FilijalaGrid.AllowUserToAddRows = false;
+        }
 
-            s.Close();
+        private void PopuniPodacima()
+        {
+            filijale.Clear();
+
+            if (this.bankaId == -1)
+            {
+                filijale = DTOManager.VratiSveFilijale();
+            }
+            else
+            {
+                filijale = DTOManager.VratiSveFilijaleOdBanke(this.bankaId);
+            }
+            bindingSource.DataSource = filijale;
+            FilijalaGrid.DataSource = bindingSource;
         }
 
         private void DodajFilijaluBtn_Click(object sender, EventArgs e)
         {
             var dodajIzmeniFilijaluForm = new Form_Filijala_AddUpdate("add", null, this.bankaId);
             dodajIzmeniFilijaluForm.ShowDialog();
-        }
-
-        private void FilijalaDodanaIliIzmenjana(object sender, FilijalaEventArgs e)
-        {
-            switch (e.TipAkcije)
-            {
-                case "add":
-                    {
-                        filijale.Add(e.NovaFilijala);
-
-                        break;
-                    }
-                case "update": break;
-                default: break;
-            }
-
-            bindingSource.ResetBindings(false);
+            PopuniPodacima();
         }
 
         private void FilijalaGrid_SelectionChanged(object sender, EventArgs e)
@@ -89,13 +79,12 @@ namespace ATM_WinForm
                 int rowIndex = FilijalaGrid.SelectedCells[0].RowIndex;
                 if (rowIndex != -1)
                 {
-                    ISession s = DataLayer.GetSession();
 
-                    var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Filijala;
+                    var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.FilijalaBasic;
 
-                    s.Delete(filijala);
-                    s.Flush();
-                    s.Close();
+                    DTOManager.IzbrisiFilijalu(filijala.Rbr_filijale);
+
+                    MessageBox.Show("Uspesno ste izbrisali filijalu!");
 
                     FilijalaGrid.Rows.RemoveAt(rowIndex);
                 }
@@ -109,9 +98,10 @@ namespace ATM_WinForm
                 int rowIndex = FilijalaGrid.SelectedCells[0].RowIndex;
                 if (rowIndex != -1)
                 {
-                    var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.Entiteti.Filijala;
+                    var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.FilijalaBasic;
                     var dodajIzmeniFilijaluForm = new Form_Filijala_AddUpdate("update", filijala, this.bankaId);
                     dodajIzmeniFilijaluForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
                 }
             }
         }

@@ -11,9 +11,8 @@ namespace ATM_WinForm.Forme.Filijala
     {
         private readonly string type = "";
         private readonly int bankaId = -1;
-        private readonly ATM_WinForm.Entiteti.Filijala filijala = null;
-        static public event EventHandler<FilijalaEventArgs> FilijalaEventi;
-        public Form_Filijala_AddUpdate(string type, ATM_WinForm.Entiteti.Filijala filijala, int bankaId)
+        private readonly ATM_WinForm.DTOs.FilijalaBasic filijala = null;
+        public Form_Filijala_AddUpdate(string type, ATM_WinForm.DTOs.FilijalaBasic filijala, int bankaId)
         {
             InitializeComponent();
 
@@ -61,7 +60,7 @@ namespace ATM_WinForm.Forme.Filijala
 
             if (this.bankaId == -1)
             {
-                var banke = s.Query<ATM_WinForm.Entiteti.Banka>().ToList();
+                var banke = DTOManager.VratiSveBanke();
 
                 foreach (var banka in banke)
                 {
@@ -70,7 +69,7 @@ namespace ATM_WinForm.Forme.Filijala
             } 
             else
             {
-                var banka = s.Get<ATM_WinForm.Entiteti.Banka>(this.bankaId);
+                var banka = DTOManager.VratiBanku(this.bankaId);
 
                 lista.Add(new ComboItem { ID = banka.Id, Text = banka.Ime });
             }
@@ -94,8 +93,6 @@ namespace ATM_WinForm.Forme.Filijala
         {
             try
             {
-                ISession s = DataLayer.GetSession();
-
                 if (AdresaTxtBx.Text == "" ||
                    BrTelefonaTxtBx.Text == "" ||
                    RadnoVremeTxtBx.Text == ""
@@ -109,59 +106,42 @@ namespace ATM_WinForm.Forme.Filijala
                 {
                     case "add":
                         {
-                            var pripadaBanci = s.Load<ATM_WinForm.Entiteti.Banka>((int)BankaComboBox.SelectedValue);
-
-                            MessageBox.Show(pripadaBanci.Ime.ToString());
-
-                            Entiteti.Filijala filijala = new Entiteti.Filijala
+                            DTOs.FilijalaBasic filijala = new DTOs.FilijalaBasic
                             {
                                 Adresa = AdresaTxtBx.Text,
                                 Br_telefona = BrTelefonaTxtBx.Text,
                                 Radno_vreme = RadnoVremeTxtBx.Text,
-                                PripadaBanci = pripadaBanci
+                                PripadaBanci = DTOManager.VratiBanku((int)BankaComboBox.SelectedValue)
                             };
 
-                            s.Save(filijala);
+                            DTOManager.DodajFilijalu(filijala);
 
                             MessageBox.Show("Uspesno ste dodali filijalu!");
-
-                            FilijalaEventi?.Invoke(this, new FilijalaEventArgs("add", filijala));
-
-                            AdresaTxtBx.Text = "";
-                            BrTelefonaTxtBx.Text = "";
-                            RadnoVremeTxtBx.Text = "";
-
-                            this.Close();
 
                             break;
                         }
                     case "update":
                         {
-                            var pripadaBanci = s.Load<ATM_WinForm.Entiteti.Banka>((int)BankaComboBox.SelectedValue);
-
                             this.filijala.Adresa = AdresaTxtBx.Text;
                             this.filijala.Radno_vreme = RadnoVremeTxtBx.Text;
                             this.filijala.Br_telefona = BrTelefonaTxtBx.Text;
-                            this.filijala.PripadaBanci = pripadaBanci;
-                            s.Update(this.filijala);
+                            this.filijala.PripadaBanci = DTOManager.VratiBanku((int)BankaComboBox.SelectedValue);
 
-                            FilijalaEventi?.Invoke(this, new FilijalaEventArgs("update", filijala));
+                            DTOManager.IzmeniFilijalu(this.filijala);
 
                             MessageBox.Show("Uspesno ste izmenili filijalu!");
-                            this.Close();
 
                             break;
                         }
                     default: break;
                 }
-
-                s.Flush();
-                s.Close();
             }
             catch (Exception ec)
             {
                 MessageBox.Show(ec.ToString());
             }
+
+            this.Close();
         }
     }
 }

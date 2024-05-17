@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using NHibernate;
 using System.Text.RegularExpressions;
-using System.Linq;
 
 namespace ATM_WinForm
 {
     public partial class Form_Banka_AddUpdate : Form
     {
         private readonly string type = "";
-        private readonly ATM_WinForm.Entiteti.Banka banka = null;
-        static public event EventHandler<BankaEventArgs> BankaEventi;
+        private readonly ATM_WinForm.DTOs.BankaBasic banka = null;
 
-        public Form_Banka_AddUpdate(string type, ATM_WinForm.Entiteti.Banka banka)
+        public Form_Banka_AddUpdate(string type, ATM_WinForm.DTOs.BankaBasic banka)
         {
             InitializeComponent();
                
@@ -50,8 +47,6 @@ namespace ATM_WinForm
         {
             try
             {
-                ISession s = DataLayer.GetSession();
-
                 if(ImeTxtBx.Text == "" || 
                    EmailTxtBx.Text == "" || 
                    WebAdresaTxtBx.Text == "" || 
@@ -72,9 +67,7 @@ namespace ATM_WinForm
 
                 if (this.type == "add" || this.banka.Email != EmailTxtBx.Text)
                 {
-                    var isEmailExist = s.Query<ATM_WinForm.Entiteti.Banka>().Where(banka => banka.Email == EmailTxtBx.Text).ToList();
-
-                    if (isEmailExist.Count > 0)
+                    if (DTOManager.ProveraEmailBanke(EmailTxtBx.Text))
                     {
                         MessageBox.Show("Ova email adresa vec postoji u bazi!");
                         return;
@@ -83,9 +76,7 @@ namespace ATM_WinForm
 
                 if (this.type == "add" || this.banka.Web_adresa != WebAdresaTxtBx.Text)
                 {
-                    var isWebAdresaExist = s.Query<ATM_WinForm.Entiteti.Banka>().Where(banka => banka.Web_adresa == WebAdresaTxtBx.Text).ToList();
-
-                    if (isWebAdresaExist.Count > 0)
+                    if (DTOManager.ProveraWebAdreseBanke(WebAdresaTxtBx.Text))
                     {
                         MessageBox.Show("Ova web adresa vec postoji u bazi!");
                         return;
@@ -96,7 +87,7 @@ namespace ATM_WinForm
                 {
                     case "add":
                         {
-                            Entiteti.Banka banka = new Entiteti.Banka
+                            DTOs.BankaBasic banka = new DTOs.BankaBasic
                             {
                                 Ime = ImeTxtBx.Text,
                                 Email = EmailTxtBx.Text,
@@ -104,19 +95,10 @@ namespace ATM_WinForm
                                 Adresa_centrale = AdresaCentraleTxtBx.Text
                             };
 
-                            s.SaveOrUpdate(banka);
+                            DTOManager.DodajBanku(banka);
 
                             MessageBox.Show("Uspesno ste dodali banku!");
 
-
-                            BankaEventi?.Invoke(this, new BankaEventArgs("add", banka));
-
-                            ImeTxtBx.Text = "";
-                            EmailTxtBx.Text = "";
-                            WebAdresaTxtBx.Text = "";
-                            AdresaCentraleTxtBx.Text = "";
-
-                            this.Close();
                             break;
                         }
                     case "update":
@@ -126,20 +108,16 @@ namespace ATM_WinForm
                             this.banka.Web_adresa = WebAdresaTxtBx.Text;
                             this.banka.Adresa_centrale = AdresaCentraleTxtBx.Text;
 
-                            s.Update(this.banka);
-
-                            BankaEventi?.Invoke(this, new BankaEventArgs("update", banka));
+                            DTOManager.IzmeniBanku(banka);
 
                             MessageBox.Show("Uspesno ste izmenili banku!");
-                            this.Close();
 
                             break;
                         }
                     default: break;
                 }
 
-                s.Flush();
-                s.Close();
+                this.Close();
             }
             catch (Exception ec)
             {

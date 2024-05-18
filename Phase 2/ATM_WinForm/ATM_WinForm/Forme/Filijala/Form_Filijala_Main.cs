@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ATM_WinForm.Entiteti;
 using ATM_WinForm.Forme.Filijala;
 
 namespace ATM_WinForm
@@ -82,11 +83,24 @@ namespace ATM_WinForm
 
                     var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.FilijalaBasic;
 
-                    DTOManager.IzbrisiFilijalu(filijala.Rbr_filijale);
+                    //
+                    string poruka = "Da li zelite da obrisete izabranu filijalu?";
+                    string title = "Pitanje";
+                    MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                    DialogResult result = MessageBox.Show(poruka, title, buttons);
+                    //
 
-                    MessageBox.Show("Uspesno ste izbrisali filijalu!");
 
-                    FilijalaGrid.Rows.RemoveAt(rowIndex);
+                    if (result == DialogResult.OK)
+                    {
+                        DTOManager.IzbrisiFilijalu(filijala.Rbr_filijale);
+
+                        MessageBox.Show("Uspesno ste izbrisali filijalu!");
+
+                        FilijalaGrid.Rows.RemoveAt(rowIndex);
+                    }
+
+
                 }
             }
         }

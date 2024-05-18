@@ -76,7 +76,7 @@ namespace ATM_WinForm
                     var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
 
                     //
-                    string poruka = "Da li zelite da obrisete izabranu prodavnicu?";
+                    string poruka = "Da li zelite da obrisete izabranu banku?";
                     string title = "Pitanje";
                     MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
                     DialogResult result = MessageBox.Show(poruka, title, buttons);
@@ -87,7 +87,7 @@ namespace ATM_WinForm
                         DTOManager.IzbrisiBanku(banka.Id);
 
                         PopuniPodacima();
-                        MessageBox.Show("Brisanje prodavnice je uspesno obavljeno!");
+                        MessageBox.Show("Brisanje banke je uspesno obavljeno!");
                     }
                 }
             }

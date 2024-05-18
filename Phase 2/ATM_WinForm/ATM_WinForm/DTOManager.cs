@@ -398,6 +398,107 @@ namespace ATM_WinForm
                 return null;
             }
         }
+
+        public static List<KlijentBasic> VratiSveKlijente()
+        {
+            List<KlijentBasic> klijentList = new List<KlijentBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Klijent> klijenti = s.Query<Klijent>();
+
+                foreach (Klijent k in klijenti)
+                {
+                    klijentList.Add(new KlijentBasic(
+                        k.Id,
+                        k.Br_tel,
+                        k.Email,
+                        k.Adresa,
+                        k.Naziv
+                    ));
+                }
+
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return klijentList;
+        }
+
+        public static List<FizickoLiceBasic> VratiSvaFizickaLica()
+        {
+            List<FizickoLiceBasic> fizickaLicaList = new List<FizickoLiceBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<FizickoLice> fizickaLica = s.Query<FizickoLice>();
+
+                foreach (FizickoLice k in fizickaLica)
+                {
+                    fizickaLicaList.Add(new FizickoLiceBasic(
+                        k.JMBG,
+                        k.Datum_rodjenja,
+                        k.LIme,
+                        k.Ime_roditelja,
+                        k.Prezime,
+                        k.Br_licne_karte,
+                        k.Mesto_izdavanja,
+                        k.Id,
+                        k.Naziv,
+                        k.Br_tel,
+                        k.Email,
+                        k.Adresa
+                    ));
+                }
+
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return fizickaLicaList;
+        }
+
+        public static List<PravnoLiceBasic> VratiSvaPravnaLica()
+        {
+            List<PravnoLiceBasic> pravnaLicaList = new List<PravnoLiceBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<PravnoLice> pravnaLica = s.Query<PravnoLice>();
+
+                foreach (PravnoLice p in pravnaLica)
+                {
+                    pravnaLicaList.Add(new PravnoLiceBasic(
+                        p.Poreski_id,
+                        p.Id,
+                        p.Naziv,
+                        p.Br_tel,
+                        p.Email,
+                        p.Adresa
+                    ));
+                }
+
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return pravnaLicaList;
+        }
+
+
+
         #endregion
     }
 }

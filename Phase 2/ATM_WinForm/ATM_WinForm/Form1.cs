@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using NHibernate;
 using ATM_WinForm.Entiteti;
 using ATM_WinForm.Forme.Racun;
+using ATM_WinForm.Forme.Klijent;
 
 namespace ATM_WinForm
 {
@@ -118,6 +119,12 @@ namespace ATM_WinForm
         {
             var RacuniMainForm = new Form_Racun_Main();
             RacuniMainForm.ShowDialog();
+        }
+
+        private void SectionKlijentiBtn_Click(object sender, EventArgs e)
+        {
+            var KlijentMainForm = new Form_Klijent_Main(); 
+            KlijentMainForm.ShowDialog();
         }
     }
 }

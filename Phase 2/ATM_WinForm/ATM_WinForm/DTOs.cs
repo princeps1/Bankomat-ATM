@@ -62,10 +62,14 @@ namespace ATM_WinForm
             [DisplayName("Radno vreme")]
             public virtual string Radno_vreme { get; set; }
 
+            [DisplayName("Ime banke")]
+            public virtual string Ime_banke { get; set; }
+
             //MAPIRANJE FILIJALA-BANKA
             [Browsable(false)]
             public virtual BankaBasic PripadaBanci { get; set; }
 
+            //MAPIRANJE FILIJAL-BANKOMAT
             [Browsable(false)]
             public virtual IList<BankomatBasic> Bankomati { get; set; }
 
@@ -76,6 +80,7 @@ namespace ATM_WinForm
                 this.Br_telefona = brTelefona;
                 this.Radno_vreme = radnoVreme;
                 this.PripadaBanci = banka;
+                this.Ime_banke = banka.Ime;
             }
             public FilijalaBasic()
             {
@@ -132,6 +137,7 @@ namespace ATM_WinForm
             [DisplayName("Valuta")]
             public virtual string Valuta { get; set; }
 
+
             //MAPIRANJE RACUN-BANKA
             [Browsable(false)]
             public virtual BankaBasic JePovezan { get; set; }
@@ -173,16 +179,19 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual IList<RacunBasic> Racuni { get; set; }
 
-            public KlijentBasic(int id, string telefon, string email, string adresa)
+            public KlijentBasic(int id, string telefon, string email, string adresa,string naziv="")
             {
+               
                 this.Id = id;
                 this.Br_tel = telefon;
                 this.Email = email;
                 this.Adresa = adresa;
+                this.Naziv = naziv;
             }
 
             public KlijentBasic()
             {
+                //MAIRANJE KLIJENT-RACUN
                 Racuni = new List<RacunBasic>();
             }
         }
@@ -191,6 +200,13 @@ namespace ATM_WinForm
         {
             [DisplayName("Poreski ID")]
             public virtual string Poreski_id { get; set; }
+
+            public PravnoLiceBasic(string poreski_id, int id, string naziv, string telefon, string email, string adresa)
+                : base(id, telefon, email, adresa)
+            {
+                Poreski_id = poreski_id;
+                this.Naziv = naziv;
+            }
         }
 
         public class FizickoLiceBasic : KlijentBasic
@@ -215,7 +231,22 @@ namespace ATM_WinForm
 
             [DisplayName("Mesto izdavanja")]
             public virtual string Mesto_izdavanja { get; set; }
+
+            public FizickoLiceBasic(string JMBG, DateTime datum_rodjenja, string lIme, string ime_roditelja, string prezime, string br_licne_karte, string mesto_izdavanja, int id, string naziv, string telefon, string email, string adresa)
+                : base(id, telefon, email, adresa)
+            {
+                this.JMBG = JMBG;
+                Datum_rodjenja = datum_rodjenja;
+                LIme = lIme;
+                Ime_roditelja = ime_roditelja;
+                Prezime = prezime;
+                Br_licne_karte = br_licne_karte;
+                Mesto_izdavanja = mesto_izdavanja;
+                this.Naziv = naziv;
+            }
         }
+
+
 
         public class BankaBrTelefonaBasic
         {

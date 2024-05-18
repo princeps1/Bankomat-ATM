@@ -69,11 +69,11 @@ namespace ATM_WinForm.Forme.Racun
                 DTOs.RacunBasic racun = (DTOs.RacunBasic)selectedRow.DataBoundItem;
 
 
-                Klijent klijent = s.Get<Klijent>(racun.Koristi.Id);
+                ATM_WinForm.Entiteti.Klijent klijent = s.Get<ATM_WinForm.Entiteti.Klijent>(racun.Koristi.Id);
 
 
                 MessageBox.Show($"Naziv klijenta:  {klijent.Naziv}\nBroj telefona: {klijent.Br_tel}\nEmail:{klijent.Email}");
-                
+
                 s.Close();
             }
             catch (Exception ec)

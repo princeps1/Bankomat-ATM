@@ -9,7 +9,7 @@ namespace ATM_WinForm
 {
     internal class DTOManager
     {
-    #region Banke
+        #region Banke
         public static List<BankaBasic> VratiSveBanke()
         {
             List<BankaBasic> bankaList = new List<BankaBasic>();
@@ -150,13 +150,14 @@ namespace ATM_WinForm
             {
                 ISession s = DataLayer.GetSession();
 
-                var banka = s.Load<Banka>(bankaId);
+                Banka b = s.Load<Banka>(bankaId);
 
-                s.Delete(banka);
+                
+                s.Delete(b);
 
                 s.Flush();
                 s.Close();
-
+               
             }
             catch (Exception e)
             {
@@ -303,7 +304,7 @@ namespace ATM_WinForm
             {
                 ISession s = DataLayer.GetSession();
 
-                var filijala = s.Load<Filijala>(filijalaId);
+                Filijala filijala = s.Load<Filijala>(filijalaId);
 
                 s.Delete(filijala);
 
@@ -317,6 +318,86 @@ namespace ATM_WinForm
             }
         }
 
+        #endregion
+
+        #region Racuni 
+        public static List<RacunBasic> VratiSveRacune()
+        {
+            List<RacunBasic> racunList = new List<RacunBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Racun> racuni = s.Query<Racun>();
+
+                foreach (Racun r in racuni)
+                {
+                    BankaBasic banka = VratiBanku(r.JePovezan.Id);
+                    KlijentBasic klijent = VratiKlijenta(r.Koristi.Id);
+                    racunList.Add(new RacunBasic(r.Br_racuna, r.Datum_otvaranja, r.Tekuci_saldo, r.Tip, r.Valuta, banka, klijent));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return racunList;
+        }
+
+        public static List<RacunBasic> VratiSveRacuneOdBanke(int bankaId)
+        {
+            List<RacunBasic> racunList = new List<RacunBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Racun> racuni = from r in s.Query<Racun>()
+                                            where r.JePovezan.Id == bankaId
+                                            select r;
+
+                foreach (Racun r in racuni)
+                {
+                    BankaBasic banka = VratiBanku(r.JePovezan.Id);
+                    KlijentBasic klijent = VratiKlijenta(r.JePovezan.Id);
+                    racunList.Add(new RacunBasic(r.Br_racuna, r.Datum_otvaranja, r.Tekuci_saldo, r.Tip, r.Valuta, banka, klijent));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return racunList;
+        }
+        #endregion
+
+        #region Klijent
+        public static KlijentBasic VratiKlijenta(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var k = s.Load<Klijent>(id);
+                KlijentBasic klijent = new KlijentBasic(k.Id, k.Br_tel, k.Email, k.Adresa);
+
+                s.Close();
+
+                return klijent;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
         #endregion
     }
 }

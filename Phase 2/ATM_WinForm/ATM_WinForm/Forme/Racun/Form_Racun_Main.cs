@@ -12,7 +12,7 @@ namespace ATM_WinForm.Forme.Racun
     {
         private readonly int bankaId = -1;
         private readonly BindingSource bindingSource = new BindingSource();
-        List<ATM_WinForm.Entiteti.Racun> racuni = null;
+        List<ATM_WinForm.DTOs.RacunBasic> racuni = null;
         public Form_Racun_Main(int bankaId = -1)
         {
             InitializeComponent();
@@ -24,24 +24,19 @@ namespace ATM_WinForm.Forme.Racun
 
         private void Form_Racun_Main_Load(object sender, EventArgs e)
         {
-            ISession s = DataLayer.GetSession();
-
             if (this.bankaId == -1)
             {
-                racuni = s.Query<ATM_WinForm.Entiteti.Racun>().ToList();
+                racuni = DTOManager.VratiSveRacune();
             }
             else
             {
-                var banka = s.Get<ATM_WinForm.Entiteti.Banka>(this.bankaId);
-                racuni = banka.Racuni.ToList();
+                racuni = DTOManager.VratiSveRacuneOdBanke(this.bankaId);
             }
 
             bindingSource.DataSource = racuni;
             RacunGrid.DataSource = bindingSource;
 
             RacunGrid.AllowUserToAddRows = false;
-
-            s.Close();
         }
 
         private void RacunGrid_SelectionChanged(object sender, EventArgs e)
@@ -59,7 +54,8 @@ namespace ATM_WinForm.Forme.Racun
                 PrikaziKorisnikaBtn.Enabled = false;
             }
         }
-
+             
+           
         private void PrikaziKorisnikaBtn_Click(object sender, EventArgs e)
         {
             try
@@ -70,9 +66,10 @@ namespace ATM_WinForm.Forme.Racun
                 DataGridViewRow selectedRow = RacunGrid.SelectedRows[0];
 
                 // Dobijanje objekta Racun iz selektovanog reda
-                ATM_WinForm.Entiteti.Racun racun = (ATM_WinForm.Entiteti.Racun)selectedRow.DataBoundItem;
+                DTOs.RacunBasic racun = (DTOs.RacunBasic)selectedRow.DataBoundItem;
 
-                ATM_WinForm.Entiteti.Klijent klijent = s.Get<ATM_WinForm.Entiteti.Klijent>(racun.Koristi.Id);
+
+                Klijent klijent = s.Get<Klijent>(racun.Koristi.Id);
 
 
                 MessageBox.Show($"Naziv klijenta:  {klijent.Naziv}\nBroj telefona: {klijent.Br_tel}\nEmail:{klijent.Email}");

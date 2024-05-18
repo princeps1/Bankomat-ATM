@@ -18,6 +18,7 @@ namespace ATM_WinForm
             InitializeComponent();
 
             BankaGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            BankaGrid.ClearSelection();
         }
 
         private void Form_Banka_Main_Load(object sender, EventArgs e)
@@ -74,11 +75,20 @@ namespace ATM_WinForm
                 {
                     var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
 
-                    DTOManager.IzbrisiBanku(banka.Id);
+                    //
+                    string poruka = "Da li zelite da obrisete izabranu prodavnicu?";
+                    string title = "Pitanje";
+                    MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                    DialogResult result = MessageBox.Show(poruka, title, buttons);
+                    //
+                                       
+                    if (result == DialogResult.OK)
+                    {
+                        DTOManager.IzbrisiBanku(banka.Id);
 
-                    MessageBox.Show("Uspesno ste izbrisali banku!");
-                    
-                    BankaGrid.Rows.RemoveAt(rowIndex);
+                        PopuniPodacima();
+                        MessageBox.Show("Brisanje prodavnice je uspesno obavljeno!");
+                    }
                 }
             }
         }

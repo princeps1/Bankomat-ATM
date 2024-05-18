@@ -29,5 +29,8 @@ namespace ATM_WinForm.Entiteti
         //MAPIRANJE BANKOMAT-FILIJALA
         [Browsable(false)]
         public virtual Filijala InstaliranUFilijali { get; set; }
+
+        
+        
     }
 }

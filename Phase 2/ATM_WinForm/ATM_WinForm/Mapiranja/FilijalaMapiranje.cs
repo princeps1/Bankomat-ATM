@@ -23,11 +23,11 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Br_telefona, "BR_TELEFONA");
             Map(x => x.Radno_vreme, "RADNO_VREME");
 
-            //MAPIRANJE 1:N  --> BANKA-FILIJALA
+            //MAPIRANJE 1:N  --> FILIJALA-BANKA
             References(x => x.PripadaBanci).Column("ID_BANKE").LazyLoad();
 
             //MAPIRANJE veze 1:N --> FILIJALA-BANKOMAT
-            HasMany(x => x.Bankomati).KeyColumn("RBR_FILIJALE").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Bankomati).KeyColumn("RBR_FILIJALE").LazyLoad().Inverse();//MATA OBRISAO .Cascade.All() pre Inverse jer sa tim nece da radi sad
         }
     }
 }

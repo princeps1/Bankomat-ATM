@@ -21,6 +21,10 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Web_adresa, "WEB_ADRESA");
             Map(x => x.Adresa_centrale, "ADRESA_CENTRALE");
 
+
+
+            
+
             //MAPIRANJE veze 1:N --> BANKA-FILIJALA
             HasMany(x => x.Filijala).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
 

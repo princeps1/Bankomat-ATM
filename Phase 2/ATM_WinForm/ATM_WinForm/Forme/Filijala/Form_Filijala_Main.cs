@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using ATM_WinForm.Entiteti;
+using ATM_WinForm.Forme.Bankomat;
 using ATM_WinForm.Forme.Filijala;
+using ATM_WinForm.Forme.Racun;
 
 namespace ATM_WinForm
 {
@@ -122,7 +124,16 @@ namespace ATM_WinForm
 
         private void PrikaziBankomateBtn_Click(object sender, EventArgs e)
         {
-
+            if (FilijalaGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = FilijalaGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var filijala = FilijalaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.FilijalaBasic;
+                    var SpisakSvihBankomataForm = new Form_Bankomat_Main(filijala.Rbr_filijale);
+                    SpisakSvihBankomataForm.ShowDialog();
+                }
+            }
         }
     }
 }

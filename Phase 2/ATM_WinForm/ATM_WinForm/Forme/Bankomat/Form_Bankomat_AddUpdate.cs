@@ -40,7 +40,7 @@ namespace ATM_WinForm.Forme.Bankomat
 
                         LokacijaTxtBx.Text = bankomat.Lokacija;
                         ProizvodjacTxtBx.Text = bankomat.Proizvodjac;
-                        DateTimePicker.Text = bankomat.Datum_Poslednjeg_Servisa;
+                        DateTimePicker.Text = bankomat.Datum_Poslednjeg_Servisa.ToString();
                         StatusComboBox.SelectedItem = bankomat.Status;
 
                         this.Text = "ATM - Izmeni Bankomat";
@@ -108,7 +108,7 @@ namespace ATM_WinForm.Forme.Bankomat
                                 Lokacija = LokacijaTxtBx.Text,
                                 Proizvodjac = ProizvodjacTxtBx.Text,
                                 Status = StatusComboBox.SelectedItem.ToString(),
-                                Datum_Poslednjeg_Servisa = DateTimePicker.Text,
+                                Datum_Poslednjeg_Servisa = DateTimePicker.Value,
                                 InstaliranUFilijali = DTOManager.VratiFilijalu((int)FilijalaComboBox.SelectedValue)
                             };
                             
@@ -122,7 +122,7 @@ namespace ATM_WinForm.Forme.Bankomat
                         {
                             this.bankomat.Lokacija = LokacijaTxtBx.Text;
                             this.bankomat.Proizvodjac = ProizvodjacTxtBx.Text;
-                            this.bankomat.Datum_Poslednjeg_Servisa = DateTimePicker.Text;
+                            this.bankomat.Datum_Poslednjeg_Servisa = DateTimePicker.Value;
                             this.bankomat.Status = StatusComboBox.SelectedItem.ToString();
                             this.bankomat.InstaliranUFilijali = DTOManager.VratiFilijalu((int)FilijalaComboBox.SelectedValue);
 

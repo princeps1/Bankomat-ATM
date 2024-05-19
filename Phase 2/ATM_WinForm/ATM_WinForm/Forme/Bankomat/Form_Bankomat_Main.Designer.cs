@@ -44,6 +44,7 @@
             this.IzbrisiBankomatBtn.TabIndex = 12;
             this.IzbrisiBankomatBtn.Text = "Izbrisi Bankomat";
             this.IzbrisiBankomatBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiBankomatBtn.Click += new System.EventHandler(this.IzbrisiBankomatBtn_Click);
             // 
             // IzmeniBankomatBtn
             // 
@@ -54,6 +55,7 @@
             this.IzmeniBankomatBtn.TabIndex = 11;
             this.IzmeniBankomatBtn.Text = "Izmeni Bankomat";
             this.IzmeniBankomatBtn.UseVisualStyleBackColor = true;
+            this.IzmeniBankomatBtn.Click += new System.EventHandler(this.IzmeniBankomatBtn_Click);
             // 
             // DodajBankomatBtn
             // 
@@ -80,6 +82,7 @@
             this.BankomatGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.BankomatGrid.Size = new System.Drawing.Size(890, 309);
             this.BankomatGrid.TabIndex = 9;
+            this.BankomatGrid.SelectionChanged += new System.EventHandler(this.BankomatGrid_SelectionChanged);
             // 
             // Form_Bankomat_Main
             // 

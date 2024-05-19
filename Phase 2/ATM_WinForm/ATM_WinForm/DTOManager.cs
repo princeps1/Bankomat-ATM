@@ -432,28 +432,34 @@ namespace ATM_WinForm
             {
                 ISession s = DataLayer.GetSession();
 
+                // Učitavanje postojeće filijale
                 var filijala = s.Load<Filijala>(bankomat.InstaliranUFilijali.Rbr_filijale);
 
-                Bankomat b = new Bankomat
-                {
-                    Lokacija = bankomat.Lokacija,
-                    Proizvodjac = bankomat.Proizvodjac,
-                    Status = bankomat.Status,
-                    Datum_Poslednjeg_Servisa = bankomat.Datum_Poslednjeg_Servisa,
-                    InstaliranUFilijali = filijala
-                };
+                // Učitavanje postojećeg Bankomat objekta iz baze
+                var existingBankomat = s.Load<Bankomat>(bankomat.Id);
 
-                s.Update(b);
+                if (existingBankomat != null)
+                {
+                    // Ažuriranje postojećeg Bankomat objekta
+                    existingBankomat.Lokacija = bankomat.Lokacija;
+                    existingBankomat.Proizvodjac = bankomat.Proizvodjac;
+                    existingBankomat.Status = bankomat.Status;
+                    existingBankomat.Datum_Poslednjeg_Servisa = bankomat.Datum_Poslednjeg_Servisa;
+                    existingBankomat.InstaliranUFilijali = filijala;
+
+                    // Sačuvajte promene
+                    s.Update(existingBankomat);
+                }
 
                 s.Flush();
                 s.Close();
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
+
 
         public static void IzbrisiBankomat(int bankomatId)
         {

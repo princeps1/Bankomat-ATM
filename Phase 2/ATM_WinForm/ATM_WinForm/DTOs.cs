@@ -104,12 +104,12 @@ namespace ATM_WinForm
             public virtual string Status { get; set; }
 
             [DisplayName("Datum poslednjeg servisa")]
-            public virtual string Datum_Poslednjeg_Servisa { get; set; }
+            public virtual DateTime Datum_Poslednjeg_Servisa { get; set; }
 
             [Browsable(false)]
             public virtual FilijalaBasic InstaliranUFilijali { get; set; }
 
-            public BankomatBasic(int id, string lokacija, string proizvodjac, string status, string datum, FilijalaBasic filijala)
+            public BankomatBasic(int id, string lokacija, string proizvodjac, string status, DateTime datum, FilijalaBasic filijala)
             {
                 this.Id = id;
                 this.Lokacija = lokacija;

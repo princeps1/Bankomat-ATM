@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System;
 
 namespace ATM_WinForm.Entiteti
 {
@@ -18,7 +19,7 @@ namespace ATM_WinForm.Entiteti
         public virtual string Status { get; set; }
 
         [DisplayName("Datum poslednjeg servisa")]
-        public virtual string Datum_Poslednjeg_Servisa { get; set; }
+        public virtual DateTime Datum_Poslednjeg_Servisa { get; set; }
 
 
         //MAPIRANJE BANKOMAT-FILIJALA

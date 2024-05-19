@@ -119,5 +119,10 @@ namespace ATM_WinForm
                 }
             }
         }
+
+        private void PrikaziBankomateBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,6 +32,7 @@
             this.DodajFilijaluBtn = new System.Windows.Forms.Button();
             this.IzmeniFilijaluBtn = new System.Windows.Forms.Button();
             this.IzbrisiFilijaluBtn = new System.Windows.Forms.Button();
+            this.PrikaziBankomateBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FilijalaGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,23 +43,21 @@
             this.FilijalaGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.FilijalaGrid.ColumnHeadersHeight = 29;
             this.FilijalaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.FilijalaGrid.Location = new System.Drawing.Point(13, 13);
-            this.FilijalaGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.FilijalaGrid.Location = new System.Drawing.Point(10, 11);
             this.FilijalaGrid.MultiSelect = false;
             this.FilijalaGrid.Name = "FilijalaGrid";
             this.FilijalaGrid.ReadOnly = true;
             this.FilijalaGrid.RowHeadersWidth = 51;
             this.FilijalaGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.FilijalaGrid.Size = new System.Drawing.Size(1187, 380);
+            this.FilijalaGrid.Size = new System.Drawing.Size(890, 309);
             this.FilijalaGrid.TabIndex = 5;
             this.FilijalaGrid.SelectionChanged += new System.EventHandler(this.FilijalaGrid_SelectionChanged);
             // 
             // DodajFilijaluBtn
             // 
-            this.DodajFilijaluBtn.Location = new System.Drawing.Point(13, 401);
-            this.DodajFilijaluBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.DodajFilijaluBtn.Location = new System.Drawing.Point(10, 326);
             this.DodajFilijaluBtn.Name = "DodajFilijaluBtn";
-            this.DodajFilijaluBtn.Size = new System.Drawing.Size(267, 41);
+            this.DodajFilijaluBtn.Size = new System.Drawing.Size(200, 33);
             this.DodajFilijaluBtn.TabIndex = 6;
             this.DodajFilijaluBtn.Text = "Dodaj Filijalu";
             this.DodajFilijaluBtn.UseVisualStyleBackColor = true;
@@ -67,10 +66,9 @@
             // IzmeniFilijaluBtn
             // 
             this.IzmeniFilijaluBtn.Enabled = false;
-            this.IzmeniFilijaluBtn.Location = new System.Drawing.Point(13, 450);
-            this.IzmeniFilijaluBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.IzmeniFilijaluBtn.Location = new System.Drawing.Point(10, 366);
             this.IzmeniFilijaluBtn.Name = "IzmeniFilijaluBtn";
-            this.IzmeniFilijaluBtn.Size = new System.Drawing.Size(267, 41);
+            this.IzmeniFilijaluBtn.Size = new System.Drawing.Size(200, 33);
             this.IzmeniFilijaluBtn.TabIndex = 7;
             this.IzmeniFilijaluBtn.Text = "Izmeni Filijalu";
             this.IzmeniFilijaluBtn.UseVisualStyleBackColor = true;
@@ -79,25 +77,36 @@
             // IzbrisiFilijaluBtn
             // 
             this.IzbrisiFilijaluBtn.Enabled = false;
-            this.IzbrisiFilijaluBtn.Location = new System.Drawing.Point(13, 499);
-            this.IzbrisiFilijaluBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.IzbrisiFilijaluBtn.Location = new System.Drawing.Point(10, 405);
             this.IzbrisiFilijaluBtn.Name = "IzbrisiFilijaluBtn";
-            this.IzbrisiFilijaluBtn.Size = new System.Drawing.Size(267, 41);
+            this.IzbrisiFilijaluBtn.Size = new System.Drawing.Size(200, 33);
             this.IzbrisiFilijaluBtn.TabIndex = 8;
             this.IzbrisiFilijaluBtn.Text = "Izbrisi Filijalu";
             this.IzbrisiFilijaluBtn.UseVisualStyleBackColor = true;
             this.IzbrisiFilijaluBtn.Click += new System.EventHandler(this.IzbrisiFilijaluBtn_Click);
             // 
+            // PrikaziBankomateBtn
+            // 
+            this.PrikaziBankomateBtn.Location = new System.Drawing.Point(700, 326);
+            this.PrikaziBankomateBtn.Name = "PrikaziBankomateBtn";
+            this.PrikaziBankomateBtn.Size = new System.Drawing.Size(200, 33);
+            this.PrikaziBankomateBtn.TabIndex = 9;
+            this.PrikaziBankomateBtn.Text = "Prikazi Bankomate";
+            this.PrikaziBankomateBtn.UseVisualStyleBackColor = true;
+            this.PrikaziBankomateBtn.Click += new System.EventHandler(this.PrikaziBankomateBtn_Click);
+            // 
             // Form_Filijala_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1213, 558);
+            this.ClientSize = new System.Drawing.Size(910, 453);
+            this.Controls.Add(this.PrikaziBankomateBtn);
             this.Controls.Add(this.IzbrisiFilijaluBtn);
             this.Controls.Add(this.IzmeniFilijaluBtn);
             this.Controls.Add(this.DodajFilijaluBtn);
             this.Controls.Add(this.FilijalaGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form_Filijala_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -114,5 +123,6 @@
         private System.Windows.Forms.Button DodajFilijaluBtn;
         private System.Windows.Forms.Button IzmeniFilijaluBtn;
         private System.Windows.Forms.Button IzbrisiFilijaluBtn;
+        private System.Windows.Forms.Button PrikaziBankomateBtn;
     }
 }

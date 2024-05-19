@@ -16,7 +16,7 @@ namespace ATM_WinForm.Forme.Filijala
         {
             InitializeComponent();
 
-            this.BankaComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            BankaComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             this.type = type;
             this.filijala = filijala;
@@ -51,8 +51,6 @@ namespace ATM_WinForm.Forme.Filijala
 
         private void Form_Filijala_AddUpdate_Load(object sender, EventArgs e)
         {
-            ISession s = DataLayer.GetSession();
-
             BankaComboBox.DisplayMember = "Text";
             BankaComboBox.ValueMember = "ID";
 
@@ -85,8 +83,6 @@ namespace ATM_WinForm.Forme.Filijala
                 }
             }
             BankaComboBox.SelectedIndex = index != -1 ? index : 0;
-
-            s.Close();
         }
 
         private void AkcijaFilijaleBtn_Click(object sender, EventArgs e)

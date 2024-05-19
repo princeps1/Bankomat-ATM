@@ -6,7 +6,7 @@ namespace ATM_WinForm.Mapiranja
     {
         public BankomatMapiranje()
         {
-            Table("BANKOMATI");
+            Table("BANKOMAT");
 
             Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
 

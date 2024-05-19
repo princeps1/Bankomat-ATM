@@ -3,6 +3,7 @@ using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using static ATM_WinForm.DTOs;
 
 namespace ATM_WinForm
@@ -307,6 +308,162 @@ namespace ATM_WinForm
                 Filijala filijala = s.Load<Filijala>(filijalaId);
 
                 s.Delete(filijala);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        #endregion
+
+        #region Bankomati
+
+        public static List<BankomatBasic> VratiSveBankomate()
+        {
+            List<BankomatBasic> bankomatList = new List<BankomatBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Bankomat> bankomati = s.Query<Bankomat>();
+
+                foreach (Bankomat b in bankomati)
+                {
+                    FilijalaBasic filijala = VratiFilijalu(b.InstaliranUFilijali.Rbr_filijale);
+                    bankomatList.Add(new BankomatBasic(b.Id, b.Lokacija, b.Proizvodjac, b.Status, b.Datum_Poslednjeg_Servisa, filijala));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return bankomatList;
+        }
+
+        public static BankomatBasic VratiBankomat(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var b = s.Load<Bankomat>(id);
+
+                FilijalaBasic filijala = VratiFilijalu(b.InstaliranUFilijali.Rbr_filijale);
+                var bankomat = new BankomatBasic(b.Id, b.Lokacija, b.Proizvodjac, b.Status, b.Datum_Poslednjeg_Servisa, filijala);
+
+                s.Close();
+
+                return bankomat;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public static List<BankomatBasic> VratiSveBankomateOdFilijale(int filijalaId)
+        {
+            List<BankomatBasic> bankomatList = new List<BankomatBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Filijala filijala = s.Load<Filijala>(filijalaId);
+
+                foreach (Bankomat b in filijala.Bankomati)
+                {
+                    FilijalaBasic f = VratiFilijalu(filijalaId);
+                    bankomatList.Add(new BankomatBasic(b.Id, b.Lokacija, b.Proizvodjac, b.Status, b.Datum_Poslednjeg_Servisa, f));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return bankomatList;
+        }
+
+        public static void DodajBankomat(BankomatBasic bankomat)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var filijala = s.Load<Filijala>(bankomat.InstaliranUFilijali.Rbr_filijale);
+
+                Bankomat b = new Bankomat
+                {
+                    Lokacija = bankomat.Lokacija,
+                    Proizvodjac = bankomat.Proizvodjac,
+                    Status = bankomat.Status,
+                    Datum_Poslednjeg_Servisa = bankomat.Datum_Poslednjeg_Servisa,
+                    InstaliranUFilijali = filijala
+                };
+
+                s.SaveOrUpdate(b);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniBankomat(BankomatBasic bankomat)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var filijala = s.Load<Filijala>(bankomat.InstaliranUFilijali.Rbr_filijale);
+
+                Bankomat b = new Bankomat
+                {
+                    Lokacija = bankomat.Lokacija,
+                    Proizvodjac = bankomat.Proizvodjac,
+                    Status = bankomat.Status,
+                    Datum_Poslednjeg_Servisa = bankomat.Datum_Poslednjeg_Servisa,
+                    InstaliranUFilijali = filijala
+                };
+
+                s.Update(b);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiBankomat(int bankomatId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Bankomat bankomat = s.Load<Bankomat>(bankomatId);
+
+                s.Delete(bankomat);
 
                 s.Flush();
                 s.Close();

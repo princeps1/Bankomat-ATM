@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATM_WinForm.Entiteti;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -94,13 +95,13 @@ namespace ATM_WinForm
             public virtual int Id { get; protected set; }
 
             [DisplayName("Lokacija")]
-            public virtual string Lokacija { get; set; }
+            public string Lokacija { get; set; }
 
             [DisplayName("Proizvodjac")]
             public virtual string Proizvodjac { get; set; }
 
             [DisplayName("Status")]
-            public virtual Status Status { get; set; }
+            public virtual string Status { get; set; }
 
             [DisplayName("Datum poslednjeg servisa")]
             public virtual string Datum_Poslednjeg_Servisa { get; set; }
@@ -108,7 +109,7 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual FilijalaBasic InstaliranUFilijali { get; set; }
 
-            public BankomatBasic(int id, string lokacija, string proizvodjac, Status status, string datum, FilijalaBasic filijala)
+            public BankomatBasic(int id, string lokacija, string proizvodjac, string status, string datum, FilijalaBasic filijala)
             {
                 this.Id = id;
                 this.Lokacija = lokacija;
@@ -117,6 +118,8 @@ namespace ATM_WinForm
                 this.Datum_Poslednjeg_Servisa = datum;
                 this.InstaliranUFilijali = filijala;
             }
+
+            public BankomatBasic() { }
         }
 
         public class RacunBasic

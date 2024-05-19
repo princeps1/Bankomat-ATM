@@ -35,6 +35,7 @@
             this.SectionFilijaleBtn = new System.Windows.Forms.Button();
             this.SectionRacuniBtn = new System.Windows.Forms.Button();
             this.SectionKlijentiBtn = new System.Windows.Forms.Button();
+            this.SectionBankomatiBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SectionBankeBtn
@@ -85,7 +86,7 @@
             // 
             // SectionFilijaleBtn
             // 
-            this.SectionFilijaleBtn.Location = new System.Drawing.Point(61, 165);
+            this.SectionFilijaleBtn.Location = new System.Drawing.Point(61, 209);
             this.SectionFilijaleBtn.Name = "SectionFilijaleBtn";
             this.SectionFilijaleBtn.Size = new System.Drawing.Size(453, 38);
             this.SectionFilijaleBtn.TabIndex = 8;
@@ -95,7 +96,7 @@
             // 
             // SectionRacuniBtn
             // 
-            this.SectionRacuniBtn.Location = new System.Drawing.Point(61, 210);
+            this.SectionRacuniBtn.Location = new System.Drawing.Point(61, 253);
             this.SectionRacuniBtn.Name = "SectionRacuniBtn";
             this.SectionRacuniBtn.Size = new System.Drawing.Size(453, 38);
             this.SectionRacuniBtn.TabIndex = 9;
@@ -105,13 +106,23 @@
             // 
             // SectionKlijentiBtn
             // 
-            this.SectionKlijentiBtn.Location = new System.Drawing.Point(61, 254);
+            this.SectionKlijentiBtn.Location = new System.Drawing.Point(61, 297);
             this.SectionKlijentiBtn.Name = "SectionKlijentiBtn";
             this.SectionKlijentiBtn.Size = new System.Drawing.Size(453, 38);
             this.SectionKlijentiBtn.TabIndex = 10;
             this.SectionKlijentiBtn.Text = "Klijenti";
             this.SectionKlijentiBtn.UseVisualStyleBackColor = true;
             this.SectionKlijentiBtn.Click += new System.EventHandler(this.SectionKlijentiBtn_Click);
+            // 
+            // SectionBankomatiBtn
+            // 
+            this.SectionBankomatiBtn.Location = new System.Drawing.Point(61, 165);
+            this.SectionBankomatiBtn.Name = "SectionBankomatiBtn";
+            this.SectionBankomatiBtn.Size = new System.Drawing.Size(453, 38);
+            this.SectionBankomatiBtn.TabIndex = 11;
+            this.SectionBankomatiBtn.Text = "Bankomati";
+            this.SectionBankomatiBtn.UseVisualStyleBackColor = true;
+            this.SectionBankomatiBtn.Click += new System.EventHandler(this.SectionBankomatiBtn_Click);
             // 
             // Form1
             // 
@@ -120,6 +131,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(580, 431);
+            this.Controls.Add(this.SectionBankomatiBtn);
             this.Controls.Add(this.SectionKlijentiBtn);
             this.Controls.Add(this.SectionRacuniBtn);
             this.Controls.Add(this.SectionFilijaleBtn);
@@ -128,7 +140,7 @@
             this.Controls.Add(this.welcomeMsg);
             this.Controls.Add(this.SectionBankeBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -146,6 +158,7 @@
         private System.Windows.Forms.Button SectionFilijaleBtn;
         private System.Windows.Forms.Button SectionRacuniBtn;
         private System.Windows.Forms.Button SectionKlijentiBtn;
+        private System.Windows.Forms.Button SectionBankomatiBtn;
     }
 }
 

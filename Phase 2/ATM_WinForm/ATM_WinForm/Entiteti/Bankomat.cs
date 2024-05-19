@@ -1,10 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-public enum Status
-{
-    operativan,
-    neoperativan
-}
 
 namespace ATM_WinForm.Entiteti
 {
@@ -20,7 +15,7 @@ namespace ATM_WinForm.Entiteti
         public virtual string Proizvodjac { get; set; }
 
         [DisplayName("Status")]
-        public virtual Status Status { get; set; }
+        public virtual string Status { get; set; }
 
         [DisplayName("Datum poslednjeg servisa")]
         public virtual string Datum_Poslednjeg_Servisa { get; set; }
@@ -30,7 +25,5 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual Filijala InstaliranUFilijali { get; set; }
 
-        
-        
     }
 }

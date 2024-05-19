@@ -139,6 +139,18 @@
     <Compile Include="Forme\Banka\Form_Banka_SpisakBrojeva_Main.Designer.cs">
       <DependentUpon>Form_Banka_SpisakBrojeva_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_AddUpdate.Designer.cs">
+      <DependentUpon>Form_Bankomat_AddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_Main.Designer.cs">
+      <DependentUpon>Form_Bankomat_Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Filijala\Form_Filijala_AddUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Banka\Form_Banka_SpisakBrojeva_Main.resx">
       <DependentUpon>Form_Banka_SpisakBrojeva_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Bankomat\Form_Bankomat_AddUpdate.resx">
+      <DependentUpon>Form_Bankomat_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Bankomat\Form_Bankomat_Main.resx">
+      <DependentUpon>Form_Bankomat_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Filijala\Form_Filijala_AddUpdate.resx">
       <DependentUpon>Form_Filijala_AddUpdate.cs</DependentUpon>

@@ -4,6 +4,7 @@ using NHibernate;
 using ATM_WinForm.Entiteti;
 using ATM_WinForm.Forme.Racun;
 using ATM_WinForm.Forme.Klijent;
+using ATM_WinForm.Forme.Bankomat;
 
 namespace ATM_WinForm
 {
@@ -125,6 +126,12 @@ namespace ATM_WinForm
         {
             var KlijentMainForm = new Form_Klijent_Main(); 
             KlijentMainForm.ShowDialog();
+        }
+
+        private void SectionBankomatiBtn_Click(object sender, EventArgs e)
+        {
+            var BankomatMainForm = new Form_Bankomat_Main();
+            BankomatMainForm.ShowDialog();
         }
     }
 }

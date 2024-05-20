@@ -892,6 +892,106 @@ namespace ATM_WinForm
 
         #endregion
 
+        #region KomentarKlijenta
+        public static List<KomentarKlijentaBasic> VratiSveKomentareKlijenta(int klijentId)
+        {
+            List<KomentarKlijentaBasic> komentariKlijentaList = new List<KomentarKlijentaBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<KomentarKlijenta> komentari = from k in s.Query<KomentarKlijenta>()
+                                                       where k.PripadaKlijentu.Id == klijentId
+                                                          select k;
+
+                foreach (KomentarKlijenta kom in komentari)
+                {
+                    KlijentBasic klijent = VratiKlijenta(kom.PripadaKlijentu.Id);
+                    komentariKlijentaList.Add(new KomentarKlijentaBasic(kom.Id, kom.Komentar, klijent));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return komentariKlijentaList;
+        }
+
+        public static void DodajKomentarKlijenta(KomentarKlijentaBasic komentar)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var klijent = s.Load<Klijent>(komentar.PripadaKlijentu.Id);
+
+                KomentarKlijenta kom = new KomentarKlijenta
+                {
+                    Komentar = komentar.Komentar,
+                    PripadaKlijentu = klijent
+                };
+
+                s.SaveOrUpdate(kom);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniKomentarKlijenta(KomentarKlijentaBasic komentar)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Klijent klijent = s.Load<Klijent>(komentar.PripadaKlijentu.Id);
+                KomentarKlijenta kom = s.Load<KomentarKlijenta>(komentar.Id);
+
+                kom.Komentar = komentar.Komentar;
+                kom.PripadaKlijentu = klijent;
+
+                s.Update(kom);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiKomentarKlijenta(int komKlijentaId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KomentarKlijenta kom = s.Load<KomentarKlijenta>(komKlijentaId);
+
+                s.Delete(kom);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        #endregion
+
         #region Kartica 
         public static List<KarticaBasic> VratiSveKarticeOdRacuna(int racunId)
         {

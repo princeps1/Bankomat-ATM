@@ -25,10 +25,15 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual IList<Racun> Racuni { get; set; }
 
+        //MAPIRANJE OVLASCENO KLIJENT-KOMENTAR
+        [Browsable(false)]
+        public virtual IList<KomentarKlijenta> Komentari { get; set; }
+
         public Klijent()
         {
             //MAPIRANJE KLIJENT-RACUN
             Racuni = new List<Racun>();
+            Komentari = new List<KomentarKlijenta>();
         }
     }
 }

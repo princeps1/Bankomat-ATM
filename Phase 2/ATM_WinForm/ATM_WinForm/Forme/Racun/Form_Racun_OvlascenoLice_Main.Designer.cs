@@ -38,31 +38,37 @@
             // IzbrisiLiceBtn
             // 
             this.IzbrisiLiceBtn.Enabled = false;
-            this.IzbrisiLiceBtn.Location = new System.Drawing.Point(11, 409);
+            this.IzbrisiLiceBtn.Location = new System.Drawing.Point(15, 503);
+            this.IzbrisiLiceBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.IzbrisiLiceBtn.Name = "IzbrisiLiceBtn";
-            this.IzbrisiLiceBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzbrisiLiceBtn.Size = new System.Drawing.Size(267, 41);
             this.IzbrisiLiceBtn.TabIndex = 13;
             this.IzbrisiLiceBtn.Text = "Izbrisi Lice";
             this.IzbrisiLiceBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiLiceBtn.Click += new System.EventHandler(this.IzbrisiLiceBtn_Click);
             // 
             // IzmeniLiceBtn
             // 
             this.IzmeniLiceBtn.Enabled = false;
-            this.IzmeniLiceBtn.Location = new System.Drawing.Point(11, 370);
+            this.IzmeniLiceBtn.Location = new System.Drawing.Point(15, 455);
+            this.IzmeniLiceBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.IzmeniLiceBtn.Name = "IzmeniLiceBtn";
-            this.IzmeniLiceBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzmeniLiceBtn.Size = new System.Drawing.Size(267, 41);
             this.IzmeniLiceBtn.TabIndex = 12;
             this.IzmeniLiceBtn.Text = "Izmeni Lice";
             this.IzmeniLiceBtn.UseVisualStyleBackColor = true;
+            this.IzmeniLiceBtn.Click += new System.EventHandler(this.IzmeniLiceBtn_Click);
             // 
             // DodajLiceBtn
             // 
-            this.DodajLiceBtn.Location = new System.Drawing.Point(11, 330);
+            this.DodajLiceBtn.Location = new System.Drawing.Point(15, 406);
+            this.DodajLiceBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DodajLiceBtn.Name = "DodajLiceBtn";
-            this.DodajLiceBtn.Size = new System.Drawing.Size(200, 33);
+            this.DodajLiceBtn.Size = new System.Drawing.Size(267, 41);
             this.DodajLiceBtn.TabIndex = 11;
             this.DodajLiceBtn.Text = "Dodaj Lice";
             this.DodajLiceBtn.UseVisualStyleBackColor = true;
+            this.DodajLiceBtn.Click += new System.EventHandler(this.DodajLiceBtn_Click);
             // 
             // LicaGrid
             // 
@@ -71,25 +77,28 @@
             this.LicaGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.LicaGrid.ColumnHeadersHeight = 29;
             this.LicaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.LicaGrid.Location = new System.Drawing.Point(11, 15);
+            this.LicaGrid.Location = new System.Drawing.Point(15, 18);
+            this.LicaGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LicaGrid.MultiSelect = false;
             this.LicaGrid.Name = "LicaGrid";
             this.LicaGrid.ReadOnly = true;
             this.LicaGrid.RowHeadersWidth = 51;
             this.LicaGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.LicaGrid.Size = new System.Drawing.Size(893, 309);
+            this.LicaGrid.Size = new System.Drawing.Size(1191, 380);
             this.LicaGrid.TabIndex = 10;
+            this.LicaGrid.SelectionChanged += new System.EventHandler(this.LicaGrid_SelectionChanged);
             // 
             // Form_Racun_OvlascenoLice_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 457);
+            this.ClientSize = new System.Drawing.Size(1219, 562);
             this.Controls.Add(this.IzbrisiLiceBtn);
             this.Controls.Add(this.IzmeniLiceBtn);
             this.Controls.Add(this.DodajLiceBtn);
             this.Controls.Add(this.LicaGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Form_Racun_OvlascenoLice_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

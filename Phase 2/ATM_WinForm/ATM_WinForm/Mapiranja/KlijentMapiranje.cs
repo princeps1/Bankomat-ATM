@@ -25,6 +25,9 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE veze 1:N --> KLIJENT-RACUNI
             HasMany(x => x.Racuni).KeyColumn("ID_KLIJENTA").LazyLoad().Cascade.All().Inverse();
+
+            //MAPIRANJE veze 1:N --> KLIJENT-KOMENTAR
+            HasMany(x => x.Komentari).KeyColumn("ID_KLIJENTA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

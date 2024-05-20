@@ -217,6 +217,10 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual IList<RacunBasic> Racuni { get; set; }
 
+            //MAPIRANJE OVLASCENO KLIJENT-KOMENTAR
+            [Browsable(false)]
+            public virtual IList<KomentarKlijentaBasic> Komentari { get; set; }
+
             public KlijentBasic(int id, string telefon, string email, string adresa,string naziv="")
             {
                
@@ -229,9 +233,34 @@ namespace ATM_WinForm
 
             public KlijentBasic()
             {
-                //MAIRANJE KLIJENT-RACUN
+                //MAPIRANJE KLIJENT-RACUN
                 Racuni = new List<RacunBasic>();
+                //MAPIRANJE KLIJENT-KOMENTAR
+                Komentari = new List<KomentarKlijentaBasic>();
             }
+        }
+
+        public class KomentarKlijentaBasic
+        {
+            [Browsable(false)]
+            public virtual int Id { get; protected set; }
+
+            [DisplayName("Komentar")]
+            public virtual string Komentar { get; set; }
+
+
+            //MAPIRANJE OVLASCENO KOMENTAR-KLIJENT
+            [Browsable(false)]
+            public virtual KlijentBasic PripadaKlijentu { get; set; }
+
+            public KomentarKlijentaBasic(int id, string komentar, KlijentBasic klijent)
+            {
+                this.Id = id;
+                this.Komentar = komentar;
+                this.PripadaKlijentu = klijent;
+            }
+
+            public KomentarKlijentaBasic() { }
         }
 
         public class PravnoLiceBasic : KlijentBasic
@@ -349,5 +378,6 @@ namespace ATM_WinForm
 
             public KarticaBasic() { }
         }
+
     }
 }

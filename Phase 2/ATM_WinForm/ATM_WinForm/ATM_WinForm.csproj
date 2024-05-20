@@ -114,6 +114,7 @@
     <Compile Include="Entiteti\FizickoLice.cs" />
     <Compile Include="Entiteti\Kartica.cs" />
     <Compile Include="Entiteti\Klijent.cs" />
+    <Compile Include="Entiteti\KomentarKlijenta.cs" />
     <Compile Include="Entiteti\PravnoLice.cs" />
     <Compile Include="Entiteti\Racun.cs" />
     <Compile Include="Entiteti\RacunOvlascenoLice.cs" />
@@ -195,6 +196,12 @@
     <Compile Include="Forme\Racun\Form_Racun_Main.Designer.cs">
       <DependentUpon>Form_Racun_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Racun\Form_Racun_OvlascenoLice_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Racun\Form_Racun_OvlascenoLice_AddUpdate.Designer.cs">
+      <DependentUpon>Form_Racun_OvlascenoLice_AddUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Racun\Form_Racun_OvlascenoLice_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +217,7 @@
     <Compile Include="Mapiranja\FizickoLiceMapiranje.cs" />
     <Compile Include="Mapiranja\KarticaMapiranje.cs" />
     <Compile Include="Mapiranja\KlijentMapiranje.cs" />
+    <Compile Include="Mapiranja\KomentarKlijentaMapiranje.cs" />
     <Compile Include="Mapiranja\PravnoLiceMapiranje.cs" />
     <Compile Include="Mapiranja\RacunMapiranje.cs" />
     <Compile Include="Mapiranja\RacunOvlascenoLiceMapiranje.cs" />
@@ -253,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Racun\Form_Racun_Main.resx">
       <DependentUpon>Form_Racun_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Racun\Form_Racun_OvlascenoLice_AddUpdate.resx">
+      <DependentUpon>Form_Racun_OvlascenoLice_AddUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Racun\Form_Racun_OvlascenoLice_Main.resx">
       <DependentUpon>Form_Racun_OvlascenoLice_Main.cs</DependentUpon>

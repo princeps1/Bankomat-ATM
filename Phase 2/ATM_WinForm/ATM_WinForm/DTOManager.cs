@@ -587,6 +587,108 @@ namespace ATM_WinForm
 
         #endregion
 
+        #region Ovlascena Lica Racuna
+        public static List<RacunOvlascenoLiceBasic> VratiSvaOvlascenaLicaOdRacuna(int racunId)
+        {
+            List<RacunOvlascenoLiceBasic> ovlascenaLicaList = new List<RacunOvlascenoLiceBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<RacunOvlascenoLice> lica = from t in s.Query<RacunOvlascenoLice>()
+                                                        where t.PripadaRacunu.Br_racuna == racunId
+                                                        select t;
+
+                foreach (RacunOvlascenoLice rol in lica)
+                {
+                    RacunBasic racun = VratiRacun(rol.PripadaRacunu.Br_racuna);
+                    ovlascenaLicaList.Add(new RacunOvlascenoLiceBasic(rol.Id, rol.ImeOvlascenogLica, racun));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return ovlascenaLicaList;
+        }
+
+        public static void DodajOvlascenoLice(RacunOvlascenoLiceBasic ovlascenoLice)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var racun = s.Load<Racun>(ovlascenoLice.PripadaRacunu.Br_racuna);
+
+                RacunOvlascenoLice rol = new RacunOvlascenoLice
+                {
+                    ImeOvlascenogLica = ovlascenoLice.ImeOvlascenogLica,
+                    PripadaRacunu = racun
+                };
+
+                s.SaveOrUpdate(rol);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniOvlascenoLice(RacunOvlascenoLiceBasic ovlascenoLice)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Racun racun = s.Load<Racun>(ovlascenoLice.PripadaRacunu.Br_racuna);
+                RacunOvlascenoLice rol = s.Load<RacunOvlascenoLice>(ovlascenoLice.Id);
+
+                rol.ImeOvlascenogLica = ovlascenoLice.ImeOvlascenogLica;
+                rol.PripadaRacunu = racun;
+
+                s.Update(rol);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiOvlascenoLiceRacuna(int rolId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                RacunOvlascenoLice rol = s.Load<RacunOvlascenoLice>(rolId);
+
+                s.Delete(rol);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+        #endregion
+
         #region Racuni 
         public static List<RacunBasic> VratiSveRacune()
         {

@@ -28,6 +28,9 @@ namespace ATM_WinForm.Mapiranja
             //MAPIRANJE RACUN-KLIJENT
             References(x => x.Koristi).Column("ID_KLIJENTA").LazyLoad();
 
+            //MAPIRANJE veze 1:N --> RACUN-OVLASCENA LICA
+            HasMany(x => x.OvlascenaLica).KeyColumn("BR_RACUNA").LazyLoad().Cascade.All().Inverse();
+
             //MAPIRANJE veze 1:N --> RACUNI-KARTICE
             HasMany(x => x.Kartice).KeyColumn("BR_RACUNA").LazyLoad().Cascade.All().Inverse();
 

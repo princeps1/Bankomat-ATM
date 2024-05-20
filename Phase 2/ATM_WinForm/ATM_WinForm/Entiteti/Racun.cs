@@ -34,10 +34,14 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual IList<Kartica> Kartice { get; set; }
 
+        [Browsable(false)]
+        public virtual IList<RacunOvlascenoLice> OvlascenaLica { get; set; }
+
         public Racun()
         {
             //MAPIRANJE RACUN-KARTICA
             Kartice = new List<Kartica>();
+            OvlascenaLica = new List<RacunOvlascenoLice>();
         }
 
     }

@@ -116,10 +116,32 @@ namespace ATM_WinForm
                 this.Proizvodjac = proizvodjac;
                 this.Status = status;
                 this.Datum_Poslednjeg_Servisa = datum;
-                this.InstaliranUFilijali = filijala;
             }
 
             public BankomatBasic() { }
+        }
+
+        public class RacunOvlascenoLiceBasic
+        {
+            [Browsable(false)]
+            public virtual int Id { get; protected set; }
+
+            [DisplayName("Ime ovlascenog lica")]
+            public virtual string ImeOvlascenogLica { get; set; }
+
+
+            //MAPIRANJE BANKA_BR_TEL-BANKA
+            [Browsable(false)]
+            public virtual RacunBasic PripadaRacunu { get; set; }
+
+            public RacunOvlascenoLiceBasic(int id, string imeLica, RacunBasic racun)
+            {
+                this.Id = id;
+                this.ImeOvlascenogLica = imeLica;
+                this.PripadaRacunu = racun;
+            }
+
+            public RacunOvlascenoLiceBasic() { }
         }
 
         public class RacunBasic
@@ -153,6 +175,9 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual IList<KarticaBasic> Kartice { get; set; }
 
+            [Browsable(false)]
+            public virtual IList<RacunOvlascenoLiceBasic> OvlascenaLica { get; set; }
+
             public RacunBasic(int br_rac, DateTime datum, string tekuci_saldo, string tip, string valuta, BankaBasic banka, KlijentBasic klijent)
             {
                 this.Br_racuna = br_rac;
@@ -166,7 +191,8 @@ namespace ATM_WinForm
 
             public RacunBasic()
             {
-                this.Kartice = new List<KarticaBasic>();
+                Kartice = new List<KarticaBasic>();
+                OvlascenaLica = new List<RacunOvlascenoLiceBasic>();
             }
         }
 

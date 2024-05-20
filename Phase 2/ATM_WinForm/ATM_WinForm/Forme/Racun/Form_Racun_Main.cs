@@ -96,5 +96,19 @@ namespace ATM_WinForm.Forme.Racun
                 }
             }
         }
+
+        private void OvlascenaLicaBtn_Click(object sender, EventArgs e)
+        {
+            if (RacunGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = RacunGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var racun = RacunGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.RacunBasic;
+                    var SpisakSvihOvlascenihLicaForm = new Form_Racun_OvlascenoLice_Main(racun.Br_racuna);
+                    SpisakSvihOvlascenihLicaForm.ShowDialog();
+                }
+            }
+        }
     }
 }

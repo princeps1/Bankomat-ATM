@@ -33,6 +33,7 @@
             this.IzmeniRacunBtn = new System.Windows.Forms.Button();
             this.IzbrisiRacunBtn = new System.Windows.Forms.Button();
             this.PrikaziKorisnikaBtn = new System.Windows.Forms.Button();
+            this.PrikaziKarticeBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.RacunGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,19 +89,30 @@
             // 
             // PrikaziKorisnikaBtn
             // 
-            this.PrikaziKorisnikaBtn.Location = new System.Drawing.Point(990, 407);
+            this.PrikaziKorisnikaBtn.Location = new System.Drawing.Point(990, 404);
             this.PrikaziKorisnikaBtn.Name = "PrikaziKorisnikaBtn";
-            this.PrikaziKorisnikaBtn.Size = new System.Drawing.Size(215, 35);
+            this.PrikaziKorisnikaBtn.Size = new System.Drawing.Size(215, 38);
             this.PrikaziKorisnikaBtn.TabIndex = 10;
             this.PrikaziKorisnikaBtn.Text = "Prikazi korisnika";
             this.PrikaziKorisnikaBtn.UseVisualStyleBackColor = true;
             this.PrikaziKorisnikaBtn.Click += new System.EventHandler(this.PrikaziKorisnikaBtn_Click);
+            // 
+            // PrikaziKarticeBtn
+            // 
+            this.PrikaziKarticeBtn.Location = new System.Drawing.Point(990, 448);
+            this.PrikaziKarticeBtn.Name = "PrikaziKarticeBtn";
+            this.PrikaziKarticeBtn.Size = new System.Drawing.Size(215, 40);
+            this.PrikaziKarticeBtn.TabIndex = 11;
+            this.PrikaziKarticeBtn.Text = "Prikazi kartice";
+            this.PrikaziKarticeBtn.UseVisualStyleBackColor = true;
+            this.PrikaziKarticeBtn.Click += new System.EventHandler(this.PrikaziKarticeBtn_Click);
             // 
             // Form_Racun_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 558);
+            this.Controls.Add(this.PrikaziKarticeBtn);
             this.Controls.Add(this.PrikaziKorisnikaBtn);
             this.Controls.Add(this.IzbrisiRacunBtn);
             this.Controls.Add(this.IzmeniRacunBtn);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.Button IzmeniRacunBtn;
         private System.Windows.Forms.Button IzbrisiRacunBtn;
         private System.Windows.Forms.Button PrikaziKorisnikaBtn;
+        private System.Windows.Forms.Button PrikaziKarticeBtn;
     }
 }

@@ -30,6 +30,16 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual Klijent Koristi { get; set; }
 
+        //MAPIRANJE RACUN-KARTICA
+        [Browsable(false)]
+        public virtual IList<Kartica> Kartice { get; set; }
+
+        public Racun()
+        {
+            //MAPIRANJE RACUN-KARTICA
+            Kartice = new List<Kartica>();
+        }
+
     }
 
     public class DevizniRacun : Racun 

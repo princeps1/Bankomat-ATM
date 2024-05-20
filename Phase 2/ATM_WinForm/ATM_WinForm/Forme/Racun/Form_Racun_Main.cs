@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ATM_WinForm.Entiteti;
+using ATM_WinForm.Forme.Kartica;
 using ATM_WinForm.Forme.Racun;
 using NHibernate;
 
@@ -82,6 +83,18 @@ namespace ATM_WinForm.Forme.Racun
             }
         }
 
-
+        private void PrikaziKarticeBtn_Click(object sender, EventArgs e)
+        {
+            if (RacunGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = RacunGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var racun = RacunGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.RacunBasic;
+                    var SpisakSvihKarticaForm = new Form_Kartica_Main(racun.Br_racuna);
+                    SpisakSvihKarticaForm.ShowDialog();
+                }
+            }
+        }
     }
 }

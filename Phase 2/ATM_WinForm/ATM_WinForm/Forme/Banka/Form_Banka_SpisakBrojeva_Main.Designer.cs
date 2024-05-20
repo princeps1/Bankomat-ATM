@@ -42,53 +42,62 @@
             this.BankaBrTelGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BankaBrTelGrid.ColumnHeadersHeight = 29;
             this.BankaBrTelGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.BankaBrTelGrid.Location = new System.Drawing.Point(14, 14);
+            this.BankaBrTelGrid.Location = new System.Drawing.Point(19, 17);
+            this.BankaBrTelGrid.Margin = new System.Windows.Forms.Padding(4);
             this.BankaBrTelGrid.MultiSelect = false;
             this.BankaBrTelGrid.Name = "BankaBrTelGrid";
             this.BankaBrTelGrid.ReadOnly = true;
             this.BankaBrTelGrid.RowHeadersWidth = 51;
             this.BankaBrTelGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.BankaBrTelGrid.Size = new System.Drawing.Size(883, 309);
+            this.BankaBrTelGrid.Size = new System.Drawing.Size(1177, 380);
             this.BankaBrTelGrid.TabIndex = 8;
+            this.BankaBrTelGrid.SelectionChanged += new System.EventHandler(this.BankaBrTelGrid_SelectionChanged);
             // 
             // IzbrisiBrojTelefonaBtn
             // 
             this.IzbrisiBrojTelefonaBtn.Enabled = false;
-            this.IzbrisiBrojTelefonaBtn.Location = new System.Drawing.Point(14, 407);
+            this.IzbrisiBrojTelefonaBtn.Location = new System.Drawing.Point(19, 501);
+            this.IzbrisiBrojTelefonaBtn.Margin = new System.Windows.Forms.Padding(4);
             this.IzbrisiBrojTelefonaBtn.Name = "IzbrisiBrojTelefonaBtn";
-            this.IzbrisiBrojTelefonaBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzbrisiBrojTelefonaBtn.Size = new System.Drawing.Size(267, 41);
             this.IzbrisiBrojTelefonaBtn.TabIndex = 7;
             this.IzbrisiBrojTelefonaBtn.Text = "Izbrisi Broj Telefona";
             this.IzbrisiBrojTelefonaBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiBrojTelefonaBtn.Click += new System.EventHandler(this.IzbrisiBrojTelefonaBtn_Click);
             // 
             // IzmeniBrojTelefonaBtn
             // 
             this.IzmeniBrojTelefonaBtn.Enabled = false;
-            this.IzmeniBrojTelefonaBtn.Location = new System.Drawing.Point(14, 368);
+            this.IzmeniBrojTelefonaBtn.Location = new System.Drawing.Point(19, 453);
+            this.IzmeniBrojTelefonaBtn.Margin = new System.Windows.Forms.Padding(4);
             this.IzmeniBrojTelefonaBtn.Name = "IzmeniBrojTelefonaBtn";
-            this.IzmeniBrojTelefonaBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzmeniBrojTelefonaBtn.Size = new System.Drawing.Size(267, 41);
             this.IzmeniBrojTelefonaBtn.TabIndex = 6;
             this.IzmeniBrojTelefonaBtn.Text = "Izmeni Broj Telefona";
             this.IzmeniBrojTelefonaBtn.UseVisualStyleBackColor = true;
+            this.IzmeniBrojTelefonaBtn.Click += new System.EventHandler(this.IzmeniBrojTelefonaBtn_Click);
             // 
             // DodajBrojTelefonaBtn
             // 
-            this.DodajBrojTelefonaBtn.Location = new System.Drawing.Point(14, 329);
+            this.DodajBrojTelefonaBtn.Location = new System.Drawing.Point(19, 405);
+            this.DodajBrojTelefonaBtn.Margin = new System.Windows.Forms.Padding(4);
             this.DodajBrojTelefonaBtn.Name = "DodajBrojTelefonaBtn";
-            this.DodajBrojTelefonaBtn.Size = new System.Drawing.Size(200, 33);
+            this.DodajBrojTelefonaBtn.Size = new System.Drawing.Size(267, 41);
             this.DodajBrojTelefonaBtn.TabIndex = 5;
             this.DodajBrojTelefonaBtn.Text = "Dodaj Broj Telefona";
             this.DodajBrojTelefonaBtn.UseVisualStyleBackColor = true;
+            this.DodajBrojTelefonaBtn.Click += new System.EventHandler(this.DodajBrojTelefonaBtn_Click);
             // 
             // Form_Banka_SpisakBrojeva_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 454);
+            this.ClientSize = new System.Drawing.Size(1215, 559);
             this.Controls.Add(this.BankaBrTelGrid);
             this.Controls.Add(this.IzbrisiBrojTelefonaBtn);
             this.Controls.Add(this.IzmeniBrojTelefonaBtn);
             this.Controls.Add(this.DodajBrojTelefonaBtn);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form_Banka_SpisakBrojeva_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

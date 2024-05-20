@@ -84,7 +84,7 @@ namespace ATM_WinForm.Forme.Bankomat
                     var bankomat = BankomatGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankomatBasic;
 
                     //
-                    string poruka = "Da li zelite da obrisete izabranu filijalu?";
+                    string poruka = "Da li zelite da obrisete izabrani bankomat?";
                     string title = "Pitanje";
                     MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
                     DialogResult result = MessageBox.Show(poruka, title, buttons);

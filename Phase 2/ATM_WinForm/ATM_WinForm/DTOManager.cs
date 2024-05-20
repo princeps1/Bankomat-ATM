@@ -168,6 +168,110 @@ namespace ATM_WinForm
 
         #endregion
 
+        #region BrojeviTelefona Banke
+        public static List<BankaBrTelefonaBasic> VratiSveBrojeveTelefonaOdBanke(int bankaId)
+        {
+            Console.WriteLine(bankaId);
+            List<BankaBrTelefonaBasic> brTelefonaList = new List<BankaBrTelefonaBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<BankaBrTelefona> telefoni = from t in s.Query<BankaBrTelefona>()
+                                                        where t.PripadaBanci.Id == bankaId
+                                                        select t;
+
+
+                foreach (BankaBrTelefona b in telefoni)
+                {
+                    BankaBasic banka = VratiBanku(b.PripadaBanci.Id);
+                    brTelefonaList.Add(new BankaBrTelefonaBasic(b.Id, b.BrTelefona, banka));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return brTelefonaList;
+        }
+
+        public static void DodajBrTelefona(BankaBrTelefonaBasic brTelefona)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var banka = s.Load<Banka>(brTelefona.PripadaBanci.Id);
+
+                BankaBrTelefona b = new BankaBrTelefona
+                {
+                    BrTelefona = brTelefona.BrTelefona,
+                    PripadaBanci = banka
+                };
+
+                s.SaveOrUpdate(b);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniBrTelefona(BankaBrTelefonaBasic brTelefona)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Banka banka = s.Load<Banka>(brTelefona.PripadaBanci.Id);
+                BankaBrTelefona t = s.Load<BankaBrTelefona>(brTelefona.Id);
+
+                t.BrTelefona = brTelefona.BrTelefona;
+                t.PripadaBanci = banka;
+
+                s.Update(t);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiBrojTelefonaBanke(int brojTelefonaId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                BankaBrTelefona telefon = s.Load<BankaBrTelefona>(brojTelefonaId);
+
+                s.Delete(telefon);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+        #endregion
+
         #region Filijale
 
         public static List<FilijalaBasic> VratiSveFilijale()
@@ -525,7 +629,7 @@ namespace ATM_WinForm
                 foreach (Racun r in racuni)
                 {
                     BankaBasic banka = VratiBanku(r.JePovezan.Id);
-                    KlijentBasic klijent = VratiKlijenta(r.JePovezan.Id);
+                    KlijentBasic klijent = VratiKlijenta(r.Koristi.Id);
                     racunList.Add(new RacunBasic(r.Br_racuna, r.Datum_otvaranja, r.Tekuci_saldo, r.Tip, r.Valuta, banka, klijent));
                 }
 
@@ -538,6 +642,28 @@ namespace ATM_WinForm
             }
 
             return racunList;
+        }
+
+        public static RacunBasic VratiRacun(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var r = s.Load<Racun>(id);
+                BankaBasic banka = VratiBanku(r.JePovezan.Id);
+                KlijentBasic klijent = VratiKlijenta(r.Koristi.Id);
+                RacunBasic racun = new RacunBasic(r.Br_racuna, r.Datum_otvaranja, r.Tekuci_saldo, r.Tip, r.Valuta, banka, klijent);
+
+                s.Close();
+
+                return racun;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
         }
         #endregion
 
@@ -662,6 +788,143 @@ namespace ATM_WinForm
 
 
 
+        #endregion
+
+        #region Kartica 
+        public static List<KarticaBasic> VratiSveKarticeOdRacuna(int racunId)
+        {
+            List<KarticaBasic> karticaList = new List<KarticaBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Kartica> kartice = from k in s.Query<Kartica>()
+                                            where k.Odgovara.Br_racuna == racunId
+                                            select k;
+
+                foreach (Kartica k in kartice)
+                {
+
+                    RacunBasic racun = VratiRacun(k.Odgovara.Br_racuna);
+                    karticaList.Add(new KarticaBasic(k.Id, k.Datum_izdavanje, k.Datum_isteka, k.Dnevni_limit, k.Tip, k.Max_iznos_zaduzenja, k.Max_datum_vracanja_duga, racun));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return karticaList;
+        }
+
+        public static void DodajKarticu(KarticaBasic kartica)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var racun = s.Load<Racun>(kartica.Odgovara.Br_racuna);
+
+                if(kartica.Tip == "kreditna")
+                {
+                    KreditnaKartica k = new KreditnaKartica
+                    {
+                        Datum_izdavanje = kartica.Datum_izdavanje,
+                        Datum_isteka = kartica.Datum_isteka,
+                        Tip = kartica.Tip,
+                        Dnevni_limit = kartica.Dnevni_limit,
+                        Max_iznos_zaduzenja = kartica.Max_iznos_zaduzenja,
+                        Max_datum_vracanja_duga = kartica.Max_datum_vracanja_duga,
+                        Odgovara = racun
+
+                    };
+
+                    s.SaveOrUpdate(k);
+                }
+                else if(kartica.Tip == "debitna"){
+                    DebitnaKartica k = new DebitnaKartica
+                    {
+                        Datum_izdavanje = kartica.Datum_izdavanje,
+                        Datum_isteka = kartica.Datum_isteka,
+                        Tip = kartica.Tip,
+                        Dnevni_limit = kartica.Dnevni_limit,
+                        Odgovara = racun
+                    };
+
+                    s.SaveOrUpdate(k);
+                }
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniKarticu(KarticaBasic kartica)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                // Učitavanje postojećeg Računa
+                var racun = s.Load<Racun>(kartica.Odgovara.Br_racuna);
+
+                // Učitavanje postojeće Kartice objekta iz baze
+                var existingKartica= s.Load<Kartica>(kartica.Id);
+
+                if (existingKartica != null)
+                {
+                    // Ažuriranje postojeće Kartice objekta
+                    existingKartica.Datum_izdavanje = kartica.Datum_izdavanje;
+                    existingKartica.Datum_isteka = kartica.Datum_isteka;
+                    existingKartica.Tip = kartica.Tip;
+                    existingKartica.Dnevni_limit = kartica.Dnevni_limit;
+
+                    if (existingKartica.Tip != "kreditna")
+                    {
+                        existingKartica.Max_iznos_zaduzenja = kartica.Max_iznos_zaduzenja;
+                        existingKartica.Max_datum_vracanja_duga = kartica.Max_datum_vracanja_duga;
+                    }
+                    existingKartica.Odgovara = racun;
+                    // Sačuvajte promene
+                    s.Update(existingKartica);
+                }
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiKarticu(int karticaId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Kartica kartica = s.Load<Kartica>(karticaId);
+
+                s.Delete(kartica);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         #endregion
     }
 }

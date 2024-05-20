@@ -112,6 +112,7 @@
     <Compile Include="Entiteti\Bankomat.cs" />
     <Compile Include="Entiteti\Filijala.cs" />
     <Compile Include="Entiteti\FizickoLice.cs" />
+    <Compile Include="Entiteti\Kartica.cs" />
     <Compile Include="Entiteti\Klijent.cs" />
     <Compile Include="Entiteti\PravnoLice.cs" />
     <Compile Include="Entiteti\Racun.cs" />
@@ -120,6 +121,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Banka\Form_BankaBrTelefona_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Banka\Form_BankaBrTelefona_AddUpdate.Designer.cs">
+      <DependentUpon>Form_BankaBrTelefona_AddUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Banka\Form_Banka_AddUpdate.cs">
       <SubType>Form</SubType>
@@ -163,6 +170,18 @@
     <Compile Include="Forme\Filijala\Form_Filijala_Main.Designer.cs">
       <DependentUpon>Form_Filijala_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Kartica\Form_Kartica_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Kartica\Form_Kartica_AddUpdate.Designer.cs">
+      <DependentUpon>Form_Kartica_AddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Kartica\Form_Kartica_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Kartica\Form_Kartica_Main.Designer.cs">
+      <DependentUpon>Form_Kartica_Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Klijent\Form_Klijent_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +201,7 @@
     <Compile Include="Mapiranja\BankomatMapiranje.cs" />
     <Compile Include="Mapiranja\FilijalaMapiranje.cs" />
     <Compile Include="Mapiranja\FizickoLiceMapiranje.cs" />
+    <Compile Include="Mapiranja\KarticaMapiranje.cs" />
     <Compile Include="Mapiranja\KlijentMapiranje.cs" />
     <Compile Include="Mapiranja\PravnoLiceMapiranje.cs" />
     <Compile Include="Mapiranja\RacunMapiranje.cs" />
@@ -189,6 +209,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Banka\Form_BankaBrTelefona_AddUpdate.resx">
+      <DependentUpon>Form_BankaBrTelefona_AddUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Banka\Form_Banka_AddUpdate.resx">
       <DependentUpon>Form_Banka_AddUpdate.cs</DependentUpon>
@@ -210,6 +233,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Filijala\Form_Filijala_Main.resx">
       <DependentUpon>Form_Filijala_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Kartica\Form_Kartica_AddUpdate.resx">
+      <DependentUpon>Form_Kartica_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Kartica\Form_Kartica_Main.resx">
+      <DependentUpon>Form_Kartica_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Klijent\Form_Klijent_Main.resx">
       <DependentUpon>Form_Klijent_Main.cs</DependentUpon>

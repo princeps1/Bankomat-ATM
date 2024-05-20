@@ -139,5 +139,10 @@ namespace ATM_WinForm.Forme.Filijala
 
             this.Close();
         }
+
+        private void BrTelLbl_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

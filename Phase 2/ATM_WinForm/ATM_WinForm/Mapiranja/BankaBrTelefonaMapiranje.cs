@@ -3,7 +3,7 @@ using FluentNHibernate.Mapping;
 
 namespace ATM_WinForm.Mapiranja
 {
-    internal class BankaBrTelefonaMapiranje : ClassMap<ATM_WinForm.Entiteti.BankaBrTelefona>
+    public class BankaBrTelefonaMapiranje : ClassMap<ATM_WinForm.Entiteti.BankaBrTelefona>
     {
         public BankaBrTelefonaMapiranje()
         {

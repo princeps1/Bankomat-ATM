@@ -149,6 +149,10 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual KlijentBasic Koristi { get; set; }
 
+            //MAPIRANJE RACUN-KARTICA
+            [Browsable(false)]
+            public virtual IList<KarticaBasic> Kartice { get; set; }
+
             public RacunBasic(int br_rac, DateTime datum, string tekuci_saldo, string tip, string valuta, BankaBasic banka, KlijentBasic klijent)
             {
                 this.Br_racuna = br_rac;
@@ -158,6 +162,11 @@ namespace ATM_WinForm
                 this.Valuta = valuta;
                 this.JePovezan = banka;
                 this.Koristi = klijent;
+            }
+
+            public RacunBasic()
+            {
+                this.Kartice = new List<KarticaBasic>();
             }
         }
 
@@ -250,7 +259,6 @@ namespace ATM_WinForm
         }
 
 
-
         public class BankaBrTelefonaBasic
         {
             [Browsable(false)]
@@ -263,6 +271,57 @@ namespace ATM_WinForm
             //MAPIRANJE BANKA_BR_TEL-BANKA
             [Browsable(false)]
             public virtual BankaBasic PripadaBanci { get; set; }
+
+            public BankaBrTelefonaBasic(int id, string brTel, BankaBasic banka)
+            {
+                this.Id = id;
+                this.BrTelefona = brTel;
+                this.PripadaBanci = banka;
+            }
+
+            public BankaBrTelefonaBasic() { }
+        }
+
+        public class KarticaBasic
+        {
+            [DisplayName("ID")]
+            public virtual int Id { get; protected set; }
+
+            [DisplayName("Datum izdavanja")]
+            public virtual DateTime Datum_izdavanje { get; set; }
+
+            [DisplayName("Datum isteka")]
+            public virtual DateTime Datum_isteka { get; set; }
+
+            [DisplayName("Dnevni limit")]
+            public virtual string Dnevni_limit { get; set; }
+
+            [Browsable(false)]
+            public virtual string Tip { get; set; }
+
+            [DisplayName("Maksimalan iznos zaduzenja")]
+            public virtual string Max_iznos_zaduzenja { get; set; }
+
+            [DisplayName("Max datum vracanja duga")]
+            public virtual DateTime Max_datum_vracanja_duga { get; set; }
+
+            //MAPIRANJE KARTICA-RACUN
+            [Browsable(false)]
+            public virtual RacunBasic Odgovara { get; set; }
+
+            public KarticaBasic(int id, DateTime datum_izdavanja, DateTime datum_isteka, string dnevni_limit, string tip, string max_iznos_zaduzenja, DateTime max_datum_vracanja_duga, RacunBasic racun)
+            {
+                this.Id = id;
+                this.Datum_izdavanje = datum_izdavanja;
+                this.Datum_isteka = datum_isteka;
+                this.Dnevni_limit = dnevni_limit;
+                this.Tip = tip;
+                this.Max_iznos_zaduzenja = max_iznos_zaduzenja;
+                this.Max_datum_vracanja_duga = max_datum_vracanja_duga;
+                this.Odgovara = racun;
+            }
+
+            public KarticaBasic() { }
         }
     }
 }

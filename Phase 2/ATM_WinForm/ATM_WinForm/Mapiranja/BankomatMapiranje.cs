@@ -17,6 +17,9 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE veze 1:N  --> BANKOMAT-FILIJALA
             References(x => x.InstaliranUFilijali).Column("RBR_FILIJALE").LazyLoad();
+
+            //MAPIRANJE veze 1:N --> BANKOMAT-KOMENTAR
+            HasMany(x => x.Komentari).KeyColumn("ID_BANKOMATA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

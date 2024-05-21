@@ -26,5 +26,14 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual Filijala InstaliranUFilijali { get; set; }
 
+        //MAPIRANJE BANKOMAT-KOMENTARI BANKOMATA
+        [Browsable(false)]
+        public virtual IList<BankomatKomentari> Komentari { get; set; }
+
+        public Bankomat()
+        {
+            Komentari = new List<BankomatKomentari>();
+        }
+
     }
 }

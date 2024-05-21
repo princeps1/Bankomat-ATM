@@ -14,6 +14,8 @@ namespace ATM_WinForm.Forme.Banka
         {
             InitializeComponent();
             this.bankaId = bankaId;
+
+            BankaBrTelGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void Form_Banka_SpisakBrojeva_Main_Load(object sender, System.EventArgs e)

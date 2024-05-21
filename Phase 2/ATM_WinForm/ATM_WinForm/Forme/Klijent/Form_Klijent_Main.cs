@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ATM_WinForm.Forme.Klijent
@@ -78,6 +72,36 @@ namespace ATM_WinForm.Forme.Klijent
 
                 KlijentGrid.AllowUserToAddRows = false;
             }
+        }
+
+        private void PrikaziKomentareBtn_Click(object sender, EventArgs e)
+        {
+            if (KlijentGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = KlijentGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var klijent = KlijentGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.KlijentBasic;
+                    var ListaKomentaraForm = new Form_Klijent_Komentari_Main(klijent.Id);
+                    ListaKomentaraForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
+                }
+            }
+        }
+
+        private void DodajKlijentaBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IzmeniKlijentaBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IzbrisiKlijentaBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

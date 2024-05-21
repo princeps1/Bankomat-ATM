@@ -36,24 +36,27 @@
             // labelaAddEditLBL
             // 
             this.labelaAddEditLBL.AutoSize = true;
-            this.labelaAddEditLBL.Location = new System.Drawing.Point(144, 75);
+            this.labelaAddEditLBL.Location = new System.Drawing.Point(108, 61);
+            this.labelaAddEditLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelaAddEditLBL.Name = "labelaAddEditLBL";
-            this.labelaAddEditLBL.Size = new System.Drawing.Size(44, 16);
+            this.labelaAddEditLBL.Size = new System.Drawing.Size(35, 13);
             this.labelaAddEditLBL.TabIndex = 4;
             this.labelaAddEditLBL.Text = "label1";
             // 
             // AddUpdateTxt
             // 
-            this.AddUpdateTxt.Location = new System.Drawing.Point(67, 108);
+            this.AddUpdateTxt.Location = new System.Drawing.Point(50, 88);
+            this.AddUpdateTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddUpdateTxt.Name = "AddUpdateTxt";
-            this.AddUpdateTxt.Size = new System.Drawing.Size(210, 22);
+            this.AddUpdateTxt.Size = new System.Drawing.Size(158, 20);
             this.AddUpdateTxt.TabIndex = 5;
             // 
             // AkcijaOvlascenoLiceBtn
             // 
-            this.AkcijaOvlascenoLiceBtn.Location = new System.Drawing.Point(67, 155);
+            this.AkcijaOvlascenoLiceBtn.Location = new System.Drawing.Point(50, 126);
+            this.AkcijaOvlascenoLiceBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AkcijaOvlascenoLiceBtn.Name = "AkcijaOvlascenoLiceBtn";
-            this.AkcijaOvlascenoLiceBtn.Size = new System.Drawing.Size(210, 57);
+            this.AkcijaOvlascenoLiceBtn.Size = new System.Drawing.Size(158, 46);
             this.AkcijaOvlascenoLiceBtn.TabIndex = 6;
             this.AkcijaOvlascenoLiceBtn.Text = "button1";
             this.AkcijaOvlascenoLiceBtn.UseVisualStyleBackColor = true;
@@ -61,13 +64,17 @@
             // 
             // Form_Racun_OvlascenoLice_AddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 333);
+            this.ClientSize = new System.Drawing.Size(272, 271);
             this.Controls.Add(this.AkcijaOvlascenoLiceBtn);
             this.Controls.Add(this.AddUpdateTxt);
             this.Controls.Add(this.labelaAddEditLBL);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
             this.Name = "Form_Racun_OvlascenoLice_AddUpdate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ATM - Ovlascena Lica";
             this.ResumeLayout(false);
             this.PerformLayout();

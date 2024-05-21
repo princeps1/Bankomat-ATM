@@ -110,6 +110,7 @@
     <Compile Include="Entiteti\Banka.cs" />
     <Compile Include="Entiteti\BankaBrTelefona.cs" />
     <Compile Include="Entiteti\Bankomat.cs" />
+    <Compile Include="Entiteti\BankomatKomentari.cs" />
     <Compile Include="Entiteti\Filijala.cs" />
     <Compile Include="Entiteti\FizickoLice.cs" />
     <Compile Include="Entiteti\Kartica.cs" />
@@ -154,6 +155,18 @@
     <Compile Include="Forme\Bankomat\Form_Bankomat_AddUpdate.Designer.cs">
       <DependentUpon>Form_Bankomat_AddUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_Komentari_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_Komentari_AddUpdate.Designer.cs">
+      <DependentUpon>Form_Bankomat_Komentari_AddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_Komentari_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_Bankomat_Komentari_Main.Designer.cs">
+      <DependentUpon>Form_Bankomat_Komentari_Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Bankomat\Form_Bankomat_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +197,24 @@
     <Compile Include="Forme\Kartica\Form_Kartica_Main.Designer.cs">
       <DependentUpon>Form_Kartica_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Klijent\Form_Klijent_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Klijent\Form_Klijent_AddUpdate.Designer.cs">
+      <DependentUpon>Form_Klijent_AddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Klijent\Form_Klijent_Komentari_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Klijent\Form_Klijent_Komentari_AddUpdate.Designer.cs">
+      <DependentUpon>Form_Klijent_Komentari_AddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Klijent\Form_Klijent_Komentari_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Klijent\Form_Klijent_Komentari_Main.Designer.cs">
+      <DependentUpon>Form_Klijent_Komentari_Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Klijent\Form_Klijent_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +243,7 @@
     <Compile Include="Klase\RacunGridItem.cs" />
     <Compile Include="Mapiranja\BankaBrTelefonaMapiranje.cs" />
     <Compile Include="Mapiranja\BankaMapiranje.cs" />
+    <Compile Include="Mapiranja\BankomatKomentariMapiranje.cs" />
     <Compile Include="Mapiranja\BankomatMapiranje.cs" />
     <Compile Include="Mapiranja\FilijalaMapiranje.cs" />
     <Compile Include="Mapiranja\FizickoLiceMapiranje.cs" />
@@ -241,6 +273,12 @@
     <EmbeddedResource Include="Forme\Bankomat\Form_Bankomat_AddUpdate.resx">
       <DependentUpon>Form_Bankomat_AddUpdate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Bankomat\Form_Bankomat_Komentari_AddUpdate.resx">
+      <DependentUpon>Form_Bankomat_Komentari_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Bankomat\Form_Bankomat_Komentari_Main.resx">
+      <DependentUpon>Form_Bankomat_Komentari_Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Bankomat\Form_Bankomat_Main.resx">
       <DependentUpon>Form_Bankomat_Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +293,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Kartica\Form_Kartica_Main.resx">
       <DependentUpon>Form_Kartica_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Klijent\Form_Klijent_AddUpdate.resx">
+      <DependentUpon>Form_Klijent_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Klijent\Form_Klijent_Komentari_AddUpdate.resx">
+      <DependentUpon>Form_Klijent_Komentari_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Klijent\Form_Klijent_Komentari_Main.resx">
+      <DependentUpon>Form_Klijent_Komentari_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Klijent\Form_Klijent_Main.resx">
       <DependentUpon>Form_Klijent_Main.cs</DependentUpon>

@@ -89,6 +89,28 @@ namespace ATM_WinForm
             }
         }
 
+        public class BankomatKomentariBasic
+        {
+            [Browsable(false)]
+            public virtual int Id { get; protected set; }
+
+            [DisplayName("Komentar")]
+            public virtual string Komentar { get; set; }
+
+
+            //MAPIRANJE OVLASCENO KOMENTAR-KLIJENT
+            [Browsable(false)]
+            public virtual BankomatBasic PripadaBankomatu { get; set; }
+
+            public BankomatKomentariBasic(int id, string komentar, BankomatBasic bankomat)
+            {
+                this.Id = id;
+                this.Komentar = komentar;
+                this.PripadaBankomatu = bankomat;
+            }
+
+            public BankomatKomentariBasic() { }
+        }
         public class BankomatBasic
         {
             [DisplayName("ID")]
@@ -109,6 +131,9 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual FilijalaBasic InstaliranUFilijali { get; set; }
 
+            [Browsable(false)]
+            public virtual IList<BankomatKomentariBasic> Komentari { get; set; }
+
             public BankomatBasic(int id, string lokacija, string proizvodjac, string status, DateTime datum, FilijalaBasic filijala)
             {
                 this.Id = id;
@@ -118,7 +143,10 @@ namespace ATM_WinForm
                 this.Datum_Poslednjeg_Servisa = datum;
             }
 
-            public BankomatBasic() { }
+            public BankomatBasic() 
+            {
+                Komentari = new List<BankomatKomentariBasic>();
+            }
         }
 
         public class RacunOvlascenoLiceBasic
@@ -223,7 +251,6 @@ namespace ATM_WinForm
 
             public KlijentBasic(int id, string telefon, string email, string adresa,string naziv="")
             {
-               
                 this.Id = id;
                 this.Br_tel = telefon;
                 this.Email = email;
@@ -311,6 +338,8 @@ namespace ATM_WinForm
                 Mesto_izdavanja = mesto_izdavanja;
                 this.Naziv = naziv;
             }
+
+            public FizickoLiceBasic() { }
         }
 
 

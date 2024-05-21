@@ -4,10 +4,10 @@ using System.ComponentModel;
 
 namespace ATM_WinForm.Entiteti
 {
-    public class Klijent
+    public abstract class Klijent
     {
         [DisplayName("ID")]
-        public virtual int Id { get; protected set; }
+        public virtual int Id { get; set; }
 
         [DisplayName("Naziv")]
         public virtual string Naziv { get; set; }

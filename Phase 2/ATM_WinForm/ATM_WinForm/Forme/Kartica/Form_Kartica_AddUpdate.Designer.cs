@@ -45,57 +45,55 @@
             // 
             // AkcijaKarticeBtn
             // 
-            this.AkcijaKarticeBtn.Location = new System.Drawing.Point(99, 410);
-            this.AkcijaKarticeBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.AkcijaKarticeBtn.Location = new System.Drawing.Point(74, 333);
             this.AkcijaKarticeBtn.Name = "AkcijaKarticeBtn";
-            this.AkcijaKarticeBtn.Size = new System.Drawing.Size(316, 34);
+            this.AkcijaKarticeBtn.Size = new System.Drawing.Size(237, 28);
             this.AkcijaKarticeBtn.TabIndex = 27;
             this.AkcijaKarticeBtn.UseVisualStyleBackColor = true;
             this.AkcijaKarticeBtn.Click += new System.EventHandler(this.AkcijaKarticeBtn_Click);
             // 
             // DnevniLimitTxtBx
             // 
-            this.DnevniLimitTxtBx.Location = new System.Drawing.Point(103, 170);
-            this.DnevniLimitTxtBx.Margin = new System.Windows.Forms.Padding(4);
+            this.DnevniLimitTxtBx.Location = new System.Drawing.Point(77, 138);
             this.DnevniLimitTxtBx.Name = "DnevniLimitTxtBx";
-            this.DnevniLimitTxtBx.Size = new System.Drawing.Size(315, 22);
+            this.DnevniLimitTxtBx.Size = new System.Drawing.Size(237, 20);
             this.DnevniLimitTxtBx.TabIndex = 26;
             // 
             // RadnoVremeLbl
             // 
             this.RadnoVremeLbl.AutoSize = true;
-            this.RadnoVremeLbl.Location = new System.Drawing.Point(100, 150);
-            this.RadnoVremeLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RadnoVremeLbl.Location = new System.Drawing.Point(75, 122);
             this.RadnoVremeLbl.Name = "RadnoVremeLbl";
-            this.RadnoVremeLbl.Size = new System.Drawing.Size(75, 16);
+            this.RadnoVremeLbl.Size = new System.Drawing.Size(61, 13);
             this.RadnoVremeLbl.TabIndex = 25;
             this.RadnoVremeLbl.Text = "Dnevni limit";
             // 
             // DatumIstekaLbl
             // 
             this.DatumIstekaLbl.AutoSize = true;
-            this.DatumIstekaLbl.Location = new System.Drawing.Point(98, 80);
-            this.DatumIstekaLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DatumIstekaLbl.Location = new System.Drawing.Point(74, 65);
             this.DatumIstekaLbl.Name = "DatumIstekaLbl";
-            this.DatumIstekaLbl.Size = new System.Drawing.Size(85, 16);
+            this.DatumIstekaLbl.Size = new System.Drawing.Size(69, 13);
             this.DatumIstekaLbl.TabIndex = 23;
             this.DatumIstekaLbl.Text = "Datum isteka";
             // 
             // DatumIzdavanjaLbl
             // 
             this.DatumIzdavanjaLbl.AutoSize = true;
-            this.DatumIzdavanjaLbl.Location = new System.Drawing.Point(97, 22);
+            this.DatumIzdavanjaLbl.Location = new System.Drawing.Point(73, 18);
+            this.DatumIzdavanjaLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DatumIzdavanjaLbl.Name = "DatumIzdavanjaLbl";
-            this.DatumIzdavanjaLbl.Size = new System.Drawing.Size(107, 16);
+            this.DatumIzdavanjaLbl.Size = new System.Drawing.Size(86, 13);
             this.DatumIzdavanjaLbl.TabIndex = 29;
             this.DatumIzdavanjaLbl.Text = "Datum izdavanja";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 207);
+            this.label2.Location = new System.Drawing.Point(75, 168);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 16);
+            this.label2.Size = new System.Drawing.Size(22, 13);
             this.label2.TabIndex = 30;
             this.label2.Text = "Tip";
             // 
@@ -104,66 +102,70 @@
             this.TipComboBox.Items.AddRange(new object[] {
             "kreditna",
             "debitna"});
-            this.TipComboBox.Location = new System.Drawing.Point(103, 235);
-            this.TipComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TipComboBox.Location = new System.Drawing.Point(77, 191);
+            this.TipComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TipComboBox.MaxDropDownItems = 50;
             this.TipComboBox.Name = "TipComboBox";
-            this.TipComboBox.Size = new System.Drawing.Size(316, 24);
+            this.TipComboBox.Size = new System.Drawing.Size(238, 21);
             this.TipComboBox.TabIndex = 31;
             this.TipComboBox.SelectedIndexChanged += new System.EventHandler(this.TipComboBox_SelectedIndexChanged);
             // 
             // MaxIznosZaduzenjaLbl
             // 
             this.MaxIznosZaduzenjaLbl.AutoSize = true;
-            this.MaxIznosZaduzenjaLbl.Location = new System.Drawing.Point(98, 276);
+            this.MaxIznosZaduzenjaLbl.Location = new System.Drawing.Point(74, 224);
+            this.MaxIznosZaduzenjaLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MaxIznosZaduzenjaLbl.Name = "MaxIznosZaduzenjaLbl";
-            this.MaxIznosZaduzenjaLbl.Size = new System.Drawing.Size(178, 16);
+            this.MaxIznosZaduzenjaLbl.Size = new System.Drawing.Size(141, 13);
             this.MaxIznosZaduzenjaLbl.TabIndex = 32;
             this.MaxIznosZaduzenjaLbl.Text = "Maksimalan iznos zaduzenja";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 336);
+            this.label3.Location = new System.Drawing.Point(75, 273);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(209, 16);
+            this.label3.Size = new System.Drawing.Size(166, 13);
             this.label3.TabIndex = 33;
             this.label3.Text = "Maksimalan datum vracanja duga";
             // 
             // MaxIznosZaduzenjaTxtBx
             // 
-            this.MaxIznosZaduzenjaTxtBx.Location = new System.Drawing.Point(103, 296);
-            this.MaxIznosZaduzenjaTxtBx.Margin = new System.Windows.Forms.Padding(4);
+            this.MaxIznosZaduzenjaTxtBx.Location = new System.Drawing.Point(77, 240);
             this.MaxIznosZaduzenjaTxtBx.Name = "MaxIznosZaduzenjaTxtBx";
-            this.MaxIznosZaduzenjaTxtBx.Size = new System.Drawing.Size(315, 22);
+            this.MaxIznosZaduzenjaTxtBx.Size = new System.Drawing.Size(237, 20);
             this.MaxIznosZaduzenjaTxtBx.TabIndex = 34;
             // 
             // DatumIstekaDateTimePicker
             // 
-            this.DatumIstekaDateTimePicker.Location = new System.Drawing.Point(100, 114);
+            this.DatumIstekaDateTimePicker.Location = new System.Drawing.Point(75, 93);
+            this.DatumIstekaDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DatumIstekaDateTimePicker.Name = "DatumIstekaDateTimePicker";
-            this.DatumIstekaDateTimePicker.Size = new System.Drawing.Size(312, 22);
+            this.DatumIstekaDateTimePicker.Size = new System.Drawing.Size(235, 20);
             this.DatumIstekaDateTimePicker.TabIndex = 35;
             // 
             // MaxDatumVracanjaDugaDateTimePicker
             // 
-            this.MaxDatumVracanjaDugaDateTimePicker.Location = new System.Drawing.Point(103, 355);
+            this.MaxDatumVracanjaDugaDateTimePicker.Location = new System.Drawing.Point(77, 288);
+            this.MaxDatumVracanjaDugaDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaxDatumVracanjaDugaDateTimePicker.Name = "MaxDatumVracanjaDugaDateTimePicker";
-            this.MaxDatumVracanjaDugaDateTimePicker.Size = new System.Drawing.Size(316, 22);
+            this.MaxDatumVracanjaDugaDateTimePicker.Size = new System.Drawing.Size(238, 20);
             this.MaxDatumVracanjaDugaDateTimePicker.TabIndex = 36;
             // 
             // DatumIzdavanjaDateTimePicker
             // 
-            this.DatumIzdavanjaDateTimePicker.Location = new System.Drawing.Point(99, 41);
+            this.DatumIzdavanjaDateTimePicker.Location = new System.Drawing.Point(74, 33);
+            this.DatumIzdavanjaDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DatumIzdavanjaDateTimePicker.Name = "DatumIzdavanjaDateTimePicker";
-            this.DatumIzdavanjaDateTimePicker.Size = new System.Drawing.Size(309, 22);
+            this.DatumIzdavanjaDateTimePicker.Size = new System.Drawing.Size(233, 20);
             this.DatumIzdavanjaDateTimePicker.TabIndex = 37;
             // 
             // Form_Kartica_AddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 487);
+            this.ClientSize = new System.Drawing.Size(387, 396);
             this.Controls.Add(this.DatumIzdavanjaDateTimePicker);
             this.Controls.Add(this.MaxDatumVracanjaDugaDateTimePicker);
             this.Controls.Add(this.DatumIstekaDateTimePicker);
@@ -177,7 +179,11 @@
             this.Controls.Add(this.DnevniLimitTxtBx);
             this.Controls.Add(this.RadnoVremeLbl);
             this.Controls.Add(this.DatumIstekaLbl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
             this.Name = "Form_Kartica_AddUpdate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Kartica_AddUpdate";
             this.ResumeLayout(false);
             this.PerformLayout();

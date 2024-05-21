@@ -438,7 +438,8 @@ namespace ATM_WinForm
 
                 foreach (Bankomat b in bankomati)
                 {
-                    FilijalaBasic filijala = VratiFilijalu(b.InstaliranUFilijali.Rbr_filijale);
+                    var fil = b.InstaliranUFilijali;
+                    FilijalaBasic filijala = VratiFilijalu(fil.Rbr_filijale);
                     bankomatList.Add(new BankomatBasic(b.Id, b.Lokacija, b.Proizvodjac, b.Status, b.Datum_Poslednjeg_Servisa, filijala));
                 }
 
@@ -888,7 +889,38 @@ namespace ATM_WinForm
             return pravnaLicaList;
         }
 
+        public static void DodajFizickoLice(FizickoLiceBasic fizickoLice)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
 
+                FizickoLice fl = new FizickoLice
+                {
+                    Ime_roditelja = fizickoLice.Ime_roditelja,
+                    Br_licne_karte = fizickoLice.Br_licne_karte,
+                    Datum_rodjenja = fizickoLice.Datum_rodjenja,
+                    Mesto_izdavanja = fizickoLice.Mesto_izdavanja,
+                    JMBG = fizickoLice.JMBG,
+                    LIme = fizickoLice.LIme,
+                    Prezime = fizickoLice.Prezime,
+                    Adresa = fizickoLice.Adresa,
+                    Br_tel = fizickoLice.Br_tel,
+                    Email = fizickoLice.Email,
+                    Naziv = fizickoLice.Naziv,
+                };
+
+                s.SaveOrUpdate(fl);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
 
         #endregion
 
@@ -978,6 +1010,106 @@ namespace ATM_WinForm
                 ISession s = DataLayer.GetSession();
 
                 KomentarKlijenta kom = s.Load<KomentarKlijenta>(komKlijentaId);
+
+                s.Delete(kom);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        #endregion
+
+        #region KomentarBankomata
+        public static List<BankomatKomentariBasic> VratiSveKomentareBankomata(int bankomatId)
+        {
+            List<BankomatKomentariBasic> komentariBankomataList = new List<BankomatKomentariBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<BankomatKomentari> komentari = from k in s.Query<BankomatKomentari>()
+                                                          where k.PripadaBankomatu.Id == bankomatId
+                                                          select k;
+
+                foreach (BankomatKomentari kom in komentari)
+                {
+                    BankomatBasic bankomat = VratiBankomat(kom.PripadaBankomatu.Id);
+                    komentariBankomataList.Add(new BankomatKomentariBasic(kom.Id, kom.Komentar, bankomat));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return komentariBankomataList;
+        }
+
+        public static void DodajKomentarBankomata(BankomatKomentariBasic komentar)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var bankomat = s.Load<Bankomat>(komentar.PripadaBankomatu.Id);
+
+                BankomatKomentari kom = new BankomatKomentari
+                {
+                    Komentar = komentar.Komentar,
+                    PripadaBankomatu = bankomat
+                };
+
+                s.SaveOrUpdate(kom);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniKomentarBankomat(BankomatKomentariBasic komentar)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Bankomat bankomat = s.Load<Bankomat>(komentar.PripadaBankomatu.Id);
+                BankomatKomentari kom = s.Load<BankomatKomentari>(komentar.Id);
+
+                kom.Komentar = komentar.Komentar;
+                kom.PripadaBankomatu = bankomat;
+
+                s.Update(kom);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiKomentarBankomata(int komBankomatId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                BankomatKomentari kom = s.Load<BankomatKomentari>(komBankomatId);
 
                 s.Delete(kom);
 

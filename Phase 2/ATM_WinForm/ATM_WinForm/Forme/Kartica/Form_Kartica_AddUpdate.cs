@@ -135,7 +135,7 @@ namespace ATM_WinForm.Forme.Kartica
 
         private void TipComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(TipComboBox.SelectedItem == "kreditna")
+            if(TipComboBox.SelectedItem.ToString() == "kreditna")
             {
                 MaxIznosZaduzenjaTxtBx.Enabled = true;
                 MaxDatumVracanjaDugaDateTimePicker.Enabled = true;

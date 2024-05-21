@@ -1,5 +1,6 @@
 ﻿using ATM_WinForm.Entiteti;
 using ATM_WinForm.Forme.Filijala;
+using ATM_WinForm.Forme.Klijent;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -115,6 +116,21 @@ namespace ATM_WinForm.Forme.Bankomat
                     var bankomat = BankomatGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankomatBasic;
                     var dodajIzmeniBankomatForm = new Form_Bankomat_AddUpdate("update", bankomat, this.filijalaId);
                     dodajIzmeniBankomatForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
+                }
+            }
+        }
+
+        private void PrikaziKomentareBtn_Click(object sender, EventArgs e)
+        {
+            if (BankomatGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = BankomatGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var bankomat = BankomatGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankomatBasic;
+                    var ListaKomentaraForm = new Form_Bankomat_Komentari_Main(bankomat.Id);
+                    ListaKomentaraForm.ShowDialog();
                     bindingSource.ResetBindings(false);
                 }
             }

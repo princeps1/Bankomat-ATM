@@ -56,9 +56,11 @@ namespace ATM_WinForm.Forme.Kartica
                 if (rowIndex != -1)
                 {
                     var kartica = KarticaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.KarticaBasic;
-                    var dodajIzmeniBankomatForm = new Form_Kartica_AddUpdate("update", kartica, this.racunId);
+                    var kartica1 = DTOManager.VratiKarticu(kartica.Id);
+                    var dodajIzmeniBankomatForm = new Form_Kartica_AddUpdate("update", kartica1, this.racunId);
                     dodajIzmeniBankomatForm.ShowDialog();
                     bindingSource.ResetBindings(false);
+                    
                 }
             }
         }
@@ -86,7 +88,7 @@ namespace ATM_WinForm.Forme.Kartica
                 {
 
                     var kartica = KarticaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.KarticaBasic;
-
+                    
                     //
                     string poruka = "Da li zelite da obrisete izabranu karticu?";
                     string title = "Pitanje";

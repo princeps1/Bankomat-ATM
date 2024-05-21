@@ -30,6 +30,8 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE veze 1:N --> BANKA-RACUNI
             HasMany(x => x.Racuni).KeyColumn("ID_BANKE").LazyLoad().Cascade.All().Inverse();
+
+
         }
     }
 }

@@ -134,6 +134,9 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual IList<BankomatKomentariBasic> Komentari { get; set; }
 
+            [Browsable(false)]
+            public virtual IList<ServisBasic> Servisi { get; set; }
+
             public BankomatBasic(int id, string lokacija, string proizvodjac, string status, DateTime datum, FilijalaBasic filijala)
             {
                 this.Id = id;
@@ -146,6 +149,7 @@ namespace ATM_WinForm
             public BankomatBasic() 
             {
                 Komentari = new List<BankomatKomentariBasic>();
+                Servisi = new List<ServisBasic>();
             }
         }
 
@@ -185,7 +189,7 @@ namespace ATM_WinForm
 
 
             [Browsable(false)]
-            public virtual string Tip { get; set; }
+            public string Tip { get; set; }
 
             [DisplayName("Valuta")]
             public virtual string Valuta { get; set; }
@@ -393,7 +397,7 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual RacunBasic Odgovara { get; set; }
 
-            public KarticaBasic(int id, DateTime datum_izdavanja, DateTime datum_isteka, string dnevni_limit, string tip, string max_iznos_zaduzenja, DateTime max_datum_vracanja_duga, RacunBasic racun)
+            public KarticaBasic(int id, DateTime datum_izdavanja, DateTime datum_isteka, string dnevni_limit, string tip,string max_iznos_zaduzenja, DateTime max_datum_vracanja_duga, RacunBasic racun)
             {
                 this.Id = id;
                 this.Datum_izdavanje = datum_izdavanja;
@@ -407,6 +411,30 @@ namespace ATM_WinForm
 
             public KarticaBasic() { }
         }
+
+        public class ServisBasic
+        {
+            [DisplayName("KOD")]
+            public virtual int Kod { get; protected set; }
+
+            [DisplayName("FIRMA")]
+            public virtual string Firma { get; set; }
+
+            //MAPIRANJE SERVIS-BANKOMAT
+            [Browsable(false)]
+            public virtual BankomatBasic ServisiraniBankomat { get; set; }
+
+            public ServisBasic(int kod, string firma, BankomatBasic bankomat)
+            {
+
+                this.Kod = kod;
+                this.Firma = firma;
+                this.ServisiraniBankomat = bankomat;
+            }
+
+            public ServisBasic() { }
+        }
+
 
     }
 }

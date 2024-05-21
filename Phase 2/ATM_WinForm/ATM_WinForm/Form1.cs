@@ -107,29 +107,29 @@ namespace ATM_WinForm
 
         private void SectionBanka_Click(object sender, EventArgs e)
         {
-            //var BankaMainForm = new Form_Banka_Main();
-            //BankaMainForm.ShowDialog();
+            var BankaMainForm = new Form_Banka_Main();
+            BankaMainForm.ShowDialog();
 
-            //KlijentBasic klijent = DTOManager.DodajKlijenta(new KlijentBasic { Adresa = "awdawda", Br_tel = "dawdwadawd", Naziv = "dawdadada", Email = "dawdwadwad@dawad.com"});
+            //KlijentBasic klijent = DTOManager.DodajKlijenta(new KlijentBasic { Adresa = "awdawda", Br_tel = "dawdwadawd", Naziv = "dawdadada", Email = "dawdwadwad@dawad.com" });
 
             //FizickoLiceBasic fizickoLice = new FizickoLiceBasic("214214", DateTime.Now, "Mata", "Maroko", "Martic", "21421421", "PK", klijent.Id, "naziv", "13843298543254", "dawdad@dawad.com", "dwaduwk21431284jhkjdawaw");
 
-            DTOManager.DodajFizickoLice(new FizickoLiceBasic
-            {
-                Adresa = "dawdad",
-                Br_licne_karte = "dawdawdwad",
-                Datum_rodjenja = DateTime.Now,
-                Br_tel = "d2184917284214",
-                Ime_roditelja = "Dawkjdjadad",
-                Email = "DAWDWAD@dawdawd.com",
-                LIme = "dawwdad",
-                Mesto_izdavanja = "dwqadwad",
-                JMBG = "218498712849821984214",
-                Naziv = "dawhdjadkad",
-                Prezime = "dawdkwwad"
-            });
+            //DTOManager.DodajFizickoLice(new FizickoLiceBasic
+            //{
+            //    Adresa = "dawdad",
+            //    Br_licne_karte = "dawdwad",
+            //    Datum_rodjenja = DateTime.Now,
+            //    Br_tel = "7284214",
+            //    Ime_roditelja = "Dawkjdjadad",
+            //    Email = "DWAD@ddawd.com",
+            //    LIme = "dawwdad",
+            //    Mesto_izdavanja = "dwqadwad",
+            //    JMBG = "12345891234",
+            //    Naziv = "dawdkad",
+            //    Prezime = "dawad"
+            //});
 
-            MessageBox.Show("Dodato @");
+            //MessageBox.Show("Dodato @");
         }
 
         private void SectionFilijaleBtn_Click(object sender, EventArgs e)

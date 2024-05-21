@@ -33,15 +33,17 @@
             this.DodajBankomatBtn = new System.Windows.Forms.Button();
             this.BankomatGrid = new System.Windows.Forms.DataGridView();
             this.PrikaziKomentareBtn = new System.Windows.Forms.Button();
+            this.PrikaziServiseBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BankomatGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // IzbrisiBankomatBtn
             // 
             this.IzbrisiBankomatBtn.Enabled = false;
-            this.IzbrisiBankomatBtn.Location = new System.Drawing.Point(12, 409);
+            this.IzbrisiBankomatBtn.Location = new System.Drawing.Point(16, 503);
+            this.IzbrisiBankomatBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.IzbrisiBankomatBtn.Name = "IzbrisiBankomatBtn";
-            this.IzbrisiBankomatBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzbrisiBankomatBtn.Size = new System.Drawing.Size(267, 41);
             this.IzbrisiBankomatBtn.TabIndex = 12;
             this.IzbrisiBankomatBtn.Text = "Izbrisi Bankomat";
             this.IzbrisiBankomatBtn.UseVisualStyleBackColor = true;
@@ -50,9 +52,10 @@
             // IzmeniBankomatBtn
             // 
             this.IzmeniBankomatBtn.Enabled = false;
-            this.IzmeniBankomatBtn.Location = new System.Drawing.Point(12, 370);
+            this.IzmeniBankomatBtn.Location = new System.Drawing.Point(16, 455);
+            this.IzmeniBankomatBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.IzmeniBankomatBtn.Name = "IzmeniBankomatBtn";
-            this.IzmeniBankomatBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzmeniBankomatBtn.Size = new System.Drawing.Size(267, 41);
             this.IzmeniBankomatBtn.TabIndex = 11;
             this.IzmeniBankomatBtn.Text = "Izmeni Bankomat";
             this.IzmeniBankomatBtn.UseVisualStyleBackColor = true;
@@ -60,9 +63,10 @@
             // 
             // DodajBankomatBtn
             // 
-            this.DodajBankomatBtn.Location = new System.Drawing.Point(12, 330);
+            this.DodajBankomatBtn.Location = new System.Drawing.Point(16, 406);
+            this.DodajBankomatBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DodajBankomatBtn.Name = "DodajBankomatBtn";
-            this.DodajBankomatBtn.Size = new System.Drawing.Size(200, 33);
+            this.DodajBankomatBtn.Size = new System.Drawing.Size(267, 41);
             this.DodajBankomatBtn.TabIndex = 10;
             this.DodajBankomatBtn.Text = "Dodaj Bankomat";
             this.DodajBankomatBtn.UseVisualStyleBackColor = true;
@@ -75,37 +79,52 @@
             this.BankomatGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BankomatGrid.ColumnHeadersHeight = 29;
             this.BankomatGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.BankomatGrid.Location = new System.Drawing.Point(12, 15);
+            this.BankomatGrid.Location = new System.Drawing.Point(16, 18);
+            this.BankomatGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BankomatGrid.MultiSelect = false;
             this.BankomatGrid.Name = "BankomatGrid";
             this.BankomatGrid.ReadOnly = true;
             this.BankomatGrid.RowHeadersWidth = 51;
             this.BankomatGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.BankomatGrid.Size = new System.Drawing.Size(890, 309);
+            this.BankomatGrid.Size = new System.Drawing.Size(1187, 380);
             this.BankomatGrid.TabIndex = 9;
             this.BankomatGrid.SelectionChanged += new System.EventHandler(this.BankomatGrid_SelectionChanged);
             // 
             // PrikaziKomentareBtn
             // 
-            this.PrikaziKomentareBtn.Location = new System.Drawing.Point(702, 330);
+            this.PrikaziKomentareBtn.Location = new System.Drawing.Point(936, 406);
+            this.PrikaziKomentareBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PrikaziKomentareBtn.Name = "PrikaziKomentareBtn";
-            this.PrikaziKomentareBtn.Size = new System.Drawing.Size(200, 33);
+            this.PrikaziKomentareBtn.Size = new System.Drawing.Size(267, 41);
             this.PrikaziKomentareBtn.TabIndex = 23;
             this.PrikaziKomentareBtn.Text = "Prikazi Komentare";
             this.PrikaziKomentareBtn.UseVisualStyleBackColor = true;
             this.PrikaziKomentareBtn.Click += new System.EventHandler(this.PrikaziKomentareBtn_Click);
             // 
+            // PrikaziServiseBtn
+            // 
+            this.PrikaziServiseBtn.Location = new System.Drawing.Point(936, 467);
+            this.PrikaziServiseBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.PrikaziServiseBtn.Name = "PrikaziServiseBtn";
+            this.PrikaziServiseBtn.Size = new System.Drawing.Size(267, 41);
+            this.PrikaziServiseBtn.TabIndex = 24;
+            this.PrikaziServiseBtn.Text = "Prikazi Sve Servise";
+            this.PrikaziServiseBtn.UseVisualStyleBackColor = true;
+            this.PrikaziServiseBtn.Click += new System.EventHandler(this.PrikaziServiseBtn_Click);
+            // 
             // Form_Bankomat_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 457);
+            this.ClientSize = new System.Drawing.Size(1219, 562);
+            this.Controls.Add(this.PrikaziServiseBtn);
             this.Controls.Add(this.PrikaziKomentareBtn);
             this.Controls.Add(this.IzbrisiBankomatBtn);
             this.Controls.Add(this.IzmeniBankomatBtn);
             this.Controls.Add(this.DodajBankomatBtn);
             this.Controls.Add(this.BankomatGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Form_Bankomat_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -123,5 +142,6 @@
         private System.Windows.Forms.Button DodajBankomatBtn;
         private System.Windows.Forms.DataGridView BankomatGrid;
         private System.Windows.Forms.Button PrikaziKomentareBtn;
+        private System.Windows.Forms.Button PrikaziServiseBtn;
     }
 }

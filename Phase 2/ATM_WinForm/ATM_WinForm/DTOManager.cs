@@ -910,9 +910,9 @@ namespace ATM_WinForm
                     Naziv = fizickoLice.Naziv,
                 };
 
-                s.SaveOrUpdate(fl);
+                s.Save(fl);
 
-                s.Flush();
+                
                 s.Close();
 
             }
@@ -1125,6 +1125,31 @@ namespace ATM_WinForm
         #endregion
 
         #region Kartica 
+
+        public static KarticaBasic VratiKarticu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var k = s.Load<Kartica>(id);
+                RacunBasic racun = VratiRacun(k.Odgovara.Br_racuna);
+                KarticaBasic kartica = new KarticaBasic(k.Id, k.Datum_izdavanje, k.Datum_isteka, k.Dnevni_limit, k.Tip, k.Max_iznos_zaduzenja, k.Max_datum_vracanja_duga, racun);
+                string aa = kartica.Max_datum_vracanja_duga.ToString();
+                if(aa != null)
+                {
+                    kartica.Tip = "kreditna";
+                }
+                s.Close();
+                return kartica;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
         public static List<KarticaBasic> VratiSveKarticeOdRacuna(int racunId)
         {
             List<KarticaBasic> karticaList = new List<KarticaBasic>();
@@ -1221,7 +1246,7 @@ namespace ATM_WinForm
                     existingKartica.Tip = kartica.Tip;
                     existingKartica.Dnevni_limit = kartica.Dnevni_limit;
 
-                    if (existingKartica.Tip != "kreditna")
+                    if (existingKartica.Tip == "kreditna")
                     {
                         existingKartica.Max_iznos_zaduzenja = kartica.Max_iznos_zaduzenja;
                         existingKartica.Max_datum_vracanja_duga = kartica.Max_datum_vracanja_duga;
@@ -1249,6 +1274,111 @@ namespace ATM_WinForm
                 Kartica kartica = s.Load<Kartica>(karticaId);
 
                 s.Delete(kartica);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        #endregion
+
+        #region ServisBankomata
+        public static List<ServisBasic> VratiSveServiseBankomata(int bankomatId)
+        {
+            List<ServisBasic> servisiBankomataList = new List<ServisBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Servis> servisi = from sv in s.Query<Servis>()
+                                              where sv.ServisiraniBankomat.Id == bankomatId
+                                              select sv;
+
+                Console.WriteLine(servisi.Count());
+
+                foreach (Servis se in servisi)
+                {
+                    BankomatBasic bankomat = VratiBankomat(se.ServisiraniBankomat.Id);
+                    servisiBankomataList.Add(new ServisBasic(se.Kod, se.Firma, bankomat));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return servisiBankomataList;
+        }
+
+        public static void DodajServisBankomata(ServisBasic servis)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var bankomat = s.Load<Bankomat>(servis.ServisiraniBankomat.Id);
+
+                Servis sv = new Servis
+                {
+                    Firma = servis.Firma,
+                    ServisiraniBankomat = bankomat,
+                };
+
+                //Console.WriteLine(sv.Firma);
+                //Console.WriteLine(sv.ServisiraniBankomat.Id);
+
+                s.SaveOrUpdate(sv);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniServisBankomat(ServisBasic servis)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Bankomat bankomat = s.Load<Bankomat>(servis.ServisiraniBankomat.Id);
+                Servis sv = s.Load<Servis>(servis.Kod);
+
+                sv.Firma = servis.Firma;
+                sv.ServisiraniBankomat = bankomat;
+
+                s.Update(sv);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiServisBankomata(int servisId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Servis sv = s.Load<Servis>(servisId);
+
+                s.Delete(sv);
 
                 s.Flush();
                 s.Close();

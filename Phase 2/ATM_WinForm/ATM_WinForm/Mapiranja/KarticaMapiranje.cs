@@ -15,6 +15,7 @@ namespace ATM_WinForm.Mapiranja
             //Mapiranje tabele
             Table("KARTICA");
 
+            
             //mapiranje podklasa
             DiscriminateSubClassesOnColumn("TIP");
 
@@ -23,6 +24,7 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Datum_izdavanje, "DATUM_IZDAVANJA");
             Map(x => x.Datum_isteka, "DATUM_ISTEKA");
             Map(x => x.Dnevni_limit, "DNEVNI_LIMIT");
+            
 
             //MAPIRANJE KARTICA-RACUN
             References(x => x.Odgovara).Column("BR_RACUNA").LazyLoad();

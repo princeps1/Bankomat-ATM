@@ -31,8 +31,8 @@ namespace ATM_WinForm.Forme.Kartica
             // Subscribe to the SelectedIndexChanged event
             //TipComboBox.SelectedIndexChanged += TipComboBox_SelectedIndexChanged;
 
-            MaxIznosZaduzenjaTxtBx.Enabled = false;
-            MaxDatumVracanjaDugaDateTimePicker.Enabled = false;
+            //MaxIznosZaduzenjaTxtBx.Enabled = false;
+            //MaxDatumVracanjaDugaDateTimePicker.Enabled = false;
 
             switch (this.type)
             {

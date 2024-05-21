@@ -30,9 +30,14 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual IList<BankomatKomentari> Komentari { get; set; }
 
+        //MAPIRANJE BANKOMAT- SERVIS BANKOMATA
+        [Browsable(false)]
+        public virtual IList<Servis> Servisi { get; set; }
+
         public Bankomat()
         {
             Komentari = new List<BankomatKomentari>();
+            Servisi = new List<Servis>();
         }
 
     }

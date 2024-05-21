@@ -135,5 +135,20 @@ namespace ATM_WinForm.Forme.Bankomat
                 }
             }
         }
+
+        private void PrikaziServiseBtn_Click(object sender, EventArgs e)
+        {
+            if (BankomatGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = BankomatGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var bankomat = BankomatGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankomatBasic;
+                    var ListaServisaForm = new Form_Servis_Main(bankomat.Id);
+                    ListaServisaForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
+                }
+            }
+        }
     }
 }

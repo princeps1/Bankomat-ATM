@@ -20,6 +20,9 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE veze 1:N --> BANKOMAT-KOMENTAR
             HasMany(x => x.Komentari).KeyColumn("ID_BANKOMATA").LazyLoad().Cascade.All().Inverse();
+
+            //MAPIRANJE veze 1:N --> BANKOMAT-SERVIS
+            HasMany(x => x.Servisi).KeyColumn("ID_BANKOMATA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

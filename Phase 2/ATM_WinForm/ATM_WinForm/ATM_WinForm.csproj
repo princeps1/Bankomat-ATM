@@ -116,6 +116,7 @@
     <Compile Include="Entiteti\Kartica.cs" />
     <Compile Include="Entiteti\Klijent.cs" />
     <Compile Include="Entiteti\KomentarKlijenta.cs" />
+    <Compile Include="Entiteti\OtklonjenaGreskaServisa.cs" />
     <Compile Include="Entiteti\PravnoLice.cs" />
     <Compile Include="Entiteti\Racun.cs" />
     <Compile Include="Entiteti\RacunOvlascenoLice.cs" />
@@ -179,6 +180,18 @@
     </Compile>
     <Compile Include="Forme\Bankomat\Form_Bankomat_Servisi_AddUpdate.Designer.cs">
       <DependentUpon>Form_Bankomat_Servisi_AddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_OtklonjeneGreske_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_OtklonjeneGreske_AddUpdate.Designer.cs">
+      <DependentUpon>Form_OtklonjeneGreske_AddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_OtklonjeneGreske_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Bankomat\Form_OtklonjeneGreske_Main.Designer.cs">
+      <DependentUpon>Form_OtklonjeneGreske_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Bankomat\Form_Servis_Main.cs">
       <SubType>Form</SubType>
@@ -263,6 +276,7 @@
     <Compile Include="Mapiranja\KarticaMapiranje.cs" />
     <Compile Include="Mapiranja\KlijentMapiranje.cs" />
     <Compile Include="Mapiranja\KomentarKlijentaMapiranje.cs" />
+    <Compile Include="Mapiranja\OtklonjenaGreskaServisaMapiranje.cs" />
     <Compile Include="Mapiranja\PravnoLiceMapiranje.cs" />
     <Compile Include="Mapiranja\RacunMapiranje.cs" />
     <Compile Include="Mapiranja\RacunOvlascenoLiceMapiranje.cs" />
@@ -298,6 +312,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Bankomat\Form_Bankomat_Servisi_AddUpdate.resx">
       <DependentUpon>Form_Bankomat_Servisi_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Bankomat\Form_OtklonjeneGreske_AddUpdate.resx">
+      <DependentUpon>Form_OtklonjeneGreske_AddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Bankomat\Form_OtklonjeneGreske_Main.resx">
+      <DependentUpon>Form_OtklonjeneGreske_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Bankomat\Form_Servis_Main.resx">
       <DependentUpon>Form_Servis_Main.cs</DependentUpon>

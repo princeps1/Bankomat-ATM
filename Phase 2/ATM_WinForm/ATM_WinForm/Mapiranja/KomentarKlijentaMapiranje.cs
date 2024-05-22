@@ -13,7 +13,7 @@ namespace ATM_WinForm.Mapiranja
 
             Map(x => x.Komentar, "KOMENTAR");
 
-            //MAPIRANJE BANKA_BR_TEL-BANKA
+            //MAPIRANJE KOMENTAR KLIJENTA-KLIJENT
             References(x => x.PripadaKlijentu).Column("ID_KLIJENTA").LazyLoad();
         }
     }

@@ -32,6 +32,7 @@
             this.IzbrisiServisBtn = new System.Windows.Forms.Button();
             this.IzmeniServisBtn = new System.Windows.Forms.Button();
             this.DodajServisBtn = new System.Windows.Forms.Button();
+            this.PrikaziGreskeBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ServisiGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,11 +89,23 @@
             this.DodajServisBtn.UseVisualStyleBackColor = true;
             this.DodajServisBtn.Click += new System.EventHandler(this.DodajServisBtn_Click);
             // 
+            // PrikaziGreskeBtn
+            // 
+            this.PrikaziGreskeBtn.Location = new System.Drawing.Point(937, 412);
+            this.PrikaziGreskeBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.PrikaziGreskeBtn.Name = "PrikaziGreskeBtn";
+            this.PrikaziGreskeBtn.Size = new System.Drawing.Size(267, 41);
+            this.PrikaziGreskeBtn.TabIndex = 26;
+            this.PrikaziGreskeBtn.Text = "Pregled otklonjenih gresaka";
+            this.PrikaziGreskeBtn.UseVisualStyleBackColor = true;
+            this.PrikaziGreskeBtn.Click += new System.EventHandler(this.PrikaziGreskeBtn_Click);
+            // 
             // Form_Servis_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1228, 571);
+            this.Controls.Add(this.PrikaziGreskeBtn);
             this.Controls.Add(this.IzbrisiServisBtn);
             this.Controls.Add(this.IzmeniServisBtn);
             this.Controls.Add(this.DodajServisBtn);
@@ -111,5 +124,6 @@
         private System.Windows.Forms.Button IzbrisiServisBtn;
         private System.Windows.Forms.Button IzmeniServisBtn;
         private System.Windows.Forms.Button DodajServisBtn;
+        private System.Windows.Forms.Button PrikaziGreskeBtn;
     }
 }

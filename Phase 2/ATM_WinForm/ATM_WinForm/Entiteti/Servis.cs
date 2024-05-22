@@ -15,5 +15,14 @@ namespace ATM_WinForm.Entiteti
         //MAPIRANJE SERVIS-BANKOMAT
         [Browsable(false)]
         public virtual Bankomat ServisiraniBankomat { get; set; }
+
+        //MAPIRANJE SERVIS-OTKLONJENA GRESKA
+        [Browsable(false)]
+        public virtual IList<OtklonjenaGreskaServisa> Otklonjene_Greske { get; set; }
+
+        public Servis()
+        {
+            Otklonjene_Greske = new List<OtklonjenaGreskaServisa>();
+        }
     }
 }

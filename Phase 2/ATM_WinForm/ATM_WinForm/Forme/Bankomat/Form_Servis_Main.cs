@@ -112,5 +112,20 @@ namespace ATM_WinForm.Forme.Bankomat
                 IzbrisiServisBtn.Enabled = false;
             }
         }
+
+        private void PrikaziGreskeBtn_Click(object sender, EventArgs e)
+        {
+            if (ServisiGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = ServisiGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var servis = ServisiGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.ServisBasic;
+                    var ListaGresakaForm = new Form_OtklonjeneGreske_Main(servis.Kod);
+                    ListaGresakaForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
+                }
+            }
+        }
     }
 }

@@ -424,6 +424,10 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual BankomatBasic ServisiraniBankomat { get; set; }
 
+            //MAPIRANJE SERVIS-OTKLONJENE GRESKE
+            [Browsable(false)]
+            public virtual IList<OtklonjenaGreskaServisaBasic> OtklonjeneGreske { get; set; }
+
             public ServisBasic(int kod, string firma, BankomatBasic bankomat)
             {
 
@@ -432,7 +436,35 @@ namespace ATM_WinForm
                 this.ServisiraniBankomat = bankomat;
             }
 
-            public ServisBasic() { }
+            public ServisBasic() 
+            {
+                //MAPIRANJE SERVIS-OTKLONJENE GRESKE
+                OtklonjeneGreske = new List<OtklonjenaGreskaServisaBasic>();
+            }
+        }
+
+        public class OtklonjenaGreskaServisaBasic
+        {
+            [Browsable(false)]
+            public virtual int Id { get; protected set; }
+
+            [DisplayName("Otklonjena greska")]
+            public virtual string Otklonjena_greska { get; set; }
+
+
+            //MAPIRANJE OTKLONJENA GRESKA-SERVIS
+            [Browsable(false)]
+            public virtual ServisBasic PripadaServisu { get; set; }
+
+
+            public OtklonjenaGreskaServisaBasic(int id, string greska, ServisBasic servis)
+            {
+                this.Id = id;
+                this.Otklonjena_greska = greska;
+                this.PripadaServisu = servis;
+            }
+
+            public OtklonjenaGreskaServisaBasic() { }
         }
 
 

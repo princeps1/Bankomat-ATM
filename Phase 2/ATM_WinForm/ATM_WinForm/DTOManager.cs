@@ -1389,6 +1389,128 @@ namespace ATM_WinForm
                 Console.WriteLine(e.Message);
             }
         }
+
+        public static ServisBasic VratiServis(int kod)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var b = s.Load<Servis>(kod);
+
+                BankomatBasic bankomat = VratiBankomat(b.ServisiraniBankomat.Id);
+                var servis = new ServisBasic(b.Kod, b.Firma, bankomat);
+
+                s.Close();
+
+                return servis;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        #endregion
+
+        #region Otklonjena Greska Servisa
+        public static List<OtklonjenaGreskaServisaBasic> VratiSveOtklonjeneGreskeServisa(int kodServisa)
+        {
+            List<OtklonjenaGreskaServisaBasic> otklonjeneGreskeList = new List<OtklonjenaGreskaServisaBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<OtklonjenaGreskaServisa> greske = from g in s.Query<OtklonjenaGreskaServisa>()
+                                                          where g.PripadaServisu.Kod == kodServisa
+                                                              select g;
+
+                foreach (OtklonjenaGreskaServisa gr in greske)
+                {
+                    ServisBasic servis = VratiServis(gr.PripadaServisu.Kod);
+                    otklonjeneGreskeList.Add(new OtklonjenaGreskaServisaBasic(gr.Id, gr.Otklonjena_greska, servis));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return otklonjeneGreskeList;
+        }
+
+        public static void DodajOtklonjenuGreskuServisa(OtklonjenaGreskaServisaBasic greska)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var servis = s.Load<Servis>(greska.PripadaServisu.Kod);
+
+                OtklonjenaGreskaServisa gr = new OtklonjenaGreskaServisa
+                {
+                    Otklonjena_greska = greska.Otklonjena_greska,
+                    PripadaServisu = servis
+                };
+
+                s.SaveOrUpdate(gr);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniOtklonjenuGreskuServisa(OtklonjenaGreskaServisaBasic greska)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Servis servis = s.Load<Servis>(greska.PripadaServisu.Kod);
+                OtklonjenaGreskaServisa gres = s.Load<OtklonjenaGreskaServisa>(greska.Id);
+
+                gres.Otklonjena_greska = greska.Otklonjena_greska;
+                gres.PripadaServisu = servis;
+
+                s.Update(gres);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiOtklonjenuGreskuServisa(int greskaId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                OtklonjenaGreskaServisa gr = s.Load<OtklonjenaGreskaServisa>(greskaId);
+
+                s.Delete(gr);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         #endregion
     }
 }

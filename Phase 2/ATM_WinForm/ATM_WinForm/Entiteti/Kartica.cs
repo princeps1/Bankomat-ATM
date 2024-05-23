@@ -30,6 +30,15 @@ namespace ATM_WinForm.Entiteti
         //MAPIRANJE KARTICA-RACUN
         [Browsable(false)]
         public virtual Racun Odgovara { get; set; }
+
+        //TERNARNA
+        public virtual IList<Koristi_Za_Podizanje_Novca> Koristi_Za_Podizanje_Novca { get; set; }
+
+        public Kartica()
+        {
+            Koristi_Za_Podizanje_Novca = new List<Koristi_Za_Podizanje_Novca>();
+        }
+
     }
 
     public class DebitnaKartica : Kartica

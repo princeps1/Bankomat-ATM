@@ -23,6 +23,9 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE veze 1:N --> BANKOMAT-SERVIS
             HasMany(x => x.Servisi).KeyColumn("ID_BANKOMATA").LazyLoad().Cascade.All().Inverse();
+            
+            //TERNARNA
+            HasMany(x => x.Koristi_Za_Podizanje_Novca).KeyColumn("ID_BANKOMATA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

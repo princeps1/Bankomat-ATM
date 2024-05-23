@@ -19,6 +19,10 @@ namespace ATM_WinForm.Mapiranja
             Map(x => x.Vreme_Podizanja_Novca, "VREME");
             Map(x => x.Datum_Podizanja_Novca, "DATUM");
 
+            //TERNARNA
+            HasMany(x => x.Koristi_Za_Podizanje_Novca).KeyColumn("ID_TRANSAKCIJE").LazyLoad().Cascade.All().Inverse();
+            ;
+
         }
     }
 }

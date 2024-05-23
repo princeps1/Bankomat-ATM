@@ -17,5 +17,13 @@ namespace ATM_WinForm.Entiteti
 
         [DisplayName("VREME PODIZANJA NOVCA")]
         public virtual DateTime Vreme_Podizanja_Novca { get; set; }
+
+        //TERNARNA
+        public virtual IList<Koristi_Za_Podizanje_Novca> Koristi_Za_Podizanje_Novca { get; set; }
+
+        public Transakcija()
+        {
+            Koristi_Za_Podizanje_Novca = new List<Koristi_Za_Podizanje_Novca>();
+        }
     }
 }

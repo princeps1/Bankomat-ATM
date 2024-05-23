@@ -8,22 +8,17 @@ using ATM_WinForm.Entiteti;
 
 namespace ATM_WinForm.Mapiranja
 {
-    //public class Koristi_Za_Podizanje_Novca_Mapiranje : ClassMap<ATM_WinForm.Entiteti.Koristi_Za_Podizanje_Novca>
-    //{
-    //    public Koristi_Za_Podizanje_Novca_Mapiranje()
-    //    {
-    //        Table("KORISTI_ZA_PODIZANJE_NOVCA");
+    public class Koristi_Za_Podizanje_Novca_Mapiranje : ClassMap<ATM_WinForm.Entiteti.Koristi_Za_Podizanje_Novca>
+    {
+        public Koristi_Za_Podizanje_Novca_Mapiranje()
+        {
+            Table("KORISTI_ZA_PODIZANJE_NOVCA");
 
-    //        Id(x => x.ID_Transakcije, "ID_TRANSAKCIJE").GeneratedBy.TriggerIdentity();
-
-    //        //MAPIRANJE 1:N  --> KORISTI ZA PODIZANJE NOVCA-BANKOMAT
-    //        References(x => x.ID_Bankomata).Column("ID_BANKOMATA").LazyLoad();
-
-    //        //MAPIRANJE 1:N  --> KORISTI ZA PODIZANJE NOVCA-KARTICA
-    //        References(x => x.ID_Kartice).Column("ID_KARTICE").LazyLoad();
-
-    //        //MAPIRANJE 
-    //        References(x => x.ID_Transakcije).Column("ID_TRANSAKCIJE").LazyLoad();
-    //    }
-    //}
+            //TERNARNA
+            Id(x => x.Id).GeneratedBy.Identity();
+            References(x => x.Bankomat).Column("ID_BANKOMATA");
+            References(x => x.Kartica).Column("ID_KARTICE");
+            References(x => x.Transakcija).Column("ID_TRANSAKCIJE");
+        }
+    }
 }

@@ -28,6 +28,10 @@ namespace ATM_WinForm.Mapiranja
 
             //MAPIRANJE KARTICA-RACUN
             References(x => x.Odgovara).Column("BR_RACUNA").LazyLoad();
+
+            //TERNARNA
+            HasMany(x => x.Koristi_Za_Podizanje_Novca).KeyColumn("ID_KARTICE").LazyLoad().Cascade.All().Inverse();
+            
         }
     }
 

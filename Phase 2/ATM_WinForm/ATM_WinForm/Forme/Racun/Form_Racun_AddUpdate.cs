@@ -24,6 +24,8 @@ namespace ATM_WinForm.Forme.Racun
             this.racun = racun;
             this.klijentId = klijentId;
 
+            radioButton1.Checked = true;
+
             switch (this.type)
             {
                 case "add":
@@ -149,7 +151,7 @@ namespace ATM_WinForm.Forme.Racun
                             this.racun.Datum_otvaranja = DatumOtvaranjaRacunaDateTimePicker.Value;
                             this.racun.Tekuci_saldo = TekuciSaldoTxtBx.Text;
                             this.racun.JePovezan = DTOManager.VratiBanku((int)BankeComboBox.SelectedValue);
-                            this.racun.Koristi = DTOManager.VratiKlijenta(klijentId);
+                            this.racun.Koristi = DTOManager.VratiKlijenta(racun.Koristi.Id);
 
                             if (radioButton1.Checked)
                             {

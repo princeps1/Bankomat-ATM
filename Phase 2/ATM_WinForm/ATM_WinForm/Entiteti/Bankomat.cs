@@ -34,11 +34,19 @@ namespace ATM_WinForm.Entiteti
         [Browsable(false)]
         public virtual IList<Servis> Servisi { get; set; }
 
+        //TERNARNA
+        public virtual IList<Koristi_Za_Podizanje_Novca> Koristi_Za_Podizanje_Novca { get; set; }
+
         public Bankomat()
         {
             Komentari = new List<BankomatKomentari>();
             Servisi = new List<Servis>();
+
+            //TERNARNA
+            Koristi_Za_Podizanje_Novca = new List<Koristi_Za_Podizanje_Novca>();
         }
+
+        
 
     }
 }

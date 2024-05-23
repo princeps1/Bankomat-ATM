@@ -17,7 +17,7 @@ namespace ATM_WinForm
             {
                 lock (_locker)
                 {
-                    if( _sessionFactory == null)
+                    if (_sessionFactory == null)
                     {
                         _sessionFactory = CreateSessionFactory();
                     }

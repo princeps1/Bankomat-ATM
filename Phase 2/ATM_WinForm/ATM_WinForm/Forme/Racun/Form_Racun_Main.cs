@@ -35,12 +35,12 @@ namespace ATM_WinForm.Forme.Racun
             else if(this.bankaId != -1)
             {
                 racuni = DTOManager.VratiSveRacuneOdBanke(this.bankaId);
-                DodajRacunBtn.Visible = false;
+                PrikaziKorisnikaBtn.Text = "Prikazi Banku";
             }
             else if(this.klijentId != -1)
             {
                 racuni = DTOManager.VratiSveRacuneOdKlijenta(this.klijentId);
-                PrikaziKorisnikaBtn.Visible = false;
+                PrikaziKorisnikaBtn.Text = "Prikazi Banku";
             }
 
             bindingSource.DataSource = racuni;
@@ -80,9 +80,12 @@ namespace ATM_WinForm.Forme.Racun
 
 
                 ATM_WinForm.Entiteti.Klijent klijent = s.Get<ATM_WinForm.Entiteti.Klijent>(racun.Koristi.Id);
+                ATM_WinForm.Entiteti.Banka banka = s.Get<ATM_WinForm.Entiteti.Banka>(racun.JePovezan.Id);
 
-
-                MessageBox.Show($"Naziv klijenta:  {klijent.Naziv}\nBroj telefona: {klijent.Br_tel}\nEmail:{klijent.Email}");
+                if(this.bankaId == -1)
+                    MessageBox.Show($"Naziv banke:  {banka.Ime}\n");
+                else if(this.klijentId == -1)
+                    MessageBox.Show($"Naziv klijenta:  {klijent.Naziv}\nBroj telefona: {klijent.Br_tel}\nEmail:{klijent.Email}");
 
                 s.Close();
             }

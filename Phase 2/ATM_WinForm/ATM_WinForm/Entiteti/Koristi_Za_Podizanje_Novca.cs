@@ -4,16 +4,18 @@ using System.ComponentModel;
 
 namespace ATM_WinForm.Entiteti
 {
-    //public class Koristi_Za_Podizanje_Novca
-    //{
+    public class Koristi_Za_Podizanje_Novca
+    {
+        [DisplayName("ID")]
+        public virtual int Id { get; set; }
 
-    //    [DisplayName("BANKOMAT")]
-    //    public virtual int ID_Bankomata { get; set; }
+        [DisplayName("ID BANKOMATA")]
+        public virtual Bankomat Bankomat { get; set; }
 
-    //    [DisplayName("KARTICA")]
-    //    public virtual int ID_Kartice { get; set; }
+        [DisplayName("ID KARTICE")]
+        public virtual Kartica Kartica { get; set; }
 
-    //    [DisplayName("TRANSAKCIJA")]
-    //    public virtual int ID_Transakcije { get; set; }
-    //}
+        [DisplayName("ID TRANSAKCIJE")]
+        public virtual Transakcija Transakcija { get; set; }
+    }
 }

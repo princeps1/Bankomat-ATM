@@ -52,6 +52,7 @@ namespace ATM_WinForm.Forme.Kartica
                         DatumIstekaDateTimePicker.Text = kartica.Datum_isteka.ToString();
                         DnevniLimitTxtBx.Text = kartica.Dnevni_limit;
                         TipComboBox.Text = kartica.Tip;
+                        TipComboBox.Enabled = false;
 
                         if(kartica.Tip == "kreditna")
                         {

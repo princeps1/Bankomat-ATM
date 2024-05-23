@@ -111,6 +111,7 @@ namespace ATM_WinForm
 
             public BankomatKomentariBasic() { }
         }
+
         public class BankomatBasic
         {
             [DisplayName("ID")]
@@ -305,6 +306,8 @@ namespace ATM_WinForm
                 Poreski_id = poreski_id;
                 this.Naziv = naziv;
             }
+
+            public PravnoLiceBasic() { }
         }
 
         public class FizickoLiceBasic : KlijentBasic

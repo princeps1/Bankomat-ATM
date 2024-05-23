@@ -109,40 +109,8 @@ namespace ATM_WinForm
         {
             var BankaMainForm = new Form_Banka_Main();
             BankaMainForm.ShowDialog();
-
-            //KlijentBasic klijent = DTOManager.DodajKlijenta(new KlijentBasic { Adresa = "awdawda", Br_tel = "dawdwadawd", Naziv = "dawdadada", Email = "dawdwadwad@dawad.com" });
-
-            //FizickoLiceBasic fizickoLice = new FizickoLiceBasic("214214", DateTime.Now, "Mata", "Maroko", "Martic", "21421421", "PK", klijent.Id, "naziv", "13843298543254", "dawdad@dawad.com", "dwaduwk21431284jhkjdawaw");
-
-            //DTOManager.DodajFizickoLice(new FizickoLiceBasic
-            //{
-            //    Adresa = "dawdad",
-            //    Br_licne_karte = "dawdwad",
-            //    Datum_rodjenja = DateTime.Now,
-            //    Br_tel = "7284214",
-            //    Ime_roditelja = "Dawkjdjadad",
-            //    Email = "DWAD@ddawd.com",
-            //    LIme = "dawwdad",
-            //    Mesto_izdavanja = "dwqadwad",
-            //    JMBG = "12345891234",
-            //    Naziv = "dawdkad",
-            //    Prezime = "dawad"
-            //});
-
-            //MessageBox.Show("Dodato @");
         }
 
-        private void SectionFilijaleBtn_Click(object sender, EventArgs e)
-        {
-            var FilijalaMainForm = new Form_Filijala_Main();
-            FilijalaMainForm.ShowDialog();
-        }
-
-        private void SectionRacuniBtn_Click(object sender, EventArgs e)
-        {
-            var RacuniMainForm = new Form_Racun_Main();
-            RacuniMainForm.ShowDialog();
-        }
 
         private void SectionKlijentiBtn_Click(object sender, EventArgs e)
         {

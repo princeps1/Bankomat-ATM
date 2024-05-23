@@ -747,6 +747,35 @@ namespace ATM_WinForm
             return racunList;
         }
 
+        public static List<RacunBasic> VratiSveRacuneOdKlijenta(int klijentId)
+        {
+            List<RacunBasic> racunList = new List<RacunBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Racun> racuni = from r in s.Query<Racun>()
+                                            where r.Koristi.Id == klijentId
+                                            select r;
+
+                foreach (Racun r in racuni)
+                {
+                    BankaBasic banka = VratiBanku(r.JePovezan.Id);
+                    KlijentBasic klijent = VratiKlijenta(r.Koristi.Id);
+                    racunList.Add(new RacunBasic(r.Br_racuna, r.Datum_otvaranja, r.Tekuci_saldo, r.Tip, r.Valuta, banka, klijent));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return racunList;
+        }
+
         public static RacunBasic VratiRacun(int id)
         {
             try
@@ -766,6 +795,115 @@ namespace ATM_WinForm
             {
                 Console.WriteLine(e.Message);
                 return null;
+            }
+        }
+
+        public static void DodajRacun(RacunBasic racun)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var klijent  = s.Load<Klijent>(racun.Koristi.Id);
+                var banka = s.Load<Banka>(racun.JePovezan.Id);
+
+                if (racun.Tip == "devizni")
+                {
+                    DevizniRacun r =  new DevizniRacun
+                    {
+                        Tip = racun.Tip,
+                        Valuta = racun.Valuta,
+                        Tekuci_saldo = racun.Tekuci_saldo,
+                        Datum_otvaranja = racun.Datum_otvaranja,
+                        Koristi = klijent,
+                        JePovezan = banka
+
+                    };
+
+                    s.SaveOrUpdate(r);
+                }
+                else if (racun.Tip == "dinarski")
+                {
+                    DinarskiRacun r = new DinarskiRacun
+                    {
+                        Tip = racun.Tip,
+                        Tekuci_saldo = racun.Tekuci_saldo,
+                        Datum_otvaranja = racun.Datum_otvaranja,
+                        Koristi = klijent,
+                        JePovezan = banka
+                    };
+
+                    s.SaveOrUpdate(r);
+                }
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniRacun(RacunBasic racun)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                // Učitavanje postojećeg Računa
+                var klijent = s.Load<Klijent>(racun.Koristi.Id);
+                var banka = s.Load<Banka>(racun.JePovezan.Id);
+
+                // Učitavanje postojeće Kartice objekta iz baze
+                var existingRacun = s.Load<Racun>(racun.Br_racuna);
+
+                if (existingRacun != null)
+                {
+                    // Ažuriranje postojeće Kartice objekta
+                    existingRacun.Datum_otvaranja = racun.Datum_otvaranja;
+                    existingRacun.Tekuci_saldo = racun.Tekuci_saldo;
+                    existingRacun.Tip = racun.Tip;
+                    existingRacun.JePovezan = banka;
+
+                    if (existingRacun.Tip == "debitna")
+                    {
+                        existingRacun.Valuta = racun.Valuta;
+ 
+                    }
+
+                    existingRacun.Koristi = klijent;
+                    // Sačuvajte promene
+                    s.Update(existingRacun);
+                }
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiRacun(int racunId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Racun racun = s.Load<Racun>(racunId);
+
+                s.Delete(racun);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
         #endregion
@@ -913,6 +1051,123 @@ namespace ATM_WinForm
                 s.Save(fl);
 
                 
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void DodajPravnoLice(PravnoLiceBasic pravnoLice)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                PravnoLice pr = new PravnoLice
+                {
+                    Poreski_id = pravnoLice.Poreski_id,
+                    Adresa = pravnoLice.Adresa,
+                    Br_tel = pravnoLice.Br_tel,
+                    Email = pravnoLice.Email,
+                    Naziv = pravnoLice.Naziv,
+                };
+
+                s.Save(pr);
+
+
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        
+        public static void IzmeniPravnoLice(PravnoLiceBasic pravnoLice)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+
+                // Učitavanje postojeće Kartice objekta iz baze
+                var existingPravnoLice = s.Load<PravnoLice>(pravnoLice.Id);
+
+                if (existingPravnoLice != null)
+                {
+                    // Ažuriranje postojeće Kartice objekta
+                    existingPravnoLice.Poreski_id = pravnoLice.Poreski_id;
+                    existingPravnoLice.Adresa = pravnoLice.Adresa;
+                    existingPravnoLice.Br_tel = pravnoLice.Br_tel;
+                    existingPravnoLice.Email = pravnoLice.Email;
+                    existingPravnoLice.Naziv = pravnoLice.Naziv;
+
+                    // Sačuvajte promene
+                    s.Update(existingPravnoLice);
+                }
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzmeniFizickoLice(FizickoLiceBasic fizickoLice)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+
+                // Učitavanje postojeće Kartice objekta iz baze
+                var existingFizickoLice = s.Load<FizickoLice>(fizickoLice.Id);
+
+                if (existingFizickoLice != null)
+                {
+                    // Ažuriranje postojeće Kartice objekta
+                    existingFizickoLice.JMBG = fizickoLice.JMBG;
+                    existingFizickoLice.Datum_rodjenja = fizickoLice.Datum_rodjenja;
+                    existingFizickoLice.LIme = fizickoLice.LIme;
+                    existingFizickoLice.Ime_roditelja = fizickoLice.Ime_roditelja;
+                    existingFizickoLice.Prezime = fizickoLice.Prezime;
+                    existingFizickoLice.Br_licne_karte = fizickoLice.Br_licne_karte;
+                    existingFizickoLice.Mesto_izdavanja = fizickoLice.Mesto_izdavanja;
+                    existingFizickoLice.Br_tel = fizickoLice.Br_tel;
+                    existingFizickoLice.Email = fizickoLice.Email;
+                    existingFizickoLice.Adresa = fizickoLice.Adresa;
+
+                    // Sačuvajte promene
+                    s.Update(existingFizickoLice);
+                }
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void IzbrisiKlijenta(int klijentId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Klijent klijent = s.Load<Klijent>(klijentId);
+
+                s.Delete(klijent);
+
+                s.Flush();
                 s.Close();
 
             }
@@ -1160,6 +1415,8 @@ namespace ATM_WinForm
                 IEnumerable<Kartica> kartice = from k in s.Query<Kartica>()
                                             where k.Odgovara.Br_racuna == racunId
                                             select k;
+
+                Console.WriteLine(karticaList.ToString());
 
                 foreach (Kartica k in kartice)
                 {

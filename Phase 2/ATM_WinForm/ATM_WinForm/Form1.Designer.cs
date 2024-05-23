@@ -32,8 +32,6 @@
             this.welcomeMsg = new System.Windows.Forms.TextBox();
             this.descOfWlcmMsg = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.SectionFilijaleBtn = new System.Windows.Forms.Button();
-            this.SectionRacuniBtn = new System.Windows.Forms.Button();
             this.SectionKlijentiBtn = new System.Windows.Forms.Button();
             this.SectionBankomatiBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -84,29 +82,9 @@
             this.textBox1.Text = "MMF Korporacija ®";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // SectionFilijaleBtn
-            // 
-            this.SectionFilijaleBtn.Location = new System.Drawing.Point(61, 209);
-            this.SectionFilijaleBtn.Name = "SectionFilijaleBtn";
-            this.SectionFilijaleBtn.Size = new System.Drawing.Size(453, 38);
-            this.SectionFilijaleBtn.TabIndex = 8;
-            this.SectionFilijaleBtn.Text = "Filijale";
-            this.SectionFilijaleBtn.UseVisualStyleBackColor = true;
-            this.SectionFilijaleBtn.Click += new System.EventHandler(this.SectionFilijaleBtn_Click);
-            // 
-            // SectionRacuniBtn
-            // 
-            this.SectionRacuniBtn.Location = new System.Drawing.Point(61, 253);
-            this.SectionRacuniBtn.Name = "SectionRacuniBtn";
-            this.SectionRacuniBtn.Size = new System.Drawing.Size(453, 38);
-            this.SectionRacuniBtn.TabIndex = 9;
-            this.SectionRacuniBtn.Text = "Racuni";
-            this.SectionRacuniBtn.UseVisualStyleBackColor = true;
-            this.SectionRacuniBtn.Click += new System.EventHandler(this.SectionRacuniBtn_Click);
-            // 
             // SectionKlijentiBtn
             // 
-            this.SectionKlijentiBtn.Location = new System.Drawing.Point(61, 297);
+            this.SectionKlijentiBtn.Location = new System.Drawing.Point(61, 209);
             this.SectionKlijentiBtn.Name = "SectionKlijentiBtn";
             this.SectionKlijentiBtn.Size = new System.Drawing.Size(453, 38);
             this.SectionKlijentiBtn.TabIndex = 10;
@@ -133,14 +111,12 @@
             this.ClientSize = new System.Drawing.Size(580, 431);
             this.Controls.Add(this.SectionBankomatiBtn);
             this.Controls.Add(this.SectionKlijentiBtn);
-            this.Controls.Add(this.SectionRacuniBtn);
-            this.Controls.Add(this.SectionFilijaleBtn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.descOfWlcmMsg);
             this.Controls.Add(this.welcomeMsg);
             this.Controls.Add(this.SectionBankeBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -155,8 +131,6 @@
         private System.Windows.Forms.TextBox welcomeMsg;
         private System.Windows.Forms.TextBox descOfWlcmMsg;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button SectionFilijaleBtn;
-        private System.Windows.Forms.Button SectionRacuniBtn;
         private System.Windows.Forms.Button SectionKlijentiBtn;
         private System.Windows.Forms.Button SectionBankomatiBtn;
     }

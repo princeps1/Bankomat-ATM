@@ -12,12 +12,14 @@ namespace ATM_WinForm.Forme.Racun
     public partial class Form_Racun_Main : Form
     {
         private readonly int bankaId = -1;
+        private readonly int klijentId = -1;
         private readonly BindingSource bindingSource = new BindingSource();
         List<ATM_WinForm.DTOs.RacunBasic> racuni = null;
-        public Form_Racun_Main(int bankaId = -1)
+        public Form_Racun_Main(int bankaId = -1, int klijentId = -1)
         {
             InitializeComponent();
             this.bankaId = bankaId;
+            this.klijentId = klijentId;
 
             RacunGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -25,13 +27,20 @@ namespace ATM_WinForm.Forme.Racun
 
         private void Form_Racun_Main_Load(object sender, EventArgs e)
         {
-            if (this.bankaId == -1)
+            if (this.bankaId == -1 && this.klijentId == -1)
             {
                 racuni = DTOManager.VratiSveRacune();
+                DodajRacunBtn.Visible = true;
             }
-            else
+            else if(this.bankaId != -1)
             {
                 racuni = DTOManager.VratiSveRacuneOdBanke(this.bankaId);
+                DodajRacunBtn.Visible = false;
+            }
+            else if(this.klijentId != -1)
+            {
+                racuni = DTOManager.VratiSveRacuneOdKlijenta(this.klijentId);
+                PrikaziKorisnikaBtn.Visible = false;
             }
 
             bindingSource.DataSource = racuni;
@@ -107,6 +116,72 @@ namespace ATM_WinForm.Forme.Racun
                     var racun = RacunGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.RacunBasic;
                     var SpisakSvihOvlascenihLicaForm = new Form_Racun_OvlascenoLice_Main(racun.Br_racuna);
                     SpisakSvihOvlascenihLicaForm.ShowDialog();
+                }
+            }
+        }
+
+        private void DodajRacunBtn_Click(object sender, EventArgs e)
+        {
+            var dodajIzmeniRacunForm = new Form_Racun_AddUpdate("add", null, klijentId);
+            dodajIzmeniRacunForm.ShowDialog();
+            this.PopuniPodacima();
+        }
+
+        private void PopuniPodacima()
+        {
+            racuni.Clear();
+            racuni = DTOManager.VratiSveRacuneOdKlijenta(klijentId);
+            bindingSource.DataSource = racuni;
+            RacunGrid.DataSource = bindingSource;
+        }
+
+        private void IzmeniRacunBtn_Click(object sender, EventArgs e)
+        {
+            if (RacunGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = RacunGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var racun = RacunGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.RacunBasic;
+                    if (racun.Valuta == null)
+                        racun.Tip = "dinarski";
+                    else
+                        racun.Tip = "devizni";
+                    var dodajIzmeniRacunForm = new Form_Racun_AddUpdate("update", racun, this.klijentId);
+                    dodajIzmeniRacunForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
+                }
+            }
+        }
+
+        private void IzbrisiRacunBtn_Click(object sender, EventArgs e)
+        {
+            if (RacunGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = RacunGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+
+                    var racun = RacunGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.RacunBasic;
+
+                    //
+                    string poruka = "Da li zelite da obrisete izabrani racun?";
+                    string title = "Pitanje";
+                    MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                    DialogResult result = MessageBox.Show(poruka, title, buttons);
+                    //
+
+
+                    if (result == DialogResult.OK)
+                    {
+                        DTOManager.IzbrisiRacun(racun.Br_racuna);
+
+                        MessageBox.Show("Uspesno ste izbrisali racun!");
+
+                        RacunGrid.Rows.RemoveAt(rowIndex);
+                    }
+
+
                 }
             }
         }

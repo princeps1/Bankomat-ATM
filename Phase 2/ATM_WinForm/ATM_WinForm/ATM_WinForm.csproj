@@ -116,11 +116,13 @@
     <Compile Include="Entiteti\Kartica.cs" />
     <Compile Include="Entiteti\Klijent.cs" />
     <Compile Include="Entiteti\KomentarKlijenta.cs" />
+    <Compile Include="Entiteti\Koristi_Za_Podizanje_Novca.cs" />
     <Compile Include="Entiteti\OtklonjenaGreskaServisa.cs" />
     <Compile Include="Entiteti\PravnoLice.cs" />
     <Compile Include="Entiteti\Racun.cs" />
     <Compile Include="Entiteti\RacunOvlascenoLice.cs" />
     <Compile Include="Entiteti\Servis.cs" />
+    <Compile Include="Entiteti\Transakcija.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +249,12 @@
     <Compile Include="Forme\Klijent\Form_Klijent_Main.Designer.cs">
       <DependentUpon>Form_Klijent_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Racun\Form_Racun_AddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Racun\Form_Racun_AddUpdate.Designer.cs">
+      <DependentUpon>Form_Racun_AddUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Racun\Form_Racun_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,11 +284,13 @@
     <Compile Include="Mapiranja\KarticaMapiranje.cs" />
     <Compile Include="Mapiranja\KlijentMapiranje.cs" />
     <Compile Include="Mapiranja\KomentarKlijentaMapiranje.cs" />
+    <Compile Include="Mapiranja\Koristi_Za_Podizanje_Novca_Mapiranje.cs" />
     <Compile Include="Mapiranja\OtklonjenaGreskaServisaMapiranje.cs" />
     <Compile Include="Mapiranja\PravnoLiceMapiranje.cs" />
     <Compile Include="Mapiranja\RacunMapiranje.cs" />
     <Compile Include="Mapiranja\RacunOvlascenoLiceMapiranje.cs" />
     <Compile Include="Mapiranja\ServisMapiranje.cs" />
+    <Compile Include="Mapiranja\TransakcijaMapiranje.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -345,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Klijent\Form_Klijent_Main.resx">
       <DependentUpon>Form_Klijent_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Racun\Form_Racun_AddUpdate.resx">
+      <DependentUpon>Form_Racun_AddUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Racun\Form_Racun_Main.resx">
       <DependentUpon>Form_Racun_Main.cs</DependentUpon>

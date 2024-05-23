@@ -56,11 +56,14 @@ namespace ATM_WinForm.Forme.Kartica
                 if (rowIndex != -1)
                 {
                     var kartica = KarticaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.KarticaBasic;
-                    var kartica1 = DTOManager.VratiKarticu(kartica.Id);
-                    var dodajIzmeniBankomatForm = new Form_Kartica_AddUpdate("update", kartica1, this.racunId);
+                    if (kartica.Max_iznos_zaduzenja != null)
+                        kartica.Tip = "kreditna";
+                    else
+                        kartica.Tip = "debitna";
+                    var dodajIzmeniBankomatForm = new Form_Kartica_AddUpdate("update", kartica, this.racunId);
                     dodajIzmeniBankomatForm.ShowDialog();
                     bindingSource.ResetBindings(false);
-                    
+
                 }
             }
         }

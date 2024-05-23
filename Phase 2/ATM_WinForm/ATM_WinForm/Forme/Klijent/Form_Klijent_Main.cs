@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ATM_WinForm.Forme.Racun;
 
 namespace ATM_WinForm.Forme.Klijent
 {
@@ -42,7 +43,6 @@ namespace ATM_WinForm.Forme.Klijent
         //pravna lica - 1
         private void KlijentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
 
             if(this.KlijentComboBox.SelectedIndex.ToString() == "1")
             {
@@ -91,17 +91,105 @@ namespace ATM_WinForm.Forme.Klijent
 
         private void DodajKlijentaBtn_Click(object sender, EventArgs e)
         {
-
+            var dodajIzmeniKlijentaForm = new Form_Klijent_AddUpdate("add", null, null);
+            dodajIzmeniKlijentaForm.ShowDialog();
+            this.PopuniPodacima();
         }
 
         private void IzmeniKlijentaBtn_Click(object sender, EventArgs e)
         {
+            if (KlijentGrid.SelectedCells.Count > 0)
+            {
+                if (KlijentComboBox.SelectedIndex == 1)//pravno lice
+                {
+                    int rowIndex = KlijentGrid.SelectedCells[0].RowIndex;
+                    if (rowIndex != -1)
+                    {
+                        var pravno = KlijentGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.PravnoLiceBasic;
+                        var dodajIzmeniKlijentForm = new Form_Klijent_AddUpdate("update", null, pravno);
+                        dodajIzmeniKlijentForm.ShowDialog();
+                        bindingSource.ResetBindings(false);
+                    }
+                }
+                else if (KlijentComboBox.SelectedIndex == 2)//fizicko lice
+                {
+                    int rowIndex = KlijentGrid.SelectedCells[0].RowIndex;
+                    if (rowIndex != -1)
+                    {
+                        var fizicko = KlijentGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.FizickoLiceBasic;
+                        var dodajIzmeniKlijentForm = new Form_Klijent_AddUpdate("update", fizicko, null);
+                        dodajIzmeniKlijentForm.ShowDialog();
+                        bindingSource.ResetBindings(false);
 
+                    }
+                }
+
+            }
         }
 
         private void IzbrisiKlijentaBtn_Click(object sender, EventArgs e)
         {
+            if (KlijentGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = KlijentGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
 
+                    var kartica = KlijentGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.KlijentBasic;
+
+                    //
+                    string poruka = "Da li zelite da obrisete izabranog klijenta?";
+                    string title = "Pitanje";
+                    MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                    DialogResult result = MessageBox.Show(poruka, title, buttons);
+                    //
+
+
+                    if (result == DialogResult.OK)
+                    {
+                        DTOManager.IzbrisiKlijenta(kartica.Id);
+
+                        MessageBox.Show("Uspesno ste izbrisali karticu!");
+
+                        KlijentGrid.Rows.RemoveAt(rowIndex);
+                    }
+
+
+                }
+            }
+        }
+
+        private void PrikaziRacuneBtn_Click(object sender, EventArgs e)
+        {
+            if (KlijentGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = KlijentGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var klijent = KlijentGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.KlijentBasic;
+                    var ListaRacunaForm = new Form_Racun_Main(-1, klijent.Id);
+                    ListaRacunaForm.ShowDialog();
+                    bindingSource.ResetBindings(false);
+                }
+            }
+        }
+
+        private void KlijentGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (KlijentComboBox.SelectedIndex != 0)
+            {
+                if (KlijentGrid.SelectedRows.Count > 0)
+                {
+                    IzmeniKlijentaBtn.Enabled = true;
+                }
+                else
+                {
+                    IzmeniKlijentaBtn.Enabled = false;
+                }
+            }
+            else
+                IzmeniKlijentaBtn.Enabled = false;
+            IzbrisiKlijentaBtn.Enabled = true;
         }
     }
 }

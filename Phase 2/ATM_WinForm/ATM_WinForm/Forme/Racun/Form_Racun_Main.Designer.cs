@@ -63,6 +63,7 @@
             this.DodajRacunBtn.TabIndex = 7;
             this.DodajRacunBtn.Text = "Dodaj Racun";
             this.DodajRacunBtn.UseVisualStyleBackColor = true;
+            this.DodajRacunBtn.Click += new System.EventHandler(this.DodajRacunBtn_Click);
             // 
             // IzmeniRacunBtn
             // 
@@ -73,6 +74,7 @@
             this.IzmeniRacunBtn.TabIndex = 8;
             this.IzmeniRacunBtn.Text = "Izmeni Racun";
             this.IzmeniRacunBtn.UseVisualStyleBackColor = true;
+            this.IzmeniRacunBtn.Click += new System.EventHandler(this.IzmeniRacunBtn_Click);
             // 
             // IzbrisiRacunBtn
             // 
@@ -83,11 +85,12 @@
             this.IzbrisiRacunBtn.TabIndex = 9;
             this.IzbrisiRacunBtn.Text = "Izbrisi Racun";
             this.IzbrisiRacunBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiRacunBtn.Click += new System.EventHandler(this.IzbrisiRacunBtn_Click);
             // 
             // PrikaziKorisnikaBtn
             // 
             this.PrikaziKorisnikaBtn.Location = new System.Drawing.Point(742, 328);
-            this.PrikaziKorisnikaBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.PrikaziKorisnikaBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PrikaziKorisnikaBtn.Name = "PrikaziKorisnikaBtn";
             this.PrikaziKorisnikaBtn.Size = new System.Drawing.Size(161, 31);
             this.PrikaziKorisnikaBtn.TabIndex = 10;
@@ -98,7 +101,7 @@
             // PrikaziKarticeBtn
             // 
             this.PrikaziKarticeBtn.Location = new System.Drawing.Point(742, 364);
-            this.PrikaziKarticeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.PrikaziKarticeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PrikaziKarticeBtn.Name = "PrikaziKarticeBtn";
             this.PrikaziKarticeBtn.Size = new System.Drawing.Size(161, 32);
             this.PrikaziKarticeBtn.TabIndex = 11;
@@ -109,7 +112,7 @@
             // OvlascenaLicaBtn
             // 
             this.OvlascenaLicaBtn.Location = new System.Drawing.Point(742, 400);
-            this.OvlascenaLicaBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.OvlascenaLicaBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.OvlascenaLicaBtn.Name = "OvlascenaLicaBtn";
             this.OvlascenaLicaBtn.Size = new System.Drawing.Size(161, 32);
             this.OvlascenaLicaBtn.TabIndex = 12;
@@ -130,7 +133,7 @@
             this.Controls.Add(this.DodajRacunBtn);
             this.Controls.Add(this.RacunGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Form_Racun_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

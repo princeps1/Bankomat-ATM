@@ -28,111 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.SectionBankeBtn = new System.Windows.Forms.Button();
-            this.welcomeMsg = new System.Windows.Forms.TextBox();
-            this.descOfWlcmMsg = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SectionKlijentiBtn = new System.Windows.Forms.Button();
             this.SectionBankomatiBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // SectionBankeBtn
             // 
-            this.SectionBankeBtn.Location = new System.Drawing.Point(61, 121);
+            this.SectionBankeBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.SectionBankeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.SectionBankeBtn.Location = new System.Drawing.Point(102, 311);
             this.SectionBankeBtn.Name = "SectionBankeBtn";
-            this.SectionBankeBtn.Size = new System.Drawing.Size(453, 38);
+            this.SectionBankeBtn.Size = new System.Drawing.Size(227, 57);
             this.SectionBankeBtn.TabIndex = 4;
             this.SectionBankeBtn.Text = "Banke";
-            this.SectionBankeBtn.UseVisualStyleBackColor = true;
+            this.SectionBankeBtn.UseVisualStyleBackColor = false;
             this.SectionBankeBtn.Click += new System.EventHandler(this.SectionBanka_Click);
-            // 
-            // welcomeMsg
-            // 
-            this.welcomeMsg.BackColor = System.Drawing.Color.White;
-            this.welcomeMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeMsg.Location = new System.Drawing.Point(12, 44);
-            this.welcomeMsg.Name = "welcomeMsg";
-            this.welcomeMsg.Size = new System.Drawing.Size(557, 19);
-            this.welcomeMsg.TabIndex = 5;
-            this.welcomeMsg.Text = "Dobrodosli na ATM koristan softver";
-            this.welcomeMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // descOfWlcmMsg
-            // 
-            this.descOfWlcmMsg.BackColor = System.Drawing.Color.White;
-            this.descOfWlcmMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.descOfWlcmMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descOfWlcmMsg.Location = new System.Drawing.Point(12, 69);
-            this.descOfWlcmMsg.Name = "descOfWlcmMsg";
-            this.descOfWlcmMsg.Size = new System.Drawing.Size(557, 15);
-            this.descOfWlcmMsg.TabIndex = 6;
-            this.descOfWlcmMsg.Text = "Tamo gde masta postaje stvarnost!!!";
-            this.descOfWlcmMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 388);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(557, 31);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.Text = "MMF Korporacija ®";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SectionKlijentiBtn
             // 
-            this.SectionKlijentiBtn.Location = new System.Drawing.Point(61, 209);
+            this.SectionKlijentiBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.SectionKlijentiBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.SectionKlijentiBtn.Location = new System.Drawing.Point(102, 437);
             this.SectionKlijentiBtn.Name = "SectionKlijentiBtn";
-            this.SectionKlijentiBtn.Size = new System.Drawing.Size(453, 38);
+            this.SectionKlijentiBtn.Size = new System.Drawing.Size(227, 57);
             this.SectionKlijentiBtn.TabIndex = 10;
             this.SectionKlijentiBtn.Text = "Klijenti";
-            this.SectionKlijentiBtn.UseVisualStyleBackColor = true;
+            this.SectionKlijentiBtn.UseVisualStyleBackColor = false;
             this.SectionKlijentiBtn.Click += new System.EventHandler(this.SectionKlijentiBtn_Click);
             // 
             // SectionBankomatiBtn
             // 
-            this.SectionBankomatiBtn.Location = new System.Drawing.Point(61, 165);
+            this.SectionBankomatiBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.SectionBankomatiBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.SectionBankomatiBtn.Location = new System.Drawing.Point(102, 374);
             this.SectionBankomatiBtn.Name = "SectionBankomatiBtn";
-            this.SectionBankomatiBtn.Size = new System.Drawing.Size(453, 38);
+            this.SectionBankomatiBtn.Size = new System.Drawing.Size(227, 57);
             this.SectionBankomatiBtn.TabIndex = 11;
             this.SectionBankomatiBtn.Text = "Bankomati";
-            this.SectionBankomatiBtn.UseVisualStyleBackColor = true;
+            this.SectionBankomatiBtn.UseVisualStyleBackColor = false;
             this.SectionBankomatiBtn.Click += new System.EventHandler(this.SectionBankomatiBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(102, 220);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(228, 74);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "ATM Bankomati";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(102, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(228, 197);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(580, 431);
+            this.BackColor = System.Drawing.Color.NavajoWhite;
+            this.ClientSize = new System.Drawing.Size(434, 533);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SectionBankomatiBtn);
             this.Controls.Add(this.SectionKlijentiBtn);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.descOfWlcmMsg);
-            this.Controls.Add(this.welcomeMsg);
             this.Controls.Add(this.SectionBankeBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ATM - Glavna";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button SectionBankeBtn;
-        private System.Windows.Forms.TextBox welcomeMsg;
-        private System.Windows.Forms.TextBox descOfWlcmMsg;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button SectionKlijentiBtn;
         private System.Windows.Forms.Button SectionBankomatiBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

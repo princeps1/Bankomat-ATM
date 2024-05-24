@@ -105,18 +105,21 @@
             // 
             // AkcijaBankeBtn
             // 
+            this.AkcijaBankeBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.AkcijaBankeBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AkcijaBankeBtn.Location = new System.Drawing.Point(72, 308);
             this.AkcijaBankeBtn.Name = "AkcijaBankeBtn";
             this.AkcijaBankeBtn.Size = new System.Drawing.Size(237, 28);
             this.AkcijaBankeBtn.TabIndex = 9;
             this.AkcijaBankeBtn.Text = "Dodaj Banku";
-            this.AkcijaBankeBtn.UseVisualStyleBackColor = true;
+            this.AkcijaBankeBtn.UseVisualStyleBackColor = false;
             this.AkcijaBankeBtn.Click += new System.EventHandler(this.AkcijaBankeBtn_Click);
             // 
             // Form_Banka_AddUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(378, 350);
             this.Controls.Add(this.AkcijaBankeBtn);
             this.Controls.Add(this.AdresaCentraleTxtBx);

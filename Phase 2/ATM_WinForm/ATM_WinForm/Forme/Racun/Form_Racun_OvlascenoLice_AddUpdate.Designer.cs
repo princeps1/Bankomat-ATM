@@ -46,32 +46,35 @@
             // AddUpdateTxt
             // 
             this.AddUpdateTxt.Location = new System.Drawing.Point(50, 88);
-            this.AddUpdateTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddUpdateTxt.Margin = new System.Windows.Forms.Padding(2);
             this.AddUpdateTxt.Name = "AddUpdateTxt";
             this.AddUpdateTxt.Size = new System.Drawing.Size(158, 20);
             this.AddUpdateTxt.TabIndex = 5;
             // 
             // AkcijaOvlascenoLiceBtn
             // 
+            this.AkcijaOvlascenoLiceBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.AkcijaOvlascenoLiceBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AkcijaOvlascenoLiceBtn.Location = new System.Drawing.Point(50, 126);
-            this.AkcijaOvlascenoLiceBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AkcijaOvlascenoLiceBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AkcijaOvlascenoLiceBtn.Name = "AkcijaOvlascenoLiceBtn";
             this.AkcijaOvlascenoLiceBtn.Size = new System.Drawing.Size(158, 46);
             this.AkcijaOvlascenoLiceBtn.TabIndex = 6;
             this.AkcijaOvlascenoLiceBtn.Text = "button1";
-            this.AkcijaOvlascenoLiceBtn.UseVisualStyleBackColor = true;
+            this.AkcijaOvlascenoLiceBtn.UseVisualStyleBackColor = false;
             this.AkcijaOvlascenoLiceBtn.Click += new System.EventHandler(this.AkcijaOvlascenoLiceBtn_Click);
             // 
             // Form_Racun_OvlascenoLice_AddUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(272, 271);
             this.Controls.Add(this.AkcijaOvlascenoLiceBtn);
             this.Controls.Add(this.AddUpdateTxt);
             this.Controls.Add(this.labelaAddEditLBL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form_Racun_OvlascenoLice_AddUpdate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

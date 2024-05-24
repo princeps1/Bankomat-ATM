@@ -41,6 +41,7 @@
             this.FilijalaGrid.AllowUserToOrderColumns = true;
             this.FilijalaGrid.AllowUserToResizeRows = false;
             this.FilijalaGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.FilijalaGrid.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.FilijalaGrid.ColumnHeadersHeight = 29;
             this.FilijalaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.FilijalaGrid.Location = new System.Drawing.Point(10, 11);
@@ -55,50 +56,59 @@
             // 
             // DodajFilijaluBtn
             // 
+            this.DodajFilijaluBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.DodajFilijaluBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.DodajFilijaluBtn.Location = new System.Drawing.Point(10, 326);
             this.DodajFilijaluBtn.Name = "DodajFilijaluBtn";
             this.DodajFilijaluBtn.Size = new System.Drawing.Size(200, 33);
             this.DodajFilijaluBtn.TabIndex = 6;
             this.DodajFilijaluBtn.Text = "Dodaj Filijalu";
-            this.DodajFilijaluBtn.UseVisualStyleBackColor = true;
+            this.DodajFilijaluBtn.UseVisualStyleBackColor = false;
             this.DodajFilijaluBtn.Click += new System.EventHandler(this.DodajFilijaluBtn_Click);
             // 
             // IzmeniFilijaluBtn
             // 
+            this.IzmeniFilijaluBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzmeniFilijaluBtn.Enabled = false;
+            this.IzmeniFilijaluBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzmeniFilijaluBtn.Location = new System.Drawing.Point(10, 366);
             this.IzmeniFilijaluBtn.Name = "IzmeniFilijaluBtn";
             this.IzmeniFilijaluBtn.Size = new System.Drawing.Size(200, 33);
             this.IzmeniFilijaluBtn.TabIndex = 7;
             this.IzmeniFilijaluBtn.Text = "Izmeni Filijalu";
-            this.IzmeniFilijaluBtn.UseVisualStyleBackColor = true;
+            this.IzmeniFilijaluBtn.UseVisualStyleBackColor = false;
             this.IzmeniFilijaluBtn.Click += new System.EventHandler(this.IzmeniFilijaluBtn_Click);
             // 
             // IzbrisiFilijaluBtn
             // 
+            this.IzbrisiFilijaluBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzbrisiFilijaluBtn.Enabled = false;
+            this.IzbrisiFilijaluBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzbrisiFilijaluBtn.Location = new System.Drawing.Point(10, 405);
             this.IzbrisiFilijaluBtn.Name = "IzbrisiFilijaluBtn";
             this.IzbrisiFilijaluBtn.Size = new System.Drawing.Size(200, 33);
             this.IzbrisiFilijaluBtn.TabIndex = 8;
             this.IzbrisiFilijaluBtn.Text = "Izbrisi Filijalu";
-            this.IzbrisiFilijaluBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiFilijaluBtn.UseVisualStyleBackColor = false;
             this.IzbrisiFilijaluBtn.Click += new System.EventHandler(this.IzbrisiFilijaluBtn_Click);
             // 
             // PrikaziBankomateBtn
             // 
+            this.PrikaziBankomateBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.PrikaziBankomateBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.PrikaziBankomateBtn.Location = new System.Drawing.Point(700, 326);
             this.PrikaziBankomateBtn.Name = "PrikaziBankomateBtn";
             this.PrikaziBankomateBtn.Size = new System.Drawing.Size(200, 33);
             this.PrikaziBankomateBtn.TabIndex = 9;
             this.PrikaziBankomateBtn.Text = "Prikazi Bankomate";
-            this.PrikaziBankomateBtn.UseVisualStyleBackColor = true;
+            this.PrikaziBankomateBtn.UseVisualStyleBackColor = false;
             this.PrikaziBankomateBtn.Click += new System.EventHandler(this.PrikaziBankomateBtn_Click);
             // 
             // Form_Filijala_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(910, 453);
             this.Controls.Add(this.PrikaziBankomateBtn);
             this.Controls.Add(this.IzbrisiFilijaluBtn);

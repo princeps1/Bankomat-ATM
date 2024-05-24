@@ -45,11 +45,13 @@
             // 
             // AkcijaKarticeBtn
             // 
+            this.AkcijaKarticeBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.AkcijaKarticeBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AkcijaKarticeBtn.Location = new System.Drawing.Point(74, 333);
             this.AkcijaKarticeBtn.Name = "AkcijaKarticeBtn";
             this.AkcijaKarticeBtn.Size = new System.Drawing.Size(237, 28);
             this.AkcijaKarticeBtn.TabIndex = 27;
-            this.AkcijaKarticeBtn.UseVisualStyleBackColor = true;
+            this.AkcijaKarticeBtn.UseVisualStyleBackColor = false;
             this.AkcijaKarticeBtn.Click += new System.EventHandler(this.AkcijaKarticeBtn_Click);
             // 
             // DnevniLimitTxtBx
@@ -103,7 +105,7 @@
             "kreditna",
             "debitna"});
             this.TipComboBox.Location = new System.Drawing.Point(77, 191);
-            this.TipComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TipComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.TipComboBox.MaxDropDownItems = 50;
             this.TipComboBox.Name = "TipComboBox";
             this.TipComboBox.Size = new System.Drawing.Size(238, 21);
@@ -140,7 +142,7 @@
             // DatumIstekaDateTimePicker
             // 
             this.DatumIstekaDateTimePicker.Location = new System.Drawing.Point(75, 93);
-            this.DatumIstekaDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DatumIstekaDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.DatumIstekaDateTimePicker.Name = "DatumIstekaDateTimePicker";
             this.DatumIstekaDateTimePicker.Size = new System.Drawing.Size(235, 20);
             this.DatumIstekaDateTimePicker.TabIndex = 35;
@@ -148,7 +150,7 @@
             // MaxDatumVracanjaDugaDateTimePicker
             // 
             this.MaxDatumVracanjaDugaDateTimePicker.Location = new System.Drawing.Point(77, 288);
-            this.MaxDatumVracanjaDugaDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaxDatumVracanjaDugaDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.MaxDatumVracanjaDugaDateTimePicker.Name = "MaxDatumVracanjaDugaDateTimePicker";
             this.MaxDatumVracanjaDugaDateTimePicker.Size = new System.Drawing.Size(238, 20);
             this.MaxDatumVracanjaDugaDateTimePicker.TabIndex = 36;
@@ -156,7 +158,7 @@
             // DatumIzdavanjaDateTimePicker
             // 
             this.DatumIzdavanjaDateTimePicker.Location = new System.Drawing.Point(74, 33);
-            this.DatumIzdavanjaDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DatumIzdavanjaDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.DatumIzdavanjaDateTimePicker.Name = "DatumIzdavanjaDateTimePicker";
             this.DatumIzdavanjaDateTimePicker.Size = new System.Drawing.Size(233, 20);
             this.DatumIzdavanjaDateTimePicker.TabIndex = 37;
@@ -165,6 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(387, 396);
             this.Controls.Add(this.DatumIzdavanjaDateTimePicker);
             this.Controls.Add(this.MaxDatumVracanjaDugaDateTimePicker);
@@ -180,7 +183,7 @@
             this.Controls.Add(this.RadnoVremeLbl);
             this.Controls.Add(this.DatumIstekaLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form_Kartica_AddUpdate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

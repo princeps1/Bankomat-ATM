@@ -40,63 +40,68 @@
             this.KarticaGrid.AllowUserToOrderColumns = true;
             this.KarticaGrid.AllowUserToResizeRows = false;
             this.KarticaGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.KarticaGrid.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.KarticaGrid.ColumnHeadersHeight = 35;
             this.KarticaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.KarticaGrid.Location = new System.Drawing.Point(13, 13);
-            this.KarticaGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.KarticaGrid.Location = new System.Drawing.Point(10, 11);
             this.KarticaGrid.MultiSelect = false;
             this.KarticaGrid.Name = "KarticaGrid";
             this.KarticaGrid.ReadOnly = true;
             this.KarticaGrid.RowHeadersWidth = 51;
             this.KarticaGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.KarticaGrid.Size = new System.Drawing.Size(1187, 380);
+            this.KarticaGrid.Size = new System.Drawing.Size(890, 309);
             this.KarticaGrid.TabIndex = 10;
             this.KarticaGrid.SelectionChanged += new System.EventHandler(this.KarticaGrid_SelectionChanged);
             // 
             // DodajKarticuBtn
             // 
-            this.DodajKarticuBtn.Location = new System.Drawing.Point(13, 401);
-            this.DodajKarticuBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.DodajKarticuBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.DodajKarticuBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.DodajKarticuBtn.Location = new System.Drawing.Point(10, 326);
             this.DodajKarticuBtn.Name = "DodajKarticuBtn";
-            this.DodajKarticuBtn.Size = new System.Drawing.Size(267, 41);
+            this.DodajKarticuBtn.Size = new System.Drawing.Size(200, 33);
             this.DodajKarticuBtn.TabIndex = 11;
             this.DodajKarticuBtn.Text = "Dodaj Karticu";
-            this.DodajKarticuBtn.UseVisualStyleBackColor = true;
+            this.DodajKarticuBtn.UseVisualStyleBackColor = false;
             this.DodajKarticuBtn.Click += new System.EventHandler(this.DodajKarticuBtn_Click);
             // 
             // IzmeniKarticuBtn
             // 
+            this.IzmeniKarticuBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzmeniKarticuBtn.Enabled = false;
-            this.IzmeniKarticuBtn.Location = new System.Drawing.Point(13, 450);
-            this.IzmeniKarticuBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.IzmeniKarticuBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.IzmeniKarticuBtn.Location = new System.Drawing.Point(10, 366);
             this.IzmeniKarticuBtn.Name = "IzmeniKarticuBtn";
-            this.IzmeniKarticuBtn.Size = new System.Drawing.Size(267, 41);
+            this.IzmeniKarticuBtn.Size = new System.Drawing.Size(200, 33);
             this.IzmeniKarticuBtn.TabIndex = 12;
             this.IzmeniKarticuBtn.Text = "Izmeni Karticu";
-            this.IzmeniKarticuBtn.UseVisualStyleBackColor = true;
+            this.IzmeniKarticuBtn.UseVisualStyleBackColor = false;
             this.IzmeniKarticuBtn.Click += new System.EventHandler(this.IzmeniKarticuBtn_Click);
             // 
             // IzbrisiKarticuBtn
             // 
+            this.IzbrisiKarticuBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzbrisiKarticuBtn.Enabled = false;
-            this.IzbrisiKarticuBtn.Location = new System.Drawing.Point(13, 499);
-            this.IzbrisiKarticuBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.IzbrisiKarticuBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.IzbrisiKarticuBtn.Location = new System.Drawing.Point(10, 405);
             this.IzbrisiKarticuBtn.Name = "IzbrisiKarticuBtn";
-            this.IzbrisiKarticuBtn.Size = new System.Drawing.Size(267, 41);
+            this.IzbrisiKarticuBtn.Size = new System.Drawing.Size(200, 33);
             this.IzbrisiKarticuBtn.TabIndex = 13;
             this.IzbrisiKarticuBtn.Text = "Izbrisi Karticu";
-            this.IzbrisiKarticuBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiKarticuBtn.UseVisualStyleBackColor = false;
             this.IzbrisiKarticuBtn.Click += new System.EventHandler(this.IzbrisiKarticuBtn_Click);
             // 
             // Form_Kartica_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1213, 558);
+            this.BackColor = System.Drawing.Color.NavajoWhite;
+            this.ClientSize = new System.Drawing.Size(910, 453);
             this.Controls.Add(this.IzbrisiKarticuBtn);
             this.Controls.Add(this.IzmeniKarticuBtn);
             this.Controls.Add(this.DodajKarticuBtn);
             this.Controls.Add(this.KarticaGrid);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form_Kartica_Main";
             this.Text = "ATM - Kartice";
             this.Load += new System.EventHandler(this.Form_Kartica_Main_Load);

@@ -41,37 +41,40 @@
             // 
             // IzbrisiKlijentaBtn
             // 
+            this.IzbrisiKlijentaBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzbrisiKlijentaBtn.Enabled = false;
-            this.IzbrisiKlijentaBtn.Location = new System.Drawing.Point(12, 501);
-            this.IzbrisiKlijentaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.IzbrisiKlijentaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.IzbrisiKlijentaBtn.Location = new System.Drawing.Point(9, 407);
             this.IzbrisiKlijentaBtn.Name = "IzbrisiKlijentaBtn";
-            this.IzbrisiKlijentaBtn.Size = new System.Drawing.Size(267, 41);
+            this.IzbrisiKlijentaBtn.Size = new System.Drawing.Size(200, 33);
             this.IzbrisiKlijentaBtn.TabIndex = 14;
             this.IzbrisiKlijentaBtn.Text = "Izbrisi Klijenta";
-            this.IzbrisiKlijentaBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiKlijentaBtn.UseVisualStyleBackColor = false;
             this.IzbrisiKlijentaBtn.Click += new System.EventHandler(this.IzbrisiKlijentaBtn_Click);
             // 
             // IzmeniKlijentaBtn
             // 
+            this.IzmeniKlijentaBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzmeniKlijentaBtn.Enabled = false;
-            this.IzmeniKlijentaBtn.Location = new System.Drawing.Point(12, 453);
-            this.IzmeniKlijentaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.IzmeniKlijentaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.IzmeniKlijentaBtn.Location = new System.Drawing.Point(9, 368);
             this.IzmeniKlijentaBtn.Name = "IzmeniKlijentaBtn";
-            this.IzmeniKlijentaBtn.Size = new System.Drawing.Size(267, 41);
+            this.IzmeniKlijentaBtn.Size = new System.Drawing.Size(200, 33);
             this.IzmeniKlijentaBtn.TabIndex = 13;
             this.IzmeniKlijentaBtn.Text = "Izmeni Klijenta";
-            this.IzmeniKlijentaBtn.UseVisualStyleBackColor = true;
+            this.IzmeniKlijentaBtn.UseVisualStyleBackColor = false;
             this.IzmeniKlijentaBtn.Click += new System.EventHandler(this.IzmeniKlijentaBtn_Click);
             // 
             // DodajKlijentaBtn
             // 
-            this.DodajKlijentaBtn.Location = new System.Drawing.Point(12, 404);
-            this.DodajKlijentaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.DodajKlijentaBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.DodajKlijentaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.DodajKlijentaBtn.Location = new System.Drawing.Point(9, 328);
             this.DodajKlijentaBtn.Name = "DodajKlijentaBtn";
-            this.DodajKlijentaBtn.Size = new System.Drawing.Size(267, 41);
+            this.DodajKlijentaBtn.Size = new System.Drawing.Size(200, 33);
             this.DodajKlijentaBtn.TabIndex = 12;
             this.DodajKlijentaBtn.Text = "Dodaj Klijenta";
-            this.DodajKlijentaBtn.UseVisualStyleBackColor = true;
+            this.DodajKlijentaBtn.UseVisualStyleBackColor = false;
             this.DodajKlijentaBtn.Click += new System.EventHandler(this.DodajKlijentaBtn_Click);
             // 
             // KlijentGrid
@@ -79,16 +82,16 @@
             this.KlijentGrid.AllowUserToOrderColumns = true;
             this.KlijentGrid.AllowUserToResizeRows = false;
             this.KlijentGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.KlijentGrid.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.KlijentGrid.ColumnHeadersHeight = 35;
             this.KlijentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.KlijentGrid.Location = new System.Drawing.Point(12, 16);
-            this.KlijentGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.KlijentGrid.Location = new System.Drawing.Point(9, 13);
             this.KlijentGrid.MultiSelect = false;
             this.KlijentGrid.Name = "KlijentGrid";
             this.KlijentGrid.ReadOnly = true;
             this.KlijentGrid.RowHeadersWidth = 51;
             this.KlijentGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.KlijentGrid.Size = new System.Drawing.Size(1191, 380);
+            this.KlijentGrid.Size = new System.Drawing.Size(893, 309);
             this.KlijentGrid.TabIndex = 11;
             this.KlijentGrid.SelectionChanged += new System.EventHandler(this.KlijentGrid_SelectionChanged);
             // 
@@ -98,51 +101,53 @@
             "Svi klijenti",
             "Pravna lica",
             "Fizicka lica"});
-            this.KlijentComboBox.Location = new System.Drawing.Point(348, 418);
-            this.KlijentComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.KlijentComboBox.Location = new System.Drawing.Point(261, 340);
+            this.KlijentComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.KlijentComboBox.MaxDropDownItems = 50;
             this.KlijentComboBox.Name = "KlijentComboBox";
-            this.KlijentComboBox.Size = new System.Drawing.Size(233, 24);
+            this.KlijentComboBox.Size = new System.Drawing.Size(176, 21);
             this.KlijentComboBox.TabIndex = 20;
             this.KlijentComboBox.SelectedIndexChanged += new System.EventHandler(this.KlijentComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(344, 400);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(258, 325);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 16);
+            this.label1.Size = new System.Drawing.Size(154, 13);
             this.label1.TabIndex = 21;
             this.label1.Text = "Izaberi vrstu korisnika za prikaz";
             // 
             // PrikaziKomentareBtn
             // 
-            this.PrikaziKomentareBtn.Location = new System.Drawing.Point(931, 404);
-            this.PrikaziKomentareBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.PrikaziKomentareBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.PrikaziKomentareBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.PrikaziKomentareBtn.Location = new System.Drawing.Point(698, 328);
             this.PrikaziKomentareBtn.Name = "PrikaziKomentareBtn";
-            this.PrikaziKomentareBtn.Size = new System.Drawing.Size(267, 41);
+            this.PrikaziKomentareBtn.Size = new System.Drawing.Size(200, 33);
             this.PrikaziKomentareBtn.TabIndex = 22;
             this.PrikaziKomentareBtn.Text = "Prikazi Komentare";
-            this.PrikaziKomentareBtn.UseVisualStyleBackColor = true;
+            this.PrikaziKomentareBtn.UseVisualStyleBackColor = false;
             this.PrikaziKomentareBtn.Click += new System.EventHandler(this.PrikaziKomentareBtn_Click);
             // 
             // PrikaziRacuneBtn
             // 
-            this.PrikaziRacuneBtn.Location = new System.Drawing.Point(931, 453);
-            this.PrikaziRacuneBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.PrikaziRacuneBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.PrikaziRacuneBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.PrikaziRacuneBtn.Location = new System.Drawing.Point(698, 367);
             this.PrikaziRacuneBtn.Name = "PrikaziRacuneBtn";
-            this.PrikaziRacuneBtn.Size = new System.Drawing.Size(267, 41);
+            this.PrikaziRacuneBtn.Size = new System.Drawing.Size(200, 50);
             this.PrikaziRacuneBtn.TabIndex = 23;
             this.PrikaziRacuneBtn.Text = "Prikazi Sve Klijentove Racune";
-            this.PrikaziRacuneBtn.UseVisualStyleBackColor = true;
+            this.PrikaziRacuneBtn.UseVisualStyleBackColor = false;
             this.PrikaziRacuneBtn.Click += new System.EventHandler(this.PrikaziRacuneBtn_Click);
             // 
             // Form_Klijent_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1213, 558);
+            this.BackColor = System.Drawing.Color.NavajoWhite;
+            this.ClientSize = new System.Drawing.Size(910, 453);
             this.Controls.Add(this.PrikaziRacuneBtn);
             this.Controls.Add(this.PrikaziKomentareBtn);
             this.Controls.Add(this.label1);
@@ -152,7 +157,6 @@
             this.Controls.Add(this.DodajKlijentaBtn);
             this.Controls.Add(this.KlijentGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form_Klijent_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

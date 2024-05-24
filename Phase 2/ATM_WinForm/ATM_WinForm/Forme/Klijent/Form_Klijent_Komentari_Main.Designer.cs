@@ -37,34 +37,40 @@
             // 
             // IzbrisiKomentarBtn
             // 
+            this.IzbrisiKomentarBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzbrisiKomentarBtn.Enabled = false;
+            this.IzbrisiKomentarBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzbrisiKomentarBtn.Location = new System.Drawing.Point(11, 409);
             this.IzbrisiKomentarBtn.Name = "IzbrisiKomentarBtn";
             this.IzbrisiKomentarBtn.Size = new System.Drawing.Size(200, 33);
             this.IzbrisiKomentarBtn.TabIndex = 18;
             this.IzbrisiKomentarBtn.Text = "Izbrisi Komentar";
-            this.IzbrisiKomentarBtn.UseVisualStyleBackColor = true;
+            this.IzbrisiKomentarBtn.UseVisualStyleBackColor = false;
             this.IzbrisiKomentarBtn.Click += new System.EventHandler(this.IzbrisiKomentarBtn_Click);
             // 
             // IzmeniKomentarBtn
             // 
+            this.IzmeniKomentarBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.IzmeniKomentarBtn.Enabled = false;
+            this.IzmeniKomentarBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzmeniKomentarBtn.Location = new System.Drawing.Point(11, 370);
             this.IzmeniKomentarBtn.Name = "IzmeniKomentarBtn";
             this.IzmeniKomentarBtn.Size = new System.Drawing.Size(200, 33);
             this.IzmeniKomentarBtn.TabIndex = 17;
             this.IzmeniKomentarBtn.Text = "Izmeni Komentar";
-            this.IzmeniKomentarBtn.UseVisualStyleBackColor = true;
+            this.IzmeniKomentarBtn.UseVisualStyleBackColor = false;
             this.IzmeniKomentarBtn.Click += new System.EventHandler(this.IzmeniKomentarBtn_Click);
             // 
             // DodajKomentarBtn
             // 
+            this.DodajKomentarBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.DodajKomentarBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.DodajKomentarBtn.Location = new System.Drawing.Point(11, 330);
             this.DodajKomentarBtn.Name = "DodajKomentarBtn";
             this.DodajKomentarBtn.Size = new System.Drawing.Size(200, 33);
             this.DodajKomentarBtn.TabIndex = 16;
             this.DodajKomentarBtn.Text = "Dodaj Komentar";
-            this.DodajKomentarBtn.UseVisualStyleBackColor = true;
+            this.DodajKomentarBtn.UseVisualStyleBackColor = false;
             this.DodajKomentarBtn.Click += new System.EventHandler(this.DodajKomentarBtn_Click);
             // 
             // KomentariGrid
@@ -72,6 +78,7 @@
             this.KomentariGrid.AllowUserToOrderColumns = true;
             this.KomentariGrid.AllowUserToResizeRows = false;
             this.KomentariGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.KomentariGrid.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.KomentariGrid.ColumnHeadersHeight = 35;
             this.KomentariGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.KomentariGrid.Location = new System.Drawing.Point(11, 15);
@@ -88,6 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(914, 457);
             this.Controls.Add(this.IzbrisiKomentarBtn);
             this.Controls.Add(this.IzmeniKomentarBtn);

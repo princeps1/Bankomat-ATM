@@ -45,13 +45,15 @@
             // 
             // AkcijaKomentaraBtn
             // 
+            this.AkcijaKomentaraBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.AkcijaKomentaraBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AkcijaKomentaraBtn.Location = new System.Drawing.Point(118, 109);
             this.AkcijaKomentaraBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AkcijaKomentaraBtn.Name = "AkcijaKomentaraBtn";
             this.AkcijaKomentaraBtn.Size = new System.Drawing.Size(158, 31);
             this.AkcijaKomentaraBtn.TabIndex = 8;
             this.AkcijaKomentaraBtn.Text = "button1";
-            this.AkcijaKomentaraBtn.UseVisualStyleBackColor = true;
+            this.AkcijaKomentaraBtn.UseVisualStyleBackColor = false;
             this.AkcijaKomentaraBtn.Click += new System.EventHandler(this.AkcijaKomentaraBtn_Click);
             // 
             // AddUpdateTxt
@@ -66,6 +68,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(391, 185);
             this.Controls.Add(this.KomentarLbl);
             this.Controls.Add(this.AkcijaKomentaraBtn);

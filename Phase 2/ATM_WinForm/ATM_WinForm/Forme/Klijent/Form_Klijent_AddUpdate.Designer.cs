@@ -58,12 +58,14 @@
             // 
             // AkcijaKlijentaBtn
             // 
+            this.AkcijaKlijentaBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.AkcijaKlijentaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AkcijaKlijentaBtn.Location = new System.Drawing.Point(158, 326);
             this.AkcijaKlijentaBtn.Name = "AkcijaKlijentaBtn";
             this.AkcijaKlijentaBtn.Size = new System.Drawing.Size(237, 28);
             this.AkcijaKlijentaBtn.TabIndex = 10;
             this.AkcijaKlijentaBtn.Text = "Dodaj Klijenta";
-            this.AkcijaKlijentaBtn.UseVisualStyleBackColor = true;
+            this.AkcijaKlijentaBtn.UseVisualStyleBackColor = false;
             this.AkcijaKlijentaBtn.Click += new System.EventHandler(this.AkcijaKlijentaBtn_Click);
             // 
             // EmailTxtBx
@@ -136,7 +138,7 @@
             "Pravna lica",
             "Fizicka lica"});
             this.KlijentComboBox.Location = new System.Drawing.Point(308, 31);
-            this.KlijentComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.KlijentComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.KlijentComboBox.MaxDropDownItems = 50;
             this.KlijentComboBox.Name = "KlijentComboBox";
             this.KlijentComboBox.Size = new System.Drawing.Size(176, 21);
@@ -267,7 +269,7 @@
             // DatumRodjenjaDateTimePicker
             // 
             this.DatumRodjenjaDateTimePicker.Location = new System.Drawing.Point(517, 87);
-            this.DatumRodjenjaDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DatumRodjenjaDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.DatumRodjenjaDateTimePicker.Name = "DatumRodjenjaDateTimePicker";
             this.DatumRodjenjaDateTimePicker.Size = new System.Drawing.Size(206, 20);
             this.DatumRodjenjaDateTimePicker.TabIndex = 37;
@@ -276,6 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(734, 368);
             this.Controls.Add(this.DatumRodjenjaDateTimePicker);
             this.Controls.Add(this.DatumRodjenjaLbl);

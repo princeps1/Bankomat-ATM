@@ -43,87 +43,81 @@
             // 
             // FilijalaComboBox
             // 
-            this.FilijalaComboBox.Location = new System.Drawing.Point(103, 65);
-            this.FilijalaComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FilijalaComboBox.Location = new System.Drawing.Point(77, 53);
+            this.FilijalaComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FilijalaComboBox.MaxDropDownItems = 50;
             this.FilijalaComboBox.Name = "FilijalaComboBox";
-            this.FilijalaComboBox.Size = new System.Drawing.Size(316, 24);
+            this.FilijalaComboBox.Size = new System.Drawing.Size(238, 21);
             this.FilijalaComboBox.TabIndex = 28;
             // 
             // AkcijaBankomataBtn
             // 
-            this.AkcijaBankomataBtn.Location = new System.Drawing.Point(104, 468);
-            this.AkcijaBankomataBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AkcijaBankomataBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.AkcijaBankomataBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.AkcijaBankomataBtn.Location = new System.Drawing.Point(78, 380);
             this.AkcijaBankomataBtn.Name = "AkcijaBankomataBtn";
-            this.AkcijaBankomataBtn.Size = new System.Drawing.Size(316, 34);
+            this.AkcijaBankomataBtn.Size = new System.Drawing.Size(237, 28);
             this.AkcijaBankomataBtn.TabIndex = 27;
             this.AkcijaBankomataBtn.Text = "Dodaj Bankomat";
-            this.AkcijaBankomataBtn.UseVisualStyleBackColor = true;
+            this.AkcijaBankomataBtn.UseVisualStyleBackColor = false;
             this.AkcijaBankomataBtn.Click += new System.EventHandler(this.AkcijaBankomataBtn_Click);
             // 
             // DatumPoslDogLbl
             // 
             this.DatumPoslDogLbl.AutoSize = true;
-            this.DatumPoslDogLbl.Location = new System.Drawing.Point(99, 283);
-            this.DatumPoslDogLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DatumPoslDogLbl.Location = new System.Drawing.Point(74, 230);
             this.DatumPoslDogLbl.Name = "DatumPoslDogLbl";
-            this.DatumPoslDogLbl.Size = new System.Drawing.Size(189, 16);
+            this.DatumPoslDogLbl.Size = new System.Drawing.Size(147, 13);
             this.DatumPoslDogLbl.TabIndex = 25;
             this.DatumPoslDogLbl.Text = "Datum poslednjeg servisiranja";
             // 
             // ProizvodjacTxtBx
             // 
-            this.ProizvodjacTxtBx.Location = new System.Drawing.Point(103, 228);
-            this.ProizvodjacTxtBx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ProizvodjacTxtBx.Location = new System.Drawing.Point(77, 185);
             this.ProizvodjacTxtBx.Name = "ProizvodjacTxtBx";
-            this.ProizvodjacTxtBx.Size = new System.Drawing.Size(315, 22);
+            this.ProizvodjacTxtBx.Size = new System.Drawing.Size(237, 20);
             this.ProizvodjacTxtBx.TabIndex = 24;
             // 
             // ProizvodjacLbl
             // 
             this.ProizvodjacLbl.AutoSize = true;
-            this.ProizvodjacLbl.Location = new System.Drawing.Point(99, 196);
-            this.ProizvodjacLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ProizvodjacLbl.Location = new System.Drawing.Point(74, 159);
             this.ProizvodjacLbl.Name = "ProizvodjacLbl";
-            this.ProizvodjacLbl.Size = new System.Drawing.Size(78, 16);
+            this.ProizvodjacLbl.Size = new System.Drawing.Size(62, 13);
             this.ProizvodjacLbl.TabIndex = 23;
             this.ProizvodjacLbl.Text = "Proizvodjac";
             // 
             // LokacijaTxtBx
             // 
-            this.LokacijaTxtBx.Location = new System.Drawing.Point(103, 144);
-            this.LokacijaTxtBx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LokacijaTxtBx.Location = new System.Drawing.Point(77, 117);
             this.LokacijaTxtBx.Name = "LokacijaTxtBx";
-            this.LokacijaTxtBx.Size = new System.Drawing.Size(315, 22);
+            this.LokacijaTxtBx.Size = new System.Drawing.Size(237, 20);
             this.LokacijaTxtBx.TabIndex = 22;
             // 
             // LokacijaLbl
             // 
             this.LokacijaLbl.AutoSize = true;
-            this.LokacijaLbl.Location = new System.Drawing.Point(99, 112);
-            this.LokacijaLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LokacijaLbl.Location = new System.Drawing.Point(74, 91);
             this.LokacijaLbl.Name = "LokacijaLbl";
-            this.LokacijaLbl.Size = new System.Drawing.Size(58, 16);
+            this.LokacijaLbl.Size = new System.Drawing.Size(47, 13);
             this.LokacijaLbl.TabIndex = 21;
             this.LokacijaLbl.Text = "Lokacija";
             // 
             // FilijalaLbl
             // 
             this.FilijalaLbl.AutoSize = true;
-            this.FilijalaLbl.Location = new System.Drawing.Point(99, 33);
-            this.FilijalaLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FilijalaLbl.Location = new System.Drawing.Point(74, 27);
             this.FilijalaLbl.Name = "FilijalaLbl";
-            this.FilijalaLbl.Size = new System.Drawing.Size(46, 16);
+            this.FilijalaLbl.Size = new System.Drawing.Size(35, 13);
             this.FilijalaLbl.TabIndex = 20;
             this.FilijalaLbl.Text = "Filijala";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 368);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(75, 299);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 29;
             this.label1.Text = "Status";
             // 
@@ -132,26 +126,26 @@
             this.StatusComboBox.Items.AddRange(new object[] {
             "operativan",
             "neoperativan"});
-            this.StatusComboBox.Location = new System.Drawing.Point(104, 402);
-            this.StatusComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StatusComboBox.Location = new System.Drawing.Point(78, 327);
+            this.StatusComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StatusComboBox.MaxDropDownItems = 50;
             this.StatusComboBox.Name = "StatusComboBox";
-            this.StatusComboBox.Size = new System.Drawing.Size(316, 24);
+            this.StatusComboBox.Size = new System.Drawing.Size(238, 21);
             this.StatusComboBox.TabIndex = 31;
             // 
             // DateTimePicker
             // 
-            this.DateTimePicker.Location = new System.Drawing.Point(103, 315);
-            this.DateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateTimePicker.Location = new System.Drawing.Point(77, 256);
             this.DateTimePicker.Name = "DateTimePicker";
-            this.DateTimePicker.Size = new System.Drawing.Size(316, 22);
+            this.DateTimePicker.Size = new System.Drawing.Size(238, 20);
             this.DateTimePicker.TabIndex = 32;
             // 
             // Form_Bankomat_AddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 534);
+            this.BackColor = System.Drawing.Color.NavajoWhite;
+            this.ClientSize = new System.Drawing.Size(388, 434);
             this.Controls.Add(this.DateTimePicker);
             this.Controls.Add(this.StatusComboBox);
             this.Controls.Add(this.label1);
@@ -164,7 +158,6 @@
             this.Controls.Add(this.LokacijaLbl);
             this.Controls.Add(this.FilijalaLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Form_Bankomat_AddUpdate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

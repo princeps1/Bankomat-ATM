@@ -41,93 +41,88 @@
             // 
             // AkcijaFilijaleBtn
             // 
-            this.AkcijaFilijaleBtn.Location = new System.Drawing.Point(103, 372);
-            this.AkcijaFilijaleBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AkcijaFilijaleBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.AkcijaFilijaleBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.AkcijaFilijaleBtn.Location = new System.Drawing.Point(77, 302);
             this.AkcijaFilijaleBtn.Name = "AkcijaFilijaleBtn";
-            this.AkcijaFilijaleBtn.Size = new System.Drawing.Size(316, 34);
+            this.AkcijaFilijaleBtn.Size = new System.Drawing.Size(237, 28);
             this.AkcijaFilijaleBtn.TabIndex = 18;
             this.AkcijaFilijaleBtn.Text = "Dodaj Filijalu";
-            this.AkcijaFilijaleBtn.UseVisualStyleBackColor = true;
+            this.AkcijaFilijaleBtn.UseVisualStyleBackColor = false;
             this.AkcijaFilijaleBtn.Click += new System.EventHandler(this.AkcijaFilijaleBtn_Click);
             // 
             // RadnoVremeTxtBx
             // 
-            this.RadnoVremeTxtBx.Location = new System.Drawing.Point(103, 306);
-            this.RadnoVremeTxtBx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RadnoVremeTxtBx.Location = new System.Drawing.Point(77, 249);
             this.RadnoVremeTxtBx.Name = "RadnoVremeTxtBx";
-            this.RadnoVremeTxtBx.Size = new System.Drawing.Size(315, 22);
+            this.RadnoVremeTxtBx.Size = new System.Drawing.Size(237, 20);
             this.RadnoVremeTxtBx.TabIndex = 17;
             // 
             // RadnoVremeLbl
             // 
             this.RadnoVremeLbl.AutoSize = true;
-            this.RadnoVremeLbl.Location = new System.Drawing.Point(99, 274);
-            this.RadnoVremeLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RadnoVremeLbl.Location = new System.Drawing.Point(74, 223);
             this.RadnoVremeLbl.Name = "RadnoVremeLbl";
-            this.RadnoVremeLbl.Size = new System.Drawing.Size(89, 16);
+            this.RadnoVremeLbl.Size = new System.Drawing.Size(71, 13);
             this.RadnoVremeLbl.TabIndex = 16;
             this.RadnoVremeLbl.Text = "Radno vreme";
             // 
             // BrTelefonaTxtBx
             // 
-            this.BrTelefonaTxtBx.Location = new System.Drawing.Point(103, 219);
-            this.BrTelefonaTxtBx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BrTelefonaTxtBx.Location = new System.Drawing.Point(77, 178);
             this.BrTelefonaTxtBx.Name = "BrTelefonaTxtBx";
-            this.BrTelefonaTxtBx.Size = new System.Drawing.Size(315, 22);
+            this.BrTelefonaTxtBx.Size = new System.Drawing.Size(237, 20);
             this.BrTelefonaTxtBx.TabIndex = 15;
             // 
             // BrTelLbl
             // 
             this.BrTelLbl.AutoSize = true;
-            this.BrTelLbl.Location = new System.Drawing.Point(99, 187);
-            this.BrTelLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.BrTelLbl.Location = new System.Drawing.Point(74, 152);
             this.BrTelLbl.Name = "BrTelLbl";
-            this.BrTelLbl.Size = new System.Drawing.Size(82, 16);
+            this.BrTelLbl.Size = new System.Drawing.Size(66, 13);
             this.BrTelLbl.TabIndex = 14;
             this.BrTelLbl.Text = "Broj telefona";
             // 
             // AdresaTxtBx
             // 
-            this.AdresaTxtBx.Location = new System.Drawing.Point(103, 135);
-            this.AdresaTxtBx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdresaTxtBx.Location = new System.Drawing.Point(77, 110);
             this.AdresaTxtBx.Name = "AdresaTxtBx";
-            this.AdresaTxtBx.Size = new System.Drawing.Size(315, 22);
+            this.AdresaTxtBx.Size = new System.Drawing.Size(237, 20);
             this.AdresaTxtBx.TabIndex = 13;
             // 
             // AdresaLbl
             // 
             this.AdresaLbl.AutoSize = true;
-            this.AdresaLbl.Location = new System.Drawing.Point(99, 103);
-            this.AdresaLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AdresaLbl.Location = new System.Drawing.Point(74, 84);
             this.AdresaLbl.Name = "AdresaLbl";
-            this.AdresaLbl.Size = new System.Drawing.Size(51, 16);
+            this.AdresaLbl.Size = new System.Drawing.Size(40, 13);
             this.AdresaLbl.TabIndex = 12;
             this.AdresaLbl.Text = "Adresa";
             // 
             // BankaLbl
             // 
             this.BankaLbl.AutoSize = true;
-            this.BankaLbl.Location = new System.Drawing.Point(99, 25);
-            this.BankaLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.BankaLbl.Location = new System.Drawing.Point(74, 20);
             this.BankaLbl.Name = "BankaLbl";
-            this.BankaLbl.Size = new System.Drawing.Size(46, 16);
+            this.BankaLbl.Size = new System.Drawing.Size(38, 13);
             this.BankaLbl.TabIndex = 10;
             this.BankaLbl.Text = "Banka";
             // 
             // BankaComboBox
             // 
-            this.BankaComboBox.Location = new System.Drawing.Point(103, 57);
-            this.BankaComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BankaComboBox.Location = new System.Drawing.Point(77, 46);
+            this.BankaComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.BankaComboBox.MaxDropDownItems = 50;
             this.BankaComboBox.Name = "BankaComboBox";
-            this.BankaComboBox.Size = new System.Drawing.Size(316, 24);
+            this.BankaComboBox.Size = new System.Drawing.Size(238, 21);
             this.BankaComboBox.TabIndex = 19;
             // 
             // Form_Filijala_AddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 444);
+            this.BackColor = System.Drawing.Color.NavajoWhite;
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.BankaComboBox);
             this.Controls.Add(this.AkcijaFilijaleBtn);
             this.Controls.Add(this.RadnoVremeTxtBx);
@@ -138,7 +133,7 @@
             this.Controls.Add(this.AdresaLbl);
             this.Controls.Add(this.BankaLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form_Filijala_AddUpdate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

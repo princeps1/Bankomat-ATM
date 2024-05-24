@@ -44,9 +44,10 @@ namespace ATM_WinForm.Forme.Transakcije
             bindingSource.DataSource = pregled;
             TransakcijaGrid.DataSource = bindingSource;
         }
+
         private void DodajTransakcijuBtn_Click(object sender, EventArgs e)
         {
-            var dodajIzmeniKlijentaForm = new Form_Transakcije_Add("add", null);
+            var dodajIzmeniKlijentaForm = new Form_Transakcije_Add(this.bankomatId);
             dodajIzmeniKlijentaForm.ShowDialog();
             this.PopuniPodacima();
         }

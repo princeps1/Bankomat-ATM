@@ -44,7 +44,7 @@
             // FilijalaComboBox
             // 
             this.FilijalaComboBox.Location = new System.Drawing.Point(77, 53);
-            this.FilijalaComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FilijalaComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.FilijalaComboBox.MaxDropDownItems = 50;
             this.FilijalaComboBox.Name = "FilijalaComboBox";
             this.FilijalaComboBox.Size = new System.Drawing.Size(238, 21);
@@ -127,7 +127,7 @@
             "operativan",
             "neoperativan"});
             this.StatusComboBox.Location = new System.Drawing.Point(78, 327);
-            this.StatusComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StatusComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.StatusComboBox.MaxDropDownItems = 50;
             this.StatusComboBox.Name = "StatusComboBox";
             this.StatusComboBox.Size = new System.Drawing.Size(238, 21);

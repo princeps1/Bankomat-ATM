@@ -1845,7 +1845,66 @@ namespace ATM_WinForm
             return pregledList;
         }
 
+        public static void DodajTransakciju(TransakcijaBasic transakcija, int bankomatId, int karticaId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
 
+                Transakcija t = new Transakcija
+                {
+                    Podignuti_iznos = transakcija.Podignuti_iznos,
+                    Datum_Podizanja_Novca = transakcija.Datum_Podizanja_Novca,
+                    Vreme_Podizanja_Novca = transakcija.Vreme_Podizanja_Novca,
+                };
+
+                s.Save(t);
+
+                Bankomat b = s.Get<Bankomat>(bankomatId);
+                Kartica k = s.Get<Kartica>(karticaId);
+
+                if(Int32.Parse(k.Odgovara.Tekuci_saldo) < Int32.Parse(t.Podignuti_iznos))
+                {
+                    MessageBox.Show("Tekuci saldo je manji od novca koji zelite da podignete.");
+                    s.Delete(t);
+                    return;
+                }
+
+                if (Int32.Parse(k.Dnevni_limit) < Int32.Parse(t.Podignuti_iznos))
+                {
+                    MessageBox.Show("Dnevni limit je manji od novca koji zelite da podignete.");
+                    s.Delete(t);
+                    return;
+                }
+
+                int oduzimanje = (Int32.Parse(k.Odgovara.Tekuci_saldo)) - (Int32.Parse(t.Podignuti_iznos));
+
+                var racun = k.Odgovara;
+
+                racun.Tekuci_saldo = oduzimanje.ToString();
+
+                s.Update(racun);
+
+                Koristi_Za_Podizanje_Novca kzpn = new Koristi_Za_Podizanje_Novca
+                {
+                    Transakcija = t,
+                    Bankomat = b,
+                    Kartica = k
+                };
+
+                s.Save(kzpn);
+
+                MessageBox.Show("Uspesno ste dodali transakciju!");
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
 
         #endregion
     }

@@ -53,6 +53,7 @@
             // DodajTransakcijuBtn
             // 
             this.DodajTransakcijuBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.DodajTransakcijuBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.DodajTransakcijuBtn.Location = new System.Drawing.Point(12, 327);
             this.DodajTransakcijuBtn.Name = "DodajTransakcijuBtn";
             this.DodajTransakcijuBtn.Size = new System.Drawing.Size(222, 38);

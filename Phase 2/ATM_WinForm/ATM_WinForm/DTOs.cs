@@ -493,19 +493,18 @@ namespace ATM_WinForm
             public virtual DateTime Datum_Podizanja_Novca { get; set; }
 
             [DisplayName("VREME PODIZANJA NOVCA")]
-            public virtual DateTime Vreme_Podizanja_Novca { get; set; }
+            public virtual string Vreme_Podizanja_Novca { get; set; }
 
             //TERNARNA
             [Browsable(false)]
             public virtual IList<Koristi_Za_Podizanje_Novca> Koristi_Za_Podizanje_Novca { get; set; }
 
-            public TransakcijaBasic(int id, string podignuti_iznos, DateTime datum_Podizanja_Novca, DateTime vreme_Podizanja_Novca, IList<Koristi_Za_Podizanje_Novca> koristi_Za_Podizanje_Novca)
+            public TransakcijaBasic(int id, string podignuti_iznos, DateTime datum_Podizanja_Novca, string vreme_Podizanja_Novca)
             {
                 Id = id;
                 Podignuti_iznos = podignuti_iznos;
                 Datum_Podizanja_Novca = datum_Podizanja_Novca;
                 Vreme_Podizanja_Novca = vreme_Podizanja_Novca;
-                
             }
 
             public TransakcijaBasic()
@@ -553,18 +552,18 @@ namespace ATM_WinForm
             public virtual string Podignut_Novac { get; set;}
 
             [DisplayName("DATUM")]
-            public virtual DateTime Datum { get; set; }
+            public virtual string Datum { get; set; }
 
             [DisplayName("VREME")]
-            public virtual DateTime Vreme {  get; set; }
+            public virtual string Vreme {  get; set; }
 
-            public PregledBasic(int transakcijaId, int bankomatId, int karticaId, string podignut_Novac, DateTime datum, DateTime vreme)
+            public PregledBasic(int transakcijaId, int bankomatId, int karticaId, string podignut_Novac, DateTime datum, string vreme)
             {
                 TransakcijaId = transakcijaId;
                 BankomatId = bankomatId;
                 KarticaId = karticaId;
                 Podignut_Novac = podignut_Novac;
-                Datum = datum;
+                Datum = datum.ToShortDateString();
                 Vreme = vreme;
             }
         }

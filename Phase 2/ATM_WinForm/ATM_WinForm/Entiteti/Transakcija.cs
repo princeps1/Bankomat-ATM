@@ -16,7 +16,7 @@ namespace ATM_WinForm.Entiteti
         public virtual DateTime Datum_Podizanja_Novca { get; set; }
 
         [DisplayName("VREME PODIZANJA NOVCA")]
-        public virtual DateTime Vreme_Podizanja_Novca { get; set; }
+        public virtual string Vreme_Podizanja_Novca { get; set; }
 
         //TERNARNA
         [Browsable(false)]

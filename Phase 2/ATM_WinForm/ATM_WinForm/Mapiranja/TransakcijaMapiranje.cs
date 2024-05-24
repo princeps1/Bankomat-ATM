@@ -21,8 +21,6 @@ namespace ATM_WinForm.Mapiranja
 
             //TERNARNA
             HasMany(x => x.Koristi_Za_Podizanje_Novca).KeyColumn("ID_TRANSAKCIJE").LazyLoad().Cascade.All().Inverse();
-            ;
-
         }
     }
 }

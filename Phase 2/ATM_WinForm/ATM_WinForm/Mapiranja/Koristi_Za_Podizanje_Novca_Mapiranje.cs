@@ -15,7 +15,7 @@ namespace ATM_WinForm.Mapiranja
             Table("KORISTI_ZA_PODIZANJE_NOVCA");
 
             //TERNARNA
-            Id(x => x.Id).GeneratedBy.Identity();
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
             References(x => x.Bankomat).Column("ID_BANKOMATA");
             References(x => x.Kartica).Column("ID_KARTICE");
             References(x => x.Transakcija).Column("ID_TRANSAKCIJE");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ATM_WinForm.Forme.Banka;
+using ATM_WinForm.Forme.Klijent;
 using ATM_WinForm.Forme.Racun;
 using NHibernate;
 
@@ -146,6 +147,20 @@ namespace ATM_WinForm
                     var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
                     var SpisakSvihRacunaForm  = new Form_Racun_Main(banka.Id);
                     SpisakSvihRacunaForm.ShowDialog();
+                }
+            }
+        }
+
+        private void PregledKlijenataBtn_Click(object sender, EventArgs e)
+        {
+            if (BankaGrid.SelectedCells.Count > 0)
+            {
+                int rowIndex = BankaGrid.SelectedCells[0].RowIndex;
+                if (rowIndex != -1)
+                {
+                    var banka = BankaGrid.SelectedRows[0].DataBoundItem as ATM_WinForm.DTOs.BankaBasic;
+                    var KlijentForm = new Form_Klijent_Main(banka.Id);
+                    KlijentForm.ShowDialog();
                 }
             }
         }

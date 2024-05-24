@@ -35,6 +35,7 @@
             this.BtnPregledFilijala = new System.Windows.Forms.Button();
             this.SpisakBrojevaTelefonaBtn = new System.Windows.Forms.Button();
             this.SpisakSvihRacunaBtn = new System.Windows.Forms.Button();
+            this.PregledKlijenataBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BankaGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +99,7 @@
             this.BtnPregledFilijala.BackColor = System.Drawing.Color.SandyBrown;
             this.BtnPregledFilijala.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.BtnPregledFilijala.Location = new System.Drawing.Point(696, 326);
-            this.BtnPregledFilijala.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnPregledFilijala.Margin = new System.Windows.Forms.Padding(2);
             this.BtnPregledFilijala.Name = "BtnPregledFilijala";
             this.BtnPregledFilijala.Size = new System.Drawing.Size(200, 33);
             this.BtnPregledFilijala.TabIndex = 5;
@@ -111,7 +112,7 @@
             this.SpisakBrojevaTelefonaBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.SpisakBrojevaTelefonaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.SpisakBrojevaTelefonaBtn.Location = new System.Drawing.Point(696, 363);
-            this.SpisakBrojevaTelefonaBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SpisakBrojevaTelefonaBtn.Margin = new System.Windows.Forms.Padding(2);
             this.SpisakBrojevaTelefonaBtn.Name = "SpisakBrojevaTelefonaBtn";
             this.SpisakBrojevaTelefonaBtn.Size = new System.Drawing.Size(200, 33);
             this.SpisakBrojevaTelefonaBtn.TabIndex = 6;
@@ -124,7 +125,7 @@
             this.SpisakSvihRacunaBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.SpisakSvihRacunaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.SpisakSvihRacunaBtn.Location = new System.Drawing.Point(696, 400);
-            this.SpisakSvihRacunaBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SpisakSvihRacunaBtn.Margin = new System.Windows.Forms.Padding(2);
             this.SpisakSvihRacunaBtn.Name = "SpisakSvihRacunaBtn";
             this.SpisakSvihRacunaBtn.Size = new System.Drawing.Size(200, 33);
             this.SpisakSvihRacunaBtn.TabIndex = 7;
@@ -132,12 +133,26 @@
             this.SpisakSvihRacunaBtn.UseVisualStyleBackColor = false;
             this.SpisakSvihRacunaBtn.Click += new System.EventHandler(this.SpisakSvihRacunaBtn_Click);
             // 
+            // PregledKlijenataBtn
+            // 
+            this.PregledKlijenataBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.PregledKlijenataBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.PregledKlijenataBtn.Location = new System.Drawing.Point(343, 327);
+            this.PregledKlijenataBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.PregledKlijenataBtn.Name = "PregledKlijenataBtn";
+            this.PregledKlijenataBtn.Size = new System.Drawing.Size(200, 33);
+            this.PregledKlijenataBtn.TabIndex = 8;
+            this.PregledKlijenataBtn.Text = "Pregled svih klijenata banke";
+            this.PregledKlijenataBtn.UseVisualStyleBackColor = false;
+            this.PregledKlijenataBtn.Click += new System.EventHandler(this.PregledKlijenataBtn_Click);
+            // 
             // Form_Banka_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(907, 450);
+            this.Controls.Add(this.PregledKlijenataBtn);
             this.Controls.Add(this.SpisakSvihRacunaBtn);
             this.Controls.Add(this.SpisakBrojevaTelefonaBtn);
             this.Controls.Add(this.BtnPregledFilijala);
@@ -165,5 +180,6 @@
         private System.Windows.Forms.Button BtnPregledFilijala;
         private System.Windows.Forms.Button SpisakBrojevaTelefonaBtn;
         private System.Windows.Forms.Button SpisakSvihRacunaBtn;
+        private System.Windows.Forms.Button PregledKlijenataBtn;
     }
 }

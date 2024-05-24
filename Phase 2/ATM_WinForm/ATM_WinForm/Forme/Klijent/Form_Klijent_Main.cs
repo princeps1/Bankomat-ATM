@@ -7,16 +7,19 @@ namespace ATM_WinForm.Forme.Klijent
 {
     public partial class Form_Klijent_Main : Form
     {
+        private readonly int bankaId = -1;
         private readonly BindingSource bindingSource = new BindingSource();
         List<ATM_WinForm.DTOs.KlijentBasic> klijent = null;
         List<ATM_WinForm.DTOs.PravnoLiceBasic> pravnoLice = null;
         List<ATM_WinForm.DTOs.FizickoLiceBasic> fizickoLice = null;
-        public Form_Klijent_Main()
+        public Form_Klijent_Main(int bankaId = -1)
         {
             InitializeComponent();
 
+            this.bankaId = bankaId;
             this.KlijentComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.KlijentComboBox.SelectedIndex = 0;
+            
 
             KlijentGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             KlijentGrid.ClearSelection();
@@ -24,7 +27,8 @@ namespace ATM_WinForm.Forme.Klijent
 
         private void Form_Klijent_Main_Load(object sender, EventArgs e)
         {
-            klijent = DTOManager.VratiSveKlijente();
+
+            klijent = DTOManager.VratiSveKlijente(this.bankaId);
 
             bindingSource.DataSource = klijent;
             KlijentGrid.DataSource = bindingSource;
@@ -35,7 +39,9 @@ namespace ATM_WinForm.Forme.Klijent
         private void PopuniPodacima()
         {
             klijent.Clear();
-            klijent = DTOManager.VratiSveKlijente();
+            klijent = DTOManager.VratiSveKlijente(this.bankaId);
+  
+
             bindingSource.DataSource = klijent;
             KlijentGrid.DataSource = bindingSource;
         }
@@ -47,7 +53,7 @@ namespace ATM_WinForm.Forme.Klijent
             if(this.KlijentComboBox.SelectedIndex.ToString() == "1")
             {
 
-                    pravnoLice = DTOManager.VratiSvaPravnaLica();
+                    pravnoLice = DTOManager.VratiSvaPravnaLica(this.bankaId);
 
                     bindingSource.DataSource = pravnoLice;
                     KlijentGrid.DataSource = bindingSource;
@@ -56,7 +62,7 @@ namespace ATM_WinForm.Forme.Klijent
             }
             else if(this.KlijentComboBox.SelectedIndex.ToString() == "2")
             {
-                fizickoLice = DTOManager.VratiSvaFizickaLica();
+                fizickoLice = DTOManager.VratiSvaFizickaLica(this.bankaId);
 
                 bindingSource.DataSource = fizickoLice;
                 KlijentGrid.DataSource = bindingSource;
@@ -65,7 +71,7 @@ namespace ATM_WinForm.Forme.Klijent
             }
             else
             {
-                klijent = DTOManager.VratiSveKlijente();
+                klijent = DTOManager.VratiSveKlijente(this.bankaId);
 
                 bindingSource.DataSource = klijent;
                 KlijentGrid.DataSource = bindingSource;

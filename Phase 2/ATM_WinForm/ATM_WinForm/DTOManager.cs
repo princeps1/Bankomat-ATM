@@ -950,103 +950,171 @@ namespace ATM_WinForm
             }
         }
 
-        public static List<KlijentBasic> VratiSveKlijente()
+        public static List<KlijentBasic> VratiSveKlijente(int bankaId = -1)
         {
             List<KlijentBasic> klijentList = new List<KlijentBasic>();
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                IEnumerable<Klijent> klijenti = s.Query<Klijent>();
-
-                foreach (Klijent k in klijenti)
+                IQueryable<KlijentBasic> klijenti;
+                if (bankaId == -1)
                 {
-                    klijentList.Add(new KlijentBasic(
-                        k.Id,
-                        k.Br_tel,
-                        k.Email,
-                        k.Adresa,
-                        k.Naziv
-                    ));
+                    klijenti = from k in s.Query<Klijent>()
+                               select new KlijentBasic
+                               (
+                                   k.Id,
+                                   k.Br_tel,
+                                   k.Email,
+                                   k.Adresa,
+                                   k.Naziv
+                               );
                 }
+                else
+                {
+                    klijenti = from k in s.Query<Klijent>()
+                               from r in k.Racuni
+                               where r.JePovezan.Id == bankaId
+                               select new KlijentBasic
+                               (
+                                   k.Id,
+                                   k.Br_tel,
+                                   k.Email,
+                                   k.Adresa,
+                                   k.Naziv
+                               );
+                }
+
+                klijentList = klijenti.ToList();
+
 
                 s.Close();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+
             }
 
             return klijentList;
         }
 
-        public static List<FizickoLiceBasic> VratiSvaFizickaLica()
+        public static List<FizickoLiceBasic> VratiSvaFizickaLica(int bankaId = -1)
         {
-            List<FizickoLiceBasic> fizickaLicaList = new List<FizickoLiceBasic>();
+            List<FizickoLiceBasic> fizickoList = new List<FizickoLiceBasic>();
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                IEnumerable<FizickoLice> fizickaLica = s.Query<FizickoLice>();
-
-                foreach (FizickoLice k in fizickaLica)
+                IQueryable<FizickoLiceBasic> fizicko;
+                if (bankaId == -1)
                 {
-                    fizickaLicaList.Add(new FizickoLiceBasic(
-                        k.JMBG,
-                        k.Datum_rodjenja,
-                        k.LIme,
-                        k.Ime_roditelja,
-                        k.Prezime,
-                        k.Br_licne_karte,
-                        k.Mesto_izdavanja,
-                        k.Id,
-                        k.Naziv,
-                        k.Br_tel,
-                        k.Email,
-                        k.Adresa
-                    ));
+                    fizicko = from k in s.Query<FizickoLice>()
+                              select new FizickoLiceBasic
+                              (
+                                   k.JMBG,
+                                   k.Datum_rodjenja,
+                                   k.LIme,
+                                   k.Ime_roditelja,
+                                   k.Prezime,
+                                   k.Br_licne_karte,
+                                   k.Mesto_izdavanja,
+                                   k.Id,
+                                   k.Naziv,
+                                   k.Br_tel,
+                                   k.Email,
+                                   k.Adresa
+                              );
                 }
+                else
+                {
+                    fizicko = from k in s.Query<FizickoLice>()
+                              from r in k.Racuni
+                              where r.JePovezan.Id == bankaId
+                              select new FizickoLiceBasic
+                              (
+                                   k.JMBG,
+                                   k.Datum_rodjenja,
+                                   k.LIme,
+                                   k.Ime_roditelja,
+                                   k.Prezime,
+                                   k.Br_licne_karte,
+                                   k.Mesto_izdavanja,
+                                   k.Id,
+                                   k.Naziv,
+                                   k.Br_tel,
+                                   k.Email,
+                                   k.Adresa
+                              );
+                }
+
+                fizickoList = fizicko.ToList();
+
 
                 s.Close();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+
             }
 
-            return fizickaLicaList;
+            return fizickoList;
         }
 
-        public static List<PravnoLiceBasic> VratiSvaPravnaLica()
+        public static List<PravnoLiceBasic> VratiSvaPravnaLica(int bankaId = -1)
         {
-            List<PravnoLiceBasic> pravnaLicaList = new List<PravnoLiceBasic>();
+            List<PravnoLiceBasic> pravnoList = new List<PravnoLiceBasic>();
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                IEnumerable<PravnoLice> pravnaLica = s.Query<PravnoLice>();
-
-                foreach (PravnoLice p in pravnaLica)
+                IQueryable<PravnoLiceBasic> pravno;
+                if (bankaId == -1)
                 {
-                    pravnaLicaList.Add(new PravnoLiceBasic(
-                        p.Poreski_id,
-                        p.Id,
-                        p.Naziv,
-                        p.Br_tel,
-                        p.Email,
-                        p.Adresa
-                    ));
+                    pravno = from p in s.Query<PravnoLice>()
+                             select new PravnoLiceBasic
+                             (
+                                   p.Poreski_id,
+                                   p.Id,
+                                   p.Naziv,
+                                   p.Br_tel,
+                                   p.Email,
+                                   p.Adresa
+                             );
                 }
+                else
+                {
+                    pravno = from p in s.Query<PravnoLice>()
+                             from r in p.Racuni
+                             where r.JePovezan.Id == bankaId
+                             select new PravnoLiceBasic
+                             (
+                                   p.Poreski_id,
+                                   p.Id,
+                                   p.Naziv,
+                                   p.Br_tel,
+                                   p.Email,
+                                   p.Adresa
+                             );
+                }
+
+                pravnoList = pravno.ToList();
+
 
                 s.Close();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+
             }
 
-            return pravnaLicaList;
+            return pravnoList;
+
         }
+
+
 
         public static void DodajFizickoLice(FizickoLiceBasic fizickoLice)
         {

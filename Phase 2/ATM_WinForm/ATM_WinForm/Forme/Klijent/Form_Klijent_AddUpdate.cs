@@ -140,6 +140,11 @@ namespace ATM_WinForm.Forme.Klijent
                                     return;
                                 }
 
+                                if (!ProveraPodatakaPravnogLica())
+                                {
+                                    return;
+                                }
+
                                 DTOs.PravnoLiceBasic pravno = new DTOs.PravnoLiceBasic
                                 {
                                     Poreski_id = PoreskiIdTxtBx.Text,
@@ -170,7 +175,7 @@ namespace ATM_WinForm.Forme.Klijent
                                     MessageBox.Show("Polja ne smeju biti prazna!");
                                     return;
                                 }
-                                if (!ProveraLicneKarte())
+                                if (!ProveraPodatakaFizickogLica(this.type))
                                 {
                                     return;
                                 }
@@ -201,7 +206,10 @@ namespace ATM_WinForm.Forme.Klijent
                             string tip = KlijentComboBox.SelectedItem.ToString();
                             if (tip == "Pravna lica")
                             {
-                                
+                                if (!ProveraPodatakaPravnogLica())
+                                {
+                                    return;
+                                }
                                 this.pravnoLice.Naziv = NazivTxtBx.Text;
                                 this.pravnoLice.Adresa = AdresaTxtBx.Text;
                                 this.pravnoLice.Br_tel = BrTelTxtBx.Text;
@@ -218,16 +226,16 @@ namespace ATM_WinForm.Forme.Klijent
                             }
                             else if(tip == "Fizicka lica")
                             {
+                                if (!ProveraPodatakaFizickogLica(this.type))
+                                {
+                                    return;
+                                }
                                 this.fizickoLice.LIme = LimeTxtBx.Text;
                                 this.fizickoLice.JMBG = JMBGTxtBx.Text;
                                 this.fizickoLice.Datum_rodjenja = DatumRodjenjaDateTimePicker.Value;
                                 this.fizickoLice.LIme = LimeTxtBx.Text;
                                 this.fizickoLice.Ime_roditelja = ImeRoditeljaTxtBx.Text;
                                 this.fizickoLice.Prezime = PrezimeTxtBx.Text;
-                                if (!ProveraLicneKarte())
-                                {
-                                    return;
-                                }
                                 this.fizickoLice.Br_licne_karte = BrLicneKarteTxtBx.Text;
                                 this.fizickoLice.Mesto_izdavanja = MestoIzdavanjaTxtBx.Text;
                                 this.fizickoLice.Br_tel = BrTelTxtBx.Text;
@@ -254,7 +262,7 @@ namespace ATM_WinForm.Forme.Klijent
             this.Close();
         }
 
-        private bool ProveraLicneKarte()
+        private bool ProveraPodatakaFizickogLica(string tip)
         {
             if (BrLicneKarteTxtBx.Text.Length != 9)
             {
@@ -268,9 +276,38 @@ namespace ATM_WinForm.Forme.Klijent
                 return false;
             }
 
-            if (!DTOManager.ProveraPonavljanjaLicneKarteFizickihLica(BrLicneKarteTxtBx.Text))
+            if (!DTOManager.ProveraPonavljanjaLicneKarteFizickihLica(BrLicneKarteTxtBx.Text) && tip == "add")
             {
                 MessageBox.Show("Morate uneti svoj unikatan broj licne karte!\n");
+                return false;
+            }
+
+            if (JMBGTxtBx.Text.Length != 13)
+            {
+                MessageBox.Show("JMBG mora da sadrzi tacno 13 karaktera!\n");
+                return false;
+            }
+
+            if (!Regex.IsMatch(JMBGTxtBx.Text, @"^\d{13}$"))
+            {
+                MessageBox.Show("JMBG mora da sadrzi samo brojke!\n");
+                return false;
+            }
+
+            if (!Regex.IsMatch(EmailTxtBx.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Email adresa nije validna!\n");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ProveraPodatakaPravnogLica()
+        {
+            if (!Regex.IsMatch(EmailTxtBx.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Email adresa nije validna!\n");
                 return false;
             }
 

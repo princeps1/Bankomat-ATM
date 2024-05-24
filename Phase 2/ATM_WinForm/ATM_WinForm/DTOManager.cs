@@ -328,6 +328,27 @@ namespace ATM_WinForm
             return filijalaList;
         }
 
+        public static FilijalaBasic VratiFilijaluBankomata(int bankomatId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                var bankomat = s.Load<Bankomat>(bankomatId);
+
+                var filijala = VratiFilijalu(bankomat.InstaliranUFilijali.Rbr_filijale);
+
+                s.Close();
+
+                return filijala;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
         public static FilijalaBasic VratiFilijalu(int id)
         {
             try
@@ -1177,6 +1198,32 @@ namespace ATM_WinForm
             }
         }
 
+        public static bool ProveraPonavljanjaLicneKarteFizickihLica(string licnaKarta)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<FizickoLice> fizickaLica = s.Query<FizickoLice>();
+
+                foreach (FizickoLice k in fizickaLica)
+                {
+                    if (k.Br_licne_karte == licnaKarta)
+                    {
+                        return false;
+                    }
+                }
+
+                s.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return true;
+        }
+
         #endregion
 
         #region KomentarKlijenta
@@ -1768,6 +1815,38 @@ namespace ATM_WinForm
                 Console.WriteLine(e.Message);
             }
         }
+        #endregion
+
+        #region Transakcija
+
+        public static List<PregledBasic> VratiSveTransakcijeOdBankomata(int bankomatId)
+        {
+            List<PregledBasic> pregledList = new List<PregledBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                var koristi = from k in s.Query<Koristi_Za_Podizanje_Novca>()
+                              where k.Bankomat.Id == bankomatId
+                              select new PregledBasic(
+                                  k.Transakcija.Id,
+                                  k.Bankomat.Id,
+                                  k.Kartica.Id,
+                                  k.Transakcija.Podignuti_iznos,
+                                  k.Transakcija.Datum_Podizanja_Novca,
+                                  k.Transakcija.Vreme_Podizanja_Novca
+                              );
+
+                pregledList = koristi.ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return pregledList;
+        }
+
+
+
         #endregion
     }
 }

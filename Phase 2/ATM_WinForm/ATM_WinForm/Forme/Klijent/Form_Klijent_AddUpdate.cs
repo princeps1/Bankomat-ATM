@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -149,7 +150,7 @@ namespace ATM_WinForm.Forme.Klijent
                                 };
                                 DTOManager.DodajPravnoLice(pravno);
 
-                                MessageBox.Show("Uspesno ste dodali pravno lice!");
+                                MessageBox.Show("Uspesno ste dodali klijenta!");
 
                                 break;
                             }
@@ -169,7 +170,10 @@ namespace ATM_WinForm.Forme.Klijent
                                     MessageBox.Show("Polja ne smeju biti prazna!");
                                     return;
                                 }
-
+                                if (!ProveraLicneKarte())
+                                {
+                                    return;
+                                }
                                 DTOs.FizickoLiceBasic fizicko = new DTOs.FizickoLiceBasic
                                 {
                                     JMBG = JMBGTxtBx.Text,
@@ -187,7 +191,7 @@ namespace ATM_WinForm.Forme.Klijent
 
                                 DTOManager.DodajFizickoLice(fizicko);
 
-                                MessageBox.Show("Uspesno ste dodali pravno lice!");
+                                MessageBox.Show("Uspesno ste dodali klijenta!");
 
                                 break;
                             }
@@ -220,6 +224,10 @@ namespace ATM_WinForm.Forme.Klijent
                                 this.fizickoLice.LIme = LimeTxtBx.Text;
                                 this.fizickoLice.Ime_roditelja = ImeRoditeljaTxtBx.Text;
                                 this.fizickoLice.Prezime = PrezimeTxtBx.Text;
+                                if (!ProveraLicneKarte())
+                                {
+                                    return;
+                                }
                                 this.fizickoLice.Br_licne_karte = BrLicneKarteTxtBx.Text;
                                 this.fizickoLice.Mesto_izdavanja = MestoIzdavanjaTxtBx.Text;
                                 this.fizickoLice.Br_tel = BrTelTxtBx.Text;
@@ -246,7 +254,28 @@ namespace ATM_WinForm.Forme.Klijent
             this.Close();
         }
 
+        private bool ProveraLicneKarte()
+        {
+            if (BrLicneKarteTxtBx.Text.Length != 9)
+            {
+                MessageBox.Show("Broj licne karte mora da sadrzi tacno 9 karaktera!\n");
+                return false;
+            }
 
+            if (!Regex.IsMatch(BrLicneKarteTxtBx.Text, @"^\d{9}$"))
+            {
+                MessageBox.Show("Broj licne karte mora da sadrzi samo brojke!\n");
+                return false;
+            }
+
+            if (!DTOManager.ProveraPonavljanjaLicneKarteFizickihLica(BrLicneKarteTxtBx.Text))
+            {
+                MessageBox.Show("Morate uneti svoj unikatan broj licne karte!\n");
+                return false;
+            }
+
+            return true;
+        }
 
     }
 }

@@ -34,6 +34,7 @@
             this.BankomatGrid = new System.Windows.Forms.DataGridView();
             this.PrikaziKomentareBtn = new System.Windows.Forms.Button();
             this.PrikaziServiseBtn = new System.Windows.Forms.Button();
+            this.PrikaziTransakcijeBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BankomatGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +110,7 @@
             // 
             this.PrikaziServiseBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.PrikaziServiseBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.PrikaziServiseBtn.Location = new System.Drawing.Point(702, 370);
+            this.PrikaziServiseBtn.Location = new System.Drawing.Point(496, 330);
             this.PrikaziServiseBtn.Name = "PrikaziServiseBtn";
             this.PrikaziServiseBtn.Size = new System.Drawing.Size(200, 33);
             this.PrikaziServiseBtn.TabIndex = 24;
@@ -117,12 +118,25 @@
             this.PrikaziServiseBtn.UseVisualStyleBackColor = false;
             this.PrikaziServiseBtn.Click += new System.EventHandler(this.PrikaziServiseBtn_Click);
             // 
+            // PrikaziTransakcijeBtn
+            // 
+            this.PrikaziTransakcijeBtn.BackColor = System.Drawing.Color.SandyBrown;
+            this.PrikaziTransakcijeBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.PrikaziTransakcijeBtn.Location = new System.Drawing.Point(702, 369);
+            this.PrikaziTransakcijeBtn.Name = "PrikaziTransakcijeBtn";
+            this.PrikaziTransakcijeBtn.Size = new System.Drawing.Size(200, 61);
+            this.PrikaziTransakcijeBtn.TabIndex = 25;
+            this.PrikaziTransakcijeBtn.Text = "Prikazi transakcije";
+            this.PrikaziTransakcijeBtn.UseVisualStyleBackColor = false;
+            this.PrikaziTransakcijeBtn.Click += new System.EventHandler(this.PrikaziTransakcijeBtn_Click);
+            // 
             // Form_Bankomat_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(914, 457);
+            this.Controls.Add(this.PrikaziTransakcijeBtn);
             this.Controls.Add(this.PrikaziServiseBtn);
             this.Controls.Add(this.PrikaziKomentareBtn);
             this.Controls.Add(this.IzbrisiBankomatBtn);
@@ -148,5 +162,6 @@
         private System.Windows.Forms.DataGridView BankomatGrid;
         private System.Windows.Forms.Button PrikaziKomentareBtn;
         private System.Windows.Forms.Button PrikaziServiseBtn;
+        private System.Windows.Forms.Button PrikaziTransakcijeBtn;
     }
 }

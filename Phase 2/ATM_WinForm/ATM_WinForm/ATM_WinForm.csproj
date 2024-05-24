@@ -273,6 +273,18 @@
     <Compile Include="Forme\Racun\Form_Racun_OvlascenoLice_Main.Designer.cs">
       <DependentUpon>Form_Racun_OvlascenoLice_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Transakcije\Form_Transakcija_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Transakcije\Form_Transakcija_Main.Designer.cs">
+      <DependentUpon>Form_Transakcija_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Transakcije\Form_Transakcije_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Transakcije\Form_Transakcije_Add.Designer.cs">
+      <DependentUpon>Form_Transakcije_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Klase\ComboItem.cs" />
     <Compile Include="Klase\RacunGridItem.cs" />
     <Compile Include="Mapiranja\BankaBrTelefonaMapiranje.cs" />
@@ -367,6 +379,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Racun\Form_Racun_OvlascenoLice_Main.resx">
       <DependentUpon>Form_Racun_OvlascenoLice_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Transakcije\Form_Transakcija_Main.resx">
+      <DependentUpon>Form_Transakcija_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Transakcije\Form_Transakcije_Add.resx">
+      <DependentUpon>Form_Transakcije_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -138,6 +138,9 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual IList<ServisBasic> Servisi { get; set; }
 
+            [Browsable(false)]
+            public virtual IList<Koristi_Za_Podizanje_NovcaBasic> Koristi_Za_Podizanje_NovcaBasics { get; set; }
+
             public BankomatBasic(int id, string lokacija, string proizvodjac, string status, DateTime datum, FilijalaBasic filijala)
             {
                 this.Id = id;
@@ -151,6 +154,7 @@ namespace ATM_WinForm
             {
                 Komentari = new List<BankomatKomentariBasic>();
                 Servisi = new List<ServisBasic>();
+                Koristi_Za_Podizanje_NovcaBasics = new List<Koristi_Za_Podizanje_NovcaBasic>();
             }
         }
 
@@ -349,7 +353,6 @@ namespace ATM_WinForm
             public FizickoLiceBasic() { }
         }
 
-
         public class BankaBrTelefonaBasic
         {
             [Browsable(false)]
@@ -400,6 +403,11 @@ namespace ATM_WinForm
             [Browsable(false)]
             public virtual RacunBasic Odgovara { get; set; }
 
+            //TERNARNA
+            [Browsable(false)]
+            public virtual IList<Koristi_Za_Podizanje_Novca> Koristi_Za_Podizanje_Novca { get; set; }
+
+
             public KarticaBasic(int id, DateTime datum_izdavanja, DateTime datum_isteka, string dnevni_limit, string tip,string max_iznos_zaduzenja, DateTime max_datum_vracanja_duga, RacunBasic racun)
             {
                 this.Id = id;
@@ -412,7 +420,10 @@ namespace ATM_WinForm
                 this.Odgovara = racun;
             }
 
-            public KarticaBasic() { }
+            public KarticaBasic() 
+            {
+            Koristi_Za_Podizanje_Novca = new List<Koristi_Za_Podizanje_Novca>();
+            }
         }
 
         public class ServisBasic
@@ -470,6 +481,92 @@ namespace ATM_WinForm
             public OtklonjenaGreskaServisaBasic() { }
         }
 
+        public class TransakcijaBasic
+        {
+            [DisplayName("ID")]
+            public virtual int Id { get; set; }
 
+            [DisplayName("PODIGNUTI IZNOS")]
+            public virtual string Podignuti_iznos { get; set; }
+
+            [DisplayName("DATUM PODIZANJA NOVCA")]
+            public virtual DateTime Datum_Podizanja_Novca { get; set; }
+
+            [DisplayName("VREME PODIZANJA NOVCA")]
+            public virtual DateTime Vreme_Podizanja_Novca { get; set; }
+
+            //TERNARNA
+            [Browsable(false)]
+            public virtual IList<Koristi_Za_Podizanje_Novca> Koristi_Za_Podizanje_Novca { get; set; }
+
+            public TransakcijaBasic(int id, string podignuti_iznos, DateTime datum_Podizanja_Novca, DateTime vreme_Podizanja_Novca, IList<Koristi_Za_Podizanje_Novca> koristi_Za_Podizanje_Novca)
+            {
+                Id = id;
+                Podignuti_iznos = podignuti_iznos;
+                Datum_Podizanja_Novca = datum_Podizanja_Novca;
+                Vreme_Podizanja_Novca = vreme_Podizanja_Novca;
+                
+            }
+
+            public TransakcijaBasic()
+            {
+                Koristi_Za_Podizanje_Novca= new List<Koristi_Za_Podizanje_Novca>();
+            }
+        }
+
+        public class Koristi_Za_Podizanje_NovcaBasic
+        {
+            [DisplayName("ID")]
+            public virtual int Id { get; set; }
+
+            [DisplayName("ID BANKOMATA")]
+            public virtual BankomatBasic Bankomat { get; set; }
+
+            [DisplayName("ID KARTICE")]
+            public virtual KarticaBasic Kartica { get; set; }
+
+            [DisplayName("ID TRANSAKCIJE")]
+            public virtual TransakcijaBasic Transakcija { get; set; }
+
+            Koristi_Za_Podizanje_NovcaBasic(int id, BankomatBasic bankomat, KarticaBasic kartica, TransakcijaBasic transakcija)
+            {
+                Bankomat = bankomat;
+                Kartica = kartica;
+                Transakcija = transakcija;
+            }
+
+            Koristi_Za_Podizanje_NovcaBasic() { }
+        }
+
+        public class PregledBasic
+        {
+            [DisplayName("ID TRANSAKCIJE")]
+            public virtual int TransakcijaId { get; set; }
+
+            [DisplayName("ID BANKOMATA")]
+            public virtual int BankomatId { get; set; }
+
+            [DisplayName("ID KARTICE")]
+            public virtual int KarticaId { get; set; }
+
+            [DisplayName("PODIGNUT NOVAC")]
+            public virtual string Podignut_Novac { get; set;}
+
+            [DisplayName("DATUM")]
+            public virtual DateTime Datum { get; set; }
+
+            [DisplayName("VREME")]
+            public virtual DateTime Vreme {  get; set; }
+
+            public PregledBasic(int transakcijaId, int bankomatId, int karticaId, string podignut_Novac, DateTime datum, DateTime vreme)
+            {
+                TransakcijaId = transakcijaId;
+                BankomatId = bankomatId;
+                KarticaId = karticaId;
+                Podignut_Novac = podignut_Novac;
+                Datum = datum;
+                Vreme = vreme;
+            }
+        }
     }
 }

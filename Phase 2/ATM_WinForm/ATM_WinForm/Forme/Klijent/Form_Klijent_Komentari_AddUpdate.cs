@@ -79,6 +79,8 @@ namespace ATM_WinForm.Forme.Klijent
                         {
                             this.komentar.Komentar = AddUpdateTxt.Text;
                             this.komentar.PripadaKlijentu = DTOManager.VratiKlijenta(klijentId);
+                            
+
 
                             DTOManager.IzmeniKomentarKlijenta(this.komentar);
 

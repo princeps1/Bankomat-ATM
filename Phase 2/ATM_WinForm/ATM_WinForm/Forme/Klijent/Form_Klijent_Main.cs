@@ -115,6 +115,7 @@ namespace ATM_WinForm.Forme.Klijent
                         var dodajIzmeniKlijentForm = new Form_Klijent_AddUpdate("update", null, pravno);
                         dodajIzmeniKlijentForm.ShowDialog();
                         bindingSource.ResetBindings(false);
+                        
                     }
                 }
                 else if (KlijentComboBox.SelectedIndex == 2)//fizicko lice
@@ -126,10 +127,10 @@ namespace ATM_WinForm.Forme.Klijent
                         var dodajIzmeniKlijentForm = new Form_Klijent_AddUpdate("update", fizicko, null);
                         dodajIzmeniKlijentForm.ShowDialog();
                         bindingSource.ResetBindings(false);
-
+                        
                     }
                 }
-
+                this.PopuniPodacima();
             }
         }
 

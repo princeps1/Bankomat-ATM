@@ -36,19 +36,20 @@
             // FirmaLbl
             // 
             this.FirmaLbl.AutoSize = true;
-            this.FirmaLbl.Location = new System.Drawing.Point(94, 43);
+            this.FirmaLbl.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.FirmaLbl.Location = new System.Drawing.Point(56, 43);
             this.FirmaLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FirmaLbl.Name = "FirmaLbl";
-            this.FirmaLbl.Size = new System.Drawing.Size(213, 13);
+            this.FirmaLbl.Size = new System.Drawing.Size(294, 15);
             this.FirmaLbl.TabIndex = 12;
-            this.FirmaLbl.Text = "Unesite naziv firme koja servisira bankomat:";
+            this.FirmaLbl.Text = "Unesite naziv firmu koja servisira bankomat:";
             // 
             // AkcijaServisaBtn
             // 
             this.AkcijaServisaBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.AkcijaServisaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AkcijaServisaBtn.Location = new System.Drawing.Point(115, 110);
-            this.AkcijaServisaBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AkcijaServisaBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AkcijaServisaBtn.Name = "AkcijaServisaBtn";
             this.AkcijaServisaBtn.Size = new System.Drawing.Size(158, 31);
             this.AkcijaServisaBtn.TabIndex = 11;
@@ -59,7 +60,7 @@
             // AddUpdateTxt
             // 
             this.AddUpdateTxt.Location = new System.Drawing.Point(115, 70);
-            this.AddUpdateTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddUpdateTxt.Margin = new System.Windows.Forms.Padding(2);
             this.AddUpdateTxt.Name = "AddUpdateTxt";
             this.AddUpdateTxt.Size = new System.Drawing.Size(158, 20);
             this.AddUpdateTxt.TabIndex = 10;
@@ -73,7 +74,7 @@
             this.Controls.Add(this.FirmaLbl);
             this.Controls.Add(this.AkcijaServisaBtn);
             this.Controls.Add(this.AddUpdateTxt);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_Bankomat_Servisi_AddUpdate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ATM - Dodaj servis";

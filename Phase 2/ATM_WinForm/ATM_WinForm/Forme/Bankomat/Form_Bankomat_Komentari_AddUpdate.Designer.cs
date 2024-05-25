@@ -36,10 +36,11 @@
             // KomentarLbl
             // 
             this.KomentarLbl.AutoSize = true;
-            this.KomentarLbl.Location = new System.Drawing.Point(115, 45);
+            this.KomentarLbl.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.KomentarLbl.Location = new System.Drawing.Point(88, 51);
             this.KomentarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.KomentarLbl.Name = "KomentarLbl";
-            this.KomentarLbl.Size = new System.Drawing.Size(52, 13);
+            this.KomentarLbl.Size = new System.Drawing.Size(71, 15);
             this.KomentarLbl.TabIndex = 9;
             this.KomentarLbl.Text = "Komentar";
             // 
@@ -47,7 +48,7 @@
             // 
             this.AkcijaKomentaraBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.AkcijaKomentaraBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.AkcijaKomentaraBtn.Location = new System.Drawing.Point(118, 109);
+            this.AkcijaKomentaraBtn.Location = new System.Drawing.Point(91, 90);
             this.AkcijaKomentaraBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AkcijaKomentaraBtn.Name = "AkcijaKomentaraBtn";
             this.AkcijaKomentaraBtn.Size = new System.Drawing.Size(158, 31);
@@ -58,7 +59,7 @@
             // 
             // AddUpdateTxt
             // 
-            this.AddUpdateTxt.Location = new System.Drawing.Point(118, 69);
+            this.AddUpdateTxt.Location = new System.Drawing.Point(91, 66);
             this.AddUpdateTxt.Margin = new System.Windows.Forms.Padding(2);
             this.AddUpdateTxt.Name = "AddUpdateTxt";
             this.AddUpdateTxt.Size = new System.Drawing.Size(158, 20);
@@ -69,7 +70,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(391, 185);
+            this.ClientSize = new System.Drawing.Size(332, 185);
             this.Controls.Add(this.KomentarLbl);
             this.Controls.Add(this.AkcijaKomentaraBtn);
             this.Controls.Add(this.AddUpdateTxt);

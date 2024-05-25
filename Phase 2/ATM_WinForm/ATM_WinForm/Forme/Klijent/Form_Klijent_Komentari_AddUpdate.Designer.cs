@@ -36,10 +36,11 @@
             // KomentarLbl
             // 
             this.KomentarLbl.AutoSize = true;
+            this.KomentarLbl.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.KomentarLbl.Location = new System.Drawing.Point(112, 46);
             this.KomentarLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.KomentarLbl.Name = "KomentarLbl";
-            this.KomentarLbl.Size = new System.Drawing.Size(52, 13);
+            this.KomentarLbl.Size = new System.Drawing.Size(71, 15);
             this.KomentarLbl.TabIndex = 6;
             this.KomentarLbl.Text = "Komentar";
             // 

@@ -82,6 +82,7 @@
             this.BankaGrid.AllowUserToOrderColumns = true;
             this.BankaGrid.AllowUserToResizeRows = false;
             this.BankaGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.BankaGrid.BackgroundColor = System.Drawing.Color.Beige;
             this.BankaGrid.ColumnHeadersHeight = 29;
             this.BankaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BankaGrid.Location = new System.Drawing.Point(12, 12);

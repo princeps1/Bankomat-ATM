@@ -40,6 +40,7 @@
             this.GreskeGrid.AllowUserToOrderColumns = true;
             this.GreskeGrid.AllowUserToResizeRows = false;
             this.GreskeGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GreskeGrid.BackgroundColor = System.Drawing.Color.Beige;
             this.GreskeGrid.ColumnHeadersHeight = 35;
             this.GreskeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.GreskeGrid.Location = new System.Drawing.Point(10, 11);
@@ -48,7 +49,7 @@
             this.GreskeGrid.ReadOnly = true;
             this.GreskeGrid.RowHeadersWidth = 51;
             this.GreskeGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.GreskeGrid.Size = new System.Drawing.Size(893, 309);
+            this.GreskeGrid.Size = new System.Drawing.Size(321, 309);
             this.GreskeGrid.TabIndex = 20;
             this.GreskeGrid.SelectionChanged += new System.EventHandler(this.GreskeGrid_SelectionChanged);
             // 
@@ -59,7 +60,7 @@
             this.IzbrisiGreskuBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzbrisiGreskuBtn.Location = new System.Drawing.Point(10, 410);
             this.IzbrisiGreskuBtn.Name = "IzbrisiGreskuBtn";
-            this.IzbrisiGreskuBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzbrisiGreskuBtn.Size = new System.Drawing.Size(320, 33);
             this.IzbrisiGreskuBtn.TabIndex = 25;
             this.IzbrisiGreskuBtn.Text = "Izbrisi Otklonjenu Gresku";
             this.IzbrisiGreskuBtn.UseVisualStyleBackColor = false;
@@ -72,7 +73,7 @@
             this.IzmeniGreskuBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzmeniGreskuBtn.Location = new System.Drawing.Point(10, 371);
             this.IzmeniGreskuBtn.Name = "IzmeniGreskuBtn";
-            this.IzmeniGreskuBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzmeniGreskuBtn.Size = new System.Drawing.Size(320, 33);
             this.IzmeniGreskuBtn.TabIndex = 24;
             this.IzmeniGreskuBtn.Text = "Izmeni Otklonjenu Gresku";
             this.IzmeniGreskuBtn.UseVisualStyleBackColor = false;
@@ -84,7 +85,7 @@
             this.DodajGreskuBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.DodajGreskuBtn.Location = new System.Drawing.Point(10, 332);
             this.DodajGreskuBtn.Name = "DodajGreskuBtn";
-            this.DodajGreskuBtn.Size = new System.Drawing.Size(200, 33);
+            this.DodajGreskuBtn.Size = new System.Drawing.Size(320, 33);
             this.DodajGreskuBtn.TabIndex = 23;
             this.DodajGreskuBtn.Text = "Dodaj Otklonjenu Gresku";
             this.DodajGreskuBtn.UseVisualStyleBackColor = false;
@@ -95,12 +96,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(921, 464);
+            this.ClientSize = new System.Drawing.Size(343, 464);
             this.Controls.Add(this.IzbrisiGreskuBtn);
             this.Controls.Add(this.IzmeniGreskuBtn);
             this.Controls.Add(this.DodajGreskuBtn);
             this.Controls.Add(this.GreskeGrid);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_OtklonjeneGreske_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ATM - Otklonjene greske servisa";

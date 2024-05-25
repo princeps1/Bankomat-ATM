@@ -36,10 +36,11 @@
             // labelaAddEditLBL
             // 
             this.labelaAddEditLBL.AutoSize = true;
-            this.labelaAddEditLBL.Location = new System.Drawing.Point(108, 61);
+            this.labelaAddEditLBL.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.labelaAddEditLBL.Location = new System.Drawing.Point(47, 64);
             this.labelaAddEditLBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelaAddEditLBL.Name = "labelaAddEditLBL";
-            this.labelaAddEditLBL.Size = new System.Drawing.Size(35, 13);
+            this.labelaAddEditLBL.Size = new System.Drawing.Size(44, 15);
             this.labelaAddEditLBL.TabIndex = 4;
             this.labelaAddEditLBL.Text = "label1";
             // 

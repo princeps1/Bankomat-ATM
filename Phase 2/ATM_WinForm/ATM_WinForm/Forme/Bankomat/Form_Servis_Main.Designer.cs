@@ -41,6 +41,7 @@
             this.ServisiGrid.AllowUserToOrderColumns = true;
             this.ServisiGrid.AllowUserToResizeRows = false;
             this.ServisiGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ServisiGrid.BackgroundColor = System.Drawing.Color.Beige;
             this.ServisiGrid.ColumnHeadersHeight = 35;
             this.ServisiGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ServisiGrid.Location = new System.Drawing.Point(10, 11);
@@ -49,7 +50,7 @@
             this.ServisiGrid.ReadOnly = true;
             this.ServisiGrid.RowHeadersWidth = 51;
             this.ServisiGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.ServisiGrid.Size = new System.Drawing.Size(893, 309);
+            this.ServisiGrid.Size = new System.Drawing.Size(494, 309);
             this.ServisiGrid.TabIndex = 20;
             this.ServisiGrid.SelectionChanged += new System.EventHandler(this.ServisiGrid_SelectionChanged);
             // 
@@ -95,7 +96,7 @@
             // 
             this.PrikaziGreskeBtn.BackColor = System.Drawing.Color.SandyBrown;
             this.PrikaziGreskeBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.PrikaziGreskeBtn.Location = new System.Drawing.Point(703, 326);
+            this.PrikaziGreskeBtn.Location = new System.Drawing.Point(272, 326);
             this.PrikaziGreskeBtn.Name = "PrikaziGreskeBtn";
             this.PrikaziGreskeBtn.Size = new System.Drawing.Size(200, 33);
             this.PrikaziGreskeBtn.TabIndex = 26;
@@ -108,14 +109,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(921, 464);
+            this.ClientSize = new System.Drawing.Size(516, 464);
             this.Controls.Add(this.PrikaziGreskeBtn);
             this.Controls.Add(this.IzbrisiServisBtn);
             this.Controls.Add(this.IzmeniServisBtn);
             this.Controls.Add(this.DodajServisBtn);
             this.Controls.Add(this.ServisiGrid);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_Servis_Main";
             this.Text = "ATM - Servisi Bankomata";
             this.Load += new System.EventHandler(this.Form_Servis_Main_Load);

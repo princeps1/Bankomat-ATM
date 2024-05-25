@@ -63,6 +63,8 @@ namespace ATM_WinForm.Forme.Racun
                 IzmeniRacunBtn.Enabled = false;
                 PrikaziKorisnikaBtn.Enabled = false;
             }
+            if (this.klijentId == -1)
+                DodajRacunBtn.Visible = false;
         }
              
            

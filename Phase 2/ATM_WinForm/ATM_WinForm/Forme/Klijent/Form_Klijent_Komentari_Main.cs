@@ -63,6 +63,7 @@ namespace ATM_WinForm.Forme.Klijent
                     var DodajIzmeniKomentarForm = new Form_Klijent_Komentari_AddUpdate("update", komentar, this.klijentId);
                     DodajIzmeniKomentarForm.ShowDialog();
                     bindingSource.ResetBindings(false);
+                   
                 }
             }
         }

@@ -49,7 +49,7 @@
             this.BankaBrTelGrid.ReadOnly = true;
             this.BankaBrTelGrid.RowHeadersWidth = 51;
             this.BankaBrTelGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.BankaBrTelGrid.Size = new System.Drawing.Size(883, 309);
+            this.BankaBrTelGrid.Size = new System.Drawing.Size(321, 309);
             this.BankaBrTelGrid.TabIndex = 8;
             this.BankaBrTelGrid.SelectionChanged += new System.EventHandler(this.BankaBrTelGrid_SelectionChanged);
             // 
@@ -60,7 +60,7 @@
             this.IzbrisiBrojTelefonaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzbrisiBrojTelefonaBtn.Location = new System.Drawing.Point(14, 407);
             this.IzbrisiBrojTelefonaBtn.Name = "IzbrisiBrojTelefonaBtn";
-            this.IzbrisiBrojTelefonaBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzbrisiBrojTelefonaBtn.Size = new System.Drawing.Size(321, 33);
             this.IzbrisiBrojTelefonaBtn.TabIndex = 7;
             this.IzbrisiBrojTelefonaBtn.Text = "Izbrisi Broj Telefona";
             this.IzbrisiBrojTelefonaBtn.UseVisualStyleBackColor = false;
@@ -73,7 +73,7 @@
             this.IzmeniBrojTelefonaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzmeniBrojTelefonaBtn.Location = new System.Drawing.Point(14, 368);
             this.IzmeniBrojTelefonaBtn.Name = "IzmeniBrojTelefonaBtn";
-            this.IzmeniBrojTelefonaBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzmeniBrojTelefonaBtn.Size = new System.Drawing.Size(321, 33);
             this.IzmeniBrojTelefonaBtn.TabIndex = 6;
             this.IzmeniBrojTelefonaBtn.Text = "Izmeni Broj Telefona";
             this.IzmeniBrojTelefonaBtn.UseVisualStyleBackColor = false;
@@ -85,7 +85,7 @@
             this.DodajBrojTelefonaBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.DodajBrojTelefonaBtn.Location = new System.Drawing.Point(14, 329);
             this.DodajBrojTelefonaBtn.Name = "DodajBrojTelefonaBtn";
-            this.DodajBrojTelefonaBtn.Size = new System.Drawing.Size(200, 33);
+            this.DodajBrojTelefonaBtn.Size = new System.Drawing.Size(321, 33);
             this.DodajBrojTelefonaBtn.TabIndex = 5;
             this.DodajBrojTelefonaBtn.Text = "Dodaj Broj Telefona";
             this.DodajBrojTelefonaBtn.UseVisualStyleBackColor = false;
@@ -96,7 +96,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(911, 454);
+            this.ClientSize = new System.Drawing.Size(343, 464);
             this.Controls.Add(this.BankaBrTelGrid);
             this.Controls.Add(this.IzbrisiBrojTelefonaBtn);
             this.Controls.Add(this.IzmeniBrojTelefonaBtn);

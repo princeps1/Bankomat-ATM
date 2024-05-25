@@ -42,7 +42,7 @@
             this.IzbrisiLiceBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzbrisiLiceBtn.Location = new System.Drawing.Point(11, 409);
             this.IzbrisiLiceBtn.Name = "IzbrisiLiceBtn";
-            this.IzbrisiLiceBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzbrisiLiceBtn.Size = new System.Drawing.Size(316, 33);
             this.IzbrisiLiceBtn.TabIndex = 13;
             this.IzbrisiLiceBtn.Text = "Izbrisi Lice";
             this.IzbrisiLiceBtn.UseVisualStyleBackColor = false;
@@ -55,7 +55,7 @@
             this.IzmeniLiceBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.IzmeniLiceBtn.Location = new System.Drawing.Point(11, 370);
             this.IzmeniLiceBtn.Name = "IzmeniLiceBtn";
-            this.IzmeniLiceBtn.Size = new System.Drawing.Size(200, 33);
+            this.IzmeniLiceBtn.Size = new System.Drawing.Size(316, 33);
             this.IzmeniLiceBtn.TabIndex = 12;
             this.IzmeniLiceBtn.Text = "Izmeni Lice";
             this.IzmeniLiceBtn.UseVisualStyleBackColor = false;
@@ -67,7 +67,7 @@
             this.DodajLiceBtn.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.DodajLiceBtn.Location = new System.Drawing.Point(11, 330);
             this.DodajLiceBtn.Name = "DodajLiceBtn";
-            this.DodajLiceBtn.Size = new System.Drawing.Size(200, 33);
+            this.DodajLiceBtn.Size = new System.Drawing.Size(316, 33);
             this.DodajLiceBtn.TabIndex = 11;
             this.DodajLiceBtn.Text = "Dodaj Lice";
             this.DodajLiceBtn.UseVisualStyleBackColor = false;
@@ -87,7 +87,7 @@
             this.LicaGrid.ReadOnly = true;
             this.LicaGrid.RowHeadersWidth = 51;
             this.LicaGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.LicaGrid.Size = new System.Drawing.Size(893, 309);
+            this.LicaGrid.Size = new System.Drawing.Size(316, 309);
             this.LicaGrid.TabIndex = 10;
             this.LicaGrid.SelectionChanged += new System.EventHandler(this.LicaGrid_SelectionChanged);
             // 
@@ -96,7 +96,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(914, 457);
+            this.ClientSize = new System.Drawing.Size(339, 460);
             this.Controls.Add(this.IzbrisiLiceBtn);
             this.Controls.Add(this.IzmeniLiceBtn);
             this.Controls.Add(this.DodajLiceBtn);

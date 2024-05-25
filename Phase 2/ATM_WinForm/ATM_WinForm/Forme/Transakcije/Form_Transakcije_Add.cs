@@ -1,4 +1,5 @@
 ﻿using ATM_WinForm.Entiteti;
+using ATM_WinForm.Forme.Klijent;
 using ATM_WinForm.Klase;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,13 @@ namespace ATM_WinForm.Forme.Transakcije
             {
                 MessageBox.Show("Polja ne smeju biti prazna!");
                 return;
+            }
+            if(KarticaComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Klijent mora imati karticu da bi izvrsio transakciju!");
+                return;
+
+                
             }
 
             DTOs.TransakcijaBasic transakcija = new DTOs.TransakcijaBasic

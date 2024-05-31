@@ -1,6 +1,7 @@
 ﻿using DatabaseAccess.DTOs;
 using DatabaseAccess.Entiteti;
 using NHibernate;
+using NHibernate.Stat;
 
 namespace DatabaseAccess;
 
@@ -18,8 +19,8 @@ public static class DataProvider
             s = DataLayer.GetSession();
 
 
-            IEnumerable<Banka> sveBanke= from o in s.Query<Banka>()
-                                                    select o;
+            IEnumerable<Banka> sveBanke = from o in s.Query<Banka>()
+                                          select o;
 
             foreach (Banka b in sveBanke)
             {
@@ -64,7 +65,7 @@ public static class DataProvider
         {
             ISession s = DataLayer.GetSession();
 
-            Banka b = new ()
+            Banka b = new()
             {
                 Ime = banka.Ime,
                 Email = banka.Email,
@@ -124,7 +125,7 @@ public static class DataProvider
 
             Banka b = s.Load<Banka>(id);
 
-            if(b != null)
+            if (b != null)
             {
                 s.Delete(b);
 
@@ -149,12 +150,46 @@ public static class DataProvider
     public static List<FilijalaView> VratiSveFilijale()
     {
 
+        ISession? s = null;
+
+        List<FilijalaView> filijale = new();
+
+        try
+        {
+            s = DataLayer.GetSession();
+
+
+            IEnumerable<Filijala> sveFilijale = from o in s.Query<Filijala>()
+                                                select o;
+
+            foreach (Filijala f in sveFilijale)
+            {
+                filijale.Add(new FilijalaView(f));
+            }
+        }
+        catch (Exception)
+        {
+            return null!;
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+
+        return filijale;
+    }
+
+    public static List<FilijalaView> VratiSveFilijaleOdBanke(int bankaId)
+    {
         List<FilijalaView> filijalaList = new List<FilijalaView>();
         try
         {
             ISession s = DataLayer.GetSession();
 
-            IEnumerable<Filijala> filijale = s.Query<Filijala>();
+            IEnumerable<Filijala> filijale = from o in s.Query<Filijala>()
+                                             where o.PripadaBanci.Id == bankaId
+                                             select o;
 
             foreach (Filijala f in filijale)
             {
@@ -171,6 +206,128 @@ public static class DataProvider
         }
 
         return filijalaList;
+    }
+
+    public static FilijalaView VratiFilijalu(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            var f = s.Load<Filijala>(id);
+            var b = VratiBanku(f.PripadaBanci.Id);
+            FilijalaView filijala = new FilijalaView(f.Rbr_filijale, f.Adresa, f.Br_telefona, f.Radno_vreme, b);
+
+            s.Close();
+
+            return filijala;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null;
+        }
+    }
+
+    //NE RADI
+    public async static void DodajFilijalu(FilijalaView filijala, int idBanka)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+
+            Banka b = await s.LoadAsync<Banka>(idBanka);
+
+            Filijala? f = new Filijala();
+
+            if (f != null)
+            {
+                f.Adresa = filijala.Adresa;
+                f.Radno_vreme = filijala.Radno_vreme;
+                f.Br_telefona  = filijala.Br_telefona;
+                f.PripadaBanci = b;
+
+                await s.SaveAsync(f);
+                await s.FlushAsync();
+
+                filijala.Rbr_filijale = f.Rbr_filijale;
+            }
+
+           
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+
+    }
+
+    //NE RADI
+    public static void IzmeniFilijalu(FilijalaView filijala)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Filijala f = s.Load<Filijala>(filijala.Rbr_filijale);
+            
+
+            if (f != null)
+            {
+                f.Adresa = filijala.Adresa;
+                f.Radno_vreme = filijala.Radno_vreme;
+                f.Br_telefona = filijala.Radno_vreme;
+
+                s.Update(f);
+
+                s.Flush();
+                s.Close();
+            }
+            else
+            {
+                Console.WriteLine("Filijala sa ovim rednim brojem ne postoji.\n");
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+    }
+
+    public static void IzbrisiFilijalu(int rbr)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Filijala f = s.Load<Filijala>(rbr);
+
+            if (f != null)
+            {
+                s.Delete(f);
+
+                s.Flush();
+                s.Close();
+            }
+            else
+            {
+                Console.WriteLine("Filijala sa ovim id-jem ne postoji!\n");
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
 
     #endregion

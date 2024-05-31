@@ -7,7 +7,7 @@ namespace ATM_WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class BankaConroller : ControllerBase
+public class BankaController : ControllerBase
 {
     [HttpGet]
     [Route("PreuzmiBanke")]

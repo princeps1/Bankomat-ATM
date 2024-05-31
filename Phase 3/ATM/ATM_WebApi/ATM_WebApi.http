@@ -1,6 +1,25 @@
-@ATM_WebApi_HostAddress = http://localhost:5180
+@ATM_WebApi_HostAddress = https://localhost:7257
 
 GET {{ATM_WebApi_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+
+POST {{ATM_WebApi_HostAddress}}/filijala/DodajFilijalu/3
+Content-Type: application/json
+{
+  "adresa": "example address 2",
+  "br_telefona": "123-456-7890",
+  "radno_vreme": "9:00-17:00"
+}
+
+###
+
+POST {{ATM_WebApi_HostAddress}}/filijala/DodajFilijalu/0
+Content-Type: application/json
+
+{
+  //FilijalaView
+}
 
 ###

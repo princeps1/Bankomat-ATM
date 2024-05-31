@@ -229,33 +229,26 @@ public static class DataProvider
         }
     }
 
-    //NE RADI
-    public async static void DodajFilijalu(FilijalaView filijala, int idBanka)
+
+    public async static Task DodajFilijalu(FilijalaView filijala, int idBanka)
     {
         ISession? s = null;
 
         try
         {
             s = DataLayer.GetSession();
-
             Banka b = await s.LoadAsync<Banka>(idBanka);
 
-            Filijala? f = new Filijala();
-
-            if (f != null)
+            Filijala f = new Filijala
             {
-                f.Adresa = filijala.Adresa;
-                f.Radno_vreme = filijala.Radno_vreme;
-                f.Br_telefona  = filijala.Br_telefona;
-                f.PripadaBanci = b;
+                Adresa = filijala.Adresa!,
+                Radno_vreme = filijala.Radno_vreme,
+                Br_telefona = filijala.Br_telefona,
+                PripadaBanci = b
+            };
 
-                await s.SaveAsync(f);
-                await s.FlushAsync();
-
-                filijala.Rbr_filijale = f.Rbr_filijale;
-            }
-
-           
+            await s.SaveAsync(f);
+            await s.FlushAsync();
         }
         catch (Exception e)
         {
@@ -266,7 +259,6 @@ public static class DataProvider
             s?.Close();
             s?.Dispose();
         }
-
     }
 
     //NE RADI
@@ -283,7 +275,7 @@ public static class DataProvider
             {
                 f.Adresa = filijala.Adresa;
                 f.Radno_vreme = filijala.Radno_vreme;
-                f.Br_telefona = filijala.Radno_vreme;
+                f.Br_telefona = filijala.Br_telefona;
 
                 s.Update(f);
 

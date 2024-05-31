@@ -55,21 +55,16 @@ public class FilijalaController : ControllerBase
     }
 
 
-    //NE RADI
     [HttpPost]
     [Route("DodajFilijalu/{idBanke}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult AddFilijala([FromBody] FilijalaView filijala, int idBanke)
+    public async Task<IActionResult> AddFilijala([FromBody] FilijalaView filijala, int idBanke)
     {
         try
         {
-            //var banka = DataProvider.VratiBanku(idBanke);
-
-            //filijala.PripadaBanci = banka;
-            DataProvider.DodajFilijalu(filijala, idBanke);
+            await DataProvider.DodajFilijalu(filijala, idBanke);
             return Ok("Uspesno ste dodali novu filijalu!");
-
         }
         catch (Exception ex)
         {

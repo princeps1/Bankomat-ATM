@@ -14,6 +14,13 @@ public class BankaView
     public IList<RacunView>? Racuni { get; set; }
     public IList<BankaBrTelefonaView>? BrojeviTelefona { get; set; }
 
+    public BankaView()
+    {
+        Filijala = new List<FilijalaView>();
+        Racuni = new List<RacunView>();
+        BrojeviTelefona = new List<BankaBrTelefonaView>();
+    }
+
     internal BankaView(Banka b)
     {
         this.Id = b.Id;
@@ -23,20 +30,13 @@ public class BankaView
         this.Adresa_centrale = b.Adresa_centrale;
     }
 
-    [JsonConstructor]
+   
     internal BankaView( string ime, string email, string web_adresa, string adresa_centrale)
     {
         this.Ime = ime;
         this.Email = email;
         this.Web_adresa = web_adresa;
         this.Adresa_centrale = adresa_centrale;
-    }
-
-    internal BankaView()
-    {
-        Filijala = new List<FilijalaView>();
-        Racuni = new List<RacunView>();
-        BrojeviTelefona = new List<BankaBrTelefonaView>();
     }
 
     // Method to set the ID internally

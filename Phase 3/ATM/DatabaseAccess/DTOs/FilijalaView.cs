@@ -34,7 +34,7 @@ namespace DatabaseAccess.DTOs
             Adresa = f.Adresa;
             Br_telefona = f.Br_telefona;
             Radno_vreme = f.Radno_vreme;
-            PripadaBanci = new BankaView(f.PripadaBanci);
+            PripadaBanci = new BankaView(f.PripadaBanci!);
             Ime_banke = PripadaBanci.Ime;
         }
 

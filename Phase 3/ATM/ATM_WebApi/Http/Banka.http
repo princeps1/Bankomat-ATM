@@ -1,0 +1,48 @@
+﻿@ATM_WebApi_HostAddress = https://localhost:7257
+
+# Create Bank
+POST {{ATM_WebApi_HostAddress}}/banka/DodajBanku
+Content-Type: application/json
+
+{
+  "Ime": "Nova Banka",
+  "Email": "contact@novabanka.com",
+  "Web_adresa": "www.novabanka.com",
+  "Adresa_centrale": "Ulica 123",
+  "Filijala": [],
+  "BrojeviTelefona": [],
+  "Racuni": []
+}
+
+###
+
+# Delete Bank
+DELETE {{ATM_WebApi_HostAddress}}/banka/IzbrisiBanku/262
+
+###
+
+# Get All Banks
+GET {{ATM_WebApi_HostAddress}}/banka/PreuzmiBanke
+
+###
+
+# Get Bank by ID
+GET {{ATM_WebApi_HostAddress}}/banka/PreuzmiBanku/1
+
+###
+
+# Update Bank
+PUT {{ATM_WebApi_HostAddress}}/banka/IzmeniBanku/263
+Content-Type: application/json
+
+{
+  "Id": 263,
+  "Ime": "Izmenjena Banka",
+  "Email": "contact@izmenjenabanka.com",
+  "Web_adresa": "www.izmenjenabanka.com",
+  "Adresa_centrale": "Nova Ulica 456, Grad",
+  "Filijala": [],
+  "BrojeviTelefona": [],
+  "Racuni": []
+}
+

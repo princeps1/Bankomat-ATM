@@ -1,4 +1,6 @@
-﻿namespace DatabaseAccess.DTOs;
+﻿using DatabaseAccess.Entiteti;
+
+namespace DatabaseAccess.DTOs;
 public class RacunView
 {
     public int Br_racuna { get; protected set; }
@@ -19,6 +21,11 @@ public class RacunView
 
     public IList<RacunOvlascenoLiceView>? OvlascenaLica { get; set; }
 
+    public void SetRbr(int rbr)
+    {
+        Br_racuna = rbr;
+    }
+
     internal RacunView(int br_rac, DateTime datum, string tekuci_saldo, string tip, string valuta, BankaView banka, KlijentView klijent)
     {
         this.Br_racuna = br_rac;
@@ -30,10 +37,34 @@ public class RacunView
         this.Koristi = klijent;
     }
 
-    internal RacunView()
+    internal RacunView(Racun r,BankaView b)
+    {
+        this.Br_racuna = r.Br_racuna;
+        this.Datum_otvaranja = r.Datum_otvaranja;
+        this.Tekuci_saldo = r.Tekuci_saldo;
+        this.Tip = r.Tip;
+        this.Valuta = r.Valuta;
+        this.JePovezan = b;
+        //this.Koristi = r.Koristi;
+    }
+
+    internal RacunView(Racun r)
+    {
+        this.Br_racuna = r.Br_racuna;
+        this.Datum_otvaranja = r.Datum_otvaranja;
+        this.Tekuci_saldo = r.Tekuci_saldo;
+        this.Tip = r.Tip;
+        this.Valuta = r.Valuta;
+        //this.JePovezan = b;
+        //this.Koristi = r.Koristi;
+    }
+
+    public RacunView()
     {
         Kartice = new List<KarticaView>();
         OvlascenaLica = new List<RacunOvlascenoLiceView>();
     }
+
+    
 }
 

@@ -1,0 +1,18 @@
+﻿@ATM_WebApi_HostAddress = https://localhost:7257
+
+GET {{ATM_WebApi_HostAddress}}/racun/PreuzmiRacune
+
+
+###
+
+GET {{ATM_WebApi_HostAddress}}/racun/PreuzmiRacuneOdBanke/1
+
+###
+
+GET {{ATM_WebApi_HostAddress}}/racun/PreuzmiRacun/6
+
+###
+
+DELETE {{ATM_WebApi_HostAddress}}/racun/IzbrisiRacun/5
+
+

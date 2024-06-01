@@ -101,11 +101,11 @@ public class FilijalaController : ControllerBase
     [Route("IzbrisiFilijalu/{redni_broj}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult DeleteBanku(int redni_broj)
+    public IActionResult DeleteFilijalu(int redni_broj)
     {
         try
         {
-            DataProvider.IzbrisiFilijalu(redni_broj);
+            DataProvider.IzbrisiFilijalu(redni_broj);//
             return Ok("Uspesno ste izbrisali filijalu!");
         }
         catch (Exception ex)

@@ -1,4 +1,6 @@
 ﻿namespace DatabaseAccess.DTOs;
+using DatabaseAccess.Entiteti;
+
 
 public class FizickoLiceView : KlijentView
 {
@@ -10,6 +12,8 @@ public class FizickoLiceView : KlijentView
     public string? Br_licne_karte { get; set; }
     public string? Mesto_izdavanja { get; set; }
 
+
+    public FizickoLiceView() { }
     internal FizickoLiceView(string JMBG, DateTime datum_rodjenja, string lIme, string ime_roditelja, string prezime, string br_licne_karte, string mesto_izdavanja, int id, string naziv, string telefon, string email, string adresa)
         : base(id, telefon, email, adresa)
     {
@@ -23,5 +27,20 @@ public class FizickoLiceView : KlijentView
         this.Naziv = naziv;
     }
 
-    internal FizickoLiceView() { }
+    internal FizickoLiceView(FizickoLice fizicko)
+    {
+        this.JMBG = fizicko.JMBG;
+        this.Datum_rodjenja = fizicko.Datum_rodjenja;
+        this.LIme = fizicko.LIme;
+        this.Ime_roditelja = fizicko.Ime_roditelja;
+        this.Prezime = fizicko.Prezime;
+        this.Br_licne_karte = fizicko.Br_licne_karte;
+        this.Mesto_izdavanja = fizicko.Mesto_izdavanja;
+        this.Naziv = fizicko.Naziv;
+    }
+
+    public void SetId(int id)
+    {
+        Id = id;
+    }
 }

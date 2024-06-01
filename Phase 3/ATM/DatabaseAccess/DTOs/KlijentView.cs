@@ -1,4 +1,5 @@
 ﻿namespace DatabaseAccess.DTOs;
+using DatabaseAccess.Entiteti;
 
 public class KlijentView
 {
@@ -16,6 +17,15 @@ public class KlijentView
     //MAPIRANJE OVLASCENO KLIJENT-KOMENTAR
     public IList<KomentarKlijentaView>? Komentari { get; set; }
 
+    internal KlijentView(Klijent k)
+    {
+        this.Id = k.Id;
+        this.Br_tel = k.Br_tel;
+        this.Email = k.Email;
+        this.Adresa = k.Adresa;
+        this.Naziv = k.Naziv;
+    }
+
     internal KlijentView(int id, string telefon, string email, string adresa, string naziv = "")
     {
         this.Id = id;
@@ -24,6 +34,8 @@ public class KlijentView
         this.Adresa = adresa;
         this.Naziv = naziv;
     }
+
+
 
     internal KlijentView()
     {

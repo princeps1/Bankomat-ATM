@@ -1,7 +1,7 @@
 ﻿namespace DatabaseAccess.Entiteti;
 
 internal class FizickoLice : Klijent
-{
+{ //moguce da treba da budu atributi internal protected virtual
     public virtual string? JMBG { get; set; }
 
     public virtual DateTime Datum_rodjenja { get; set; }

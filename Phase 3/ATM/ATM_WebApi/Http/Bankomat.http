@@ -1,23 +1,24 @@
 @ATM_WebApi_HostAddress = https://localhost:7257
 
-# GET {{ATM_WebApi_HostAddress}}/weatherforecast/
-# Accept: application/json
-
-# ###
-
+//Return all ATMs
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomate/
 Content-Type: application/json
 
-
 ###
 
+//Return ATM based on Id
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomat/11
 Content-Type: application/json
 
+###
 
+//Return ATMs based on the Filijala where they are installed
+GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomateOdFilijale/17
+Content-Type: application/json
 
 ###
 
+// Create ATM
 POST {{ATM_WebApi_HostAddress}}/bankomat/DodajBankomat/17
 Content-Type: application/json
 
@@ -29,6 +30,8 @@ Content-Type: application/json
 }
 
 ###
+
+//EDIT ATM
 PUT {{ATM_WebApi_HostAddress}}/bankomat/IzmeniBankomat/25
 Content-Type: application/json
 
@@ -41,15 +44,5 @@ Content-Type: application/json
 
 ###
 
+//DELETE ATM
 DELETE {{ATM_WebApi_HostAddress}}/bankomat/IzbrisiBankomat/81
-
-# ###
-
-# GET {{ATM_WebApi_HostAddress}}/banka/PreuzmiBanke
-
-###
-
-GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomateOdFilijale/17
-Content-Type: application/json
-
-###

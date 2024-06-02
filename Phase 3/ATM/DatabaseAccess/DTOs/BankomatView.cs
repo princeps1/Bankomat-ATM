@@ -1,4 +1,6 @@
-﻿namespace DatabaseAccess.DTOs;
+﻿using DatabaseAccess.Entiteti;
+
+namespace DatabaseAccess.DTOs;
 
 public class BankomatView
 {
@@ -12,6 +14,22 @@ public class BankomatView
     public IList<ServisView>? Servisi { get; set; }
     public IList<Koristi_Za_Podizanje_NovcaView>? Koristi_Za_Podizanje_NovcaView{ get; set; }
 
+    public BankomatView()
+    {
+        Komentari = new List<BankomatKomentariView>();
+        Servisi = new List<ServisView>();
+        Koristi_Za_Podizanje_NovcaView = new List<Koristi_Za_Podizanje_NovcaView>();
+    }
+
+    internal BankomatView(Bankomat b)
+    {
+        this.Id = b.Id;
+        this.Lokacija = b.Lokacija;
+        this.Proizvodjac = b.Proizvodjac;
+        this.Status = b.Status;
+        this.Datum_Poslednjeg_Servisa = b.Datum_Poslednjeg_Servisa;
+    }
+
     internal BankomatView(int id, string lokacija, string proizvodjac, string status, DateTime datum, FilijalaView filijala)
     {
         this.Id = id;
@@ -19,12 +37,11 @@ public class BankomatView
         this.Proizvodjac = proizvodjac;
         this.Status = status;
         this.Datum_Poslednjeg_Servisa = datum;
+        this.InstaliranUFilijali = filijala;
     }
 
-    internal BankomatView()
+    public void SetId(int id)
     {
-        Komentari = new List<BankomatKomentariView>();
-        Servisi = new List<ServisView>();
-        Koristi_Za_Podizanje_NovcaView= new List<Koristi_Za_Podizanje_NovcaView>();
+        this.Id = id;
     }
 }

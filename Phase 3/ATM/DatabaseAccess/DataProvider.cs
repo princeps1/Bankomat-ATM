@@ -261,7 +261,6 @@ public static class DataProvider
         }
     }
 
-    //NE RADI
     public static void IzmeniFilijalu(FilijalaView filijala)
     {
         try
@@ -646,6 +645,181 @@ public static class DataProvider
 
 
 
+    #endregion
+
+    #region Bankomat
+    public static List<BankomatView> VratiSveBankomate()
+    {
+        ISession? s = null;
+
+        List<BankomatView> bankomati = new();
+
+        try
+        {
+            s = DataLayer.GetSession();
+
+
+            IEnumerable<Bankomat> sviBankomati = from b in s.Query<Bankomat>()
+                                          select b;
+
+            foreach (Bankomat ban in sviBankomati)
+            {
+                bankomati.Add(new BankomatView(ban));
+            }
+        }
+        catch (Exception)
+        {
+            return null!;
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+
+        return bankomati;
+    }
+
+    public static BankomatView VratiBankomat(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            var b = s.Load<Bankomat>(id);
+            BankomatView bankomat = new BankomatView(b);
+
+            s.Close();
+
+            return bankomat;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null!;
+        }
+    }
+
+    public static List<BankomatView> VratiSveBankomateOdFilijale(int filijalaId)
+    {
+        List<BankomatView> bankomatiList = new List<BankomatView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<Bankomat> bankomati = from b in s.Query<Bankomat>()
+                                             where b.InstaliranUFilijali!.Rbr_filijale == filijalaId
+                                             select b;
+
+            foreach (Bankomat ban in bankomati)
+            {
+                FilijalaView filijala = VratiFilijalu(ban.InstaliranUFilijali!.Rbr_filijale);
+                bankomatiList.Add(new BankomatView(ban.Id, ban.Lokacija!, ban.Proizvodjac!, ban.Status!, ban.Datum_Poslednjeg_Servisa, filijala));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return bankomatiList;
+    }
+
+    public async static Task DodajBankomat(BankomatView bankomat, int rbrFilijala)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Filijala f = await s.LoadAsync<Filijala>(rbrFilijala);
+
+            Bankomat b = new Bankomat
+            {
+                Lokacija = bankomat.Lokacija,
+                Proizvodjac = bankomat.Proizvodjac,
+                Status = bankomat.Status,
+                Datum_Poslednjeg_Servisa = bankomat.Datum_Poslednjeg_Servisa,
+                InstaliranUFilijali = f
+            };
+
+            await s.SaveAsync(b);
+            await s.FlushAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
+    public static void IzmeniBankomat(BankomatView bankomat)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Bankomat b = s.Load<Bankomat>(bankomat.Id);
+
+
+            if (b != null)
+            {
+                b.Status = bankomat.Status;
+                b.Proizvodjac = bankomat.Proizvodjac;
+                b.Datum_Poslednjeg_Servisa = bankomat.Datum_Poslednjeg_Servisa;
+                b.Lokacija = bankomat.Lokacija;
+
+                s.Update(b);
+
+                s.Flush();
+                s.Close();
+            }
+            else
+            {
+                Console.WriteLine("Bankomat sa ovim id-jem ne postoji.\n");
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+    }
+
+    public static void IzbrisiBankomat(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Bankomat b = s.Load<Bankomat>(id);
+
+            if (b != null)
+            {
+                s.Delete(b);
+
+                s.Flush();
+                s.Close();
+            }
+            else
+            {
+                Console.WriteLine("Bankomat sa ovim id-jem ne postoji!\n");
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
     #endregion
 }
 

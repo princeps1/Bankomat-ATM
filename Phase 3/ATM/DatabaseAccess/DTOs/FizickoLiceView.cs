@@ -27,8 +27,11 @@ public class FizickoLiceView : KlijentView
         this.Naziv = naziv;
     }
 
+
+    //za pregled
     internal FizickoLiceView(FizickoLice fizicko)
     {
+        this.Id = fizicko.Id;
         this.JMBG = fizicko.JMBG;
         this.Datum_rodjenja = fizicko.Datum_rodjenja;
         this.LIme = fizicko.LIme;
@@ -37,6 +40,9 @@ public class FizickoLiceView : KlijentView
         this.Br_licne_karte = fizicko.Br_licne_karte;
         this.Mesto_izdavanja = fizicko.Mesto_izdavanja;
         this.Naziv = fizicko.Naziv;
+        this.Br_tel = fizicko.Br_tel;
+        this.Email = fizicko.Email;
+        this.Adresa = fizicko.Adresa;
     }
 
     public void SetId(int id)

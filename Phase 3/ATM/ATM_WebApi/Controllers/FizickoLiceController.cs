@@ -65,4 +65,27 @@ public class FizickoLiceController : ControllerBase
     }
 
 
+
+
+    /////
+    [HttpDelete]
+    [Route("IzbrisiFizickoLice/{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult DeleteFizickoLice(int id)
+    {
+        try
+        {
+            int res = DataProvider.IzbrisiFizickoLice(id);
+            if (res == 0)
+                return BadRequest("Fizicko lice sa ovim id-jem ne postoji!\n");
+            else
+                return Ok($"Uspesno obrisano fizicko lice sa id-jem {id}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
+
 }

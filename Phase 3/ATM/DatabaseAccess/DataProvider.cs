@@ -645,6 +645,163 @@ public static class DataProvider
 
 
 
+
+    public static int IzbrisiFizickoLice(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            FizickoLice fl = s.Load<FizickoLice>(id);
+
+            if (fl != null)
+            {
+                s.Delete(fl);
+
+                s.Flush();
+                s.Close();
+                return fl.Id;
+            }
+            else
+            {
+                Console.WriteLine("Fizicko Lice sa ovim id-jem ne postoji!\n");
+                return fl.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
+
+    #endregion
+
+    #region Pravno Lice
+
+    public static List<PravnoLiceView> VratiSvaPravnaLica()
+    {
+        ISession? s = null;
+
+        List<PravnoLiceView> pravnaLica = new();
+
+        try
+        {
+            s = DataLayer.GetSession();
+
+
+            IEnumerable<PravnoLice> svaPL = from o in s.Query<PravnoLice>()
+                                             select o;
+
+            foreach (PravnoLice pl in svaPL)
+            {
+                pravnaLica.Add(new PravnoLiceView(pl));
+            }
+        }
+        catch (Exception)
+        {
+            return null!;
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+
+        return pravnaLica;
+    }
+
+    public static void DodajPravnoLice(PravnoLiceView pravnoLice)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            PravnoLice pl = new()
+            {
+                Id = pravnoLice.Id,
+                Br_tel = pravnoLice.Br_tel,
+                Email = pravnoLice.Email,
+                Adresa = pravnoLice.Adresa,
+                Naziv = pravnoLice.Naziv,
+                Poreski_id = pravnoLice.Poreski_id
+            };
+
+            s.SaveOrUpdate(pl);
+
+            s.Flush();
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+    public static void IzmeniPravnoLice(PravnoLiceView pravnoLice)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            PravnoLice pl = s.Load<PravnoLice>(pravnoLice.Id);
+            if (pl != null)
+            {
+                pl.Br_tel = pravnoLice.Br_tel;
+                pl.Email = pravnoLice.Email;
+                pl.Adresa = pravnoLice.Adresa;
+                pl.Naziv = pravnoLice.Naziv;
+                pl.Poreski_id = pravnoLice.Poreski_id;
+
+                s.Update(pl);
+                s.Flush();
+                s.Close();
+            }
+            else
+            {
+                Console.WriteLine("Pravno lice sa ovim id-jem ne postoji.\n");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+
+
+
+    public static int IzbrisiPravnoLice(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            PravnoLice pl = s.Load<PravnoLice>(id);
+
+            if (pl != null)
+            {
+                s.Delete(pl);
+
+                s.Flush();
+                s.Close();
+                return pl.Id;
+            }
+            else
+            {
+                Console.WriteLine("Pravno Lice sa ovim id-jem ne postoji!\n");
+                return pl.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
     #endregion
 
     #region Bankomat
@@ -821,5 +978,7 @@ public static class DataProvider
         }
     }
     #endregion
+
+    
 }
 

@@ -53,3 +53,5 @@ GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomateOdFilijale/17
 Content-Type: application/json
 
 ###
+GET {{ATM_WebApi_HostAddress}}/servis/VratiSveServiseOdBankomata/1
+Content-Type: application/json

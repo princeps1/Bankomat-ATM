@@ -88,8 +88,11 @@ public class BankaController : ControllerBase
     {
         try
         {
-            DataProvider.IzbrisiBanku(id); 
-            return Ok("Uspesno ste izbrisali banku!");
+            int res = DataProvider.IzbrisiBanku(id);//
+            if (res == 0)
+                return BadRequest("Banka sa ovim id-jem ne postoji!\n");
+            else
+                return Ok($"Uspesno obrisana banka sa id-jem {id}");
         }
         catch (Exception ex)
         {

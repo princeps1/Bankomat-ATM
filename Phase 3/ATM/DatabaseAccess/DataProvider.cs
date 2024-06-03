@@ -117,7 +117,7 @@ public static class DataProvider
         }
     }
 
-    public static void IzbrisiBanku(int id)
+    public static int IzbrisiBanku(int id)
     {
         try
         {
@@ -131,16 +131,19 @@ public static class DataProvider
 
                 s.Flush();
                 s.Close();
+                return b.Id;
             }
             else
             {
                 Console.WriteLine("Banka sa ovim id-jem ne postoji!\n");
+                return b!.Id;
             }
 
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            return 0;
         }
     }
 
@@ -294,7 +297,7 @@ public static class DataProvider
 
     }
 
-    public static void IzbrisiFilijalu(int rbr)
+    public static int IzbrisiFilijalu(int rbr)
     {
         try
         {
@@ -308,16 +311,19 @@ public static class DataProvider
 
                 s.Flush();
                 s.Close();
+                return f.Rbr_filijale;
             }
             else
             {
-                Console.WriteLine("Filijala sa ovim id-jem ne postoji!\n");
+                Console.WriteLine("Filijala sa ovim rednim brojem ne postoji!\n");
+                return f!.Rbr_filijale;
             }
 
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            return 0;
         }
     }
 
@@ -527,7 +533,7 @@ public static class DataProvider
             else
             {
                 Console.WriteLine("Klijent sa ovim id-jem ne postoji!\n");
-                return k.Id;
+                return k!.Id;
             }
 
         }
@@ -951,7 +957,7 @@ public static class DataProvider
 
     }
 
-    public static void IzbrisiBankomat(int id)
+    public static int IzbrisiBankomat(int id)
     {
         try
         {
@@ -965,20 +971,51 @@ public static class DataProvider
 
                 s.Flush();
                 s.Close();
+                return b.Id;
             }
             else
             {
                 Console.WriteLine("Bankomat sa ovim id-jem ne postoji!\n");
+                return b!.Id;
             }
 
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            return 0;
         }
     }
     #endregion
 
-    
+    #region Servis Bankomata
+    public static List<ServisView> VratiSveServiseOdBankomata(int bankomatId)
+    {
+        List<ServisView> servisiList = new List<ServisView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<Servis> servisi = from ser in s.Query<Servis>()
+                                              where ser.ServisiraniBankomat!.Id == bankomatId
+                                              select ser;
+
+            foreach (Servis sr in servisi)
+            {
+                BankomatView bankomat = VratiBankomat(sr.ServisiraniBankomat!.Id);
+                servisiList.Add(new ServisView(sr.Kod, sr.Firma!, bankomat));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return servisiList;
+    }
+    #endregion
 }
 

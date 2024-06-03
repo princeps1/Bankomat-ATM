@@ -97,8 +97,11 @@ public class BankomatController : ControllerBase
     {
         try
         {
-            DataProvider.IzbrisiBankomat(id);
-            return Ok("Uspesno ste izbrisali bankomat!");
+            int res = DataProvider.IzbrisiBankomat(id);//
+            if (res == 0)
+                return BadRequest("Bankomat sa ovim id-jem ne postoji!\n");
+            else
+                return Ok($"Uspesno obrisan bankomat sa id-jem {id}");
         }
         catch (Exception ex)
         {

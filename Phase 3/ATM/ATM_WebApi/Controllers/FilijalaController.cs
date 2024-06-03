@@ -105,8 +105,11 @@ public class FilijalaController : ControllerBase
     {
         try
         {
-            DataProvider.IzbrisiFilijalu(redni_broj);//
-            return Ok("Uspesno ste izbrisali filijalu!");
+            int res = DataProvider.IzbrisiFilijalu(redni_broj);
+            if (res == 0)
+                return BadRequest("Filijala sa ovim rednim brojem ne postoji!\n");
+            else
+                return Ok($"Uspesno obrisan klijenta sa id-jem {redni_broj}");
         }
         catch (Exception ex)
         {

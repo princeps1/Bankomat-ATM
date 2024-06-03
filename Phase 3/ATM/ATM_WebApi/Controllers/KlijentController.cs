@@ -11,7 +11,7 @@ public class KlijentController : ControllerBase
     [HttpGet]
     [Route("PreuzmiKlijente")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public IActionResult GetBanke()
+    public IActionResult GetKlijente()
     {
         try
         {
@@ -27,7 +27,7 @@ public class KlijentController : ControllerBase
     [Route("IzbrisiKlijenta/{id}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult DeleteBanku(int id)
+    public IActionResult DeleteKlijent(int id)
     {
         try
         {

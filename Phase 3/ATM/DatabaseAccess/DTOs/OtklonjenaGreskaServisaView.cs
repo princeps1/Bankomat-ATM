@@ -8,6 +8,7 @@ public class OtklonjenaGreskaServisaView
     //MAPIRANJE OTKLONJENA GRESKA-SERVIS
     public ServisView? PripadaServisu { get; set; }
 
+    public OtklonjenaGreskaServisaView() { }
 
     internal OtklonjenaGreskaServisaView(int id, string greska, ServisView servis)
     {
@@ -16,5 +17,9 @@ public class OtklonjenaGreskaServisaView
         this.PripadaServisu = servis;
     }
 
-    internal OtklonjenaGreskaServisaView() { }
+    public void SetId(int id)
+    {
+        this.Id = id;
+    }
+
 }

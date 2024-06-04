@@ -2,6 +2,7 @@
 using DatabaseAccess.Entiteti;
 using NHibernate;
 using NHibernate.Stat;
+using System.Security.Cryptography.Pkcs;
 
 namespace DatabaseAccess;
 
@@ -1359,6 +1360,251 @@ public static class DataProvider
             return 0;
         }
     }
+    #endregion
+
+    #region Kartica
+    public static List<KarticaView> VratiSveKartice()
+    {
+
+        ISession? s = null;
+
+        List<KarticaView> kartica = new();
+
+        try
+        {
+            s = DataLayer.GetSession();
+
+
+            IEnumerable<Kartica> sveKartice= from o in s.Query<Kartica>()
+                                           select o;
+
+            foreach (Kartica k in sveKartice)
+            {
+                kartica.Add(new KarticaView(k));
+            }
+        }
+        catch (Exception)
+        {
+            return null!;
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+
+        return kartica;
+    }
+
+
+    public static List<KarticaView> PreuzmiKarticeOdRacuna(int brRacuna)
+    {
+        List<KarticaView> karticaList = new List<KarticaView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<Kartica> kartice = from o in s.Query<Kartica>()
+                                        where o.Odgovara!.Br_racuna == brRacuna
+                                        select o;
+
+            foreach (Kartica k in kartice)
+            {
+                
+                karticaList.Add(new KarticaView(k));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return karticaList;
+    }
+
+    public static KarticaView VratiKarticu(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            var k = s.Load<Kartica>(id);
+            var r = VratiRacun(k.Odgovara!.Br_racuna);
+            KarticaView kartica = new KarticaView(k, r);
+
+            s.Close();
+
+            return kartica;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null!;
+        }
+    }
+
+
+
+    public static int IzbrisiKarticu(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Kartica k = s.Load<Kartica>(id);
+
+            if (k != null)
+            {
+                s.Delete(k);
+
+                s.Flush();
+                s.Close();
+                return k.Id;
+            }
+            else
+            {
+                Console.WriteLine("Kartica sa ovim id-jem ne postoji!\n");
+                return k!.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
+
+
+    public static int IzmeniKarticu(KarticaView kartica)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Kartica k = s.Load<Kartica>(kartica.Id);
+
+
+
+            if (k != null)
+            {
+                if (kartica.Tip == "debitna" && kartica.Max_iznos_zaduzenja == null)//ako je debitna kartica
+                {
+                    k.Datum_izdavanje= kartica!.Datum_izdavanje!;
+                    k.Datum_isteka = kartica.Datum_isteka!;
+                    k.Dnevni_limit = kartica.Dnevni_limit;
+                    
+
+                    s.Update(k);
+
+                    s.Flush();
+                    s.Close();
+
+                    return 0;
+                }
+                else if (kartica.Tip == "kreditna" && kartica.Max_iznos_zaduzenja != null && kartica?.Max_datum_vracanja_duga != null )//ako je devizni racun
+                {
+                    k.Datum_izdavanje = kartica!.Datum_izdavanje!;
+                    k.Datum_isteka = kartica.Datum_isteka!;
+                    k.Dnevni_limit = kartica.Dnevni_limit;
+
+                    k.Max_iznos_zaduzenja = kartica.Max_iznos_zaduzenja;
+                    k.Max_datum_vracanja_duga = kartica.Max_datum_vracanja_duga;
+
+
+                    s.Update(k);
+
+                    s.Flush();
+                    s.Close();
+
+                    return 0;
+                }
+                else
+                {
+                    return -1;//pokusava da promeni tip ili valutu gde nije moguce
+                }
+            }
+            else
+            {
+                return -2;//ne postoji
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -2;
+        }
+
+    }
+
+
+    public async static Task<int> DodajKarticu(KarticaView kartica, int brRacuna)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Racun r = await s.LoadAsync<Racun>(brRacuna);
+            
+            Kartica k;
+
+            if (r != null)
+            {
+                if (kartica.Tip == "kreditna")
+                {
+                    k = new KreditnaKartica
+                    {
+                        Datum_izdavanje = kartica.Datum_izdavanje,
+                        Datum_isteka = kartica.Datum_isteka,
+                        Dnevni_limit = kartica.Dnevni_limit,
+                        Tip = kartica.Tip,
+                        Max_iznos_zaduzenja = kartica.Max_iznos_zaduzenja,
+                        Max_datum_vracanja_duga = kartica.Max_datum_vracanja_duga,
+                        Odgovara = r
+                    };
+                    await s.SaveAsync(k);
+                    await s.FlushAsync();
+                }
+                else if (kartica.Tip == "debitna")
+                {
+                    k = new DebitnaKartica
+                    {
+
+                        Datum_izdavanje = kartica.Datum_izdavanje,
+                        Datum_isteka = kartica.Datum_isteka,
+                        Dnevni_limit = kartica.Dnevni_limit,
+                        Tip = kartica.Tip,
+                        Odgovara = r
+                    };
+                    await s.SaveAsync(k);
+                    await s.FlushAsync();
+                }
+                return 0;//sve okej
+            }
+            else
+            {
+                return -1;//unesen br racuna koji ne postoje u bazi podataka
+            }
+
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
     #endregion
 
 

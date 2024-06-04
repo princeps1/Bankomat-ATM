@@ -1,4 +1,6 @@
-﻿namespace DatabaseAccess.DTOs;
+﻿using DatabaseAccess.Entiteti;
+
+namespace DatabaseAccess.DTOs;
 
 public class ServisView
 {
@@ -11,6 +13,22 @@ public class ServisView
     //MAPIRANJE SERVIS-OTKLONJENE GRESKE
     public IList<OtklonjenaGreskaServisaView>? OtklonjeneGreske { get; set; }
 
+    public ServisView()
+    {
+        //MAPIRANJE SERVIS-OTKLONJENE GRESKE
+        OtklonjeneGreske = new List<OtklonjenaGreskaServisaView>();
+    }
+
+    internal ServisView(Servis s)
+    {
+        this.Kod = s.Kod;
+        this.Firma = s.Firma;
+
+        BankomatView b = DataProvider.VratiBankomat(s.ServisiraniBankomat!.Id);
+        this.ServisiraniBankomat = b;
+    }
+
+
     internal ServisView(int kod, string firma, BankomatView bankomat)
     {
 
@@ -19,9 +37,8 @@ public class ServisView
         this.ServisiraniBankomat = bankomat;
     }
 
-    internal ServisView()
+    public void SetKod(int kod)
     {
-        //MAPIRANJE SERVIS-OTKLONJENE GRESKE
-        OtklonjeneGreske = new List<OtklonjenaGreskaServisaView>();
+        this.Kod = kod;
     }
 }

@@ -1016,6 +1016,120 @@ public static class DataProvider
 
         return servisiList;
     }
+
+    public async static Task DodajServis(ServisView servis, int idBankomata)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Bankomat b = await s.LoadAsync<Bankomat>(idBankomata);
+
+            Servis ser = new Servis
+            {
+                Firma = servis.Firma,
+                ServisiraniBankomat = b,
+            };
+
+            await s.SaveAsync(ser);
+            await s.FlushAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
+    public static int IzmeniServis(ServisView servis)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Servis ser = s.Load<Servis>(servis.Kod);
+
+
+            if (ser != null)
+            {
+                ser.Firma = servis.Firma;
+
+                s.Update(ser);
+
+                s.Flush();
+                s.Close();
+
+                return servis.Kod;
+            }
+            else
+            {
+                Console.WriteLine($"Servis sa kodom {servis.Kod} ne postoji.\n");
+                return 0;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+
+    }
+
+    public static int IzbrisiServis(int kod)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Servis ser = s.Load<Servis>(kod);
+
+            if (ser != null)
+            {
+                s.Delete(ser);
+
+                s.Flush();
+                s.Close();
+                return ser.Kod;
+            }
+            else
+            {
+                Console.WriteLine("Servis sa ovim id-jem ne postoji!\n");
+                return ser!.Kod;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
+
+    public static ServisView VratiServis(int kod)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            var ser = s.Load<Servis>(kod);
+            ServisView servis = new ServisView(ser);
+
+            s.Close();
+
+            return servis;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null!;
+        }
+    }
     #endregion
 }
 

@@ -37,7 +37,7 @@ public class RacunView
         this.Koristi = klijent;
     }
 
-    internal RacunView(Racun r,BankaView b)
+    internal RacunView(Racun r,BankaView b,KlijentView k)
     {
         this.Br_racuna = r.Br_racuna;
         this.Datum_otvaranja = r.Datum_otvaranja;
@@ -45,7 +45,7 @@ public class RacunView
         this.Tip = r.Tip;
         this.Valuta = r.Valuta;
         this.JePovezan = b;
-        //this.Koristi = r.Koristi;
+        this.Koristi = k;
     }
 
     internal RacunView(Racun r)

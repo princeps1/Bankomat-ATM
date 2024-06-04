@@ -15,4 +15,46 @@ GET {{ATM_WebApi_HostAddress}}/racun/PreuzmiRacun/6
 
 DELETE {{ATM_WebApi_HostAddress}}/racun/IzbrisiRacun/5
 
+###Izmena dinarskog racuna
+
+PUT {{ATM_WebApi_HostAddress}}/racun/IzmeniRacun/7
+Content-Type: application/json
+
+{
+    "Datum_otvaranja": "2023-06-01",
+    "Tekuci_saldo": "999999"
+}
+
+###Izmena deviznog racuna
+PUT {{ATM_WebApi_HostAddress}}/racun/IzmeniRacun/8
+Content-Type: application/json
+
+{
+    "Datum_otvaranja": "2023-06-01",
+    "Tekuci_saldo": "546123",
+    "Tip": "devizni",
+    "Valuta": "EUR"
+}
+
+###Dodavanje deviznog racuna
+POST {{ATM_WebApi_HostAddress}}/Racun/DodajRacun/1/5
+Content-Type: application/json
+
+{
+  "Datum_otvaranja": "2024-06-01T15:07:17.450Z",
+  "Tekuci_saldo": "5000",
+  "Tip": "devizni",
+  "Valuta": "EUR"
+}
+
+###Dodavanje dinarskog racuna
+
+POST {{ATM_WebApi_HostAddress}}/Racun/DodajRacun/5/5
+Content-Type: application/json
+
+{
+  "Datum_otvaranja": "2024-06-01T15:07:17.450Z",
+  "Tekuci_saldo": "1000",
+  "Tip": "dinarski"
+}
 

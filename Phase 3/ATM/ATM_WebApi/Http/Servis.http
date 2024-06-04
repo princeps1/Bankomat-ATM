@@ -8,6 +8,7 @@ Content-Type: application/json
 //ADD A SERVICE FOR AN ATM
 POST {{ATM_WebApi_HostAddress}}/servis/DodajServis/7
 Content-Type: application/json
+
 {
   "firma": "MIA SERVISIRANJE"
 }
@@ -16,6 +17,7 @@ Content-Type: application/json
 //CHANGE SERVIS
 PUT {{ATM_WebApi_HostAddress}}/servis/IzmeniServis/81
 Content-Type: application/json
+
 {
   "firma": "MIA SERVISIRANJE UPGRADE"
 }

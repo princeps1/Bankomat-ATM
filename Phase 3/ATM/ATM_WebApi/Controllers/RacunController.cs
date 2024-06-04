@@ -75,26 +75,54 @@ public class RacunController : ControllerBase
     }
 
 
-    //[HttpPut]
-    //[Route("IzmeniRacun/{id}")]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //public IActionResult ChangeFilijalu([FromBody] RacunView racun, int id)
-    //{
-    //    try
-    //    {
-    //        if (id <= 0)
-    //        {
-    //            return BadRequest("Invalidan Redni Broj racuna.");
-    //        }
+    [HttpPut]
+    [Route("IzmeniRacun/{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult ChangeRacun([FromBody] RacunView racun, int id)
+    {
+        try
+        {
+            if (id <= 0)
+            {
+                return BadRequest("Invalidan Id racuna.");
+            }
 
-    //        racun.SetRbr(id); // Ensure the ID from the route is set in the BankaView object
-    //        DataProvider.IzmeniRacun(racun);
-    //        return Ok("Uspesno ste izmenili racun!");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        return BadRequest(ex.ToString());
-    //    }
-    //}
+
+
+            racun.SetRbr(id);
+            int res = DataProvider.IzmeniRacun(racun);
+            if (res == 0)
+                return Ok("Uspesno ste izmenili racun!");
+            else if (res == -1)
+                return BadRequest("Pokusavate da promenite tip ili valutu gde to nije moguce");
+            else
+                return BadRequest("Ne postoji");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
+
+
+    [HttpPost]
+    [Route("DodajRacun/{idBanke}/{idKlijenta}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> AddRacun([FromBody] RacunView racun, int idBanke,int idKlijenta)
+    {
+        try
+        {
+            int res = await DataProvider.DodajRacun(racun, idBanke,idKlijenta);
+            if (res == 0)
+                return Ok("Uspesno ste dodali novi racun!");
+            else
+                return BadRequest("Ne postoji banka ili klijent sa navedenim ID-jem u bazi podataka");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
 }

@@ -72,7 +72,6 @@ public class FilijalaController : ControllerBase
         }
     }
 
-    //NE RADI
     [HttpPut]
     [Route("IzmeniFilijalu/{rbr}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

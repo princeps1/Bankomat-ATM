@@ -400,7 +400,8 @@ public static class DataProvider
 
             var r = s.Load<Racun>(id);
             var b = VratiBanku(r.JePovezan!.Id);
-            RacunView racun= new RacunView(r,b);
+            var k = VratiKlijenta(r.Koristi!.Id);
+            RacunView racun= new RacunView(r,b,k);
 
             s.Close();
 
@@ -445,40 +446,125 @@ public static class DataProvider
         }
     }
 
-    //NE RADI
-    //public static void IzmeniRacun(RacunView racun)
-    //{
-    //    try
-    //    {
-    //        ISession s = DataLayer.GetSession();
 
-    //        Racun r = s.Load<Racun>(racun.Br_racuna);
+    public static int IzmeniRacun(RacunView racun)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Racun r = s.Load<Racun>(racun.Br_racuna);
+
+            
+
+            if (r != null)
+            {
+                if (r.Tip == null && racun.Tip==null && racun.Valuta==null)//ako je dinarski racun i u zahtevu nije trazena promena tipa i valute
+                {
+                    r.Datum_otvaranja = racun.Datum_otvaranja!;
+                    r.Tekuci_saldo = racun.Tekuci_saldo!;
+
+                    s.Update(r);
+
+                    s.Flush();
+                    s.Close();
+
+                    return 0;
+                }
+                else if (racun.Tip == "devizni" && racun.Valuta != null && racun.Valuta != "DIN" && r.Valuta != null)//ako je devizni racun
+                {
+                    r.Datum_otvaranja = racun.Datum_otvaranja!;
+                    r.Tekuci_saldo = racun.Tekuci_saldo!;
+                    r.Valuta = racun.Valuta!;
+
+                    s.Update(r);
+
+                    s.Flush();
+                    s.Close();
+
+                    return 0;
+                }
+                else
+                {
+                    return -1;//pokusava da promeni tip ili valutu gde nije moguce
+                }
+            }
+            else
+            {
+                return -2;//ne postoji
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -2;
+        }
+
+    }
 
 
-    //        if (r != null)
-    //        {
-    //            r.Datum_otvaranja = racun.Datum_otvaranja!;
-    //            r.Tekuci_saldo = racun.Tekuci_saldo!;
-    //            r.Tip = racun.Tip!;
-    //            r.Valuta = racun.Valuta!;
+    public async static Task<int> DodajRacun(RacunView racun, int idBanka, int idKlijenta)
+    {
+        ISession? s = null;
 
-    //            s.Update(r);
+        try
+        {
+            s = DataLayer.GetSession();
+            Banka b = await s.LoadAsync<Banka>(idBanka);
+            Klijent k = await s.LoadAsync<Klijent>(idKlijenta);
+            Racun r;
 
-    //            s.Flush();
-    //            s.Close();
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("Racun sa ovim rednim brojem ne postoji.\n");
-    //        }
+            if(b != null && k != null)
+            {
+                if (racun.Tip == "devizni" )//ne mora da se proverava da li je valuta razlicita od null jer to radi baza podataka za mene
+                {
+                    r = new DevizniRacun
+                    {
+                        Datum_otvaranja = racun.Datum_otvaranja,
+                        Tekuci_saldo = racun.Tekuci_saldo!,
+                        Tip = racun.Tip,
+                        Valuta = racun.Valuta,
+                        JePovezan = b,
+                        Koristi = k,
+                    };
+                    await s.SaveAsync(r);
+                    await s.FlushAsync();
+                }
+                else if (racun.Tip == "dinarski")
+                {
+                    r = new DinarskiRacun
+                    {
 
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Console.WriteLine(e.Message);
-    //    }
-
-    //}
+                        Datum_otvaranja = racun.Datum_otvaranja,
+                        Tekuci_saldo = racun.Tekuci_saldo!,
+                        Tip = racun.Tip,
+                        JePovezan = b,
+                        Koristi = k,
+                    };
+                    await s.SaveAsync(r);
+                    await s.FlushAsync();
+                }
+                return 0;//sve okej
+            }
+            else
+            {
+                return -1;//unesena Id banke ili Id klijenta koji ne postoje u bazi podataka
+            }
+            
+           
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
     #endregion
 
     #region Klijent
@@ -541,6 +627,27 @@ public static class DataProvider
         {
             Console.WriteLine(e.Message);
             return 0;
+        }
+    }
+
+
+    public static KlijentView VratiKlijenta(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            var k = s.Load<Klijent>(id);
+            KlijentView klijent = new KlijentView(k);
+
+            s.Close();
+
+            return klijent;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null!;
         }
     }
 
@@ -1131,5 +1238,7 @@ public static class DataProvider
         }
     }
     #endregion
+
+
 }
 

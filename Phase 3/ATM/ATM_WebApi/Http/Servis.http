@@ -32,3 +32,28 @@ DELETE {{ATM_WebApi_HostAddress}}/servis/IzbrisiServis/81
 GET {{ATM_WebApi_HostAddress}}/servis/PreuzmiServis/11
 Content-Type: application/json
 ###
+
+//VRATI SVE OTKLONJENE GRESKE ZA JEDAN SERVIS
+GET {{ATM_WebApi_HostAddress}}/servis/PreuzmiSveOtklonjeneGreske/1
+Content-Type: application/json
+
+###
+//DODAJ OTKLONJENU GRESKU SERVISA
+POST {{ATM_WebApi_HostAddress}}/servis/DodajOtklonjenuGreskuServisa/2
+Content-Type: application/json
+{
+  "otklonjena_greska": "Uspesno reseni problemi aloooo!"
+}
+
+###
+//IZMENI OTKlONJENU GRESKU SERVISA
+PUT {{ATM_WebApi_HostAddress}}/servis/IzmeniOtklonjejuGresku/81
+Content-Type: application/json
+{
+   "otklonjena_greska": "Otklonila sam sve kvarove kao doktor koji jesam verzija 2.0!"
+}
+###
+
+//DELETE OTKLONJENU GRESKU
+DELETE {{ATM_WebApi_HostAddress}}/servis/IzbrisiOtklonjenuGresku/123
+###

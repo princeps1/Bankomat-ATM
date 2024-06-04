@@ -75,3 +75,8 @@ Content-Type: application/json
 ###
 DELETE {{ATM_WebApi_HostAddress}}/servis/IzbrisiServis/81
 ###
+
+###
+GET {{ATM_WebApi_HostAddress}}/servis/PreuzmiSveOtklonjeneGreske/1
+Content-Type: application/json
+###

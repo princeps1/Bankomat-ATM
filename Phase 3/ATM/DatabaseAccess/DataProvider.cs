@@ -1237,6 +1237,128 @@ public static class DataProvider
             return null!;
         }
     }
+
+    public static List<OtklonjenaGreskaServisaView> VratiOtklonjeneGreske(int kod)
+    {
+        List<OtklonjenaGreskaServisaView> greskeList = new List<OtklonjenaGreskaServisaView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<OtklonjenaGreskaServisa> greske = from g in s.Query<OtklonjenaGreskaServisa>()
+                                          where g.PripadaServisu!.Kod == kod
+                                          select g;
+
+            foreach (OtklonjenaGreskaServisa gr in greske)
+            {
+                ServisView servis = VratiServis(gr.PripadaServisu!.Kod);
+                greskeList.Add(new OtklonjenaGreskaServisaView(gr.Id, gr.Otklonjena_greska!, servis));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return greskeList;
+    }
+
+    public async static Task DodajOtklonjenuGresku(OtklonjenaGreskaServisaView greska, int kodServisa)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Servis sr = await s.LoadAsync<Servis>(kodServisa);
+
+            OtklonjenaGreskaServisa g = new OtklonjenaGreskaServisa
+            {
+               Otklonjena_greska = greska.Otklonjena_greska,
+               PripadaServisu = sr
+            };
+
+            await s.SaveAsync(g);
+            await s.FlushAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
+    public static int IzmeniOtklonjenuGresku(OtklonjenaGreskaServisaView greska)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            OtklonjenaGreskaServisa gr = s.Load<OtklonjenaGreskaServisa>(greska.Id);
+
+
+            if (gr != null)
+            {
+                gr.Otklonjena_greska = greska.Otklonjena_greska;
+
+                s.Update(gr);
+
+                s.Flush();
+                s.Close();
+
+                return gr.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Otklonjena greska sa Id-jem {greska.Id} ne postoji.\n");
+                return 0;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+
+    }
+
+    public static int IzbrisiOtklonjenuGresku(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            OtklonjenaGreskaServisa gr = s.Load<OtklonjenaGreskaServisa>(id);
+
+            if (gr != null)
+            {
+                s.Delete(gr);
+
+                s.Flush();
+                s.Close();
+                return gr.Id;
+            }
+            else
+            {
+                Console.WriteLine("Greska sa ovim id-jem ne postoji!\n");
+                return gr!.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
     #endregion
 
 

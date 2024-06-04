@@ -97,4 +97,75 @@ public class ServisController : ControllerBase
         }
     }
 
+
+    [HttpGet]
+    [Route("PreuzmiSveOtklonjeneGreske/{kod}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public IActionResult GetOtklonjeneGreske(int kod)
+    {
+        try
+        {
+            return new JsonResult(DataProvider.VratiOtklonjeneGreske(kod));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("DodajOtklonjenuGreskuServisa/{kod}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public IActionResult AddOtklonjenaGreska([FromBody]OtklonjenaGreskaServisaView greska,int kod)
+    {
+        try
+        {
+            return new JsonResult(DataProvider.DodajOtklonjenuGresku(greska, kod));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut]
+    [Route("IzmeniOtklonjejuGresku/{idGreske}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult ChangeOtklonjenuGresku([FromBody]OtklonjenaGreskaServisaView greska, int idGreske)
+    {
+        try
+        {
+            greska.SetId(idGreske);
+            int result = DataProvider.IzmeniOtklonjenuGresku(greska);
+            if (result == 0)
+                return BadRequest($"Greska sa kodom {idGreske}  ne postoji!\n");
+            else
+                return Ok($"Uspesno izmenjena greska sa kodom {idGreske}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
+
+    [HttpDelete]
+    [Route("IzbrisiOtklonjenuGresku/{kod}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult DeleteOtklonjenaGreska(int kod)
+    {
+        try
+        {
+            int res = DataProvider.IzbrisiOtklonjenuGresku(kod);//
+            if (res == 0)
+                return BadRequest($"Greska sa kodom {kod} ne postoji!\n");
+            else
+                return Ok($"Uspesno obrisan greska sa kodom {kod}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
 }

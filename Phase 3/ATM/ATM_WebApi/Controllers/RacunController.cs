@@ -125,4 +125,77 @@ public class RacunController : ControllerBase
             return BadRequest(ex.ToString());
         }
     }
+
+    [HttpGet]
+    [Route("ovlascenaLica/VratiSvaOvlascenaLica/{idRacuna}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public IActionResult GetLica(int idRacuna)
+    {
+        try
+        {
+            return new JsonResult(DataProvider.VratiSvaOvlascenaLica(idRacuna));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("ovlascenaLica/DodajOvlascenoLice/{idRacuna}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> AddLice([FromBody]RacunOvlascenoLiceView lice, int idRacuna)
+    {
+        try
+        {
+            await DataProvider.DodajOvlascenoLice(lice, idRacuna);
+            return Ok("Uspesno ste dodali novo ovlasceno lice za racun!");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
+
+    [HttpPut]
+    [Route("ovlascenaLica/IzmeniOvlascenoLice/{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult ChangeLice([FromBody]RacunOvlascenoLiceView lice, int id)
+    {
+        try
+        {
+            lice.SetId(id);
+            int result = DataProvider.IzmeniOvlascenoLice(lice);
+            if (result == 0)
+                return BadRequest($"Ovlasceno lice sa Id-jem {id} ne postoji!\n");
+            else
+                return Ok($"Uspesno izmenjeno ovlasceno lice sa Id-jem {id}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
+
+    [HttpDelete]
+    [Route("ovlascenaLica/IzbrisiOvlascenoLice/{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult DeleteLice(int id)
+    {
+        try
+        {
+            int res = DataProvider.IzbrisiOvlascenoLice(id);//
+            if (res == 0)
+                return BadRequest($"Ovlasceno lice sa Id-jem {id} ne postoji!\n");
+            else
+                return Ok($"Uspesno obrisano ovlasceno lice sa Id-jem {id}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
 }

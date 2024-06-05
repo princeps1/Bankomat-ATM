@@ -1,24 +1,24 @@
 @ATM_WebApi_HostAddress = https://localhost:7257
 
-//Return all ATMs
+//VRATI SVE BANKOMATE
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomate/
 Content-Type: application/json
 
 ###
 
-//Return ATM based on Id
+//VRATI BANKOMAT NA OSNOVU ID-JA
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomat/11
 Content-Type: application/json
 
 ###
 
-//Return ATMs based on the Filijala where they are installed
+//VRATI BANKOMATE KOJI PRIPADAJU FILIJALI CIJI JE ID DAT
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomateOdFilijale/17
 Content-Type: application/json
 
 ###
 
-// Create ATM
+//DODAJ BANKOMAT
 POST {{ATM_WebApi_HostAddress}}/bankomat/DodajBankomat/17
 Content-Type: application/json
 
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 
-//EDIT ATM
+//IZMENI BANKOMAT
 PUT {{ATM_WebApi_HostAddress}}/bankomat/IzmeniBankomat/25
 Content-Type: application/json
 
@@ -44,5 +44,35 @@ Content-Type: application/json
 
 ###
 
-//DELETE ATM
+//IZBRISI BANKOMAT
 DELETE {{ATM_WebApi_HostAddress}}/bankomat/IzbrisiBankomat/81
+
+###
+
+//VRATI SVE KOMENTARE BANKOMATA
+GET {{ATM_WebApi_HostAddress}}/bankomat/komentari/VratiSveKomentareBankomata/1
+
+###
+
+//DODAJ NOVI KOMENTAR BANKOMATA
+POST {{ATM_WebApi_HostAddress}}/bankomat/komentari/DodajKomentar/6
+Content-Type: application/json
+{
+  "komentar": "Rad ovog bankomata je izuzetan"
+}
+
+###
+
+//IZMENI KOMENTAR BANKOMATA
+PUT {{ATM_WebApi_HostAddress}}/bankomat/komentari/IzmeniKomentarBankomata/101
+Content-Type: application/json
+{
+  "komentar": "Rad ovog bankomata je izuzetan, korisnici zadovoljni"
+}
+
+###
+
+//IZBRISI KOMENTAR BANKOMATA
+DELETE {{ATM_WebApi_HostAddress}}/bankomat/komentari/IzbrisiKomentarBankomata/101
+
+###

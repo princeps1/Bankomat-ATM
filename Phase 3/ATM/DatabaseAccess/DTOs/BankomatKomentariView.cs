@@ -9,6 +9,8 @@ public class BankomatKomentariView
     //MAPIRANJE OVLASCENO KOMENTAR-KLIJENT
     public BankomatView? PripadaBankomatu { get; set; }
 
+    public BankomatKomentariView() { }
+
     internal BankomatKomentariView(int id, string komentar, BankomatView bankomat)
     {
         this.Id = id;
@@ -16,5 +18,8 @@ public class BankomatKomentariView
         this.PripadaBankomatu = bankomat;
     }
 
-    internal BankomatKomentariView() { }
+    public void SetId(int id)
+    {
+        this.Id = id;
+    }
 }

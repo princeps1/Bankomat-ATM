@@ -1,5 +1,6 @@
 ﻿using DatabaseAccess.DTOs;
 using DatabaseAccess.Entiteti;
+using DatabaseAccess.Mapiranja;
 using NHibernate;
 using NHibernate.Stat;
 using System.Security.Cryptography.Pkcs;
@@ -138,6 +139,128 @@ public static class DataProvider
             {
                 Console.WriteLine("Banka sa ovim id-jem ne postoji!\n");
                 return b!.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
+
+    public static List<BankaBrTelefonaView> VratiBrojeveTelefona(int idBanke)
+    {
+        List<BankaBrTelefonaView> brojeviTelefona = new List<BankaBrTelefonaView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<BankaBrTelefona>  telefoni = from t in s.Query<BankaBrTelefona>()
+                                             where t.PripadaBanci!.Id == idBanke
+                                             select t;
+
+            foreach (BankaBrTelefona t in telefoni)
+            {
+                BankaView banka = VratiBanku(t.PripadaBanci!.Id);
+                brojeviTelefona.Add(new BankaBrTelefonaView(t.Id, t.BrTelefona!, banka));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return brojeviTelefona;
+    }
+
+    public async static Task DodajBrTelefonaBanke(BankaBrTelefonaView telefon, int idBanka)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Banka b = await s.LoadAsync<Banka>(idBanka);
+
+            BankaBrTelefona t = new BankaBrTelefona
+            {
+                BrTelefona = telefon.BrTelefona,
+                PripadaBanci = b
+            };
+
+            await s.SaveAsync(t);
+            await s.FlushAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
+    public static int IzmeniBrojTelefonaBanke(BankaBrTelefonaView telefon)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            BankaBrTelefona brtel = s.Load<BankaBrTelefona>(telefon.Id);
+
+
+            if (brtel != null)
+            {
+                brtel.BrTelefona = telefon.BrTelefona;
+
+                s.Update(brtel);
+
+                s.Flush();
+                s.Close();
+
+                return brtel.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Broj telefona banke sa Id-jem {telefon.Id} ne postoji.\n");
+                return 0;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+
+    }
+
+    public static int IzbrisiBrojTelefonaBanke(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            BankaBrTelefona brtel = s.Load<BankaBrTelefona>(id);
+
+            if (brtel != null)
+            {
+                s.Delete(brtel);
+
+                s.Flush();
+                s.Close();
+                return brtel.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Broj telefona banke sa id-jem {id} ne postoji!\n");
+                return brtel!.Id;
             }
 
         }
@@ -566,6 +689,128 @@ public static class DataProvider
             s?.Dispose();
         }
     }
+
+    public static List<RacunOvlascenoLiceView> VratiSvaOvlascenaLica(int idRacuna)
+    {
+        List<RacunOvlascenoLiceView> lica = new List<RacunOvlascenoLiceView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<RacunOvlascenoLice> ovlascenaLica = from l in s.Query<RacunOvlascenoLice>()
+                                                            where l.PripadaRacunu!.Br_racuna == idRacuna
+                                                            select l;
+
+            foreach (RacunOvlascenoLice lice in ovlascenaLica)
+            {
+                RacunView racun = VratiRacun(lice.PripadaRacunu!.Br_racuna);
+                lica.Add(new RacunOvlascenoLiceView(lice.Id, lice.ImeOvlascenogLica!, racun));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return lica;
+    }
+
+    public async static Task DodajOvlascenoLice(RacunOvlascenoLiceView lice, int idRacuna)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Racun r = await s.LoadAsync<Racun>(idRacuna);
+
+            RacunOvlascenoLice l = new RacunOvlascenoLice
+            {
+                ImeOvlascenogLica = lice.ImeOvlascenogLica,
+                PripadaRacunu = r
+            };
+
+            await s.SaveAsync(l);
+            await s.FlushAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
+    public static int IzmeniOvlascenoLice(RacunOvlascenoLiceView lice)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            RacunOvlascenoLice l = s.Load<RacunOvlascenoLice>(lice.Id);
+
+
+            if (l != null)
+            {
+                l.ImeOvlascenogLica = lice.ImeOvlascenogLica;
+
+                s.Update(l);
+
+                s.Flush();
+                s.Close();
+
+                return l.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Ovlasceno lice sa Id-jem {lice.Id} ne postoji.\n");
+                return 0;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+
+    }
+
+    public static int IzbrisiOvlascenoLice(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            RacunOvlascenoLice lice = s.Load<RacunOvlascenoLice>(id);
+
+            if (lice != null)
+            {
+                s.Delete(lice);
+
+                s.Flush();
+                s.Close();
+                return lice.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Ovlasceno lice sa id-jem {id} ne postoji!\n");
+                return lice!.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
     #endregion
 
     #region Klijent
@@ -649,6 +894,128 @@ public static class DataProvider
         {
             Console.WriteLine(e.Message);
             return null!;
+        }
+    }
+
+    public static List<KomentarKlijentaView> VratiSveKomentareKlijenta(int idKlijenta)
+    {
+        List<KomentarKlijentaView> komentari = new List<KomentarKlijentaView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<KomentarKlijenta> klijKomentari = from k in s.Query<KomentarKlijenta>()
+                                                           where k.PripadaKlijentu!.Id == idKlijenta
+                                                           select k;
+
+            foreach (KomentarKlijenta kom in klijKomentari)
+            {
+                KlijentView klijent = VratiKlijenta(kom.PripadaKlijentu!.Id);
+                komentari.Add(new KomentarKlijentaView(kom.Id, kom.Komentar!, klijent));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return komentari;
+    }
+
+    public async static Task DodajKomentarKlijenta(KomentarKlijentaView komentar, int idKlijenta)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Klijent k = await s.LoadAsync<Klijent>(idKlijenta);
+
+            KomentarKlijenta kom = new KomentarKlijenta
+            {
+                Komentar = komentar.Komentar,
+                PripadaKlijentu = k
+            };
+
+            await s.SaveAsync(kom);
+            await s.FlushAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
+    public static int IzmeniKomentarKlijenta(KomentarKlijentaView komentar)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            KomentarKlijenta kom = s.Load<KomentarKlijenta>(komentar.Id);
+
+
+            if (kom != null)
+            {
+                kom.Komentar = komentar.Komentar;
+
+                s.Update(kom);
+
+                s.Flush();
+                s.Close();
+
+                return kom.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Komentar klijenta sa Id-jem {komentar.Id} ne postoji.\n");
+                return 0;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+
+    }
+
+    public static int IzbrisiKomentarKlijenta(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            KomentarKlijenta kom = s.Load<KomentarKlijenta>(id);
+
+            if (kom != null)
+            {
+                s.Delete(kom);
+
+                s.Flush();
+                s.Close();
+                return kom.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Komentar klijenta sa id-jem {id} ne postoji!\n");
+                return kom!.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
         }
     }
 
@@ -1085,6 +1452,128 @@ public static class DataProvider
             {
                 Console.WriteLine("Bankomat sa ovim id-jem ne postoji!\n");
                 return b!.Id;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
+
+    public static List<BankomatKomentariView> VratiSveKomentareBankomata(int idBankomata)
+    {
+        List<BankomatKomentariView> komentari = new List<BankomatKomentariView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            IEnumerable<BankomatKomentari> bankKomentari = from k in s.Query<BankomatKomentari>()
+                                                    where k.PripadaBankomatu.Id == idBankomata
+                                                    select k;
+
+            foreach (BankomatKomentari kom in bankKomentari)
+            {
+                BankomatView bankomat = VratiBankomat(kom.PripadaBankomatu!.Id);
+                komentari.Add(new BankomatKomentariView(kom.Id, kom.Komentar!, bankomat));
+            }
+
+            s.Close();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return komentari;
+    }
+
+    public async static Task DodajKomentarBankomata(BankomatKomentariView komentar, int idBankomata)
+    {
+        ISession? s = null;
+
+        try
+        {
+            s = DataLayer.GetSession();
+            Bankomat b = await s.LoadAsync<Bankomat>(idBankomata);
+
+            BankomatKomentari k = new BankomatKomentari
+            {
+                Komentar = komentar.Komentar,
+                PripadaBankomatu = b
+            };
+
+            await s.SaveAsync(k);
+            await s.FlushAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            s?.Close();
+            s?.Dispose();
+        }
+    }
+
+    public static int IzmeniKomentarBankomata(BankomatKomentariView komentar)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            BankomatKomentari kom = s.Load<BankomatKomentari>(komentar.Id);
+
+
+            if (kom != null)
+            {
+                kom.Komentar = komentar.Komentar;
+
+                s.Update(kom);
+
+                s.Flush();
+                s.Close();
+
+                return kom.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Komentar bankomata sa Id-jem {komentar.Id} ne postoji.\n");
+                return 0;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+
+    }
+
+    public static int IzbrisiKomentarBankomata(int id)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            BankomatKomentari kom = s.Load<BankomatKomentari>(id);
+
+            if (kom != null)
+            {
+                s.Delete(kom);
+
+                s.Flush();
+                s.Close();
+                return kom.Id;
+            }
+            else
+            {
+                Console.WriteLine($"Komentar bankomata sa id-jem {id} ne postoji!\n");
+                return kom!.Id;
             }
 
         }

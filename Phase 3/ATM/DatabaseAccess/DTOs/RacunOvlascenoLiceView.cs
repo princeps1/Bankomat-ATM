@@ -9,6 +9,8 @@ public class RacunOvlascenoLiceView
     //MAPIRANJE BANKA_BR_TEL-BANKA
     public RacunView? PripadaRacunu { get; set; }
 
+    public RacunOvlascenoLiceView() { }
+
     internal RacunOvlascenoLiceView(int id, string imeLica, RacunView racun)
     {
         this.Id = id;
@@ -16,5 +18,8 @@ public class RacunOvlascenoLiceView
         this.PripadaRacunu = racun;
     }
 
-    internal RacunOvlascenoLiceView() { }
+    public void SetId(int id)
+    {
+        this.Id = id;
+    }
 }

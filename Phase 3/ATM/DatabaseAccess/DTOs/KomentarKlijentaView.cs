@@ -9,6 +9,8 @@ public class KomentarKlijentaView
     //MAPIRANJE OVLASCENO KOMENTAR-KLIJENT
     public KlijentView? PripadaKlijentu { get; set; }
 
+    public KomentarKlijentaView() { }
+
     internal KomentarKlijentaView(int id, string komentar, KlijentView klijent)
     {
         this.Id = id;
@@ -16,5 +18,8 @@ public class KomentarKlijentaView
         this.PripadaKlijentu = klijent;
     }
 
-    internal KomentarKlijentaView() { }
+    public void SetId(int id)
+    {
+        this.Id = id;
+    }
 }

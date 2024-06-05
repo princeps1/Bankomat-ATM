@@ -46,3 +46,32 @@ Content-Type: application/json
   "Racuni": []
 }
 
+###
+
+//VRATI SVE BROJEVE TELEFONA BANKE
+GET {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/VratiSveBrojeve/1
+
+###
+
+//DODAJ NOVI BROJ TELEFONA
+POST {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/DodajBrTelefona/5
+Content-Type: application/json
+{
+  "brTelefona": "018 254-980"
+}
+
+###
+
+//IZMENI BROJ TELEFONA BANKE
+PUT {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/IzmeniBrTelefona/125
+Content-Type: application/json
+{
+  "brTelefona": "018 222-333"
+}
+
+###
+
+//IZBRISI BROJ TELEFONA BANKE
+DELETE {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/IzbrisiBrTelefona/125
+
+###

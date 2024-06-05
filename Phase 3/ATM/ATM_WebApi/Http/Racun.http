@@ -58,3 +58,33 @@ Content-Type: application/json
   "Tip": "dinarski"
 }
 
+###
+
+//VRATI SVA OVLASCENA LICA RACUNA
+GET {{ATM_WebApi_HostAddress}}/racun/ovlascenaLica/VratiSvaOvlascenaLica/11
+
+###
+
+//DODAJ OVLASCENO LICE RACUNU
+POST {{ATM_WebApi_HostAddress}}/racun/ovlascenaLica/DodajOvlascenoLice/7
+Content-Type: application/json
+{
+  "imeOvlascenogLica": "Pera"
+}
+
+###
+
+//IZMENI OVLASCENO LICE
+PUT {{ATM_WebApi_HostAddress}}/racun/ovlascenaLica/IzmeniOvlascenoLice/121
+Content-Type: application/json
+{
+  "imeOvlascenogLica": "Petar"
+}
+
+###
+
+//IZBRISI OVLASCENO LICE
+DELETE {{ATM_WebApi_HostAddress}}/racun/ovlascenaLica/IzbrisiOvlascenoLice/121
+
+###
+

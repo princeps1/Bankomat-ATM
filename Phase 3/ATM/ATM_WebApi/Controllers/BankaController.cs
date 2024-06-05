@@ -99,4 +99,77 @@ public class BankaController : ControllerBase
             return BadRequest(ex.ToString());
         }
     }
+
+    [HttpGet]
+    [Route("brojeviTelefona/VratiSveBrojeve/{idBanke}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public IActionResult GetBrTelefona(int idBanke)
+    {
+        try
+        {
+            return new JsonResult(DataProvider.VratiBrojeveTelefona(idBanke));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("brojeviTelefona/DodajBrTelefona/{idBanke}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> AddBrTelefona([FromBody]BankaBrTelefonaView telefon, int idBanke)
+    {
+        try
+        {
+            await DataProvider.DodajBrTelefonaBanke(telefon, idBanke);
+            return Ok("Uspesno ste dodali novi broj telefona!");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
+
+    [HttpPut]
+    [Route("brojeviTelefona/IzmeniBrTelefona/{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult ChangeBrTelefona([FromBody]BankaBrTelefonaView telefon, int id)
+    {
+        try
+        {
+            telefon.SetId(id);
+            int result = DataProvider.IzmeniBrojTelefonaBanke(telefon);
+            if (result == 0)
+                return BadRequest($"Broj telefona sa Id-jem {id} ne postoji!\n");
+            else
+                return Ok($"Uspesno izmenjen broj telefona sa Id-jem {id}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
+
+    [HttpDelete]
+    [Route("brojeviTelefona/IzbrisiBrTelefona/{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult DeleteBrTelefona(int id)
+    {
+        try
+        {
+            int res = DataProvider.IzbrisiBrojTelefonaBanke(id);//
+            if (res == 0)
+                return BadRequest($"Broj telefona sa Id-jem {id} ne postoji!\n");
+            else
+                return Ok($"Uspesno obrisan broj telefona sa Id-jem {id}");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.ToString());
+        }
+    }
 }

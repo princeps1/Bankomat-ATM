@@ -8,6 +8,8 @@ public class BankaBrTelefonaView
     //MAPIRANJE BANKA_BR_TEL-BANKA
     public BankaView? PripadaBanci { get; set; }
 
+    public BankaBrTelefonaView() { }
+
     internal BankaBrTelefonaView(int id, string brTel, BankaView banka)
     {
         this.Id = id;
@@ -15,5 +17,8 @@ public class BankaBrTelefonaView
         this.PripadaBanci = banka;
     }
 
-    internal BankaBrTelefonaView() { }
+    public void SetId(int id)
+    {
+        this.Id = id;
+    }
 }

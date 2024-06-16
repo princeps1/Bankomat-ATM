@@ -37,25 +37,23 @@ Content-Type: application/json
 }
 
 ###Dodavanje deviznog racuna
-POST {{ATM_WebApi_HostAddress}}/Racun/DodajRacun/1/5
+POST {{ATM_WebApi_HostAddress}}/Racun/DodajRacun/3/101/devizni
 Content-Type: application/json
 
 {
-  "Datum_otvaranja": "2024-06-01T15:07:17.450Z",
-  "Tekuci_saldo": "5000",
-  "Tip": "devizni",
+  "Datum_otvaranja": "2024-06-11T15:07:17.450Z",
+  "Tekuci_saldo": "6500",
   "Valuta": "EUR"
 }
 
 ###Dodavanje dinarskog racuna
 
-POST {{ATM_WebApi_HostAddress}}/Racun/DodajRacun/5/5
+POST {{ATM_WebApi_HostAddress}}/Racun/DodajRacun/5/5/dinarski
 Content-Type: application/json
 
 {
   "Datum_otvaranja": "2024-06-01T15:07:17.450Z",
-  "Tekuci_saldo": "1000",
-  "Tip": "dinarski"
+  "Tekuci_saldo": "1000"
 }
 
 ###

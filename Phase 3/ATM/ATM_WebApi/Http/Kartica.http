@@ -41,28 +41,26 @@ Content-Type: application/json
 }
 
 ###Dodavanje debitne
-POST {{ATM_WebApi_HostAddress}}/Kartica/DodajKarticu/8
+POST {{ATM_WebApi_HostAddress}}/Kartica/DodajKarticu/83/debitna
 Content-Type: application/json
 
 {
     "Datum_izdavanje": "2024-06-01",
-    "Datum_isteka": "2026-06-01",
-    "Dnevni_limit": "1000",
-    "Tip": "debitna"
+    "Datum_isteka": "2030-06-11",
+    "Dnevni_limit": "2000"
 }
 
 ###Dodavanje kreditne
-POST {{ATM_WebApi_HostAddress}}/Kartica/DodajKarticu/9
+POST {{ATM_WebApi_HostAddress}}/Kartica/DodajKarticu/83/kreditna
 Content-Type: application/json
 
 {
     "Datum_izdavanje": "2024-06-01",
-    "Datum_isteka": "2026-06-01",
-    "Dnevni_limit": "1000",
-    "Tip": "kreditna",
+    "Datum_isteka": "2030-06-17",
+    "Dnevni_limit": "2000",
     
-    "Max_iznos_zaduzenja": "5000",
-    "Max_datum_vracanja_duga": "2025-06-01"
+    "Max_iznos_zaduzenja": "1000",
+    "Max_datum_vracanja_duga": "2026-06-11"
 }
 
 

@@ -10,6 +10,11 @@ public class TransakcijaView
     //TERNARNA
     public IList<Koristi_Za_Podizanje_NovcaView>? Koristi_Za_Podizanje_Novca { get; set; }
 
+    public TransakcijaView()
+    {
+        Koristi_Za_Podizanje_Novca = new List<Koristi_Za_Podizanje_NovcaView>();
+    }
+
     internal TransakcijaView(int id, string podignuti_iznos, DateTime datum_Podizanja_Novca, string vreme_Podizanja_Novca)
     {
         Id = id;
@@ -18,8 +23,4 @@ public class TransakcijaView
         Vreme_Podizanja_Novca = vreme_Podizanja_Novca;
     }
 
-    internal TransakcijaView()
-    {
-        Koristi_Za_Podizanje_Novca = new List<Koristi_Za_Podizanje_NovcaView>();
-    }
 }

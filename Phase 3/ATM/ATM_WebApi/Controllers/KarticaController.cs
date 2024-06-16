@@ -1,6 +1,7 @@
 ﻿using DatabaseAccess;
 using DatabaseAccess.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Code;
 
 namespace ATM_WebApi.Controllers;
 
@@ -108,13 +109,14 @@ public class KarticaController : ControllerBase
 
 
     [HttpPost]
-    [Route("DodajKarticu/{brRacuna}")]
+    [Route("DodajKarticu/{brRacuna}/{tipKartice}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> AddKartica([FromBody] KarticaView kartica, int brRacuna)
+    public async Task<IActionResult> AddKartica([FromBody] KarticaView kartica, int brRacuna, TipKartice tipKartice)
     {
         try
         {
+            kartica.Tip = tipKartice.ToString();
             int res = await DataProvider.DodajKarticu(kartica, brRacuna);
             if (res == 0)
                 return Ok("Uspesno ste dodali novu karticu!");

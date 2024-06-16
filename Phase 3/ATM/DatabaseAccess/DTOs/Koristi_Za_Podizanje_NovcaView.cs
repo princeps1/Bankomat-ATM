@@ -7,12 +7,12 @@ public class Koristi_Za_Podizanje_NovcaView
     public KarticaView? Kartica { get; set; }
     public TransakcijaView? Transakcija { get; set; }
 
+    public Koristi_Za_Podizanje_NovcaView() { }
+
     internal Koristi_Za_Podizanje_NovcaView(int id, BankomatView bankomat, KarticaView kartica, TransakcijaView transakcija)
     {
         Bankomat = bankomat;
         Kartica = kartica;
         Transakcija = transakcija;
     }
-
-    internal Koristi_Za_Podizanje_NovcaView() { }
 }

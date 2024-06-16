@@ -1,6 +1,7 @@
 ﻿using DatabaseAccess;
 using DatabaseAccess.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Code;
 
 namespace ATM_WebApi.Controllers;
 
@@ -107,13 +108,14 @@ public class RacunController : ControllerBase
 
 
     [HttpPost]
-    [Route("DodajRacun/{idBanke}/{idKlijenta}")]
+    [Route("DodajRacun/{idBanke}/{idKlijenta}/{tipRacuna}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> AddRacun([FromBody] RacunView racun, int idBanke,int idKlijenta)
+    public async Task<IActionResult> AddRacun([FromBody] RacunView racun, int idBanke,int idKlijenta, TipRacuna tipRacuna)
     {
         try
         {
+            racun.Tip = tipRacuna.ToString();
             int res = await DataProvider.DodajRacun(racun, idBanke,idKlijenta);
             if (res == 0)
                 return Ok("Uspesno ste dodali novi racun!");

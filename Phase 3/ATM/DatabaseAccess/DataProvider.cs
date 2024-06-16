@@ -2096,6 +2096,94 @@ public static class DataProvider
 
     #endregion
 
+    #region Transakcija 
+    public static List<PregledView> VratiSveTransakcijeBankomata(int bankomatId)
+    {
+        List<PregledView> pregledList = new List<PregledView>();
+        try
+        {
+            ISession s = DataLayer.GetSession();
+            var koristi = from k in s.Query<Koristi_Za_Podizanje_Novca>()
+                          where k.Bankomat!.Id == bankomatId
+                          select new PregledView(
+                              k.Transakcija!.Id,
+                              k.Bankomat!.Id,
+                              k.Kartica!.Id,
+                              k.Transakcija.Podignuti_iznos!,
+                              k.Transakcija.Datum_Podizanja_Novca!,
+                              k.Transakcija.Vreme_Podizanja_Novca!
+                          );
 
+            pregledList = koristi.ToList();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        return pregledList;
+    }
+
+
+    public static int DodajTransakciju(TransakcijaView transakcija, int bankomatId, int karticaId)
+    {
+        try
+        {
+            ISession s = DataLayer.GetSession();
+
+            Transakcija t = new Transakcija
+            {
+                Podignuti_iznos = transakcija.Podignuti_iznos,
+                Datum_Podizanja_Novca = transakcija.Datum_Podizanja_Novca,
+                Vreme_Podizanja_Novca = transakcija.Vreme_Podizanja_Novca,
+            };
+
+            s.Save(t);
+
+            Bankomat b = s.Get<Bankomat>(bankomatId);
+            Kartica k = s.Get<Kartica>(karticaId);
+
+            if (Int32.Parse(k.Odgovara!.Tekuci_saldo) < Int32.Parse(t.Podignuti_iznos!))
+            {
+                s.Delete(t);
+                return -1; //Tekuci saldo je manji od novca koji zelite da podignete.
+            }
+
+            if (Int32.Parse(k.Dnevni_limit!) < Int32.Parse(t.Podignuti_iznos!))
+            {
+                s.Delete(t);
+                return -2; //Dnevni limit je manji od novca koji zelite da podignete.
+
+            }
+
+            int oduzimanje = (Int32.Parse(k.Odgovara.Tekuci_saldo)) - (Int32.Parse(t.Podignuti_iznos!));
+
+            var racun = k.Odgovara;
+
+            racun.Tekuci_saldo = oduzimanje.ToString();
+
+            s.Update(racun);
+
+            Koristi_Za_Podizanje_Novca kzpn = new Koristi_Za_Podizanje_Novca
+            {
+                Transakcija = t,
+                Bankomat = b,
+                Kartica = k
+            };
+
+            s.Save(kzpn);
+
+            s.Flush();
+            s.Close();
+            return 0;
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+            return 0;
+        }
+    }
+
+    #endregion
 }
 

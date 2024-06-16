@@ -15,4 +15,8 @@
     <ProjectReference Include="..\DatabaseAccess\DatabaseAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Code\" />
+  </ItemGroup>
+
 </Project>

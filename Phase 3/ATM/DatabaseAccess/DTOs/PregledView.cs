@@ -9,6 +9,8 @@ public class PregledView
     public string? Datum { get; set; }
     public string? Vreme { get; set; }
 
+    public PregledView() { }
+
     internal PregledView(int transakcijaId, int bankomatId, int karticaId, string podignut_Novac, DateTime datum, string vreme)
     {
         TransakcijaId = transakcijaId;
@@ -18,6 +20,4 @@ public class PregledView
         Datum = datum.ToShortDateString();
         Vreme = vreme;
     }
-
-    internal PregledView() { }
 }

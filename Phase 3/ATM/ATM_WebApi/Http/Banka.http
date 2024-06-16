@@ -1,77 +1,68 @@
 ﻿@ATM_WebApi_HostAddress = https://localhost:7257
 
-# Create Bank
+# Dodaj Banku
 POST {{ATM_WebApi_HostAddress}}/banka/DodajBanku
 Content-Type: application/json
-
 {
-  "Ime": "Nova Banka",
-  "Email": "contact@novabanka.com",
-  "Web_adresa": "www.novabanka.com",
-  "Adresa_centrale": "Ulica 123",
-  "Filijala": [],
-  "BrojeviTelefona": [],
-  "Racuni": []
+  "Ime": "Postanska stedionica",
+  "Email": "postanskastedionica@gmail.com",
+  "Web_adresa": "www.postanskastedionica.com",
+  "Adresa_centrale": "Kraljice Marije 3, 11120 Beograd"
 }
 
 ###
 
-# Delete Bank
-DELETE {{ATM_WebApi_HostAddress}}/banka/IzbrisiBanku/262
+# Obrisi Banku
+DELETE {{ATM_WebApi_HostAddress}}/banka/IzbrisiBanku/263
 
 ###
 
-# Get All Banks
+# Preuzmi sve Banke
 GET {{ATM_WebApi_HostAddress}}/banka/PreuzmiBanke
 
 ###
 
-# Get Bank by ID
+# Preuzmi banku sa Id-jem
 GET {{ATM_WebApi_HostAddress}}/banka/PreuzmiBanku/1
 
 ###
 
-# Update Bank
-PUT {{ATM_WebApi_HostAddress}}/banka/IzmeniBanku/263
+# Azuriraj Banku
+PUT {{ATM_WebApi_HostAddress}}/banka/IzmeniBanku/281
 Content-Type: application/json
-
 {
-  "Id": 263,
-  "Ime": "Izmenjena Banka",
-  "Email": "contact@izmenjenabanka.com",
-  "Web_adresa": "www.izmenjenabanka.com",
-  "Adresa_centrale": "Nova Ulica 456, Grad",
-  "Filijala": [],
-  "BrojeviTelefona": [],
-  "Racuni": []
+  "Ime": "Postanska stedionica",
+  "Email": "info@postanskastedionica.com",
+  "Web_adresa": "https://www.posted.co.rs/",
+  "Adresa_centrale": "Kraljice Marije 3, 11120 Beograd"
 }
 
 ###
 
-//VRATI SVE BROJEVE TELEFONA BANKE
+//Preuzimanje svih brojeva telefona banke
 GET {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/VratiSveBrojeve/1
 
 ###
 
-//DODAJ NOVI BROJ TELEFONA
-POST {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/DodajBrTelefona/5
+//Dodaj novi broj telefona banke
+POST {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/DodajBrTelefona/281
 Content-Type: application/json
 {
-  "brTelefona": "018 254-980"
+  "brTelefona": "011 254 980"
 }
 
 ###
 
-//IZMENI BROJ TELEFONA BANKE
-PUT {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/IzmeniBrTelefona/125
+//Izmeni broj telefona banke
+PUT {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/IzmeniBrTelefona/142
 Content-Type: application/json
 {
-  "brTelefona": "018 222-333"
+  "brTelefona": "011 111 222"
 }
 
 ###
 
-//IZBRISI BROJ TELEFONA BANKE
-DELETE {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/IzbrisiBrTelefona/125
+//Izbrisi broj telefona banke
+DELETE {{ATM_WebApi_HostAddress}}/banka/brojeviTelefona/IzbrisiBrTelefona/142
 
 ###

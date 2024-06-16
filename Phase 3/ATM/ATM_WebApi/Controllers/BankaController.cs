@@ -67,11 +67,14 @@ public class BankaController : ControllerBase
         {
             if (id <= 0)
             {
-                return BadRequest("Invalid bank ID.");
+                return BadRequest("Ne validan id banke.");
             }
 
-            banka.SetId(id); // Ensure the ID from the route is set in the BankaView object
-            DataProvider.IzmeniBanku(banka);
+            banka.SetId(id);
+            int res = DataProvider.IzmeniBanku(banka);
+
+            if (res == 0) return BadRequest($"Banka sa id-jem {id} ne postoji!");
+
             return Ok("Uspesno ste izmenili banku!");
         }
         catch (Exception ex)
@@ -88,9 +91,9 @@ public class BankaController : ControllerBase
     {
         try
         {
-            int res = DataProvider.IzbrisiBanku(id);//
+            int res = DataProvider.IzbrisiBanku(id);
             if (res == 0)
-                return BadRequest("Banka sa ovim id-jem ne postoji!\n");
+                return BadRequest($"Banka sa id-jem {id} ne postoji!\n");
             else
                 return Ok($"Uspesno obrisana banka sa id-jem {id}");
         }
@@ -119,11 +122,17 @@ public class BankaController : ControllerBase
     [Route("brojeviTelefona/DodajBrTelefona/{idBanke}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> AddBrTelefona([FromBody]BankaBrTelefonaView telefon, int idBanke)
+    public IActionResult AddBrTelefona([FromBody]BankaBrTelefonaView telefon, int idBanke)
     {
         try
         {
-            await DataProvider.DodajBrTelefonaBanke(telefon, idBanke);
+            int res = DataProvider.DodajBrTelefonaBanke(telefon, idBanke);
+
+            if(res == 0)
+            {
+                return BadRequest($"Probali ste da dodate broj telefona u banku ciji je id {idBanke}, ali takva banka ne postoji");
+            }
+
             return Ok("Uspesno ste dodali novi broj telefona!");
         }
         catch (Exception ex)
@@ -161,7 +170,7 @@ public class BankaController : ControllerBase
     {
         try
         {
-            int res = DataProvider.IzbrisiBrojTelefonaBanke(id);//
+            int res = DataProvider.IzbrisiBrojTelefonaBanke(id);
             if (res == 0)
                 return BadRequest($"Broj telefona sa Id-jem {id} ne postoji!\n");
             else

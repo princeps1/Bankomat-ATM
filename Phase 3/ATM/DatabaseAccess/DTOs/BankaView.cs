@@ -42,6 +42,6 @@ public class BankaView
     // Method to set the ID internally
     public void SetId(int id)
     {
-        Id = id;
+        this.Id = id;
     }
 }

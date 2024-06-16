@@ -87,7 +87,7 @@ public static class DataProvider
         }
     }
 
-    public static void IzmeniBanku(BankaView banka)
+    public static int IzmeniBanku(BankaView banka)
     {
         try
         {
@@ -106,16 +106,20 @@ public static class DataProvider
 
                 s.Flush();
                 s.Close();
+
+                return 1;
             }
             else
             {
                 Console.WriteLine("Banka sa ovim Id-jem ne postoji.\n");
+                return 0;
             }
 
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            return 0;
         }
     }
 
@@ -177,14 +181,14 @@ public static class DataProvider
         return brojeviTelefona;
     }
 
-    public async static Task DodajBrTelefonaBanke(BankaBrTelefonaView telefon, int idBanka)
+    public static int DodajBrTelefonaBanke(BankaBrTelefonaView telefon, int idBanka)
     {
         ISession? s = null;
 
         try
         {
             s = DataLayer.GetSession();
-            Banka b = await s.LoadAsync<Banka>(idBanka);
+            Banka b = s.Load<Banka>(idBanka);
 
             BankaBrTelefona t = new BankaBrTelefona
             {
@@ -192,12 +196,15 @@ public static class DataProvider
                 PripadaBanci = b
             };
 
-            await s.SaveAsync(t);
-            await s.FlushAsync();
+             s.Save(t);
+             s.Flush();
+
+            return 1;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            return 0;
         }
         finally
         {

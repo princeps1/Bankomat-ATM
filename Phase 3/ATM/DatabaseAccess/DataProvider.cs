@@ -364,14 +364,19 @@ public static class DataProvider
     }
 
 
-    public async static Task DodajFilijalu(FilijalaView filijala, int idBanka)
+    public static int DodajFilijalu(FilijalaView filijala, int idBanka)
     {
         ISession? s = null;
 
         try
         {
             s = DataLayer.GetSession();
-            Banka b = await s.LoadAsync<Banka>(idBanka);
+            Banka b =  s.Load<Banka>(idBanka);
+
+            if(b == null)
+            {
+                return 0;
+            }
 
             Filijala f = new Filijala
             {
@@ -381,12 +386,15 @@ public static class DataProvider
                 PripadaBanci = b
             };
 
-            await s.SaveAsync(f);
-            await s.FlushAsync();
+             s.Save(f);
+             s.Flush();
+
+            return 1;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            return 0;
         }
         finally
         {
@@ -395,7 +403,7 @@ public static class DataProvider
         }
     }
 
-    public static void IzmeniFilijalu(FilijalaView filijala)
+    public static int IzmeniFilijalu(FilijalaView filijala)
     {
         try
         {
@@ -414,16 +422,19 @@ public static class DataProvider
 
                 s.Flush();
                 s.Close();
+                return 1;
             }
             else
             {
                 Console.WriteLine("Filijala sa ovim rednim brojem ne postoji.\n");
+                return 0;
             }
 
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            return 0;
         }
 
     }

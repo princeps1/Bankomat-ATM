@@ -1,12 +1,12 @@
 @ATM_WebApi_HostAddress = https://localhost:7257
 
-//VRACA SVE TRANSAKCIJE NAPRAVLJENE NA BANKOMATU SA PROSLEDJENIM ID-JEM
+//Vrati sve transakcije obavljene na bankomatu ciji je id prosledjen
 GET {{ATM_WebApi_HostAddress}}/transakcija/PreuzmiTransakcijeBankomata/bankomat/6
 Content-Type: application/json
 ###
 
 
-//DODAJ TRANSAKCIJU
+//Dodaj transakciju
 POST {{ATM_WebApi_HostAddress}}/transakcija/DodajTransakciju/bankomat/2/kartica/29
 Content-Type: application/json
 {

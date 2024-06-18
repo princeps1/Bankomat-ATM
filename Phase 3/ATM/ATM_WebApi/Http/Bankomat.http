@@ -1,24 +1,24 @@
 @ATM_WebApi_HostAddress = https://localhost:7257
 
-//VRATI SVE BANKOMATE
+//Vrati sve bankomate
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomate/
 Content-Type: application/json
 
 ###
 
-//VRATI BANKOMAT NA OSNOVU ID-JA
+//Vrati bankomat na osnovu Id-ja
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomat/11
 Content-Type: application/json
 
 ###
 
-//VRATI BANKOMATE KOJI PRIPADAJU FILIJALI CIJI JE ID DAT
+//Vrati bankomate koji pripadaju filijali ciji je rbr prosledjen
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomateOdFilijale/17
 Content-Type: application/json
 
 ###
 
-//DODAJ BANKOMAT
+//Dodaj Bankomat filijali
 POST {{ATM_WebApi_HostAddress}}/bankomat/DodajBankomat/17
 Content-Type: application/json
 
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 
-//IZMENI BANKOMAT
+//Izmeni bankomat
 PUT {{ATM_WebApi_HostAddress}}/bankomat/IzmeniBankomat/25
 Content-Type: application/json
 
@@ -44,17 +44,17 @@ Content-Type: application/json
 
 ###
 
-//IZBRISI BANKOMAT
+//Izbrisi bankomat
 DELETE {{ATM_WebApi_HostAddress}}/bankomat/IzbrisiBankomat/81
 
 ###
 
-//VRATI SVE KOMENTARE BANKOMATA
+//Vrati sve komentare bankomata
 GET {{ATM_WebApi_HostAddress}}/bankomat/komentari/VratiSveKomentareBankomata/1
 
 ###
 
-//DODAJ NOVI KOMENTAR BANKOMATA
+//Dodaj novi komentar bankomata
 POST {{ATM_WebApi_HostAddress}}/bankomat/komentari/DodajKomentar/6
 Content-Type: application/json
 {
@@ -63,7 +63,7 @@ Content-Type: application/json
 
 ###
 
-//IZMENI KOMENTAR BANKOMATA
+//Izmeni komentar bankomata
 PUT {{ATM_WebApi_HostAddress}}/bankomat/komentari/IzmeniKomentarBankomata/101
 Content-Type: application/json
 {
@@ -72,7 +72,7 @@ Content-Type: application/json
 
 ###
 
-//IZBRISI KOMENTAR BANKOMATA
+//Izbrisi komentar bankomata
 DELETE {{ATM_WebApi_HostAddress}}/bankomat/komentari/IzbrisiKomentarBankomata/101
 
 ###

@@ -1,46 +1,44 @@
 ﻿@ATM_WebApi_HostAddress = https://localhost:7257
 
 
-# Create Filijala
-POST {{ATM_WebApi_HostAddress}}/filijala/DodajFilijalu/1
+# Dodaj Filijalu
+POST {{ATM_WebApi_HostAddress}}/filijala/DodajFilijalu/281
 Content-Type: application/json
 
 {
-  "Adresa": "Nova Adresa 123",
+  "Adresa": "Savski Venac 123",
   "Br_telefona": "0123456789",
-  "Radno_vreme": "09:00-17:00",
-  "Bankomati": []
+  "Radno_vreme": "08:00-16:00"
 }
 
 ###
 
-# Delete Filijala
-DELETE {{ATM_WebApi_HostAddress}}/filijala/IzbrisiFilijalu/25
+# Obrisi Filijalu 
+DELETE {{ATM_WebApi_HostAddress}}/filijala/IzbrisiFilijalu/144
 
 ###
 
-# Get All Filijale
+# Vrati sve filijale svih banaka
 GET {{ATM_WebApi_HostAddress}}/filijala/PreuzmiFilijale
 
 ###
 
-# Get Filijala by ID
-GET {{ATM_WebApi_HostAddress}}/filijala/PreuzmiFilijalu/25
+# Vrati izabranu filijalu
+GET {{ATM_WebApi_HostAddress}}/filijala/PreuzmiFilijalu/12
 
 ###
 
-# Get Filijale by Bank ID
+# Vrati sve filijale odabrane banke
 GET {{ATM_WebApi_HostAddress}}/filijala/PreuzmiFilijaleOdBanke/1
 
 ###
 
-# Update Filijala
+# Azuriraj filijalu
 PUT {{ATM_WebApi_HostAddress}}/filijala/IzmeniFilijalu/161
 Content-Type: application/json
 
 {
-  "Rbr_filijale": 161,
-  "Adresa": "Izmenjena Adresa 456",
+  "Adresa": "Izmenjena Adresa 4561",
   "Br_telefona": "0987654321",
   "Radno_vreme": "10:00-18:00",
   "Bankomati": [],

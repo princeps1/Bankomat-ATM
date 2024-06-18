@@ -16,6 +16,7 @@ GET {{ATM_WebApi_HostAddress}}/klijent/komentari/VratiSveKomentareKlijenta/1
 //DODAJ NOVI KOMENTAR KLIJENTA
 POST {{ATM_WebApi_HostAddress}}/klijent/komentari/DodajKomentar/62
 Content-Type: application/json
+
 {
   "komentar": "Moj komentar bez teksta sam"
 }
@@ -25,6 +26,7 @@ Content-Type: application/json
 //IZMENI KOMENTAR KLIJENTA
 PUT {{ATM_WebApi_HostAddress}}/klijent/komentari/IzmeniKomentarKlijenta/82
 Content-Type: application/json
+
 {
   "komentar": "Izmena izmena izmena"
 }

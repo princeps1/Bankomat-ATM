@@ -2,19 +2,19 @@
 
 //Vrati sve bankomate
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomate/
-Content-Type: application/json
+
 
 ###
 
 //Vrati bankomat na osnovu Id-ja
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomat/11
-Content-Type: application/json
+
 
 ###
 
 //Vrati bankomate koji pripadaju filijali ciji je rbr prosledjen
 GET {{ATM_WebApi_HostAddress}}/bankomat/PreuzmiBankomateOdFilijale/17
-Content-Type: application/json
+
 
 ###
 
@@ -57,6 +57,7 @@ GET {{ATM_WebApi_HostAddress}}/bankomat/komentari/VratiSveKomentareBankomata/1
 //Dodaj novi komentar bankomata
 POST {{ATM_WebApi_HostAddress}}/bankomat/komentari/DodajKomentar/6
 Content-Type: application/json
+
 {
   "komentar": "Rad ovog bankomata je izuzetan"
 }
@@ -66,6 +67,7 @@ Content-Type: application/json
 //Izmeni komentar bankomata
 PUT {{ATM_WebApi_HostAddress}}/bankomat/komentari/IzmeniKomentarBankomata/101
 Content-Type: application/json
+
 {
   "komentar": "Rad ovog bankomata je izuzetan, korisnici zadovoljni"
 }

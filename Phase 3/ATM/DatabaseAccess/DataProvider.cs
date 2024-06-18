@@ -1164,7 +1164,7 @@ public static class DataProvider
             else
             {
                 Console.WriteLine("Fizicko Lice sa ovim id-jem ne postoji!\n");
-                return fl.Id;
+                return fl!.Id;
             }
 
         }
@@ -1291,7 +1291,7 @@ public static class DataProvider
             else
             {
                 Console.WriteLine("Pravno Lice sa ovim id-jem ne postoji!\n");
-                return pl.Id;
+                return pl!.Id;
             }
 
         }
